@@ -8,6 +8,7 @@
     "venue": "International Journal of Informatics Society — accepted; scheduled for 2027.",
     "year": "2027",
     "accepted": true,
+    "corresponding": true,
     "url": ""
   },
   {
@@ -53,6 +54,7 @@
     "venue": "International Journal of Activity and Behavior Computing, Vol. 2026, Issue 1, pp. 1-18, April 2026",
     "year": "2026",
     "accepted": false,
+    "corresponding": true,
     "url": "https://www.jstage.jst.go.jp/article/ijabc/2026/1/2026_130/_article/-char/ja/"
   },
   {
@@ -148,10 +150,11 @@
     "label": "J25",
     "type": "journal",
     "title": "Analysis and Visualization of Relationship between Stress and Care Activities toward Reduction of Caregiver Workload",
-    "authors": "Atsushi Miyaji, Yuta Kimata, Tomokazu Matsui, Manato Fujimoto*, Keiichi Yasumoto",
+    "authors": "Atsushi Miyaji, Yuta Kimata, Tomokazu Matsui, Manato Fujimoto, Keiichi Yasumoto",
     "venue": "Sensors and Materials, Vol. 34, No. 8(1), pp. 2929-2954, Aug. 2022",
     "year": "2022",
     "accepted": false,
+    "corresponding": true,
     "url": "https://sensors.myu-group.co.jp/article.php?ss=3972"
   },
   {
@@ -170,10 +173,11 @@
     "label": "J23",
     "type": "journal",
     "title": "Wi-CaL: WiFi Sensing and Machine Learning based Device-Free Crowd Counting and Localization",
-    "authors": "Hyuckjin Choi, Manato Fujimoto*, Tomokazu Matsui, Shinya Misaki, Keiichi Yasumoto",
+    "authors": "Hyuckjin Choi, Manato Fujimoto, Tomokazu Matsui, Shinya Misaki, Keiichi Yasumoto",
     "venue": "IEEE Access, Vol. 10, pp. 24395-24410, Mar. 2022",
     "year": "2022",
     "accepted": false,
+    "corresponding": true,
     "url": "https://ieeexplore.ieee.org/document/9724220"
   },
   {
@@ -247,10 +251,11 @@
     "label": "J16",
     "type": "journal",
     "title": "Effective Trilateration-based Indoor Localization Method Utilizing Active Control of Lighting Devices",
-    "authors": "Kazuki Moriya, Manato Fujimoto*, Yutaka Arakawa, Keiichi Yasumoto",
+    "authors": "Kazuki Moriya, Manato Fujimoto, Yutaka Arakawa, Keiichi Yasumoto",
     "venue": "Sensors and Materials, Vol. 32, No. 2(2), pp. 625-650, Feb. 2020",
     "year": "2020",
     "accepted": false,
+    "corresponding": true,
     "url": "https://doi.org/10.18494/SAM.2020.2613"
   },
   {
@@ -258,10 +263,11 @@
     "label": "J15",
     "type": "journal",
     "title": "Effective Application Distribution System for Internet-Less Communication during Disasters",
-    "authors": "Manato Fujimoto*, Seigi Matsumoto, Edgar Marko Trono, Yutaka Arakawa, Keiichi Yasumoto",
+    "authors": "Manato Fujimoto, Seigi Matsumoto, Edgar Marko Trono, Yutaka Arakawa, Keiichi Yasumoto",
     "venue": "Sensors and Materials, Vol. 32, No. 1(1), pp. 79-95, Jan. 2020",
     "year": "2020",
     "accepted": false,
+    "corresponding": true,
     "url": "https://doi.org/10.18494/SAM.2020.2614"
   },
   {
@@ -292,10 +298,11 @@
     "label": "J12",
     "type": "journal",
     "title": "Beacon-based Time-Spatial Recognition toward Automatic Daily Care Reporting for Nursing Homes",
-    "authors": "Tatsuya Morita, Kenta Taki, Manato Fujimoto*, Hirohiko Suwa, Yutaka Arakawa, Keiichi Yasumoto",
+    "authors": "Tatsuya Morita, Kenta Taki, Manato Fujimoto, Hirohiko Suwa, Yutaka Arakawa, Keiichi Yasumoto",
     "venue": "Journal of Sensors, Vol. 2018, Article ID 2625195, 15 pages, Aug. 2018",
     "year": "2018",
     "accepted": false,
+    "corresponding": true,
     "url": "https://www.hindawi.com/journals/js/2018/2625195/"
   },
   {
@@ -383,10 +390,11 @@
     "label": "J4",
     "type": "journal",
     "title": "Effective Barrier Coverage Constructions for Improving Border Security in Wireless Sensor Networks",
-    "authors": "Manato Fujimoto*, Hayato Ozaki, Takuya Suzuki, Hiroaki Koyamashita, Tomotaka Wada, Kouichi Mutsuura, Hiromi Okada",
+    "authors": "Manato Fujimoto, Hayato Ozaki, Takuya Suzuki, Hiroaki Koyamashita, Tomotaka Wada, Kouichi Mutsuura, Hiromi Okada",
     "venue": "IEICE Transactions on Communications, Vol. E96-B, No. 12, pp. 3007-3016, Dec. 2013",
     "year": "2013",
     "accepted": false,
+    "corresponding": true,
     "url": "https://search.ieice.org/bin/summary.php?id=e96-b_12_3007&category=B&year=2013&lang=E&abst="
   },
   {
@@ -394,10 +402,11 @@
     "label": "J3",
     "type": "journal",
     "title": "Swift Communication Range Recognition Method for Quick and Accurate Position Estimation of Passive RFID Tags",
-    "authors": "Manato Fujimoto*, Tomotaka Wada, Atsuki Inada, Kouichi Mutsuura, Hiromi Okada",
+    "authors": "Manato Fujimoto, Tomotaka Wada, Atsuki Inada, Kouichi Mutsuura, Hiromi Okada",
     "venue": "IEICE Transactions on Fundamentals of Electronics, Communications and Computer Sciences, Vol. E95-A, No. 9, pp. 1596-1605, Sept. 2012",
     "year": "2012",
     "accepted": false,
+    "corresponding": true,
     "url": "https://search.ieice.org/bin/summary.php?id=e95-a_9_1596&category=A&lang=E&year=2012&abst="
   },
   {
@@ -405,10 +414,11 @@
     "label": "J2",
     "type": "journal",
     "title": "Localization of Passive RFID Tags by Using Broad-Type Multi-Sensing-Range (B-MSR) Method",
-    "authors": "Manato Fujimoto*, Tomotaka Wada, Atsuki Inada, Emi Nakamori, Yuki Oda, Kouichi Mutsuura, Hiromi Okada",
+    "authors": "Manato Fujimoto, Tomotaka Wada, Atsuki Inada, Emi Nakamori, Yuki Oda, Kouichi Mutsuura, Hiromi Okada",
     "venue": "IEICE Transactions on Fundamentals of Electronics, Communications and Computer Sciences, Vol. E95-A, No. 7, pp. 1164-1174, July 2012",
     "year": "2012",
     "accepted": false,
+    "corresponding": true,
     "url": "https://search.ieice.org/bin/summary.php?id=e95-a_7_1164&category=A&lang=E&year=2012&abst="
   },
   {
