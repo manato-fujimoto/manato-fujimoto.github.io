@@ -126,6 +126,8 @@ def publication_item(p, lang):
         title = link(p['url'],title)
     if p['accepted']:
         title += f'<span class="status">{"採択済み" if lang == "ja" else "Accepted"}</span>'
+    if p['type'] == 'journal' and p.get('language') == 'ja':
+        title += '<span class="status">Japanese</span>'
     authors = E(p['authors'])
     metric = journal_metric(p)
     metrics = ''

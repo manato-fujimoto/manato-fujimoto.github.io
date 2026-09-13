@@ -38,7 +38,8 @@
     "type": "journal",
     "title": "A case study of the “Be supporters!”: Promoting well-being among nursing home residents",
     "authors": "Satoshi Morita, Yuta Otsuka, Yoshihisa Kaneda, Takayuki Izumo, Yoshihiro Nakao, Taiki Egusa, Yui Ogawa, Manato Fujimoto, Yukiko Uchida",
-    "venue": "Applied Gerontology, Vol. 20, No. 1, pp. 166-176, Aug. 2026 (in Japanese)",
+    "venue": "Applied Gerontology, Vol. 20, No. 1, pp. 166-176, Aug. 2026",
+    "language": "ja",
     "year": "2026",
     "accepted": false,
     "url": "https://www.jstage.jst.go.jp/article/sagj/20/1/20_166/_article/-char/ja"
@@ -280,7 +281,8 @@
     "type": "journal",
     "title": "Evacuation Center Determination Method Considering Bias of Congestion Degree on Areas",
     "authors": "Kazuhito Umeki, Yugo Nakamura, Manato Fujimoto, Teruhiro Mizumoto, Hirohiko Suwa, Yutaka Arakawa, Keiichi Yasumoto",
-    "venue": "IPSJ Journal, Vol. 60, No. 2, pp. 608-616, Feb. 2019 (in Japanese)",
+    "venue": "IPSJ Journal, Vol. 60, No. 2, pp. 608-616, Feb. 2019",
+    "language": "ja",
     "year": "2019",
     "accepted": false,
     "url": "https://ipsj.ixsq.nii.ac.jp/ej/index.php?active_action=repository_view_main_item_detail&page_id=13&block_id=8&item_id=194384&item_no=1"
@@ -302,7 +304,8 @@
     "type": "journal",
     "title": "Walking Activity Detection Through a Cane Attached Sensor",
     "authors": "Yuta Takahashi, Yasuhiro Otoda, Manato Fujimoto, Yutaka Arakawa",
-    "venue": "IPSJ Transactions on Consumer Devices & Systems, Vol. 8, No. 2, pp. 43-55, May 2018 (in Japanese)",
+    "venue": "IPSJ Transactions on Consumer Devices & Systems, Vol. 8, No. 2, pp. 43-55, May 2018",
+    "language": "ja",
     "year": "2018",
     "accepted": false,
     "url": "https://ipsj.ixsq.nii.ac.jp/ej/?action=pages_view_main&active_action=repository_view_main_item_detail&item_id=189565&item_no=1&page_id=13&block_id=8"
@@ -324,7 +327,8 @@
     "type": "journal",
     "title": "Implementation and Evaluation of a Participatory Location Sharing System for Cycling Road Race with Reducing Burden for the Athletes",
     "authors": "Shogo Kawanaka, Yuta Takahashi, Chishu Amenomori, Manato Fujimoto, Yutaka Arakawa, Akira Fujiwara, Tetsuya Fukushima, Takanobu Matsubara",
-    "venue": "IPSJ Transactions on Consumer Devices & Systems, Vol. 7, No. 2, pp. 12-23, May 2017 (in Japanese)",
+    "venue": "IPSJ Transactions on Consumer Devices & Systems, Vol. 7, No. 2, pp. 12-23, May 2017",
+    "language": "ja",
     "year": "2017",
     "accepted": false,
     "url": "https://ipsj.ixsq.nii.ac.jp/ej/?action=pages_view_main&active_action=repository_view_main_item_detail&item_id=181093&item_no=1&page_id=13&block_id=8"
@@ -346,7 +350,8 @@
     "type": "journal",
     "title": "A Living Activity Recognition System Based on Power Consumption of Appliances and Energy Harvesting PIR and Door Sensors",
     "authors": "Yukitoshi Kashimoto, Kyoji Hata, Eri Nakagawa, Hirohiko Suwa, Manato Fujimoto, Yutaka Arakawa, Takeya Shigezumi, Kunihiro Komiya, Kenta Konishi, Keiichi Yasumoto",
-    "venue": "IPSJ Journal, Vol. 58, No. 2, pp. 409-418, Feb. 2017 (in Japanese)",
+    "venue": "IPSJ Journal, Vol. 58, No. 2, pp. 409-418, Feb. 2017",
+    "language": "ja",
     "year": "2017",
     "accepted": false,
     "url": "https://ipsj.ixsq.nii.ac.jp/ej/?action=pages_view_main&active_action=repository_view_main_item_detail&item_id=177501&item_no=1&page_id=13&block_id=8"
