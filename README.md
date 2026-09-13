@@ -1,0 +1,1 @@
+# manato-fujimoto.github.io
