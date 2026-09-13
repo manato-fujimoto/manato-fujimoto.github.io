@@ -1,0 +1,443 @@
+{
+  "name": {
+    "en": "Manato Fujimoto",
+    "ja": "藤本 まなと"
+  },
+  "copyright_year": "2026",
+  "content_checked": "2026-09-13",
+  "email": "manato@omu.ac.jp",
+  "lab_url": "https://omusp.jp/",
+  "publications_url": "https://manato.wcss.jp/publications/",
+  "position": {
+    "en": "Associate Professor · Ph.D. in Engineering",
+    "ja": "准教授・博士（工学）"
+  },
+  "affiliation": {
+    "en": "Graduate School of Informatics, Osaka Metropolitan University",
+    "ja": "大阪公立大学 大学院情報学研究科"
+  },
+  "lab": {
+    "en": "Smart Platform Research Group",
+    "ja": "スマートプラットフォーム研究室"
+  },
+  "description": {
+    "en": "Manato Fujimoto, Associate Professor at Osaka Metropolitan University. Research in ubiquitous computing, wireless sensing, human activity recognition, and elderly monitoring.",
+    "ja": "大阪公立大学大学院情報学研究科 准教授・藤本まなとのホームページ。ユビキタスコンピューティング、無線センシング、行動認識、高齢者モニタリングに関する研究内容・業績・学会活動を紹介します。"
+  },
+  "intro": {
+    "en": "I study ubiquitous computing and sensing systems that connect the physical and digital worlds, with a focus on understanding daily activities and supporting people's lives.",
+    "ja": "実世界と情報空間をつなぐ、ユビキタスコンピューティングとセンシングの研究に取り組んでいます。人の行動や状態を理解し、暮らしを支える情報技術の実現を目指しています。"
+  },
+  "address": {
+    "en": "3-3-138 Sugimoto, Sumiyoshi-ku, Osaka 558-8585, Japan",
+    "ja": "〒558-8585 大阪府大阪市住吉区杉本3-3-138"
+  },
+  "about": [
+    {
+      "en": "I am an associate professor in the Graduate School of Informatics at Osaka Metropolitan University and a member of the Smart Platform Research Group. My research spans ubiquitous computing, wireless networks, sensing technologies, and elderly monitoring. I received my B.E., M.E., and Ph.D. in Engineering from Kansai University in 2009, 2011, and 2015. Before joining Osaka Metropolitan University in 2022, I worked at Nara Institute of Science and Technology and Osaka City University. I was also a visiting scientist at RIKEN's Center for Advanced Intelligence Project (AIP) from May 2018 to March 2026.",
+      "ja": "大阪公立大学大学院情報学研究科の准教授として、スマートプラットフォーム研究室に所属しています。ユビキタスコンピューティング、無線ネットワーク、センシング、高齢者モニタリングを中心に研究しています。 2009年、2011年、2015年に関西大学でそれぞれ学士、修士、博士（工学）を取得しました。奈良先端科学技術大学院大学の助教、大阪市立大学の准教授を経て、2022年4月より現職です。2018年5月から2026年3月まで、理化学研究所 革新知能統合研究センター（AIP）の客員研究員を務めました。"
+    }
+  ],
+  "keywords": [
+    {
+      "en": "Ubiquitous Computing",
+      "ja": "ユビキタスコンピューティング"
+    },
+    {
+      "en": "Wireless Sensing",
+      "ja": "無線センシング"
+    },
+    {
+      "en": "Activity Recognition",
+      "ja": "行動認識"
+    },
+    {
+      "en": "Healthcare & Well-being",
+      "ja": "ヘルスケア・ウェルビーイング"
+    }
+  ],
+  "news": [
+    {
+      "date": "2026-07-28",
+      "text": {
+        "en": "Two papers accepted for presentation at ISMICT 2026.",
+        "ja": "ISMICT 2026に2件の論文が採択されました。"
+      },
+      "url": "https://manato.wcss.jp/2026/07/28/paper-accepted-for-presentation-at-ismict-2026/"
+    },
+    {
+      "date": "2026-07-26",
+      "text": {
+        "en": "Our FocusSense paper accepted in the International Journal of Informatics Society.",
+        "ja": "FocusSenseの論文がInternational Journal of Informatics Societyに採択されました。"
+      },
+      "url": "https://manato.wcss.jp/2026/07/26/paper-accepted-for-publication-in-international-journal-of-informatics-society/"
+    },
+    {
+      "date": "2026-07-20",
+      "text": {
+        "en": "A poster paper accepted at UbiComp / ISWC 2026.",
+        "ja": "UbiComp / ISWC 2026のポスターセッションに論文が採択されました。"
+      },
+      "url": "https://manato.wcss.jp/2026/07/20/paper-accepted-for-presentation-at-ubicomp-iswc-2026-poster-session/"
+    },
+    {
+      "date": "2026-07-11",
+      "text": {
+        "en": "A paper accepted in Applied Gerontology.",
+        "ja": "応用老年学に論文が採択されました。"
+      },
+      "url": "https://manato.wcss.jp/2026/07/11/paper-accepted-for-publication-in-applied-gerontology/"
+    },
+    {
+      "date": "2026-07-02",
+      "text": {
+        "en": "An invited paper accepted in IEICE Transactions on Communications.",
+        "ja": "IEICE Transactions on Communicationsに招待論文が採択されました。"
+      },
+      "url": "https://manato.wcss.jp/2026/07/02/paper-accepted-for-publication-in-ieice-transactions-on-communications/"
+    }
+  ],
+  "appointments": [
+    {
+      "period": {
+        "en": "Apr. 2022 — Present",
+        "ja": "2022年4月 — 現在"
+      },
+      "title": {
+        "en": "Associate Professor",
+        "ja": "准教授"
+      },
+      "place": {
+        "en": "Graduate School of Informatics, Osaka Metropolitan University",
+        "ja": "大阪公立大学 大学院情報学研究科"
+      }
+    },
+    {
+      "period": {
+        "en": "Oct. 2021 — Present",
+        "ja": "2021年10月 — 現在"
+      },
+      "title": {
+        "en": "Associate Professor",
+        "ja": "准教授"
+      },
+      "place": {
+        "en": "Graduate School of Engineering, Osaka City University",
+        "ja": "大阪市立大学 大学院工学研究科"
+      }
+    },
+    {
+      "period": {
+        "en": "Apr. 2015 — Sept. 2021",
+        "ja": "2015年4月 — 2021年9月"
+      },
+      "title": {
+        "en": "Assistant Professor",
+        "ja": "助教"
+      },
+      "place": {
+        "en": "Nara Institute of Science and Technology",
+        "ja": "奈良先端科学技術大学院大学"
+      }
+    },
+    {
+      "period": {
+        "en": "May 2018 — Mar 2026",
+        "ja": "2018年5月 — 2026年3月"
+      },
+      "title": {
+        "en": "Visiting Scientist",
+        "ja": "客員研究員"
+      },
+      "place": {
+        "en": "Center for Advanced Intelligence Project (AIP), RIKEN",
+        "ja": "理化学研究所 革新知能統合研究センター（AIP）"
+      }
+    }
+  ],
+  "education": [
+    {
+      "period": {
+        "en": "Mar. 2015",
+        "ja": "2015年3月"
+      },
+      "title": {
+        "en": "Ph.D. in Engineering",
+        "ja": "博士（工学）"
+      },
+      "place": {
+        "en": "Graduate School of Science and Engineering, Kansai University",
+        "ja": "関西大学 大学院理工学研究科"
+      }
+    },
+    {
+      "period": {
+        "en": "Mar. 2011",
+        "ja": "2011年3月"
+      },
+      "title": {
+        "en": "Master of Engineering",
+        "ja": "修士（工学）"
+      },
+      "place": {
+        "en": "Graduate School of Science and Engineering, Kansai University",
+        "ja": "関西大学 大学院理工学研究科"
+      }
+    },
+    {
+      "period": {
+        "en": "Mar. 2009",
+        "ja": "2009年3月"
+      },
+      "title": {
+        "en": "Bachelor of Engineering",
+        "ja": "学士（工学）"
+      },
+      "place": {
+        "en": "Kansai University",
+        "ja": "関西大学"
+      }
+    }
+  ],
+  "research_intro": {
+    "en": "Connecting sensing, machine learning, and real-world applications to understand people and their environments.",
+    "ja": "センシングと機械学習を実世界の課題に結び付け、人とその周囲の環境を理解する情報基盤を研究しています。"
+  },
+  "research": [
+    {
+      "id": "care",
+      "title": {
+        "en": "Sensing for Care & Healthy Aging",
+        "ja": "介護・高齢者支援のためのセンシング"
+      },
+      "description": {
+        "en": "We study ways to recognize the daily activities of older adults and the work of caregivers. By bringing together activity logs and measurements of physical or psychological state, we aim to support care reporting and a better understanding of caregiver workload.",
+        "ja": "高齢者の生活行動や介護職員の業務を、センサ情報から把握する技術を研究しています。行動の記録と心身の状態に関する情報を対応付け、介護記録の作成支援や、介護職員の業務負担の理解につなげます。"
+      },
+      "topics": {
+        "en": "BLE-based activity logging, caregiver stress analysis, and sensor-based walking and exercise support.",
+        "ja": "BLEを用いた生活行動の記録、介護行動とストレスの関係分析、センサを用いた歩行・運動の支援。"
+      },
+      "publications": [
+        "j012",
+        "j025",
+        "j011"
+      ]
+    },
+    {
+      "id": "human",
+      "title": {
+        "en": "Human Activity & State Recognition",
+        "ja": "人の行動・状態の認識"
+      },
+      "description": {
+        "en": "We combine wearable and environmental sensors to capture everyday behavior. Our work includes SipSense for beverage type and volume estimation, FocusSense for concentration estimation, and device-free recognition of activities in living spaces.",
+        "ja": "ウェアラブルセンサと環境センサを組み合わせ、日常の行動を捉えます。飲料の種類と摂取量を推定するSipSense、集中度推定に基づくアプリケーションFocusSense、生活空間における非装着型の行動認識などに取り組んでいます。"
+      },
+      "topics": {
+        "en": "Acoustic sensing, multimodal concentration estimation, Doppler sensing, and daily activity recognition.",
+        "ja": "音響センシング、マルチモーダル情報による集中度推定、ドップラーセンシング、日常生活行動認識。"
+      },
+      "publications": [
+        "j034",
+        "j038",
+        "j029"
+      ]
+    },
+    {
+      "id": "spaces",
+      "title": {
+        "en": "Smart Spaces & Cities",
+        "ja": "スマートな生活空間・都市"
+      },
+      "description": {
+        "en": "We explore how everyday spaces can sense people and support their activities. Research ranges from turning ordinary furniture into touch interfaces to wireless crowd sensing and participatory sensing for tourism.",
+        "ja": "日常の空間が人の行動を捉え、その活動を支援する仕組みを研究しています。既存の家具をタッチインタフェースとして利用する技術から、無線信号による人数・位置推定、観光における参加型センシングまでを対象としています。"
+      },
+      "topics": {
+        "en": "Vibration-based interfaces, Wi-Fi sensing, participatory sensing, and context-aware services.",
+        "ja": "振動を用いたインタフェース、Wi-Fiセンシング、参加型センシング、状況に応じた情報サービス。"
+      },
+      "publications": [
+        "j030",
+        "j023",
+        "j019"
+      ]
+    },
+    {
+      "id": "wireless",
+      "title": {
+        "en": "Wireless Localization & In-body Systems",
+        "ja": "無線位置推定・生体内システム"
+      },
+      "description": {
+        "en": "We investigate localization and wireless communication for devices in challenging environments, including the human body. This work combines wireless and magnetic-field measurements with machine learning to support future medical and healthcare systems.",
+        "ja": "人体内部などの計測・通信が難しい環境を対象に、機器の位置推定と無線通信を研究しています。無線・磁界の計測と機械学習を組み合わせ、将来の医療・ヘルスケアシステムを支える技術の実現を目指します。"
+      },
+      "topics": {
+        "en": "Magnetic-field-based localization, implant communications, UWB, and RFID localization.",
+        "ja": "磁界を用いた位置推定、インプラント通信、UWB、RFIDを用いた位置推定。"
+      },
+      "publications": [
+        "j037",
+        "j036",
+        "j003"
+      ]
+    }
+  ],
+  "services": [
+    {
+      "year": "2027",
+      "role": {
+        "en": "Program Co-Chair",
+        "ja": "Program Co-Chair"
+      },
+      "event": {
+        "en": "21st International Workshop on Informatics (IWIN 2027)",
+        "ja": "第21回 International Workshop on Informatics（IWIN 2027）"
+      },
+      "url": ""
+    },
+    {
+      "year": "2026",
+      "role": {
+        "en": "Program Co-Chair",
+        "ja": "Program Co-Chair"
+      },
+      "event": {
+        "en": "20th International Workshop on Informatics (IWIN 2026)",
+        "ja": "第20回 International Workshop on Informatics（IWIN 2026）"
+      },
+      "url": "https://www.infsoc.org/conference/iwin2026/committee"
+    },
+    {
+      "year": "2026",
+      "role": {
+        "en": "Web Chair",
+        "ja": "Web Chair"
+      },
+      "event": {
+        "en": "20th IEEE International Symposium on Medical Information and Communication Technology (ISMICT 2026)",
+        "ja": "第20回 IEEE International Symposium on Medical Information and Communication Technology（ISMICT 2026）"
+      },
+      "url": "https://ismict2026.org/committee.html"
+    },
+    {
+      "year": "2025",
+      "role": {
+        "en": "Tutorial Chair",
+        "ja": "Tutorial Chair"
+      },
+      "event": {
+        "en": "20th EAI International Conference on Body Area Networks: Intelligent Edge Cloud for Dependable Globally Connected BAN (BodyNets 2025)",
+        "ja": "第20回 EAI International Conference on Body Area Networks: Intelligent Edge Cloud for Dependable Globally Connected BAN（BodyNets 2025）"
+      },
+      "url": ""
+    },
+    {
+      "year": "2024",
+      "role": {
+        "en": "Local-Organization and Registration Co-Chairs",
+        "ja": "Local-Organization and Registration Co-Chairs"
+      },
+      "event": {
+        "en": "10th IEEE International Conference on Smart Computing (SMARTCOMP 2024)",
+        "ja": "第10回 IEEE International Conference on Smart Computing（SMARTCOMP 2024）"
+      },
+      "url": ""
+    },
+    {
+      "year": "2023",
+      "role": {
+        "en": "Financial Co-Chairs",
+        "ja": "Financial Co-Chairs"
+      },
+      "event": {
+        "en": "14th International Conference on Mobile Computing and Ubiquitous Networking (ICMU 2023)",
+        "ja": "第14回 International Conference on Mobile Computing and Ubiquitous Networking（ICMU 2023）"
+      },
+      "url": ""
+    },
+    {
+      "year": "2020",
+      "role": {
+        "en": "Local Arrangement Co-Chairs",
+        "ja": "Local Arrangement Co-Chairs"
+      },
+      "event": {
+        "en": "14th IEEE International Symposium on Medical Information Communication Technology (ISMICT 2020)",
+        "ja": "第14回 IEEE International Symposium on Medical Information Communication Technology（ISMICT 2020）"
+      },
+      "url": ""
+    }
+  ],
+  "awards": [
+    {
+      "year": "2023",
+      "title": {
+        "en": "IPSJ / ACM Award for Early Career Contributions to Global Research",
+        "ja": "IPSJ / ACM Award for Early Career Contributions to Global Research"
+      },
+      "detail": {
+        "en": "Advanced Ubiquitous Computing System for Realization of Society 5.0",
+        "ja": "受賞題目：Advanced Ubiquitous Computing System for Realization of Society 5.0"
+      },
+      "url": "https://www.ipsj.or.jp/award/ACM-Joint-Award2023.html"
+    },
+    {
+      "year": "2025",
+      "title": {
+        "en": "Best Student Paper Award — BodyNets",
+        "ja": "BodyNets Best Student Paper Award"
+      },
+      "detail": {
+        "en": "Co-authored research paper.",
+        "ja": "共著論文に対する受賞。"
+      },
+      "url": ""
+    },
+    {
+      "year": "2021",
+      "title": {
+        "en": "Best Paper Award — ICMU",
+        "ja": "ICMU Best Paper Award"
+      },
+      "detail": {
+        "en": "Co-authored research paper.",
+        "ja": "共著論文に対する受賞。"
+      },
+      "url": "https://www.ipsj.or.jp/award/ACM-Joint-Award2023.html"
+    }
+  ],
+  "memberships": [
+    {
+      "name": {
+        "en": "Institute of Electrical and Electronics Engineers (IEEE)",
+        "ja": "Institute of Electrical and Electronics Engineers（IEEE）"
+      },
+      "url": "https://www.ieee.org/"
+    },
+    {
+      "name": {
+        "en": "Association for Computing Machinery (ACM)",
+        "ja": "Association for Computing Machinery（ACM）"
+      },
+      "url": "https://www.acm.org/"
+    },
+    {
+      "name": {
+        "en": "Institute of Electronics, Information and Communication Engineers (IEICE)",
+        "ja": "電子情報通信学会（IEICE）"
+      },
+      "url": "https://www.ieice.org/"
+    },
+    {
+      "name": {
+        "en": "Information Processing Society of Japan (IPSJ)",
+        "ja": "情報処理学会（IPSJ）"
+      },
+      "url": "https://www.ipsj.or.jp/"
+    }
+  ]
+}

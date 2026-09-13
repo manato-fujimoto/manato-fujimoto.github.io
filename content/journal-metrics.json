@@ -1,0 +1,135 @@
+{
+  "metric": "Journal Impact Factor",
+  "metric_year": 2025,
+  "release_year": 2026,
+  "checked_on": "2026-09-13",
+  "journals": [
+    {
+      "venue_name": "IEICE Transactions on Communications",
+      "value": "1.1",
+      "year": 2025,
+      "source_url": "https://www.bioxbio.com/journal/IEICE-T-COMMUN",
+      "publisher_url": "https://globals.ieice.org/en_transactions/communications",
+      "source_type": "cross-checked",
+      "note": "The society page gives 1.1 without a metric year. BioxBio explicitly identifies the same value as 2025 (2026 update)."
+    },
+    {
+      "venue_name": "IEEE Journal of Electromagnetics, RF, and Microwaves in Medicine and Biology",
+      "value": "2.4",
+      "year": 2025,
+      "source_url": "https://open.ieee.org/wp-content/uploads/IEEE-Title-List-August-2026.pdf",
+      "note": "J-ERM row, page 1, standard Journal Impact Factor column. The footnote on page 3 identifies 2025 JCR data released in June 2026."
+    },
+    {
+      "venue_name": "IEEE Open Journal of the Computer Society",
+      "value": "6.0",
+      "year": 2025,
+      "source_url": "https://open.ieee.org/wp-content/uploads/IEEE-Title-List-August-2026.pdf",
+      "note": "OJCS row, page 1, standard Journal Impact Factor column. The footnote on page 3 identifies 2025 JCR data released in June 2026."
+    },
+    {
+      "venue_name": "Scientific Reports",
+      "value": "4.9",
+      "year": 2025,
+      "source_url": "https://www.nature.com/srep/about"
+    },
+    {
+      "venue_name": "Journal of Imaging",
+      "value": "3.8",
+      "year": 2025,
+      "source_url": "https://www.mdpi.com/about/announcements/17195"
+    },
+    {
+      "venue_name": "IEEE Access",
+      "value": "4.2",
+      "year": 2025,
+      "source_url": "https://ieeeaccess.ieee.org/about/bibliometrics/"
+    },
+    {
+      "venue_name": "Methods",
+      "value": "3.6",
+      "year": 2025,
+      "source_url": "https://www.bioxbio.com/journal/METHODS",
+      "publisher_url": "https://www.sciencedirect.com/journal/methods",
+      "verification_urls": ["https://ooir.org/j.php?issn=1046-2023"],
+      "source_type": "secondary",
+      "note": "BioxBio explicitly lists 2025 (2026 update): 3.6, corroborated by OOIR's Web of Science 2025 value. The supplied ScienceDirect page could not be read; it is retained as the publisher URL, not as the numerical source."
+    },
+    {
+      "venue_name": "Cryptography",
+      "value": "2.4",
+      "year": 2025,
+      "source_url": "https://www.mdpi.com/about/announcements/17265"
+    },
+    {
+      "venue_name": "Sensors and Materials",
+      "value": "1.1",
+      "year": 2025,
+      "source_url": "https://www.bioxbio.com/journal/SENSOR-MATER",
+      "publisher_url": "https://myukk.org/SM2017/index.php?theme=about",
+      "source_type": "secondary",
+      "note": "BioxBio explicitly lists 2025 (2026 update): 1.1. The older value on the publisher's About page is not used."
+    },
+    {
+      "venue_name": "Sustainability",
+      "value": "4.1",
+      "year": 2025,
+      "source_url": "https://www.mdpi.com/journal/sustainability/stats"
+    },
+    {
+      "venue_name": "Sensors",
+      "value": "4.0",
+      "year": 2025,
+      "source_url": "https://www.mdpi.com/about/announcements/17120"
+    },
+    {
+      "venue_name": "Smart Cities",
+      "value": "6.6",
+      "year": 2025,
+      "source_url": "https://www.mdpi.com/about/announcements/17133"
+    },
+    {
+      "venue_name": "Computational Intelligence",
+      "value": "1.9",
+      "year": 2025,
+      "source_url": "https://onlinelibrary.wiley.com/journal/14678640/journal-metrics"
+    },
+    {
+      "venue_name": "Journal of Sensors",
+      "value": "1.9",
+      "year": 2025,
+      "source_url": "https://onlinelibrary.wiley.com/journal/9161/journal-metrics",
+      "publisher_url": "https://onlinelibrary.wiley.com/journal/9161",
+      "note": "Wiley explicitly labels 1.9 as the 2025 Journal Impact Factor (Clarivate); the separate CiteScore is not used."
+    },
+    {
+      "venue_name": "Computer Communications",
+      "value": "4.2",
+      "year": 2025,
+      "source_url": "https://www.bioxbio.com/journal/COMPUT-COMMUN",
+      "publisher_url": "https://www.sciencedirect.com/journal/computer-communications",
+      "source_type": "secondary",
+      "note": "BioxBio explicitly lists 2025 (2026 update): 4.2. The supplied ScienceDirect page could not be read; it is retained as the publisher URL, not as the numerical source."
+    },
+    {
+      "venue_name": "IEICE Transactions on Fundamentals of Electronics, Communications and Computer Sciences",
+      "value": "0.6",
+      "year": 2025,
+      "source_url": "https://www.bioxbio.com/journal/IEICE-T-FUND-ELECTR",
+      "publisher_url": "https://globals.ieice.org/en_transactions/fundamentals",
+      "source_type": "cross-checked",
+      "note": "The society page gives 0.6 without a metric year. BioxBio explicitly identifies the same value as 2025 (2026 update)."
+    }
+  ],
+  "unverified_venues": [
+    "International Journal of Informatics Society",
+    "Applied Gerontology",
+    "International Journal of Activity and Behavior Computing",
+    "IPSJ Journal",
+    "IPSJ Transactions on Consumer Devices & Systems",
+    "SICE Journal of Control, Measurement, and System Integration",
+    "International Journal of Electronics Letters",
+    "International Journal of Wireless Communications and Mobile Computing"
+  ],
+  "unverified_note": "Only numerical Journal Impact Factors with an identified 2025 metric year are displayed. Publisher and society sources are preferred; explicitly year-labelled secondary sources are recorded where needed. Older or undated values are not substituted. Being listed here does not mean that a journal has no Impact Factor."
+}
