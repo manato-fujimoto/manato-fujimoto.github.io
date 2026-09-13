@@ -77,7 +77,7 @@ def timeline(items, lang):
 def home(lang):
     ja = lang == 'ja'
     root = '../' if ja else ''
-    name = '<h1>藤本 まなと</h1><p class="name-en" lang="en">Manato Fujimoto</p>' if ja else '<h1>Manato Fujimoto<span class="name-ja" lang="ja">藤本 まなと</span></h1>'
+    name = '<h1>藤本 まなと</h1><p class="name-en" lang="en">Manato Fujimoto</p>' if ja else '<h1>Manato Fujimoto</h1>'
     body = f'''<section class="profile" aria-label="{'プロフィール' if ja else 'Profile'}">
   <div><p class="eyebrow">Osaka Metropolitan University</p>{name}
     <p class="position">{text(DATA['position'],lang)}</p>
