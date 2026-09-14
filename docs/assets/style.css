@@ -26,12 +26,12 @@ h1 { font-size: clamp(2.5rem, 4.8vw, 3.7rem); letter-spacing: -.05em; margin-bot
 h2 { font-size: 1.6rem; letter-spacing: -.015em; }
 h3 { font-size: 1.15rem; line-height: 1.6; }
 p { margin-bottom: 1.1rem; }
-main p, .pub-title, .news-list li > span, .timeline dd, .related a {
+main p, .news-list li > span, .timeline dd, .related a {
   text-align: justify;
   text-align-last: start;
   text-justify: auto;
 }
-:lang(ja) main p, :lang(ja) .pub-title, :lang(ja) .news-list li > span, :lang(ja) .timeline dd, :lang(ja) .related a {
+:lang(ja) main p, :lang(ja) .news-list li > span, :lang(ja) .timeline dd, :lang(ja) .related a {
   text-justify: inter-character;
 }
 ul, ol { padding-left: 1.3rem; }
@@ -107,7 +107,7 @@ main { padding-block: 4rem 5rem; }
 .publications { list-style: none; padding: 0; margin: 0; }
 .publication { position: relative; padding: 1.3rem 0 1.3rem 3.1rem; margin: 0; border-bottom: 1px solid var(--line); }
 .pub-index { position: absolute; left: 0; top: 1.4rem; color: var(--muted); font-size: .8125rem; font-variant-numeric: tabular-nums; }
-.pub-title { font-weight: 600; font-size: 1rem; line-height: 1.65; margin-bottom: .3rem; }
+.pub-title { font-weight: 600; font-size: 1rem; line-height: 1.65; margin-bottom: .3rem; text-align: left; }
 .pub-title a { color: var(--ink); text-decoration: none; }
 .pub-title a:hover { color: var(--blue); text-decoration: underline; }
 .pub-authors { color: var(--muted); font-size: .9rem; line-height: 1.8; margin-bottom: .2rem; }
