@@ -234,7 +234,7 @@ def publication_item(p, lang):
     if p['type'] == 'journal' and p.get('language') == 'ja':
         title += '<span class="status">Japanese</span>'
     if p['type'] == 'journal' and p.get('corresponding'):
-        title += '<span class="status">Corresponding</span>'
+        title += '<span class="status status-corresponding">Corresponding</span>'
     if p['type'] == 'journal' and p.get('international_coauthorship'):
         title += '<span class="status status-international">International coauthorship</span>'
     authors = E(p['authors'])
