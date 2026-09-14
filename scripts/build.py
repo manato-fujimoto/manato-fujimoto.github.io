@@ -78,6 +78,7 @@ def home(lang):
     ja = lang == 'ja'
     root = '../' if ja else ''
     name = '<h1>藤本 まなと</h1><p class="name-en" lang="en">Manato Fujimoto</p>' if ja else '<h1>Manato Fujimoto</h1>'
+    profile_links = ''.join(link(profile['url'], E(profile['label']), 'profile-link') for profile in DATA['profile_links'])
     body = f'''<section class="profile" aria-label="{'プロフィール' if ja else 'Profile'}">
   <div><p class="eyebrow">Osaka Metropolitan University</p>{name}
     <p class="position">{text(DATA['position'],lang)}</p>
@@ -85,6 +86,7 @@ def home(lang):
     <p class="lead">{text(DATA['intro'],lang)}</p>
     <dl class="contact-list"><dt>Email</dt><dd>{link('mailto:'+DATA['email'], E(DATA['email'].replace('@',' [at] ')))}</dd>
     <dt>{'所在地' if ja else 'Address'}</dt><dd><address>{text(DATA['address'],lang)}</address></dd></dl>
+    <nav class="profile-links" aria-label="Research profiles">{profile_links}</nav>
   </div>
   <figure class="profile-photo"><img src="{root}assets/manato-fujimoto.png" width="620" height="560" alt="{'藤本まなとのポートレート' if ja else 'Portrait of Manato Fujimoto'}" fetchpriority="high"><figcaption>{'大阪公立大学<br>スマートプラットフォーム研究室' if ja else 'Smart Platform Research Group<br>Osaka Metropolitan University'}</figcaption></figure>
 </section>'''

@@ -32,6 +32,16 @@
     "en": "3-3-138 Sugimoto, Sumiyoshi-ku, Osaka 558-8585, Japan",
     "ja": "〒558-8585 大阪府大阪市住吉区杉本3-3-138"
   },
+  "profile_links": [
+    {
+      "label": "researchmap",
+      "url": "https://researchmap.jp/mf_may"
+    },
+    {
+      "label": "Google Scholar",
+      "url": "https://scholar.google.co.jp/citations?user=h5HEM40AAAAJ&hl=en&oi=ao"
+    }
+  ],
   "about": [
     {
       "en": "I am an associate professor in the Graduate School of Informatics at Osaka Metropolitan University and a member of the Smart Platform Research Group. My research spans ubiquitous computing, wireless networks, sensing technologies, and elderly monitoring. I received my B.E., M.E., and Ph.D. in Engineering from Kansai University in 2009, 2011, and 2015. Before joining Osaka Metropolitan University in 2022, I worked at Nara Institute of Science and Technology and Osaka City University. I was also a visiting scientist at RIKEN's Center for Advanced Intelligence Project (AIP) from May 2018 to March 2026.",
