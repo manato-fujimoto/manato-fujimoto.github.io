@@ -130,6 +130,8 @@ def publication_item(p, lang):
         title += '<span class="status">Japanese</span>'
     if p['type'] == 'journal' and p.get('corresponding'):
         title += '<span class="status">Corresponding</span>'
+    if p['type'] == 'journal' and p.get('international_coauthorship'):
+        title += '<span class="status status-international">International coauthorship</span>'
     authors = E(p['authors'])
     metric = journal_metric(p)
     metrics = ''

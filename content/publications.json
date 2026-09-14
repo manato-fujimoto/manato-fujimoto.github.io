@@ -9,6 +9,7 @@
     "year": "2027",
     "accepted": true,
     "corresponding": true,
+    "international_coauthorship": true,
     "url": ""
   },
   {
@@ -20,6 +21,7 @@
     "venue": "IEICE Transactions on Communications — accepted; scheduled for 2027.",
     "year": "2027",
     "accepted": true,
+    "international_coauthorship": true,
     "url": ""
   },
   {
@@ -55,6 +57,7 @@
     "year": "2026",
     "accepted": false,
     "corresponding": true,
+    "international_coauthorship": true,
     "url": "https://www.jstage.jst.go.jp/article/ijabc/2026/1/2026_130/_article/-char/ja/"
   },
   {
@@ -66,6 +69,7 @@
     "venue": "IEEE Open Journal of the Computer Society, Vol. 7, pp. 443-454, Feb. 2026",
     "year": "2026",
     "accepted": false,
+    "international_coauthorship": true,
     "url": "https://ieeexplore.ieee.org/document/11372060"
   },
   {
@@ -189,6 +193,7 @@
     "venue": "IEEE Access, Vol. 9, pp. 74778-74788, May 2021",
     "year": "2021",
     "accepted": false,
+    "international_coauthorship": true,
     "url": "https://ieeexplore.ieee.org/document/9429258/authors#authors"
   },
   {
