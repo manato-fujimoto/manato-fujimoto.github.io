@@ -260,7 +260,6 @@ def publications(lang):
             body += f'<p class="metrics-note">{metric_note}</p>'
         body += '<ol class="publications">'+''.join(publication_item(p,lang) for p in items)+'</ol>'
         body += '</section>'
-    body += '<p class="source-note">'+('国内研究会発表等は' if ja else 'For domestic presentations and additional records, see the ')+link(DATA['publications_url'],'業績一覧' if ja else 'full publication record')+('もご覧ください。' if ja else '.')+'</p>'
     return body
 
 def services(lang):
