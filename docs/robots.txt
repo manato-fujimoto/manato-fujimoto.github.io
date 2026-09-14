@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://manato-fujimoto.github.io/sitemap.xml

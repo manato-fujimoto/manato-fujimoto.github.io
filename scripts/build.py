@@ -2,7 +2,8 @@
 """Rebuild the English static site using Python 3's standard library."""
 from pathlib import Path
 from html import escape
-from urllib.parse import quote
+from urllib.parse import quote, urljoin, urlsplit
+import xml.etree.ElementTree as ET
 import json
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -37,11 +38,103 @@ def section(title, body, id=''):
 def source_note(url, lang):
     return '<p class="source-note">' + link(url, '掲載情報の出典' if lang == 'ja' else 'Source') + '</p>'
 
+def site_url(path=''):
+    return urljoin(DATA['site_url'].rstrip('/') + '/', path)
+
+def canonical_url(page):
+    return site_url('' if page == 'index' else page + '.html')
+
+def validate_search_metadata():
+    url = urlsplit(DATA['site_url'])
+    if url.scheme != 'https' or not url.netloc or url.query or url.fragment:
+        raise ValueError('site_url must be an absolute HTTPS URL without a query or fragment')
+    for page in PAGES[1:]:
+        if not DATA['page_descriptions'].get(page):
+            raise ValueError(f'Missing search description for {page}')
+
+def scholarly_article(p, person_id):
+    authors = []
+    for raw_name in p['authors'].split(','):
+        name = raw_name.strip().removeprefix('and ')
+        author = {'@type': 'Person', 'name': name}
+        if name == DATA['name']['en']:
+            author['@id'] = person_id
+        authors.append(author)
+    url = canonical_url('publications') + '#' + p['id']
+    article = {
+        '@type': 'ScholarlyArticle', '@id': url, 'url': url,
+        'identifier': p['label'], 'name': p['title'],
+        'author': authors, 'description': p['venue'],
+    }
+    if p['url']:
+        article['sameAs'] = p['url']
+    if p.get('language'):
+        article['inLanguage'] = p['language']
+    if p['accepted']:
+        article['creativeWorkStatus'] = 'Accepted'
+    return article
+
+def structured_data(page, title, description):
+    person_id, website_id = site_url('#person'), site_url('#website')
+    person = {
+        '@type': 'Person', '@id': person_id, 'name': DATA['name']['en'],
+        'url': canonical_url('index'),
+        'image': site_url('assets/manato-fujimoto.png'),
+        'jobTitle': DATA['appointments'][0]['title']['en'],
+        'worksFor': {'@type': 'Organization', 'name': DATA['affiliation']['en']},
+        'affiliation': {'@type': 'Organization', 'name': DATA['lab']['en'], 'url': DATA['lab_url']},
+        'description': DATA['intro']['en'],
+        'knowsAbout': [keyword['en'] for keyword in DATA['keywords']],
+        'sameAs': [profile['url'] for profile in DATA['profile_links']],
+        'email': 'mailto:' + DATA['email'],
+    }
+    website = {
+        '@type': 'WebSite', '@id': website_id, 'url': site_url(),
+        'name': DATA['name']['en'], 'inLanguage': 'en',
+        'publisher': {'@id': person_id},
+    }
+    page_type = {'index': 'ProfilePage', 'research': 'CollectionPage',
+                 'publications': 'CollectionPage', 'services': 'WebPage'}[page]
+    webpage = {
+        '@type': page_type, '@id': canonical_url(page) + '#webpage',
+        'url': canonical_url(page), 'name': title, 'description': description,
+        'inLanguage': 'en', 'isPartOf': {'@id': website_id},
+        'about': {'@id': person_id},
+    }
+    if page == 'index':
+        webpage['mainEntity'] = {'@id': person_id}
+    elif page == 'publications':
+        webpage['mainEntity'] = {
+            '@type': 'ItemList', 'name': 'Publications by ' + DATA['name']['en'],
+            'numberOfItems': len(PUBS),
+            'itemListElement': [
+                {'@type': 'ListItem', 'position': i, 'item': scholarly_article(p, person_id)}
+                for i, p in enumerate(PUBS, 1)
+            ],
+        }
+    data = {'@context': 'https://schema.org', '@graph': [person, website, webpage]}
+    # Keep data inside the JSON-LD script even if a title contains HTML-like text.
+    return json.dumps(data, ensure_ascii=False, separators=(',', ':')).replace('<', '\\u003c')
+
+def write_discovery_files():
+    namespace = 'http://www.sitemaps.org/schemas/sitemap/0.9'
+    ET.register_namespace('', namespace)
+    urls = ET.Element('{' + namespace + '}urlset')
+    for page in PAGES:
+        entry = ET.SubElement(urls, '{' + namespace + '}url')
+        ET.SubElement(entry, '{' + namespace + '}loc').text = canonical_url(page)
+    ET.ElementTree(urls).write(OUT / 'sitemap.xml', encoding='utf-8', xml_declaration=True)
+    robots = 'User-agent: *\nAllow: /\n\nSitemap: ' + site_url('sitemap.xml') + '\n'
+    (OUT / 'robots.txt').write_text(robots, encoding='utf-8')
+
 def shell(page, lang, body):
     root = '../' if lang == 'ja' else ''
     name = text(DATA['name'], lang)
     label = NAV[lang][PAGES.index(page)]
-    title = name if page == 'index' else f'{label} — {name}'
+    title = DATA['name'][lang] if page == 'index' else f'{label} — {DATA["name"][lang]}'
+    full_title = title + ' | ' + ('大阪公立大学' if lang == 'ja' else 'Osaka Metropolitan University')
+    description = DATA['description'][lang] if page == 'index' else DATA['page_descriptions'][page]
+    canonical = canonical_url(page)
     svg = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="10" fill="#111b29"/><text x="32" y="42" text-anchor="middle" fill="#85bcff" font-family="Arial,sans-serif" font-size="28">MF</text></svg>'
     nav = ''.join(f'<li><a href="{p}.html"' + (' aria-current="page"' if page == p else '') + f'>{NAV[lang][i]}</a></li>' for i,p in enumerate(PAGES))
     return f'''<!doctype html>
@@ -49,9 +142,19 @@ def shell(page, lang, body):
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>{title} | {'大阪公立大学' if lang == 'ja' else 'Osaka Metropolitan University'}</title>
-  <meta name="description" content="{text(DATA['description'],lang)}">
+  <title>{E(full_title)}</title>
+  <meta name="description" content="{E(description, quote=True)}">
   <meta name="author" content="Manato Fujimoto">
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+  <link rel="canonical" href="{E(canonical, quote=True)}">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="{text(DATA['name'],lang)}">
+  <meta property="og:title" content="{E(full_title, quote=True)}">
+  <meta property="og:description" content="{E(description, quote=True)}">
+  <meta property="og:url" content="{E(canonical, quote=True)}">
+  <meta property="og:image" content="{E(site_url('assets/manato-fujimoto.png'), quote=True)}">
+  <meta property="og:image:alt" content="Portrait of Manato Fujimoto">
+  <script type="application/ld+json">{structured_data(page, full_title, description)}</script>
   <meta name="theme-color" content="#090b10">
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,{quote(svg)}">
   <link rel="stylesheet" href="{root}assets/style.css">
@@ -180,6 +283,7 @@ def services(lang):
 
 def main():
     validate_journal_metrics()
+    validate_search_metadata()
     OUT.mkdir(parents=True,exist_ok=True)
     for page, render in [('index',home),('research',research),('publications',publications),('services',services)]:
         (OUT / (page+'.html')).write_text(shell(page,'en',render('en')),encoding='utf-8')
@@ -189,6 +293,7 @@ def main():
     if japanese_output.is_dir() and not any(japanese_output.iterdir()):
         japanese_output.rmdir()
     (OUT / '.nojekyll').touch()
+    write_discovery_files()
     print(f'Generated 4 English HTML pages with {len(PUBS)} publication records.')
 
 if __name__=='__main__':

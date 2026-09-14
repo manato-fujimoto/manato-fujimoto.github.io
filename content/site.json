@@ -5,6 +5,12 @@
   },
   "copyright_year": "2026",
   "content_checked": "2026-09-13",
+  "site_url": "https://manato-fujimoto.github.io/",
+  "page_descriptions": {
+    "research": "Research by Manato Fujimoto at Osaka Metropolitan University: care and healthy aging, human activity recognition, smart spaces, and wireless localization.",
+    "publications": "Journal articles and international conference papers by Manato Fujimoto, including accepted work, corresponding authorship, and international coauthorship.",
+    "services": "Conference organization, professional service, awards, and academic memberships of Manato Fujimoto, Osaka Metropolitan University."
+  },
   "email": "manato@omu.ac.jp",
   "lab_url": "https://omusp.jp/",
   "publications_url": "https://manato.wcss.jp/publications/",
