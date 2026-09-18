@@ -107,22 +107,28 @@ main { padding-block: 4rem 5rem; }
 .related a { display: block; margin-bottom: .4rem; font-size: .9rem; }
 .section-nav { display: flex; flex-wrap: wrap; gap: .6rem; margin: 1.5rem 0 0; font-size: .9rem; }
 .section-nav a { max-width: 100%; white-space: normal; }
+.section-nav a[aria-current='location'] { border-color: var(--blue); background: #24476e; color: #fff; }
 .publication-group { margin-top: 2.8rem; }
+.publication-group[hidden] { display: none; }
 .publications { list-style: none; padding: 0; margin: 0; }
-.publication { position: relative; padding: 1.3rem 0 1.3rem 3.1rem; margin: 0; border-bottom: 1px solid var(--line); }
-.pub-index { position: absolute; left: 0; top: 1.4rem; color: var(--muted); font-size: .8125rem; font-variant-numeric: tabular-nums; }
-.pub-title { font-weight: 600; font-size: 1rem; line-height: 1.65; margin-bottom: .3rem; text-align: left; }
+.publication { display: grid; grid-template-columns: 2.8125rem minmax(0, 1fr); gap: .9375rem; align-items: start; padding: 1.5rem 0; margin: 0; border-bottom: 1px solid var(--line); }
+.pub-index { padding-top: .1875rem; color: var(--muted); font-size: .75rem; line-height: 1.7; font-variant-numeric: tabular-nums; }
+.pub-content { min-width: 0; }
+.pub-title { font-weight: 500; font-size: 1rem; line-height: 1.55; margin: 0 0 .4375rem; text-align: left; overflow-wrap: anywhere; }
 .pub-title a { color: var(--ink); text-decoration: none; }
 .pub-title a:hover { color: var(--blue); text-decoration: underline; }
-.pub-authors { color: var(--muted); font-size: .9rem; line-height: 1.8; margin-bottom: .2rem; }
-.pub-venue { font-size: .9rem; color: var(--muted); line-height: 1.75; margin-bottom: 0; }
-.pub-metrics { margin: .4rem 0 0; font-size: .8125rem; line-height: 1.7; }
+.pub-authors { color: var(--muted); font-size: .875rem; line-height: 1.75; margin: 0 0 .25rem; text-align: left; }
+.pub-venue { font-size: .875rem; color: var(--muted); line-height: 1.75; margin: 0; text-align: left; }
+.pub-metrics { margin: .375rem 0 0; font-size: .75rem; line-height: 1.7; text-align: left; }
 .impact-factor { display: inline-flex; flex-wrap: wrap; align-items: baseline; gap: .3rem; color: var(--blue); text-decoration: none; }
 .impact-factor strong { font-weight: 600; }
 .impact-factor .metric-year { color: var(--muted); }
 .impact-factor:hover { text-decoration: underline; }
 .metrics-note { color: var(--muted); font-size: .875rem; line-height: 1.75; margin: 0 0 1rem; }
 .status { display: inline-block; background: #193354; color: #b9d8ff; font-size: .8125rem; font-weight: 500; line-height: 1.6; padding: .1rem .45rem; border-radius: 3px; margin-left: .45rem; vertical-align: .08rem; }
+.pub-tags { display: flex; flex-wrap: wrap; align-items: center; gap: .375rem; margin-top: .625rem; }
+.pub-tags .status { display: inline-flex; align-items: center; margin: 0; padding: .125rem .5rem; border: 0; font-size: .75rem; vertical-align: baseline; }
+.pub-tags .status-japanese { background: #3c3222; color: #e5cda0; }
 .service-list { list-style: none; padding: 0; margin: 0; }
 .service-list li { display: grid; grid-template-columns: 5rem minmax(0,1fr); gap: 1rem; padding: 1.3rem 0; border-bottom: 1px solid var(--line); margin: 0; }
 .service-list .year { font-size: .9rem; color: var(--blue); padding-top: .1rem; }
@@ -168,7 +174,9 @@ main { padding-block: 4rem 5rem; }
   .research-row { grid-template-columns: minmax(0,1fr); gap: 1rem; padding-block: 2rem; }
   .research-number { font-size: 1.7rem; }
   .service-list li { grid-template-columns: minmax(0,1fr); gap: .2rem; }
-  .publication { padding-left: 2.6rem; }
+  .publication { grid-template-columns: 1.875rem minmax(0, 1fr); gap: .625rem; padding: 1.375rem 0; }
+  .pub-index { font-size: .6875rem; }
+  .pub-title { line-height: 1.6; }
   .pub-title, .pub-authors, .pub-venue { overflow-wrap: anywhere; }
   .section-heading { flex-wrap: wrap; gap: .5rem 1rem; }
   .award-highlight { padding: 1.2rem; }
@@ -183,7 +191,8 @@ main { padding-block: 4rem 5rem; }
   a { color: inherit; text-decoration: none; }
   .profile { gap: 2rem; background: none; }
   .profile .lead { color: #222; }
-  .profile-photo, .award-highlight, .keywords li, .status { background: #fff; color: #222; box-shadow: none; }
+  .profile-photo, .award-highlight, .keywords li, .status, .pub-tags .status-japanese { background: #fff; color: #222; box-shadow: none; }
+  .publication-group[hidden] { display: block; }
   .profile-photo img { width: 150px; }
   .publication, .timeline-row, .research-row { break-inside: avoid; }
   h2, h3 { break-after: avoid; }

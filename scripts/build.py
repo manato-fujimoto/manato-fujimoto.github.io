@@ -137,6 +137,7 @@ def shell(page, lang, body):
     canonical = canonical_url(page)
     svg = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="10" fill="#111b29"/><text x="32" y="42" text-anchor="middle" fill="#85bcff" font-family="Arial,sans-serif" font-size="28">MF</text></svg>'
     nav = ''.join(f'<li><a href="{p}.html"' + (' aria-current="page"' if page == p else '') + f'>{NAV[lang][i]}</a></li>' for i,p in enumerate(PAGES))
+    page_scripts = f'\n  <script src="{root}assets/publications.js" defer></script>' if page == 'publications' else ''
     return f'''<!doctype html>
 <html lang="{lang}">
 <head>
@@ -157,7 +158,7 @@ def shell(page, lang, body):
   <script type="application/ld+json">{structured_data(page, full_title, description)}</script>
   <meta name="theme-color" content="#090b10">
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,{quote(svg)}">
-  <link rel="stylesheet" href="{root}assets/style.css">
+  <link rel="stylesheet" href="{root}assets/style.css">{page_scripts}
 </head>
 <body>
   <a class="skip-link" href="#main">{'本文へ移動' if lang == 'ja' else 'Skip to content'}</a>
@@ -229,14 +230,15 @@ def publication_item(p, lang):
     title = E(p['title'])
     if p['url']:
         title = link(p['url'],title)
+    tags = ''
     if p['accepted']:
-        title += f'<span class="status">{"採択済み" if lang == "ja" else "Accepted"}</span>'
+        tags += f'<span class="status">{"採択済み" if lang == "ja" else "Accepted"}</span>'
     if p['type'] == 'journal' and p.get('language') == 'ja':
-        title += '<span class="status">Japanese</span>'
+        tags += '<span class="status status-japanese">Japanese</span>'
     if p['type'] == 'journal' and p.get('corresponding'):
-        title += '<span class="status status-corresponding">Corresponding</span>'
+        tags += '<span class="status status-corresponding">Corresponding</span>'
     if p['type'] == 'journal' and p.get('international_coauthorship'):
-        title += '<span class="status status-international">International coauthorship</span>'
+        tags += '<span class="status status-international">International coauthorship</span>'
     authors = E(p['authors'])
     metric = journal_metric(p)
     metrics = ''
@@ -244,7 +246,9 @@ def publication_item(p, lang):
         when = str(metric['year'])
         metric_label = f'Impact Factor: <strong>{E(metric["value"])}</strong> <span class="metric-year">({E(when)})</span>'
         metrics = '<p class="pub-metrics">' + link(metric['source_url'], metric_label, 'impact-factor') + '</p>'
-    return f'<li class="publication" id="{E(p["id"])}"><span class="pub-index">{E(p["label"])}</span><h3 class="pub-title">{title}</h3><p class="pub-authors">{authors}</p><p class="pub-venue">{E(p["venue"])}</p>{metrics}</li>'
+    if tags:
+        tags = '<div class="pub-tags" aria-label="Publication tags">' + tags + '</div>'
+    return f'<li class="publication" id="{E(p["id"])}"><span class="pub-index">{E(p["label"])}</span><div class="pub-content"><h3 class="pub-title">{title}</h3><p class="pub-authors">{authors}</p><p class="pub-venue">{E(p["venue"])}</p>{metrics}{tags}</div></li>'
 
 def publications(lang):
     ja = lang == 'ja'
