@@ -211,10 +211,11 @@ def intro(title, subtitle='', eyebrow=''):
 def research(lang):
     ja = lang == 'ja'
     body = intro('研究内容' if ja else 'Research', text(DATA['research_intro'],lang),'Research interests')
+    body += '<div class="research-grid">'
     for i,r in enumerate(DATA['research'],1):
         related = ''.join(link('publications.html#'+E(k),E(next(p['title'] for p in PUBS if p['id']==k))) for k in r['publications'])
-        body += f'<section class="research-row" id="{E(r["id"])}"><div><p class="research-number">{i:02}</p><h2>{text(r["title"],lang)}</h2></div><div><p>{text(r["description"],lang)}</p><h3>{"主な取り組み" if ja else "Topics"}</h3><p>{text(r["topics"],lang)}</p><div class="related"><h3>{"関連論文" if ja else "Related publications"}</h3>{related}</div></div></section>'
-    return body
+        body += f'<section class="research-row" id="{E(r["id"])}" aria-labelledby="{E(r["id"])}-title"><p class="research-number">{i:02}</p><h2 id="{E(r["id"])}-title">{text(r["title"],lang)}</h2><p class="research-description">{text(r["description"],lang)}</p><p class="research-topics">{text(r["topics"],lang)}</p><details class="related"><summary>{"関連論文" if ja else "Related publications"} <span class="related-count">({len(r["publications"])})</span></summary><div class="related-links">{related}</div></details></section>'
+    return body + '</div>'
 
 def journal_metric(p):
     if p['type'] != 'journal':
