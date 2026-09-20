@@ -163,6 +163,20 @@
       "publications": [
         "j037"
       ]
+    },
+    {
+      "date": "2026-01-15",
+      "text": {
+        "en": "A paper accepted in Scientific Reports.",
+        "ja": "Scientific Reportsに論文が採択されました。"
+      },
+      "slug": "2026-01-15-scientific-reports",
+      "category": "Journal",
+      "summary": "Weight Optimization of MIMO-UWB Distributed Beamforming for Implant Communications.",
+      "body_html": "<p>One paper has been accepted for publication in the international journal <em><strong>“Scientific Reports”</strong></em>.</p>",
+      "publications": [
+        "j032"
+      ]
     }
   ],
   "appointments": [
