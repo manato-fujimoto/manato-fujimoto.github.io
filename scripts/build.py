@@ -273,7 +273,7 @@ def services(lang):
     rows = '<ul class="service-list">'
     for s in DATA['services']:
         rows += f'<li><span class="year">{E(s["year"])}</span><div><h3>{text(s["role"],lang)}</h3><p>{text(s["event"],lang)}</p></div></li>'
-    body += section('国際会議・研究会運営' if ja else 'Conference Organization',rows+'</ul>')
+    body += section('国際会議・研究会運営' if ja else 'Selected Conference Organization',rows+'</ul>')
     rows = '<ul class="service-list">'
     for a in sorted(DATA['awards'], key=lambda award: int(award['year']), reverse=True):
         title = text(a['title'], lang)
