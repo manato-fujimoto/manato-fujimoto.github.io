@@ -75,6 +75,20 @@
   ],
   "news": [
     {
+      "date": "2026-08-27",
+      "text": {
+        "en": "One paper accepted for presentation at CNSM 2026.",
+        "ja": "CNSM 2026に1件の論文が採択されました。"
+      },
+      "slug": "2026-08-27-cnsm-2026",
+      "category": "Conference",
+      "summary": "RPL-FedID: Reliable Pseudo-Label-Enhanced Federated Device Identification.",
+      "body_html": "<p>One paper has been accepted for presentation at CNSM 2026, which will be held in Madrid, Spain, from 26 to 30 October 2026.</p>",
+      "publications": [
+        "c084"
+      ]
+    },
+    {
       "date": "2026-07-28",
       "text": {
         "en": "Two papers accepted for presentation at ISMICT 2026.",
