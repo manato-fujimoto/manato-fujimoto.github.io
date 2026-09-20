@@ -179,6 +179,20 @@
       ]
     },
     {
+      "date": "2026-04-12",
+      "text": {
+        "en": "One short paper accepted for presentation at COMPSAC 2026.",
+        "ja": "COMPSAC 2026に1件のショートペーパーが採択されました。"
+      },
+      "slug": "2026-04-12-compsac-2026",
+      "category": "Conference",
+      "summary": "Realization of Application-aware Networking by Using Information-Centric Networking.",
+      "body_html": "<p>One short paper has been accepted for presentation at COMPSAC 2026, which will be held in Madrid, Spain, from 7 to 10 July 2026.</p>",
+      "publications": [
+        "c080"
+      ]
+    },
+    {
       "date": "2026-02-01",
       "text": {
         "en": "A paper accepted in IEEE Open Journal of the Computer Society.",
