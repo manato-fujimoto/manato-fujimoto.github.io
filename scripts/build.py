@@ -174,6 +174,8 @@ def shell(page, lang, body, news_item=None):
     svg = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="10" fill="#111b29"/><text x="32" y="42" text-anchor="middle" fill="#85bcff" font-family="Arial,sans-serif" font-size="28">MF</text></svg>'
     nav = ''.join(f'<li><a href="{root}{p}.html"' + (' aria-current="page"' if active_page == p else '') + f'>{NAV[lang][i]}</a></li>' for i,p in enumerate(PAGES))
     page_scripts = f'\n  <script src="{root}assets/publications.js" defer></script>' if page == 'publications' else ''
+    if page == 'news':
+        page_scripts += f'\n  <script src="{root}assets/news.js" defer></script>'
     return f'''<!doctype html>
 <html lang="{lang}">
 <head>
@@ -296,14 +298,20 @@ def news_meta(item):
 def news(lang):
     body = intro('News', eyebrow='Latest updates')
     items = news_items()
+    body += '<div data-news-index><div class="news-filters" role="group" aria-label="Filter news" hidden>'
+    for value, label in [('all', 'All'), ('journal', 'Journal'), ('conference', 'Conference')]:
+        count = sum(value == 'all' or item['category'].lower() == value for item in items)
+        pressed = 'true' if value == 'all' else 'false'
+        body += f'<button type="button" class="news-filter" data-news-filter="{value}" aria-pressed="{pressed}" aria-controls="news-results">{label}<span class="news-filter-count">{count}</span></button>'
+    body += '</div><p class="news-filter-status" role="status" aria-live="polite" aria-atomic="true"></p><div id="news-results">'
     for year in sorted({item['date'][:4] for item in items}, reverse=True):
         yearly = [item for item in items if item['date'].startswith(year)]
-        body += f'<section class="news-archive" aria-labelledby="news-year-{E(year)}"><div class="section-heading"><h2 id="news-year-{E(year)}">{E(year)}</h2><span class="note">{len(yearly)} updates</span></div><ol class="news-grid">'
+        body += f'<section class="news-archive" aria-labelledby="news-year-{E(year)}"><div class="section-heading"><h2 id="news-year-{E(year)}">{E(year)}</h2><span class="note" data-news-count>{len(yearly)} updates</span></div><ol class="news-grid">'
         for item in yearly:
             summary = news_meta(item) + f'<h3 class="news-card-title">{text(item["text"],lang)}</h3><p class="news-card-excerpt">{E(item["summary"])}</p><span class="news-read-link">Read article →</span>'
-            body += f'<li class="news-card" id="news-{E(item["date"])}">{link(news_path(item), summary, "news-card-link")}</li>'
+            body += f'<li class="news-card" id="news-{E(item["date"])}" data-news-category="{E(item["category"].lower())}">{link(news_path(item), summary, "news-card-link")}</li>'
         body += '</ol></section>'
-    return body + '<p class="news-return">' + link('index.html#recent-news', '← Back to Recent News') + '</p>'
+    return body + '</div></div><p class="news-return">' + link('index.html#recent-news', '← Back to Recent News') + '</p>'
 
 def news_article(item, lang):
     breadcrumb = link('../index.html', 'Home') + '<span aria-hidden="true">/</span>' + link('../news.html', 'News') + '<span aria-hidden="true">/</span>' + f'<span aria-current="page">{E(item["date"].replace("-", "."))}</span>'
