@@ -236,7 +236,7 @@ def home(lang):
     about = ''.join(f'<p>{text(p,lang)}</p>' for p in DATA['about'])
     about += '<ul class="keywords">'+''.join(f'<li>{text(t,lang)}</li>' for t in DATA['keywords'])+'</ul>'
     body += section('プロフィール' if ja else 'About', '<div class="about-copy">'+about+'</div>')
-    news_list = '<ul class="news-list">'+''.join(f'<li><time datetime="{E(n["date"])}">{E(n["date"].replace("-","."))}</time><span>{link(news_path(n),text(n["text"],lang))}</span></li>' for n in news_items()[:10])+'</ul>'
+    news_list = '<ul class="news-list">'+''.join(f'<li><time datetime="{E(n["date"])}">{E(n["date"].replace("-","."))}</time><span class="news-category">{E(n["category"])}</span><span class="news-item-title">{link(news_path(n),text(n["text"],lang))}</span></li>' for n in news_items()[:10])+'</ul>'
     all_news = link('news.html', 'View all news →', 'news-all-link')
     body += f'<section class="section" id="recent-news"><div class="section-heading news-home-heading"><h2>{"お知らせ" if ja else "Recent News"}</h2>{all_news}</div>{news_list}</section>'
     body += '<div class="two-columns">'+section('職歴' if ja else 'Appointments',timeline(DATA['appointments'],lang))+section('学歴' if ja else 'Education',timeline(DATA['education'],lang))+'</div>'
