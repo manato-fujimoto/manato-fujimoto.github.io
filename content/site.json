@@ -165,6 +165,20 @@
       ]
     },
     {
+      "date": "2026-05-03",
+      "text": {
+        "en": "A paper accepted in IEEE Journal of Electromagnetics, RF, and Microwaves in Medicine and Biology.",
+        "ja": "IEEE Journal of Electromagnetics, RF, and Microwaves in Medicine and Biologyに論文が採択されました。"
+      },
+      "slug": "2026-05-03-ieee-jerm",
+      "category": "Journal",
+      "summary": "Power and Waveform Optimization for Implant Ultra-Wideband Communications Enhanced by Dynamic Sparse Control.",
+      "body_html": "<p>One paper has been accepted for publication in the international journal <em><strong>“IEEE Journal of Electromagnetics, RF, and Microwaves in Medicine and Biology”</strong></em>.</p>",
+      "publications": [
+        "j036"
+      ]
+    },
+    {
       "date": "2026-02-01",
       "text": {
         "en": "A paper accepted in IEEE Open Journal of the Computer Society.",
