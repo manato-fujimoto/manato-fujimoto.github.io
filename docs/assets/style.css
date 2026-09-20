@@ -102,13 +102,13 @@ main { padding-block: 4rem 5rem; }
 .research-row { min-width: 0; padding: 1.1875rem 0 .75rem; border-top: 2px solid var(--blue); }
 .research-number { color: var(--blue); font-family: var(--sans); font-size: .75rem; font-weight: 400; letter-spacing: .09375rem; line-height: 1.8; margin-bottom: .5rem; }
 .research-row h2 { font-size: 1.3125rem; font-weight: 500; line-height: 1.35; margin-bottom: .8125rem; }
-.research-description { font-size: 1rem; line-height: 1.8; margin-bottom: 0; text-align: left; }
-.research-topics { margin: .9375rem 0 0; padding-top: .75rem; border-top: 1px solid var(--line); color: var(--muted); font-size: .8125rem; line-height: 1.8; text-align: left; }
+.research-description { font-size: 1rem; line-height: 1.8; margin-bottom: 0; text-align: justify; }
+.research-topics { margin: .9375rem 0 0; padding-top: .75rem; border-top: 1px solid var(--line); color: var(--muted); font-size: .8125rem; line-height: 1.8; text-align: justify; }
 .related { margin-top: 1rem; }
 .related summary { width: fit-content; max-width: 100%; padding: .4rem 0; color: var(--blue); font-size: .8125rem; line-height: 1.7; cursor: pointer; }
 .related-count { color: var(--muted); }
 .related-links { margin-top: .5rem; }
-.related a { display: block; margin-bottom: .5rem; font-size: .8125rem; line-height: 1.7; text-align: left; overflow-wrap: anywhere; }
+.related a { display: block; margin-bottom: .5rem; font-size: .8125rem; line-height: 1.7; text-align: justify; overflow-wrap: anywhere; }
 .section-nav { display: flex; flex-wrap: wrap; gap: .6rem; margin: 1.5rem 0 0; font-size: .9rem; }
 .section-nav a { max-width: 100%; white-space: normal; }
 .section-nav a[aria-current='location'] { border-color: var(--blue); background: #24476e; color: #fff; }
