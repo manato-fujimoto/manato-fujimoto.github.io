@@ -165,6 +165,34 @@
       ]
     },
     {
+      "date": "2026-02-01",
+      "text": {
+        "en": "A paper accepted in IEEE Open Journal of the Computer Society.",
+        "ja": "IEEE Open Journal of the Computer Societyに論文が採択されました。"
+      },
+      "slug": "2026-02-01-ieee-ojcs",
+      "category": "Journal",
+      "summary": "zk-REAL: A Zero-Knowledge-Based Protocol for Repeated Image Edit Authenticity Proof with Lattice Hashing.",
+      "body_html": "<p>One paper has been accepted for publication in the international journal <em><strong>“IEEE Open Journal of the Computer Society”</strong></em>.</p>",
+      "publications": [
+        "j033"
+      ]
+    },
+    {
+      "date": "2026-01-29",
+      "text": {
+        "en": "A paper accepted in International Journal of Activity and Behavior Computing.",
+        "ja": "International Journal of Activity and Behavior Computingに論文が採択されました。"
+      },
+      "slug": "2026-01-29-ijabc",
+      "category": "Journal",
+      "summary": "SipSense: Acoustic Sensing of Beverage Type and Volume Using Dual-Microphone Wearable System.",
+      "body_html": "<p>One paper has been accepted for publication in the international journal <em><strong>“International Journal of Activity and Behavior Computing”</strong></em>.</p>",
+      "publications": [
+        "j034"
+      ]
+    },
+    {
       "date": "2026-01-15",
       "text": {
         "en": "A paper accepted in Scientific Reports.",
