@@ -1,0 +1,52 @@
+.news-home-heading { flex-wrap: wrap; }
+.news-home-heading::after { order: 1; }
+.news-all-link { order: 2; margin-left: auto; white-space: nowrap; font-size: .875rem; font-weight: 500; text-decoration: none; }
+.news-all-link:hover { text-decoration: underline; }
+.news-archive { margin-top: 2.125rem; }
+.news-archive > .section-heading { margin-bottom: .75rem; }
+.news-grid { display: grid; grid-template-columns: minmax(0, 1fr); list-style: none; padding: 0; margin: .75rem 0 0; }
+.news-card { margin: 0; padding: 0; min-width: 0; }
+.news-card-link { display: block; color: var(--ink); text-decoration: none; padding: 1.5625rem 0 1.625rem; border-bottom: 1px solid var(--line); }
+.news-card-link:hover { color: var(--ink); }
+.news-card-meta { display: flex; align-items: center; gap: .8125rem; flex-wrap: wrap; margin: 0 0 .625rem; }
+.news-category { display: inline-flex; align-items: center; padding: .125rem .5625rem; border-radius: 3px; background: #193354; color: #b9d8ff; font-size: .75rem; font-weight: 500; line-height: 1.6; }
+.news-date { color: var(--muted); font-size: .75rem; font-variant-numeric: tabular-nums; }
+.news-card-title { font-size: 1.3125rem; font-weight: 500; line-height: 1.5; letter-spacing: -.02em; margin: 0 0 .5rem; overflow-wrap: anywhere; }
+.news-card-link:hover .news-card-title { color: var(--blue); }
+.news-card-excerpt { max-width: 790px; font-size: .875rem; line-height: 1.8; color: var(--muted); margin: 0; text-align: left; }
+.news-read-link { display: inline-block; margin-top: .75rem; color: var(--blue); font-size: .8125rem; line-height: 1.7; }
+.news-card-link:hover .news-read-link { text-decoration: underline; text-underline-offset: 4px; }
+.news-return { margin: 1.875rem 0 0; font-size: .875rem; }
+.news-return a { text-decoration: none; }
+.news-return a:hover { text-decoration: underline; }
+.article-breadcrumb { display: flex; align-items: center; flex-wrap: wrap; gap: .5625rem; margin-bottom: 1.8125rem; color: var(--muted); font-size: .8125rem; line-height: 1.7; }
+.article-breadcrumb a { text-decoration: none; display: inline-block; padding-block: .3125rem; }
+.article-breadcrumb a:hover { text-decoration: underline; }
+.article-heading { max-width: 790px; margin-inline: auto; margin-bottom: 1.5625rem; padding-bottom: 1.5625rem; border-bottom: 1px solid var(--line); }
+.article-heading .news-card-meta { margin: 0 0 .9375rem; }
+.article-heading h1 { font-size: clamp(1.875rem, 4.2vw, 2.8125rem); font-weight: 500; line-height: 1.35; letter-spacing: -.035em; margin: 0; overflow-wrap: anywhere; text-align: left; }
+.article-body { max-width: 790px; margin-inline: auto; }
+.news-announcement > p { font-size: 1rem; line-height: 1.95; margin-bottom: 1.75rem; }
+.article-body .section-heading { margin-top: 2rem; margin-bottom: 1.25rem; }
+.article-body .section-heading h2 { font-size: 1.375rem; font-weight: 500; margin: 0; }
+.news-publications .publication:first-child { padding-top: 0; }
+.news-publications .publication:last-child { border-bottom: 0; padding-bottom: 0; }
+.article-end { max-width: 790px; margin: 2.25rem auto 0; }
+.article-end > .news-return { margin: 0 0 2rem; }
+.article-neighbors { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.5rem; border-top: 1px solid var(--line); padding-top: 1.375rem; }
+.article-neighbor { display: block; text-decoration: none; font-size: .875rem; line-height: 1.7; color: var(--ink); overflow-wrap: anywhere; }
+.article-neighbor span { display: block; font-size: .6875rem; color: var(--muted); margin-bottom: .4375rem; text-transform: uppercase; letter-spacing: .09em; }
+.article-neighbor:hover { color: var(--blue); }
+.article-neighbor-older { grid-column: 2; text-align: right; }
+@media (max-width: 640px) {
+  .news-card-title { font-size: 1.1875rem; }
+  .news-card-link { padding-block: 1.375rem; }
+  .article-breadcrumb { margin-bottom: 1.5rem; }
+  .article-heading h1 { font-size: 1.875rem; line-height: 1.4; }
+  .news-announcement > p { font-size: .9375rem; line-height: 1.9; }
+  .article-neighbors { gap: 1.125rem; }
+  .article-neighbor { font-size: .8125rem; }
+}
+@media (pointer: coarse) {
+  .article-breadcrumb a, .news-return a { min-height: 44px; display: inline-flex; align-items: center; }
+}

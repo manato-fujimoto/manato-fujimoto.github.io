@@ -9,7 +9,8 @@
   "page_descriptions": {
     "research": "Research by Manato Fujimoto at Osaka Metropolitan University: care and healthy aging, human activity recognition, smart spaces, and wireless localization.",
     "publications": "Journal articles and international conference papers by Manato Fujimoto, including accepted work, corresponding authorship, and international coauthorship.",
-    "services": "Conference organization, professional service, awards, and academic memberships of Manato Fujimoto, Osaka Metropolitan University."
+    "services": "Conference organization, professional service, awards, and academic memberships of Manato Fujimoto, Osaka Metropolitan University.",
+    "news": "Research news, publication announcements and conference updates from Manato Fujimoto, Osaka Metropolitan University."
   },
   "email": "manato@omu.ac.jp",
   "lab_url": "https://omusp.jp/",
@@ -79,7 +80,15 @@
         "en": "Two papers accepted for presentation at ISMICT 2026.",
         "ja": "ISMICT 2026に2件の論文が採択されました。"
       },
-      "url": "https://manato.wcss.jp/2026/07/28/paper-accepted-for-presentation-at-ismict-2026/"
+      "url": "https://manato.wcss.jp/2026/07/28/paper-accepted-for-presentation-at-ismict-2026/",
+      "slug": "2026-07-28-ismict-2026",
+      "category": "Conference",
+      "summary": "Two papers on implantable-device and device-free indoor localization.",
+      "body_html": "<p>Two papers have been accepted for presentation at <a href=\"https://www.ismict2026.org/\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"cursor-interaction\">ISMICT 2026</a>, which will be held in Osaka, Japan, from 28 to 30 September 2026.</p>",
+      "publications": [
+        "c082",
+        "c081"
+      ]
     },
     {
       "date": "2026-07-26",
@@ -87,7 +96,14 @@
         "en": "A paper accepted in the International Journal of Informatics Society.",
         "ja": "FocusSenseの論文がInternational Journal of Informatics Societyに採択されました。"
       },
-      "url": "https://manato.wcss.jp/2026/07/26/paper-accepted-for-publication-in-international-journal-of-informatics-society/"
+      "url": "https://manato.wcss.jp/2026/07/26/paper-accepted-for-publication-in-international-journal-of-informatics-society/",
+      "slug": "2026-07-26-focussense",
+      "category": "Journal",
+      "summary": "A usability study of a dashboard for multimodal concentration estimation.",
+      "body_html": "<p>One paper has been accepted for publication in the international journal <em><strong>“International Journal of Informatics Society</strong></em>.<strong>“</strong></p>",
+      "publications": [
+        "j038"
+      ]
     },
     {
       "date": "2026-07-20",
@@ -95,7 +111,14 @@
         "en": "A poster paper accepted at UbiComp / ISWC 2026.",
         "ja": "UbiComp / ISWC 2026のポスターセッションに論文が採択されました。"
       },
-      "url": "https://manato.wcss.jp/2026/07/20/paper-accepted-for-presentation-at-ubicomp-iswc-2026-poster-session/"
+      "url": "https://manato.wcss.jp/2026/07/20/paper-accepted-for-presentation-at-ubicomp-iswc-2026-poster-session/",
+      "slug": "2026-07-20-aidol",
+      "category": "Conference",
+      "summary": "Dynamic optical lighting for immersive live concert viewing.",
+      "body_html": "<p>One papers has been accepted for presentation at <a href=\"https://www.ubicomp.org/ubicomp-iswc-2026/\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"cursor-interaction\">Ubicomp/ISWC 2026 – Poster Session –</a>, which will be held in Shanghai, China, from 13 to 15 October 2026.</p>",
+      "publications": [
+        "c083"
+      ]
     },
     {
       "date": "2026-07-11",
@@ -103,7 +126,14 @@
         "en": "A paper accepted in Applied Gerontology.",
         "ja": "応用老年学に論文が採択されました。"
       },
-      "url": "https://manato.wcss.jp/2026/07/11/paper-accepted-for-publication-in-applied-gerontology/"
+      "url": "https://manato.wcss.jp/2026/07/11/paper-accepted-for-publication-in-applied-gerontology/",
+      "slug": "2026-07-11-applied-gerontology",
+      "category": "Journal",
+      "summary": "Promoting well-being among nursing home residents through the “Be supporters!” initiative.",
+      "body_html": "<p>One paper has been accepted for publication in the international journal <em><strong>“Applied Gerontology</strong></em>.<strong>“</strong></p>",
+      "publications": [
+        "j035"
+      ]
     },
     {
       "date": "2026-07-02",
@@ -111,7 +141,14 @@
         "en": "An invited paper accepted in IEICE Transactions on Communications.",
         "ja": "IEICE Transactions on Communicationsに招待論文が採択されました。"
       },
-      "url": "https://manato.wcss.jp/2026/07/02/paper-accepted-for-publication-in-ieice-transactions-on-communications/"
+      "url": "https://manato.wcss.jp/2026/07/02/paper-accepted-for-publication-in-ieice-transactions-on-communications/",
+      "slug": "2026-07-02-in-body-localization",
+      "category": "Journal",
+      "summary": "Machine learning and quasi-static magnetic fields for in-body device localization.",
+      "body_html": "<p>One paper has been accepted for publication in the international journal <em><strong>“IEICE Transactions on Communications</strong></em>.<strong>“</strong></p>",
+      "publications": [
+        "j037"
+      ]
     }
   ],
   "appointments": [

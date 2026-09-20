@@ -5,6 +5,8 @@ from html import escape
 from urllib.parse import quote, urljoin, urlsplit
 import xml.etree.ElementTree as ET
 import json
+import re
+from datetime import date
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / 'docs'
@@ -12,8 +14,35 @@ DATA = json.loads((ROOT / 'content/site.json').read_text(encoding='utf-8'))
 PUBS = json.loads((ROOT / 'content/publications.json').read_text(encoding='utf-8'))
 JOURNAL_METRICS = json.loads((ROOT / 'content/journal-metrics.json').read_text(encoding='utf-8'))
 E = escape
-PAGES = ['index', 'research', 'publications', 'services']
-NAV = {'en': ['Home', 'Research', 'Publications', 'Services'], 'ja': ['ホーム', '研究内容', '研究業績', '学会活動']}
+PAGES = ['index', 'news', 'research', 'publications', 'services']
+NAV = {'en': ['Home', 'News', 'Research', 'Publications', 'Services'], 'ja': ['ホーム', 'お知らせ', '研究内容', '研究業績', '学会活動']}
+
+def news_items():
+    return sorted(DATA['news'], key=lambda item: item['date'], reverse=True)
+
+def news_path(item):
+    return 'news/' + item['slug'] + '.html'
+
+def news_publications(item):
+    records = {p['id']: p for p in PUBS}
+    return [records[publication_id] for publication_id in item['publications']]
+
+def validate_news():
+    ids = [p['id'] for p in PUBS]
+    if len(ids) != len(set(ids)):
+        raise ValueError('Publication IDs must be unique')
+    slugs = set()
+    for item in news_items():
+        slug = item['slug']
+        date.fromisoformat(item['date'])
+        if not re.fullmatch(r'[a-z0-9]+(?:-[a-z0-9]+)*', slug) or slug in slugs:
+            raise ValueError(f'Invalid or duplicate News slug: {slug}')
+        slugs.add(slug)
+        if len(item['publications']) != len(set(item['publications'])):
+            raise ValueError(f'Duplicate publication reference in News: {slug}')
+        missing = set(item['publications']) - set(ids)
+        if missing:
+            raise ValueError(f'Unknown publication IDs in {slug}: {sorted(missing)}')
 
 def validate_journal_metrics():
     year = JOURNAL_METRICS['metric_year']
@@ -74,7 +103,7 @@ def scholarly_article(p, person_id):
         article['creativeWorkStatus'] = 'Accepted'
     return article
 
-def structured_data(page, title, description):
+def structured_data(page, title, description, news_item=None):
     person_id, website_id = site_url('#person'), site_url('#website')
     person = {
         '@type': 'Person', '@id': person_id, 'name': DATA['name']['en'],
@@ -93,15 +122,21 @@ def structured_data(page, title, description):
         'name': DATA['name']['en'], 'inLanguage': 'en',
         'publisher': {'@id': person_id},
     }
-    page_type = {'index': 'ProfilePage', 'research': 'CollectionPage',
-                 'publications': 'CollectionPage', 'services': 'WebPage'}[page]
+    page_type = {'index': 'ProfilePage', 'news': 'CollectionPage', 'research': 'CollectionPage',
+                 'publications': 'CollectionPage', 'services': 'WebPage'}.get(page, 'WebPage')
     webpage = {
         '@type': page_type, '@id': canonical_url(page) + '#webpage',
         'url': canonical_url(page), 'name': title, 'description': description,
         'inLanguage': 'en', 'isPartOf': {'@id': website_id},
         'about': {'@id': person_id},
     }
-    if page == 'index':
+    if news_item is not None:
+        webpage['mainEntity'] = {
+            '@type': 'Article', 'headline': news_item['text']['en'],
+            'datePublished': news_item['date'], 'author': {'@id': person_id},
+            'citation': [scholarly_article(p, person_id) for p in news_publications(news_item)],
+        }
+    elif page == 'index':
         webpage['mainEntity'] = {'@id': person_id}
     elif page == 'publications':
         webpage['mainEntity'] = {
@@ -120,23 +155,24 @@ def write_discovery_files():
     namespace = 'http://www.sitemaps.org/schemas/sitemap/0.9'
     ET.register_namespace('', namespace)
     urls = ET.Element('{' + namespace + '}urlset')
-    for page in PAGES:
+    for page in PAGES + [news_path(item).removesuffix('.html') for item in news_items()]:
         entry = ET.SubElement(urls, '{' + namespace + '}url')
         ET.SubElement(entry, '{' + namespace + '}loc').text = canonical_url(page)
     ET.ElementTree(urls).write(OUT / 'sitemap.xml', encoding='utf-8', xml_declaration=True)
     robots = 'User-agent: *\nAllow: /\n\nSitemap: ' + site_url('sitemap.xml') + '\n'
     (OUT / 'robots.txt').write_text(robots, encoding='utf-8')
 
-def shell(page, lang, body):
-    root = '../' if lang == 'ja' else ''
+def shell(page, lang, body, news_item=None):
+    root = '../' if lang == 'ja' or news_item is not None else ''
     name = text(DATA['name'], lang)
-    label = NAV[lang][PAGES.index(page)]
-    title = DATA['name'][lang] if page == 'index' else f'{label} — {DATA["name"][lang]}'
+    active_page = 'news' if news_item is not None else page
+    label = NAV[lang][PAGES.index(active_page)]
+    title = (news_item['text'][lang] + ' — ' + DATA['name'][lang]) if news_item is not None else (DATA['name'][lang] if page == 'index' else f'{label} — {DATA["name"][lang]}')
     full_title = title + ' | ' + ('大阪公立大学' if lang == 'ja' else 'Osaka Metropolitan University')
-    description = DATA['description'][lang] if page == 'index' else DATA['page_descriptions'][page]
+    description = news_item['summary'] if news_item is not None else (DATA['description'][lang] if page == 'index' else DATA['page_descriptions'][page])
     canonical = canonical_url(page)
     svg = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="10" fill="#111b29"/><text x="32" y="42" text-anchor="middle" fill="#85bcff" font-family="Arial,sans-serif" font-size="28">MF</text></svg>'
-    nav = ''.join(f'<li><a href="{p}.html"' + (' aria-current="page"' if page == p else '') + f'>{NAV[lang][i]}</a></li>' for i,p in enumerate(PAGES))
+    nav = ''.join(f'<li><a href="{root}{p}.html"' + (' aria-current="page"' if active_page == p else '') + f'>{NAV[lang][i]}</a></li>' for i,p in enumerate(PAGES))
     page_scripts = f'\n  <script src="{root}assets/publications.js" defer></script>' if page == 'publications' else ''
     return f'''<!doctype html>
 <html lang="{lang}">
@@ -155,18 +191,19 @@ def shell(page, lang, body):
   <meta property="og:url" content="{E(canonical, quote=True)}">
   <meta property="og:image" content="{E(site_url('assets/manato-fujimoto.png'), quote=True)}">
   <meta property="og:image:alt" content="Portrait of Manato Fujimoto">
-  <script type="application/ld+json">{structured_data(page, full_title, description)}</script>
+  <script type="application/ld+json">{structured_data(page, full_title, description, news_item)}</script>
   <meta name="theme-color" content="#090b10">
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,{quote(svg)}">
-  <link rel="stylesheet" href="{root}assets/style.css">{page_scripts}
+  <link rel="stylesheet" href="{root}assets/style.css">
+  <link rel="stylesheet" href="{root}assets/news.css">{page_scripts}
 </head>
 <body>
   <a class="skip-link" href="#main">{'本文へ移動' if lang == 'ja' else 'Skip to content'}</a>
   <header class="site-header"><div class="container header-inner">
-    <a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true">MF</span><span>Manato Fujimoto</span></a>
+    <a class="brand" href="{root}index.html"><span class="brand-mark" aria-hidden="true">MF</span><span>Manato Fujimoto</span></a>
     <nav aria-label="{'メインナビゲーション' if lang == 'ja' else 'Main navigation'}"><ul class="navigation">{nav}</ul></nav>
   </div></header>
-  <main id="main" class="container">{body}</main>
+  <main id="main" class="container{' news-article-page' if news_item is not None else ''}">{body}</main>
   <footer class="site-footer"><div class="container footer-inner">
     <p>© {E(DATA['copyright_year'])} {name}<br>{'大阪公立大学 大学院情報学研究科' if lang == 'ja' else 'Graduate School of Informatics, Osaka Metropolitan University'}</p>
     <div class="footer-links">{link(DATA['lab_url'], '研究室' if lang == 'ja' else 'Laboratory')}{link('mailto:' + DATA['email'], 'お問い合わせ' if lang == 'ja' else 'Contact')}<a href="#main">{'ページ上部へ' if lang == 'ja' else 'Back to top'}</a></div>
@@ -197,8 +234,9 @@ def home(lang):
     about = ''.join(f'<p>{text(p,lang)}</p>' for p in DATA['about'])
     about += '<ul class="keywords">'+''.join(f'<li>{text(t,lang)}</li>' for t in DATA['keywords'])+'</ul>'
     body += section('プロフィール' if ja else 'About', '<div class="about-copy">'+about+'</div>')
-    news = '<ul class="news-list">'+''.join(f'<li><time datetime="{E(n["date"])}">{E(n["date"].replace("-","."))}</time><span>{link(n["url"],text(n["text"],lang))}</span></li>' for n in DATA['news'])+'</ul>'
-    body += section('お知らせ' if ja else 'Recent News',news)
+    news_list = '<ul class="news-list">'+''.join(f'<li><time datetime="{E(n["date"])}">{E(n["date"].replace("-","."))}</time><span>{link(news_path(n),text(n["text"],lang))}</span></li>' for n in news_items())+'</ul>'
+    all_news = link('news.html', 'View all news →', 'news-all-link')
+    body += f'<section class="section" id="recent-news"><div class="section-heading news-home-heading"><h2>{"お知らせ" if ja else "Recent News"}</h2>{all_news}</div>{news_list}</section>'
     body += '<div class="two-columns">'+section('職歴' if ja else 'Appointments',timeline(DATA['appointments'],lang))+section('学歴' if ja else 'Education',timeline(DATA['education'],lang))+'</div>'
     a = DATA['awards'][0]
     award = f'<div class="award-highlight"><p class="award-year">{E(a["year"])}</p><h3>{link(a["url"],text(a["title"],lang))}</h3><p>{text(a["detail"],lang)}</p></div>'
@@ -227,10 +265,11 @@ def journal_metric(p):
         raise ValueError(f'Ambiguous journal metric for {p["id"]}')
     return matches[0] if matches else None
 
-def publication_item(p, lang):
+def publication_item(p, lang, *, title_url=None, id_prefix=''):
     title = E(p['title'])
-    if p['url']:
-        title = link(p['url'],title)
+    target = p['url'] if title_url is None else title_url
+    if target:
+        title = link(target,title)
     tags = ''
     if p['accepted']:
         tags += f'<span class="status">{"採択済み" if lang == "ja" else "Accepted"}</span>'
@@ -249,7 +288,41 @@ def publication_item(p, lang):
         metrics = '<p class="pub-metrics">' + link(metric['source_url'], metric_label, 'impact-factor') + '</p>'
     if tags:
         tags = '<div class="pub-tags" aria-label="Publication tags">' + tags + '</div>'
-    return f'<li class="publication" id="{E(p["id"])}"><span class="pub-index">{E(p["label"])}</span><div class="pub-content"><h3 class="pub-title">{title}</h3><p class="pub-authors">{authors}</p><p class="pub-venue">{E(p["venue"])}</p>{metrics}{tags}</div></li>'
+    return f'<li class="publication" id="{E(id_prefix + p["id"])}"><span class="pub-index">{E(p["label"])}</span><div class="pub-content"><h3 class="pub-title">{title}</h3><p class="pub-authors">{authors}</p><p class="pub-venue">{E(p["venue"])}</p>{metrics}{tags}</div></li>'
+
+def news_meta(item):
+    return f'<div class="news-card-meta"><span class="news-category">{E(item["category"])}</span><time class="news-date" datetime="{E(item["date"])}">{E(item["date"].replace("-", "."))}</time></div>'
+
+def news(lang):
+    body = intro('News', eyebrow='Latest updates')
+    items = news_items()
+    for year in sorted({item['date'][:4] for item in items}, reverse=True):
+        yearly = [item for item in items if item['date'].startswith(year)]
+        body += f'<section class="news-archive" aria-labelledby="news-year-{E(year)}"><div class="section-heading"><h2 id="news-year-{E(year)}">{E(year)}</h2><span class="note">{len(yearly)} updates</span></div><ol class="news-grid">'
+        for item in yearly:
+            summary = news_meta(item) + f'<h3 class="news-card-title">{text(item["text"],lang)}</h3><p class="news-card-excerpt">{E(item["summary"])}</p><span class="news-read-link">Read article →</span>'
+            body += f'<li class="news-card" id="news-{E(item["date"])}">{link(news_path(item), summary, "news-card-link")}</li>'
+        body += '</ol></section>'
+    return body + '<p class="news-return">' + link('index.html#recent-news', '← Back to Recent News') + '</p>'
+
+def news_article(item, lang):
+    breadcrumb = link('../index.html', 'Home') + '<span aria-hidden="true">/</span>' + link('../news.html', 'News') + '<span aria-hidden="true">/</span>' + f'<span aria-current="page">{E(item["date"].replace("-", "."))}</span>'
+    body = f'<nav class="article-breadcrumb" aria-label="Breadcrumb">{breadcrumb}</nav><article aria-labelledby="news-article-title"><header class="article-heading">{news_meta(item)}<h1 id="news-article-title">{text(item["text"],lang)}</h1></header>'
+    # News stores only publication IDs; every bibliographic field comes from PUBS.
+    records = news_publications(item)
+    citations = ''.join(publication_item(p, lang, title_url='../publications.html#' + p['id'], id_prefix='news-') for p in records)
+    publication_heading = heading('Publications' if len(records) != 1 else 'Publication')
+    body += '<div class="article-body"><div class="news-announcement">' + item['body_html'] + publication_heading + '<ol class="publications news-publications">' + citations + '</ol></div></div>'
+    body += '<footer class="article-end"><p class="news-return">' + link('../news.html', '← All news') + '</p><nav class="article-neighbors" aria-label="Other news articles">'
+    items = news_items()
+    index = next(i for i, other in enumerate(items) if other['slug'] == item['slug'])
+    if index > 0:
+        newer = items[index - 1]
+        body += link(newer['slug'] + '.html', '<span>← Newer article</span>' + text(newer['text'], lang), 'article-neighbor')
+    if index + 1 < len(items):
+        older = items[index + 1]
+        body += link(older['slug'] + '.html', '<span>Older article →</span>' + text(older['text'], lang), 'article-neighbor article-neighbor-older')
+    return body + '</nav></footer></article>'
 
 def publications(lang):
     ja = lang == 'ja'
@@ -287,10 +360,15 @@ def services(lang):
 
 def main():
     validate_journal_metrics()
+    validate_news()
     validate_search_metadata()
     OUT.mkdir(parents=True,exist_ok=True)
-    for page, render in [('index',home),('research',research),('publications',publications),('services',services)]:
+    for page, render in [('index',home),('news',news),('research',research),('publications',publications),('services',services)]:
         (OUT / (page+'.html')).write_text(shell(page,'en',render('en')),encoding='utf-8')
+    (OUT / 'news').mkdir(parents=True, exist_ok=True)
+    for item in news_items():
+        path = news_path(item)
+        (OUT / path).write_text(shell(path.removesuffix('.html'), 'en', news_article(item, 'en'), item), encoding='utf-8')
     for page in PAGES:
         (OUT / 'ja' / (page+'.html')).unlink(missing_ok=True)
     japanese_output = OUT / 'ja'
@@ -298,7 +376,7 @@ def main():
         japanese_output.rmdir()
     (OUT / '.nojekyll').touch()
     write_discovery_files()
-    print(f'Generated 4 English HTML pages with {len(PUBS)} publication records.')
+    print(f'Generated {len(PAGES) + len(news_items())} English HTML pages with {len(PUBS)} publication records.')
 
 if __name__=='__main__':
     main()
