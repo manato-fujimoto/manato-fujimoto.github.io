@@ -215,7 +215,7 @@ def shell(page, lang, body, news_item=None):
 '''
 
 def timeline(items, lang):
-    return '<dl class="timeline">' + ''.join(f'<div class="timeline-row"><dt>{text(i["period"],lang)}</dt><dd>{text(i["title"],lang)}<span>{text(i["place"],lang)}</span></dd></div>' for i in items) + '</dl>'
+    return '<dl class="timeline">' + ''.join(f'<div class="timeline-row"><dt>{text(i["period"],lang)}</dt><dd>{text(i["title"],lang)}<span>{"<br>".join(text(i["place"],lang).splitlines())}</span></dd></div>' for i in items) + '</dl>'
 
 def home(lang):
     ja = lang == 'ja'
