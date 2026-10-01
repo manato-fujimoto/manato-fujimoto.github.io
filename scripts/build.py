@@ -239,7 +239,7 @@ def home(lang):
     news_list = '<ul class="news-list">'+''.join(f'<li><time datetime="{E(n["date"])}">{E(n["date"].replace("-","."))}</time><span class="news-category">{E(n["category"])}</span><span class="news-item-title">{link(news_path(n),text(n["text"],lang))}</span></li>' for n in news_items()[:10])+'</ul>'
     all_news = link('news.html', 'View all news →', 'news-all-link')
     body += f'<section class="section" id="recent-news"><div class="section-heading news-home-heading"><h2>{"お知らせ" if ja else "Recent News"}</h2>{all_news}</div>{news_list}</section>'
-    body += '<div class="two-columns">'+section('職歴' if ja else 'Appointments',timeline(DATA['appointments'],lang))+section('学歴' if ja else 'Education',timeline(DATA['education'],lang))+'</div>'
+    body += '<div class="two-columns">'+section('職歴' if ja else 'Employment',timeline(DATA['appointments'],lang))+section('学歴' if ja else 'Education',timeline(DATA['education'],lang))+'</div>'
     a = DATA['awards'][0]
     award = f'<div class="award-highlight"><p class="award-year">{E(a["year"])}</p><h3>{link(a["url"],text(a["title"],lang))}</h3><p>{text(a["detail"],lang)}</p></div>'
     body += section('主な受賞' if ja else 'Selected Award',award)
