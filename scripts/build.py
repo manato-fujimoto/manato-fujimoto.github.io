@@ -80,6 +80,9 @@ def validate_search_metadata():
     for page in PAGES[1:]:
         if not DATA['page_descriptions'].get(page):
             raise ValueError(f'Missing search description for {page}')
+    verification = DATA.get('google_site_verification', '')
+    if not isinstance(verification, str) or (verification and not re.fullmatch(r'[A-Za-z0-9_-]+', verification)):
+        raise ValueError('google_site_verification must contain only the token from the Google HTML tag, or be empty')
 
 def scholarly_article(p, person_id):
     authors = []
@@ -107,10 +110,12 @@ def structured_data(page, title, description, news_item=None):
     person_id, website_id = site_url('#person'), site_url('#website')
     person = {
         '@type': 'Person', '@id': person_id, 'name': DATA['name']['en'],
+        'alternateName': [DATA['name']['ja'], DATA['name']['ja'].replace(' ', '')],
         'url': canonical_url('index'),
         'image': site_url('assets/manato-fujimoto.png'),
         'jobTitle': DATA['appointments'][0]['title']['en'],
-        'worksFor': {'@type': 'Organization', 'name': DATA['affiliation']['en']},
+        'worksFor': {'@type': 'Organization', 'name': DATA['affiliation']['en'],
+                     'alternateName': DATA['affiliation']['ja']},
         'affiliation': {'@type': 'Organization', 'name': DATA['lab']['en'], 'url': DATA['lab_url']},
         'description': DATA['intro']['en'],
         'knowsAbout': [keyword['en'] for keyword in DATA['keywords']],
@@ -164,15 +169,20 @@ def write_discovery_files():
 
 def shell(page, lang, body, news_item=None):
     root = '../' if lang == 'ja' or news_item is not None else ''
+    home_href = root or './'
     name = text(DATA['name'], lang)
     active_page = 'news' if news_item is not None else page
     label = NAV[lang][PAGES.index(active_page)]
     title = (news_item['text'][lang] + ' — ' + DATA['name'][lang]) if news_item is not None else (DATA['name'][lang] if page == 'index' else f'{label} — {DATA["name"][lang]}')
+    if page == 'index' and lang == 'en':
+        title += '（' + DATA['name']['ja'].replace(' ', '') + '）'
     full_title = title + ' | ' + ('大阪公立大学' if lang == 'ja' else 'Osaka Metropolitan University')
     description = news_item['summary'] if news_item is not None else (DATA['description'][lang] if page == 'index' else DATA['page_descriptions'][page])
     canonical = canonical_url(page)
     svg = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="10" fill="#111b29"/><text x="32" y="42" text-anchor="middle" fill="#85bcff" font-family="Arial,sans-serif" font-size="28">MF</text></svg>'
-    nav = ''.join(f'<li><a href="{root}{p}.html"' + (' aria-current="page"' if active_page == p else '') + f'>{NAV[lang][i]}</a></li>' for i,p in enumerate(PAGES))
+    nav = ''.join(f'<li><a href="{home_href if p == "index" else root + p + ".html"}"' + (' aria-current="page"' if active_page == p else '') + f'>{NAV[lang][i]}</a></li>' for i,p in enumerate(PAGES))
+    verification = DATA.get('google_site_verification', '')
+    verification_meta = f'\n  <meta name="google-site-verification" content="{E(verification, quote=True)}">' if verification and page == 'index' else ''
     page_scripts = f'\n  <script src="{root}assets/publications.js" defer></script>' if page == 'publications' else ''
     if page == 'news':
         page_scripts += f'\n  <script src="{root}assets/news.js" defer></script>'
@@ -183,7 +193,7 @@ def shell(page, lang, body, news_item=None):
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{E(full_title)}</title>
   <meta name="description" content="{E(description, quote=True)}">
-  <meta name="author" content="Manato Fujimoto">
+  <meta name="author" content="Manato Fujimoto">{verification_meta}
   <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
   <link rel="canonical" href="{E(canonical, quote=True)}">
   <meta property="og:type" content="website">
@@ -202,7 +212,7 @@ def shell(page, lang, body, news_item=None):
 <body>
   <a class="skip-link" href="#main">{'本文へ移動' if lang == 'ja' else 'Skip to content'}</a>
   <header class="site-header"><div class="container header-inner">
-    <a class="brand" href="{root}index.html"><span class="brand-mark" aria-hidden="true">MF</span><span>Manato Fujimoto</span></a>
+    <a class="brand" href="{home_href}"><span class="brand-mark" aria-hidden="true">MF</span><span>Manato Fujimoto</span></a>
     <nav aria-label="{'メインナビゲーション' if lang == 'ja' else 'Main navigation'}"><ul class="navigation">{nav}</ul></nav>
   </div></header>
   <main id="main" class="container{' news-article-page' if news_item is not None else ''}">{body}</main>
@@ -221,6 +231,8 @@ def home(lang):
     ja = lang == 'ja'
     root = '../' if ja else ''
     name = '<h1>藤本 まなと</h1><p class="name-en" lang="en">Manato Fujimoto</p>' if ja else '<h1>Manato Fujimoto</h1>'
+    if not ja:
+        name += f'<p class="name-native" lang="ja">{text(DATA["name"], "ja")} · 大阪公立大学</p>'
     profile_links = ''.join(link(profile['url'], E(profile['label']), 'profile-link') for profile in DATA['profile_links'])
     body = f'''<section class="profile" aria-label="{'プロフィール' if ja else 'Profile'}">
   <div><p class="eyebrow">Osaka Metropolitan University</p>{name}
@@ -311,10 +323,10 @@ def news(lang):
             summary = news_meta(item) + f'<h3 class="news-card-title">{text(item["text"],lang)}</h3><p class="news-card-excerpt">{E(item["summary"])}</p><span class="news-read-link">Read article →</span>'
             body += f'<li class="news-card" id="news-{E(item["date"])}" data-news-category="{E(item["category"].lower())}">{link(news_path(item), summary, "news-card-link")}</li>'
         body += '</ol></section>'
-    return body + '</div></div><p class="news-return">' + link('index.html#recent-news', '← Back to Recent News') + '</p>'
+    return body + '</div></div><p class="news-return">' + link('./#recent-news', '← Back to Recent News') + '</p>'
 
 def news_article(item, lang):
-    breadcrumb = link('../index.html', 'Home') + '<span aria-hidden="true">/</span>' + link('../news.html', 'News') + '<span aria-hidden="true">/</span>' + f'<span aria-current="page">{E(item["date"].replace("-", "."))}</span>'
+    breadcrumb = link('../', 'Home') + '<span aria-hidden="true">/</span>' + link('../news.html', 'News') + '<span aria-hidden="true">/</span>' + f'<span aria-current="page">{E(item["date"].replace("-", "."))}</span>'
     body = f'<nav class="article-breadcrumb" aria-label="Breadcrumb">{breadcrumb}</nav><article aria-labelledby="news-article-title"><header class="article-heading">{news_meta(item)}<h1 id="news-article-title">{text(item["text"],lang)}</h1></header>'
     # News stores only publication IDs; every bibliographic field comes from PUBS.
     records = news_publications(item)

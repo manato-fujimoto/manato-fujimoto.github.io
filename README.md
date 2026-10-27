@@ -17,8 +17,13 @@ GitHub Pagesに配置できる、英語の静的ホームページです。
 
 ## 手元で確認する
 
-ZIPを解凍し、`docs/index.html` をブラウザで開いてください。
-ナビゲーションと画像表示は、インターネットに接続せず確認できます。
+ZIPを解凍し、プロジェクトのフォルダで次を実行して `http://localhost:8000/` を開いてください。
+
+```bash
+python3 -m http.server 8000 --directory docs
+```
+
+ナビゲーションのHomeリンクは公開URLと一致するディレクトリURLを使うため、HTMLファイルを直接開くのではなくローカルサーバーで確認してください。ナビゲーションと画像表示は、インターネットに接続せず確認できます。
 メールや論文の外部リンクを開く場合には、対応するアプリやインターネット接続が必要です。
 
 ## GitHub Pagesで公開する
@@ -85,6 +90,24 @@ python3 scripts/build.py
 - これらの設定は検索結果への掲載やAIによる引用を保証するものではありません。Googleの登録状況や掲載実績は、サイト所有者のSearch Consoleで確認できます。
 
 参考：[Googleの生成AI検索向けガイド](https://developers.google.com/search/docs/fundamentals/ai-optimization-guide)、[OpenAIクローラーの仕様](https://developers.openai.com/api/docs/bots)。
+
+### Google Search Consoleで登録状況を確認・申請する
+
+HTMLやサイトマップを公開しただけでは、Googleのインデックス登録は保証されません。`site:` 検索に出ないことだけでも未登録とは断定できないため、Search Consoleの「URL検査」で確認してください。
+
+1. [Google Search Console](https://search.google.com/search-console/about)を開き、サイトを管理するGoogleアカウントでログインします。
+2. プロパティが未登録の場合は「URLプレフィックス」を選び、`https://manato-fujimoto.github.io/` を入力します。GitHub管理の `github.io` のDNS設定は変更できないため、このサイトではHTMLタグまたはHTMLファイルで所有権を確認します。
+3. 「HTMLタグ」を選ぶ場合、Googleが発行した `google-site-verification` メタタグの `content` の値だけを、`content/site.json` の `google_site_verification` に設定し、再生成して公開します。空欄の間は確認タグを出力しません。確認用の値を推測したり、サンプル値を公開したりしないでください。公開後、Search Consoleの「確認」を押します。確認後もタグは残します。HTMLファイル方式を選ぶ場合は、Googleが配布するファイルを改変せず `docs/` 直下に配置し、再生成時にも保持してください。
+4. 「サイトマップ」から `https://manato-fujimoto.github.io/sitemap.xml` を送信します。
+5. 「URL検査」で `https://manato-fujimoto.github.io/` を検査し、「公開URLをテスト」で到達可能性を確認してから「インデックス登録をリクエスト」を実行します。必要に応じてResearchやPublicationsも検査します。
+
+「検出 - インデックス未登録」「クロール済み - インデックス未登録」「重複」などの理由と、Googleが選択した正規URLを確認してください。このサイトはHomeへの内部リンク・canonical・サイトマップをトップURL `/` に統一していますが、Googleが旧サイトを正規版として選んでいる場合は、旧サイト側の移転対応も別途必要です。
+
+本人が管理する大学の研究者ページ、researchmap、Google Scholar等のホームページURLも、このサイトのURLに更新すると発見経路を増やせます。旧サイトから恒久リダイレクトを設定する場合は、旧サイトを安全に管理できる状態で、対応するページごとに設定してください。
+
+日本語の氏名はHomeの本文・タイトル・説明文とPersonの `alternateName` に明示しています。日本語版ページを別途公開する設定ではありません。登録申請後も反映には数日から数週間かかることがあり、掲載や順位はGoogleが判断します。同じURLを繰り返し申請してもクロールは速くなりません。
+
+参考：[URLの再クロールをGoogleにリクエストする](https://developers.google.com/search/docs/crawling-indexing/ask-google-to-recrawl?hl=ja)、[URL検査ツール](https://support.google.com/webmasters/answer/9012289?hl=ja)、[サイトの所有権の確認](https://support.google.com/webmasters/answer/9008080?hl=ja)。
 
 ## 掲載情報
 

@@ -54,6 +54,7 @@ main { padding-block: 4rem 5rem; }
 .eyebrow { font-size: .8125rem; font-weight: 600; letter-spacing: .17em; text-transform: uppercase; color: var(--blue); margin-bottom: 1.25rem; }
 .name-ja { font-size: 1rem; font-family: var(--sans); color: var(--muted); margin-left: .8rem; letter-spacing: .05em; white-space: nowrap; font-weight: 400; }
 .name-en { font-family: var(--sans); font-size: 1.125rem; color: var(--blue); margin-top: -.15rem; margin-bottom: 1.65rem; letter-spacing: .13em; text-transform: uppercase; }
+.name-native { font-size: 1rem; color: var(--muted); margin-top: .35rem; margin-bottom: 1rem; }
 .position { font-weight: 500; font-size: 1.025rem; margin-bottom: .65rem; }
 .affiliation { line-height: 1.8; color: var(--muted); margin-bottom: 1.4rem; }
 .affiliation a { text-decoration: none; }
