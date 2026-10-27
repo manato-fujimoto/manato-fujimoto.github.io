@@ -231,8 +231,6 @@ def home(lang):
     ja = lang == 'ja'
     root = '../' if ja else ''
     name = '<h1>藤本 まなと</h1><p class="name-en" lang="en">Manato Fujimoto</p>' if ja else '<h1>Manato Fujimoto</h1>'
-    if not ja:
-        name += f'<p class="name-native" lang="ja">{text(DATA["name"], "ja")} · 大阪公立大学</p>'
     profile_links = ''.join(link(profile['url'], E(profile['label']), 'profile-link') for profile in DATA['profile_links'])
     body = f'''<section class="profile" aria-label="{'プロフィール' if ja else 'Profile'}">
   <div><p class="eyebrow">Osaka Metropolitan University</p>{name}

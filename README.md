@@ -105,7 +105,7 @@ HTMLやサイトマップを公開しただけでは、Googleのインデック�
 
 本人が管理する大学の研究者ページ、researchmap、Google Scholar等のホームページURLも、このサイトのURLに更新すると発見経路を増やせます。旧サイトから恒久リダイレクトを設定する場合は、旧サイトを安全に管理できる状態で、対応するページごとに設定してください。
 
-日本語の氏名はHomeの本文・タイトル・説明文とPersonの `alternateName` に明示しています。日本語版ページを別途公開する設定ではありません。登録申請後も反映には数日から数週間かかることがあり、掲載や順位はGoogleが判断します。同じURLを繰り返し申請してもクロールは速くなりません。
+日本語の氏名はHomeのタイトル・説明文とPersonの `alternateName` に明示し、本文には追加表示しません。日本語版ページを別途公開する設定ではありません。登録申請後も反映には数日から数週間かかることがあり、掲載や順位はGoogleが判断します。同じURLを繰り返し申請してもクロールは速くなりません。
 
 参考：[URLの再クロールをGoogleにリクエストする](https://developers.google.com/search/docs/crawling-indexing/ask-google-to-recrawl?hl=ja)、[URL検査ツール](https://support.google.com/webmasters/answer/9012289?hl=ja)、[サイトの所有権の確認](https://support.google.com/webmasters/answer/9008080?hl=ja)。
 
