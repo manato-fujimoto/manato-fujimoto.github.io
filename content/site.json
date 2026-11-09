@@ -76,6 +76,20 @@
   ],
   "news": [
     {
+      "date": "2026-11-06",
+      "text": {
+        "en": "A paper accepted in the IPSJ Journal.",
+        "ja": "情報処理学会論文誌に論文が採択されました。"
+      },
+      "slug": "2026-11-06-ipsj-journal",
+      "category": "Journal",
+      "summary": "A Pen-Based Support System with an Accelerometer for Efficient Grading of Multiple-Choice Paper Tests.",
+      "body_html": "<p>One paper has been accepted for publication in <em><strong>“IPSJ Journal”</strong></em>.</p>",
+      "publications": [
+        "j039"
+      ]
+    },
+    {
       "date": "2026-08-27",
       "text": {
         "en": "A paper accepted for presentation at CNSM 2026.",
