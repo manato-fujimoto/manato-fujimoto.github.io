@@ -87,7 +87,13 @@
       "body_html": "<p>One paper has been accepted for publication in <em><strong>“IPSJ Journal”</strong></em>.</p>",
       "publications": [
         "j039"
-      ]
+      ],
+      "thumbnail": {
+        "src": "assets/news/j39-ipsj-journal.webp",
+        "alt": "Paper accepted in IPSJ Journal: A Pen-Based Support System with an Accelerometer for Efficient Grading of Multiple-Choice Paper Tests.",
+        "width": 1672,
+        "height": 941
+      }
     },
     {
       "date": "2026-08-27",

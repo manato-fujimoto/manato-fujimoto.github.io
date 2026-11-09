@@ -246,7 +246,7 @@ def home(lang):
     about = ''.join(f'<p>{text(p,lang)}</p>' for p in DATA['about'])
     about += '<ul class="keywords">'+''.join(f'<li>{text(t,lang)}</li>' for t in DATA['keywords'])+'</ul>'
     body += section('プロフィール' if ja else 'About', '<div class="about-copy">'+about+'</div>')
-    news_list = '<ul class="news-list">'+''.join(f'<li><time datetime="{E(n["date"])}">{E(n["date"].replace("-","."))}</time><span class="news-category">{E(n["category"])}</span><span class="news-item-title">{link(news_path(n),text(n["text"],lang))}</span></li>' for n in news_items()[:10])+'</ul>'
+    news_list = '<ul class="news-list">'+''.join(f'<li><time datetime="{E(n["date"])}">{E(n["date"].replace("-","."))}</time><span class="news-category">{E(n["category"])}</span><span class="news-item-title">{link(news_path(n), "<span>" + text(n["text"],lang) + "</span>" + news_thumbnail(n), "news-home-link") if n.get("thumbnail") else link(news_path(n),text(n["text"],lang))}</span></li>' for n in news_items()[:10])+'</ul>'
     all_news = link('news.html', 'View all news →', 'news-all-link')
     body += f'<section class="section" id="recent-news"><div class="section-heading news-home-heading"><h2>{"お知らせ" if ja else "Recent News"}</h2>{all_news}</div>{news_list}</section>'
     body += '<div class="two-columns">'+section('職歴' if ja else 'Employment',timeline(DATA['appointments'],lang))+section('学歴' if ja else 'Education',timeline(DATA['education'],lang))+'</div>'
@@ -305,6 +305,14 @@ def publication_item(p, lang, *, title_url=None, id_prefix=''):
 def news_meta(item):
     return f'<div class="news-card-meta"><span class="news-category">{E(item["category"])}</span><time class="news-date" datetime="{E(item["date"])}">{E(item["date"].replace("-", "."))}</time></div>'
 
+def news_thumbnail(item, root='', *, article=False):
+    thumbnail = item.get('thumbnail')
+    if not thumbnail:
+        return ''
+    alt = thumbnail['alt'] if article else ''
+    loading = 'eager' if article else 'lazy'
+    return f'<img class="news-thumbnail" src="{E(root + thumbnail["src"], quote=True)}" width="{thumbnail["width"]}" height="{thumbnail["height"]}" alt="{E(alt, quote=True)}" loading="{loading}" decoding="async">'
+
 def news(lang):
     body = intro('News', eyebrow='Latest updates')
     items = news_items()
@@ -319,7 +327,11 @@ def news(lang):
         body += f'<section class="news-archive" aria-labelledby="news-year-{E(year)}"><div class="section-heading"><h2 id="news-year-{E(year)}">{E(year)}</h2><span class="note" data-news-count>{len(yearly)} updates</span></div><ol class="news-grid">'
         for item in yearly:
             summary = news_meta(item) + f'<h3 class="news-card-title">{text(item["text"],lang)}</h3><p class="news-card-excerpt">{E(item["summary"])}</p><span class="news-read-link">Read article →</span>'
-            body += f'<li class="news-card" id="news-{E(item["date"])}" data-news-category="{E(item["category"].lower())}">{link(news_path(item), summary, "news-card-link")}</li>'
+            card_class = 'news-card-link'
+            if item.get('thumbnail'):
+                summary = news_thumbnail(item) + '<div class="news-card-copy">' + summary + '</div>'
+                card_class += ' news-card-with-thumbnail'
+            body += f'<li class="news-card" id="news-{E(item["date"])}" data-news-category="{E(item["category"].lower())}">{link(news_path(item), summary, card_class)}</li>'
         body += '</ol></section>'
     return body + '</div></div><p class="news-return">' + link('./#recent-news', '← Back to Recent News') + '</p>'
 
@@ -330,7 +342,8 @@ def news_article(item, lang):
     records = news_publications(item)
     citations = ''.join(publication_item(p, lang, title_url='../publications.html#' + p['id'], id_prefix='news-') for p in records)
     publication_heading = heading('Publications' if len(records) != 1 else 'Publication')
-    body += '<div class="article-body"><div class="news-announcement">' + item['body_html'] + publication_heading + '<ol class="publications news-publications">' + citations + '</ol></div></div>'
+    thumbnail = '<figure class="news-article-image">' + news_thumbnail(item, '../', article=True) + '</figure>' if item.get('thumbnail') else ''
+    body += '<div class="article-body">' + thumbnail + '<div class="news-announcement">' + item['body_html'] + publication_heading + '<ol class="publications news-publications">' + citations + '</ol></div></div>'
     body += '<footer class="article-end"><p class="news-return">' + link('../news.html', '← All news') + '</p><nav class="article-neighbors" aria-label="Other news articles">'
     items = news_items()
     index = next(i for i, other in enumerate(items) if other['slug'] == item['slug'])
