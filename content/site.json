@@ -145,7 +145,20 @@
       "body_html": "<p>One paper has been accepted for publication in the international journal <em><strong>“International Journal of Informatics Society</strong></em>.<strong>“</strong></p>",
       "publications": [
         "j038"
-      ]
+      ],
+      "thumbnail": {
+        "src": "assets/news/focussense-ijis.webp",
+        "alt": "Paper accepted in International Journal of Informatics Society: FocusSense: Usability Study of Dashboard Application for Deeplearning Based Concentration Estimation Using Multimodal Sensors.",
+        "width": 1672,
+        "height": 941
+      },
+      "social_image": {
+        "src": "assets/news/focussense-ijis-social.jpg",
+        "type": "image/jpeg",
+        "width": 1672,
+        "height": 941,
+        "alt": "Paper accepted in International Journal of Informatics Society: FocusSense: Usability Study of Dashboard Application for Deeplearning Based Concentration Estimation Using Multimodal Sensors."
+      }
     },
     {
       "date": "2026-07-20",
