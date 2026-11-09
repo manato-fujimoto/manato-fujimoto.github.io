@@ -1,5 +1,16 @@
 [
   {
+    "id": "j039",
+    "label": "J39",
+    "type": "journal",
+    "title": "A Pen-Based Support System with an Accelerometer for Efficient Grading of Multiple-Choice Paper Tests",
+    "authors": "Hiromichi Taniguchi, Ryo Katsuma, and Manato Fujimoto",
+    "venue": "IPSJ Journal, Vol. xx, No. x, pp. xxx-xxx, Feb. 2027.",
+    "year": "2027",
+    "accepted": true,
+    "url": ""
+  },
+  {
     "id": "j038",
     "label": "J38",
     "type": "journal",
