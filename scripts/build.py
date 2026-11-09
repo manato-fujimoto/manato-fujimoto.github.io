@@ -179,6 +179,21 @@ def shell(page, lang, body, news_item=None):
     full_title = title + ' | ' + ('大阪公立大学' if lang == 'ja' else 'Osaka Metropolitan University')
     description = news_item['summary'] if news_item is not None else (DATA['description'][lang] if page == 'index' else DATA['page_descriptions'][page])
     canonical = canonical_url(page)
+    social_image = news_item.get('social_image') if news_item is not None else None
+    image_url = site_url(social_image['src'] if social_image else 'assets/manato-fujimoto.png')
+    image_alt = social_image['alt'] if social_image else 'Portrait of Manato Fujimoto'
+    social_tags = ''
+    if social_image:
+        social_tags = f'''
+  <meta property="og:image:secure_url" content="{E(image_url, quote=True)}">
+  <meta property="og:image:type" content="{E(social_image['type'], quote=True)}">
+  <meta property="og:image:width" content="{social_image['width']}">
+  <meta property="og:image:height" content="{social_image['height']}">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{E(full_title, quote=True)}">
+  <meta name="twitter:description" content="{E(description, quote=True)}">
+  <meta name="twitter:image" content="{E(image_url, quote=True)}">
+  <meta name="twitter:image:alt" content="{E(image_alt, quote=True)}">'''
     svg = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="10" fill="#111b29"/><text x="32" y="42" text-anchor="middle" fill="#85bcff" font-family="Arial,sans-serif" font-size="28">MF</text></svg>'
     nav = ''.join(f'<li><a href="{home_href if p == "index" else root + p + ".html"}"' + (' aria-current="page"' if active_page == p else '') + f'>{NAV[lang][i]}</a></li>' for i,p in enumerate(PAGES))
     verification = DATA.get('google_site_verification', '')
@@ -196,13 +211,13 @@ def shell(page, lang, body, news_item=None):
   <meta name="author" content="Manato Fujimoto">{verification_meta}
   <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
   <link rel="canonical" href="{E(canonical, quote=True)}">
-  <meta property="og:type" content="website">
+  <meta property="og:type" content="{'article' if social_image else 'website'}">
   <meta property="og:site_name" content="{text(DATA['name'],lang)}">
   <meta property="og:title" content="{E(full_title, quote=True)}">
   <meta property="og:description" content="{E(description, quote=True)}">
   <meta property="og:url" content="{E(canonical, quote=True)}">
-  <meta property="og:image" content="{E(site_url('assets/manato-fujimoto.png'), quote=True)}">
-  <meta property="og:image:alt" content="Portrait of Manato Fujimoto">
+  <meta property="og:image" content="{E(image_url, quote=True)}">
+  <meta property="og:image:alt" content="{E(image_alt, quote=True)}">{social_tags}
   <script type="application/ld+json">{structured_data(page, full_title, description, news_item)}</script>
   <meta name="theme-color" content="#090b10">
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,{quote(svg)}">
