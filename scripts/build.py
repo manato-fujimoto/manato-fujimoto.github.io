@@ -349,7 +349,8 @@ def publications(lang):
     body += '<nav class="section-nav" aria-label="'+('業績の種別' if ja else 'Publication categories')+'">'+''.join(link('#'+key,label) for key,label in groups)+'</nav>'
     for kind,label in groups:
         items = [p for p in PUBS if p['type']==kind]
-        body += f'<section class="publication-group" id="{kind}">'+heading(label,f'<span class="note">{len(items)} {"件" if ja else "entries"}</span>')
+        count_label = '件' if ja else ('papers' if kind == 'journal' else 'entries')
+        body += f'<section class="publication-group" id="{kind}">'+heading(label,f'<span class="note">{len(items)} {count_label}</span>')
         if kind == 'journal':
             year, release = JOURNAL_METRICS['metric_year'], JOURNAL_METRICS['release_year']
             metric_note = f'掲載誌の{year}年Journal Impact Factor（{release}年公表）を、確認できた誌に表示しています。数値から出典を確認できます。' if ja else f'Journal Impact Factors are {year} values, released in {release}, shown where verified. Each value links to its source.'
