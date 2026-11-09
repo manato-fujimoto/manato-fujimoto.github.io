@@ -12,6 +12,18 @@
     "url": ""
   },
   {
+    "id": "j037",
+    "label": "J37",
+    "type": "journal",
+    "title": "[Invited Paper] In-body Cybernetic Avatar Localization Using Quasi-static Magnetic Field Based on Machine Learning for Future Medicine and Healthcare",
+    "authors": "Takumi Kobayashi, Taiki Egusa, Yuki Matsuhiro, Jaakko Hyry, Jens Kirchner, Georg Fischer, Manato Fujimoto, Daisuke Anzai",
+    "venue": "IEICE Transactions on Communications — accepted; scheduled for 2027.",
+    "year": "2027",
+    "accepted": true,
+    "international_coauthorship": true,
+    "url": "https://ieeexplore.ieee.org/document/11611596"
+  },
+  {
     "id": "j038",
     "label": "J38",
     "type": "journal",
@@ -23,18 +35,6 @@
     "corresponding": true,
     "international_coauthorship": true,
     "url": ""
-  },
-  {
-    "id": "j037",
-    "label": "J37",
-    "type": "journal",
-    "title": "[Invited Paper] In-body Cybernetic Avatar Localization Using Quasi-static Magnetic Field Based on Machine Learning for Future Medicine and Healthcare",
-    "authors": "Takumi Kobayashi, Taiki Egusa, Yuki Matsuhiro, Jaakko Hyry, Jens Kirchner, Georg Fischer, Manato Fujimoto, Daisuke Anzai",
-    "venue": "IEICE Transactions on Communications — accepted; scheduled for 2027.",
-    "year": "2027",
-    "accepted": true,
-    "international_coauthorship": true,
-    "url": "https://ieeexplore.ieee.org/document/11611596"
   },
   {
     "id": "j036",
