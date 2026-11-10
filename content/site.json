@@ -188,7 +188,20 @@
       "body_html": "<p>One paper has been accepted for publication in the international journal <em><strong>“Applied Gerontology</strong></em>.<strong>“</strong></p>",
       "publications": [
         "j035"
-      ]
+      ],
+      "thumbnail": {
+        "src": "assets/news/2026-07-11-applied-gerontology.jpg",
+        "alt": "Paper accepted in Applied Gerontology: A case study of the “Be supporters!”: Promoting well-being among nursing home residents",
+        "width": 1672,
+        "height": 941
+      },
+      "social_image": {
+        "src": "assets/news/2026-07-11-applied-gerontology.jpg",
+        "type": "image/jpeg",
+        "width": 1672,
+        "height": 941,
+        "alt": "Paper accepted in Applied Gerontology: A case study of the “Be supporters!”: Promoting well-being among nursing home residents"
+      }
     },
     {
       "date": "2026-07-02",
@@ -203,7 +216,20 @@
       "body_html": "<p>One paper has been accepted for publication in the international journal <em><strong>“IEICE Transactions on Communications</strong></em>.<strong>“</strong></p>",
       "publications": [
         "j037"
-      ]
+      ],
+      "thumbnail": {
+        "src": "assets/news/2026-07-02-in-body-localization.jpg",
+        "alt": "Paper accepted in IEICE Transactions on Communications: [Invited Paper] In-body Cybernetic Avatar Localization Using Quasi-static Magnetic Field Based on Machine Learning for Future Medicine and Healthcare",
+        "width": 1671,
+        "height": 941
+      },
+      "social_image": {
+        "src": "assets/news/2026-07-02-in-body-localization.jpg",
+        "type": "image/jpeg",
+        "width": 1671,
+        "height": 941,
+        "alt": "Paper accepted in IEICE Transactions on Communications: [Invited Paper] In-body Cybernetic Avatar Localization Using Quasi-static Magnetic Field Based on Machine Learning for Future Medicine and Healthcare"
+      }
     },
     {
       "date": "2026-05-03",
@@ -217,7 +243,20 @@
       "body_html": "<p>One paper has been accepted for publication in the international journal <em><strong>“IEEE Journal of Electromagnetics, RF, and Microwaves in Medicine and Biology”</strong></em>.</p>",
       "publications": [
         "j036"
-      ]
+      ],
+      "thumbnail": {
+        "src": "assets/news/2026-05-03-ieee-jerm.jpg",
+        "alt": "Paper accepted in IEEE Journal of Electromagnetics, RF, and Microwaves in Medicine and Biology: Power and Waveform Optimization for Implant Ultra-Wideband Communications Enhanced by Dynamic Sparse Control",
+        "width": 1672,
+        "height": 941
+      },
+      "social_image": {
+        "src": "assets/news/2026-05-03-ieee-jerm.jpg",
+        "type": "image/jpeg",
+        "width": 1672,
+        "height": 941,
+        "alt": "Paper accepted in IEEE Journal of Electromagnetics, RF, and Microwaves in Medicine and Biology: Power and Waveform Optimization for Implant Ultra-Wideband Communications Enhanced by Dynamic Sparse Control"
+      }
     },
     {
       "date": "2026-04-12",
@@ -245,7 +284,20 @@
       "body_html": "<p>One paper has been accepted for publication in the international journal <em><strong>“IEEE Open Journal of the Computer Society”</strong></em>.</p>",
       "publications": [
         "j033"
-      ]
+      ],
+      "thumbnail": {
+        "src": "assets/news/2026-02-01-ieee-ojcs.jpg",
+        "alt": "Paper accepted in IEEE Open Journal of the Computer Society: zk-REAL: A Zero-Knowledge-Based Protocol for Repeated Image Edit Authenticity Proof with Lattice Hashing",
+        "width": 1672,
+        "height": 941
+      },
+      "social_image": {
+        "src": "assets/news/2026-02-01-ieee-ojcs.jpg",
+        "type": "image/jpeg",
+        "width": 1672,
+        "height": 941,
+        "alt": "Paper accepted in IEEE Open Journal of the Computer Society: zk-REAL: A Zero-Knowledge-Based Protocol for Repeated Image Edit Authenticity Proof with Lattice Hashing"
+      }
     },
     {
       "date": "2026-01-29",
@@ -259,7 +311,20 @@
       "body_html": "<p>One paper has been accepted for publication in the international journal <em><strong>“International Journal of Activity and Behavior Computing”</strong></em>.</p>",
       "publications": [
         "j034"
-      ]
+      ],
+      "thumbnail": {
+        "src": "assets/news/2026-01-29-ijabc.jpg",
+        "alt": "Paper accepted in International Journal of Activity and Behavior Computing: SipSense: Acoustic Sensing of Beverage Type and Volume Using Dual-Microphone Wearable System",
+        "width": 1672,
+        "height": 941
+      },
+      "social_image": {
+        "src": "assets/news/2026-01-29-ijabc.jpg",
+        "type": "image/jpeg",
+        "width": 1672,
+        "height": 941,
+        "alt": "Paper accepted in International Journal of Activity and Behavior Computing: SipSense: Acoustic Sensing of Beverage Type and Volume Using Dual-Microphone Wearable System"
+      }
     },
     {
       "date": "2026-01-15",
@@ -273,7 +338,20 @@
       "body_html": "<p>One paper has been accepted for publication in the international journal <em><strong>“Scientific Reports”</strong></em>.</p>",
       "publications": [
         "j032"
-      ]
+      ],
+      "thumbnail": {
+        "src": "assets/news/2026-01-15-scientific-reports.jpg",
+        "alt": "Paper accepted in Scientific Reports: Weight Optimization of MIMO-UWB Distributed Beamforming for Implant Communications",
+        "width": 1672,
+        "height": 941
+      },
+      "social_image": {
+        "src": "assets/news/2026-01-15-scientific-reports.jpg",
+        "type": "image/jpeg",
+        "width": 1672,
+        "height": 941,
+        "alt": "Paper accepted in Scientific Reports: Weight Optimization of MIMO-UWB Distributed Beamforming for Implant Communications"
+      }
     }
   ],
   "appointments": [
