@@ -114,7 +114,20 @@
       "body_html": "<p>One paper has been accepted for presentation at CNSM 2026, which will be held in Madrid, Spain, from 26 to 30 October 2026.</p>",
       "publications": [
         "c084"
-      ]
+      ],
+      "thumbnail": {
+        "src": "assets/news/2026-08-27-cnsm-2026-green.jpg",
+        "alt": "Paper accepted at 22nd International Conference on Network and Service Management (CNSM 2026): RPL-FedID: Reliable Pseudo-Label-Enhanced Federated Device Identification",
+        "width": 1672,
+        "height": 941
+      },
+      "social_image": {
+        "src": "assets/news/2026-08-27-cnsm-2026-green.jpg",
+        "type": "image/jpeg",
+        "width": 1672,
+        "height": 941,
+        "alt": "Paper accepted at 22nd International Conference on Network and Service Management (CNSM 2026): RPL-FedID: Reliable Pseudo-Label-Enhanced Federated Device Identification"
+      }
     },
     {
       "date": "2026-07-28",
@@ -130,7 +143,20 @@
       "publications": [
         "c082",
         "c081"
-      ]
+      ],
+      "thumbnail": {
+        "src": "assets/news/2026-07-28-ismict-2026-green.jpg",
+        "alt": "Papers accepted at 20th IEEE International Symposium on Medical Information and Communication Technology (ISMICT 2026): An Investigation of Effective Feature Sets for Machine Learning-Based Implantable Device Localization; Experimental Evaluation of WLAN CSI-Based Device-Free Indoor Localization",
+        "width": 1672,
+        "height": 941
+      },
+      "social_image": {
+        "src": "assets/news/2026-07-28-ismict-2026-green.jpg",
+        "type": "image/jpeg",
+        "width": 1672,
+        "height": 941,
+        "alt": "Papers accepted at 20th IEEE International Symposium on Medical Information and Communication Technology (ISMICT 2026): An Investigation of Effective Feature Sets for Machine Learning-Based Implantable Device Localization; Experimental Evaluation of WLAN CSI-Based Device-Free Indoor Localization"
+      }
     },
     {
       "date": "2026-07-26",
@@ -173,7 +199,20 @@
       "body_html": "<p>One paper has been accepted for presentation at <a href=\"https://www.ubicomp.org/ubicomp-iswc-2026/\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"cursor-interaction\">Ubicomp/ISWC 2026 – Poster Session –</a>, which will be held in Shanghai, China, from 13 to 15 October 2026.</p>",
       "publications": [
         "c083"
-      ]
+      ],
+      "thumbnail": {
+        "src": "assets/news/2026-07-20-aidol-green.jpg",
+        "alt": "Paper accepted at UbiComp / ISWC 2026 — Poster Session: AIDOL: Augmenting Immersion with Dynamic Optical Lighting for Inducing Behavior Change in Live Concert Viewing",
+        "width": 1672,
+        "height": 941
+      },
+      "social_image": {
+        "src": "assets/news/2026-07-20-aidol-green.jpg",
+        "type": "image/jpeg",
+        "width": 1672,
+        "height": 941,
+        "alt": "Paper accepted at UbiComp / ISWC 2026 — Poster Session: AIDOL: Augmenting Immersion with Dynamic Optical Lighting for Inducing Behavior Change in Live Concert Viewing"
+      }
     },
     {
       "date": "2026-07-11",
@@ -270,7 +309,20 @@
       "body_html": "<p>One short paper has been accepted for presentation at COMPSAC 2026, which will be held in Madrid, Spain, from 7 to 10 July 2026.</p>",
       "publications": [
         "c080"
-      ]
+      ],
+      "thumbnail": {
+        "src": "assets/news/2026-04-12-compsac-2026-green.jpg",
+        "alt": "Paper accepted at IEEE International Conference on Computers, Software, and Applications (COMPSAC 2026) — Short Paper: Realization of Application-aware Networking by Using Information-Centric Networking",
+        "width": 1671,
+        "height": 941
+      },
+      "social_image": {
+        "src": "assets/news/2026-04-12-compsac-2026-green.jpg",
+        "type": "image/jpeg",
+        "width": 1671,
+        "height": 941,
+        "alt": "Paper accepted at IEEE International Conference on Computers, Software, and Applications (COMPSAC 2026) — Short Paper: Realization of Application-aware Networking by Using Information-Centric Networking"
+      }
     },
     {
       "date": "2026-02-01",
