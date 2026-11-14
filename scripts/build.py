@@ -200,7 +200,7 @@ def shell(page, lang, body, news_item=None):
     nav = ''.join(f'<li><a href="{home_href if p == "index" else root + p + ".html"}"' + (' aria-current="page"' if active_page == p else '') + f'>{NAV[lang][i]}</a></li>' for i,p in enumerate(PAGES))
     verification = DATA.get('google_site_verification', '')
     verification_meta = f'\n  <meta name="google-site-verification" content="{E(verification, quote=True)}">' if verification and page == 'index' else ''
-    page_scripts = f'\n  <script src="{root}assets/publications.js" defer></script>' if page == 'publications' else ''
+    page_scripts = f'\n  <link rel="stylesheet" href="{root}assets/timeline.css">\n  <script src="{root}assets/publications.js" defer></script>\n  <script src="{root}assets/timeline.js" defer></script>' if page == 'publications' else ''
     if page == 'news':
         page_scripts += f'\n  <script src="{root}assets/news.js" defer></script>'
     return f'''<!doctype html>
@@ -380,7 +380,8 @@ def publications(lang):
     ja = lang == 'ja'
     body = intro('研究業績' if ja else 'Publications', eyebrow='Publications')
     groups = [('journal','学術論文' if ja else 'Journal Articles'),('conference','国際会議論文' if ja else 'International Conference Proceedings'),('domestic-conference','国内学会発表' if ja else 'Domestic Conference')]
-    body += '<nav class="section-nav" aria-label="'+('業績の種別' if ja else 'Publication categories')+'">'+''.join(link('#'+key,label) for key,label in groups)+'</nav>'
+    timeline_label = '業績タイムライン' if ja else 'Output Timeline'
+    body += '<nav class="section-nav" aria-label="'+('業績の種別' if ja else 'Publication categories')+'">'+''.join(link('#'+key,label) for key,label in groups+[('output-timeline',timeline_label)])+'</nav>'
     for kind,label in groups:
         items = [p for p in PUBS if p['type']==kind]
         count_label = '件' if ja else 'papers'
@@ -391,6 +392,15 @@ def publications(lang):
             body += f'<p class="metrics-note">{metric_note}</p>'
         body += '<ol class="publications">'+''.join(publication_item(p,lang) for p in items)+'</ol>'
         body += '</section>'
+    # Output Timeline: assets/timeline.js draws it from the lists above; only the years are passed here.
+    kinds = {key for key,_ in groups}
+    timeline_items = [p for p in PUBS if p['type'] in kinds]
+    years = {p['id']: int(p['year']) for p in timeline_items}
+    span = f'{min(years.values())}–{max(years.values())}'
+    years_json = json.dumps(years, separators=(',',':')).replace('</','<\\/')
+    fallback = 'このタイムラインの表示にはJavaScriptが必要です。' if ja else 'The timeline needs JavaScript. The full lists are available under the other tabs.'
+    body += f'<section class="publication-group" id="output-timeline">'+heading(timeline_label,f'<span class="note">{len(timeline_items)} {"件" if ja else "items"}, {span}</span>')
+    body += f'<div class="ot" id="ot-root"><noscript><p>{fallback}</p></noscript></div><script type="application/json" id="ot-years">{years_json}</script></section>'
     return body
 
 def services(lang):

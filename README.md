@@ -69,6 +69,14 @@ python3 scripts/build.py
 
 **HTMLを直接編集した後に再生成すると、その直接編集は上書きされます。** 継続的に更新する場合は、JSONと生成スクリプトを編集元として使ってください。新しい論文を追加するときは既存の `id` を変更せず、一意の `id` と `label` を追加すると、研究紹介からの論文リンクを維持できます。
 
+### PublicationsのOutput Timelineタブ
+
+Publicationsページの4つ目のタブ「Output Timeline」は、同じページの論文リスト（学術論文・国際会議・国内学会発表）から自動で描画します。1マスが1件で、マスを選ぶとリスト内の該当業績へ移動します。
+
+- 表示用のファイルは `docs/assets/timeline.js` と `docs/assets/timeline.css` です。
+- 年の情報だけを `scripts/build.py` が `content/publications.json` から埋め込みます。論文を追加・修正して `python3 scripts/build.py` を実行すれば、タイムラインにも反映されます。
+- 研究トピックの分類と検索の関連語は、`docs/assets/timeline.js` 内の `TOPICS`、`DICT`、`EN_JA` で定義しています。タイトル中の語による自動分類です。
+
 ### NewsとPublicationsの論文情報を連動させる
 
 論文情報の編集元は `content/publications.json` に一本化しています。巻・号・ページは対象論文の `venue` に入力してください。タイトル、著者、URL、採択状態、タグも同じレコードで管理します。
