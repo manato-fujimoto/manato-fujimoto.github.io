@@ -39,7 +39,7 @@ IWIN 2027の年・役職・会議名は、ユーザーから提示された表�
 
 ## Journal Impact Factor
 
-確認日：2026-09-13。**2026年に公表された2025年JIFに統一**し、確認できた16誌・28件の学術論文に表示しています。掲載誌単位の指標であり、論文出版年当時の値を再現したものではありません。
+確認日：2026-09-13（SICE JCMSIは2026-11-14に追加確認）。**2026年に公表された2025年JIFに統一**し、確認できた17誌・29件の学術論文に表示しています。掲載誌単位の指標であり、論文出版年当時の値を再現したものではありません。
 
 出版社・学会の情報を優先しました。出版社ページを取得できない場合や対象年の記載がない場合は、年度が明記されたBioxBio等の資料を使用し、確認元を区別して記録しています。数値のリンク先は実際にその年度を確認した資料です。
 
@@ -61,6 +61,7 @@ IWIN 2027の年・役職・会議名は、ユーザーから提示された表�
 | Journal of Sensors | 1.9 | [出版社・学会](https://onlinelibrary.wiley.com/journal/9161/journal-metrics) |
 | Computer Communications | 4.2 | [BioxBio（2025年・2026年更新）](https://www.bioxbio.com/journal/COMPUT-COMMUN) |
 | IEICE Transactions on Fundamentals of Electronics, Communications and Computer Sciences | 0.6 | [BioxBio（2025年・2026年更新）](https://www.bioxbio.com/journal/IEICE-T-FUND-ELECTR)・[学会の表示値と照合](https://globals.ieice.org/en_transactions/fundamentals) |
+| SICE Journal of Control, Measurement, and System Integration | 0.8 | [Taylor & Francis（2025年JIF、2026-11-14確認）](https://www.tandfonline.com/action/journalInformation?journalCode=tmsi20&show=aimsScope) |
 
 - IEEEの2誌は2026年8月版の一覧を参照しています。1ページ目のJ-ERMは2.4、OJCSは6.0です。3ページ目の脚注で、2025年のデータを2026年6月に公表したことを確認しています。5-Year Impact FactorやCiteScoreの列は使っていません。
 - Journal of Sensorsは、ユーザー指定ページから辿ったWileyのJournal Metricsに明記された2025年JIF 1.9を採用しています。
@@ -68,6 +69,8 @@ IWIN 2027の年・役職・会議名は、ユーザーから提示された表�
 - Sensors and Materialsは旧年の1.2から2025年の1.1へ更新しています。IEICEの2誌は学会の表示値とBioxBioの対象年付きの値を照合しました。
 - MDPI各誌の発表および統計ページ、Scientific ReportsとComputational Intelligenceの指標ページは2025年値を確認しています。
 
-`content/journal-metrics.json` の `unverified_venues` に記載した8誌は、2025年JIFの確認ができていないため非表示です。これはIF未付与の断定ではありません。SICE Journal of Control, Measurement, and System IntegrationおよびInternational Journal of Electronics Lettersについても、対象年を照合できない数値やScopus由来の独自指標は転記していません。
+SICE Journal of Control, Measurement, and System Integrationは、Taylor & FrancisのJournal metricsに明記された2025年Impact Factor 0.8を採用し、J10に表示しています。
+
+`content/journal-metrics.json` の `unverified_venues` に記載した7誌は、2025年JIFの確認ができていないため非表示です。これはIF未付与の断定ではありません。International Journal of Electronics Lettersについても、対象年を照合できない数値やScopus由来の独自指標は転記していません。
 
 年度の混在を防ぐため、生成スクリプトは各誌の `year` が全体の `metric_year` と一致しなければ停止します。古い値・対象年不明の値・確認日を添えた代替表示は行いません。

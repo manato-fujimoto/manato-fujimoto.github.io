@@ -2,7 +2,7 @@
   "metric": "Journal Impact Factor",
   "metric_year": 2025,
   "release_year": 2026,
-  "checked_on": "2026-09-13",
+  "checked_on": "2026-11-14",
   "journals": [
     {
       "venue_name": "IEICE Transactions on Communications",
@@ -119,6 +119,14 @@
       "publisher_url": "https://globals.ieice.org/en_transactions/fundamentals",
       "source_type": "cross-checked",
       "note": "The society page gives 0.6 without a metric year. BioxBio explicitly identifies the same value as 2025 (2026 update)."
+    },
+    {
+      "venue_name": "SICE Journal of Control, Measurement, and System Integration",
+      "value": "0.8",
+      "year": 2025,
+      "source_url": "https://www.tandfonline.com/action/journalInformation?journalCode=tmsi20&show=aimsScope",
+      "checked_on": "2026-11-14",
+      "note": "Taylor & Francis explicitly lists 0.8 (2025) Impact Factor under Journal metrics."
     }
   ],
   "unverified_venues": [
@@ -127,7 +135,6 @@
     "International Journal of Activity and Behavior Computing",
     "IPSJ Journal",
     "IPSJ Transactions on Consumer Devices & Systems",
-    "SICE Journal of Control, Measurement, and System Integration",
     "International Journal of Electronics Letters",
     "International Journal of Wireless Communications and Mobile Computing"
   ],
