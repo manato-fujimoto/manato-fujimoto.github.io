@@ -133,6 +133,7 @@ main { padding-block: 4rem 5rem; }
 .pub-tags { display: flex; flex-wrap: wrap; align-items: center; gap: .375rem; margin-top: .625rem; }
 .pub-tags .status { display: inline-flex; align-items: center; margin: 0; padding: .125rem .5rem; border: 0; font-size: .75rem; vertical-align: baseline; }
 .pub-tags .status-japanese { background: #3c3222; color: #e5cda0; }
+.pub-tags .status-award { max-width: 100%; overflow-wrap: anywhere; text-align: left; }
 .service-list { list-style: none; padding: 0; margin: 0; }
 .service-list li { display: grid; grid-template-columns: 5rem minmax(0,1fr); gap: 1rem; padding: 1.3rem 0; border-bottom: 1px solid var(--line); margin: 0; }
 .service-list .year { font-size: .9rem; color: var(--blue); padding-top: .1rem; }

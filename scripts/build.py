@@ -86,10 +86,10 @@ def validate_search_metadata():
 
 def scholarly_article(p, person_id):
     authors = []
-    for raw_name in p['authors'].split(','):
+    for raw_name in re.split(r'[,，、]', p['authors']):
         name = raw_name.strip().removeprefix('and ')
         author = {'@type': 'Person', 'name': name}
-        if name == DATA['name']['en']:
+        if name == DATA['name']['en'] or re.sub(r'\s+', '', name) == re.sub(r'\s+', '', DATA['name']['ja']):
             author['@id'] = person_id
         authors.append(author)
     url = canonical_url('publications') + '#' + p['id']
@@ -104,6 +104,8 @@ def scholarly_article(p, person_id):
         article['inLanguage'] = p['language']
     if p['accepted']:
         article['creativeWorkStatus'] = 'Accepted'
+    if p.get('scheduled'):
+        article['creativeWorkStatus'] = 'Scheduled presentation'
     return article
 
 def structured_data(page, title, description, news_item=None):
@@ -300,12 +302,16 @@ def publication_item(p, lang, *, title_url=None, id_prefix=''):
     tags = ''
     if p['accepted']:
         tags += f'<span class="status">{"採択済み" if lang == "ja" else "Accepted"}</span>'
+    if p.get('scheduled'):
+        tags += '<span class="status status-scheduled">発表予定</span>'
     if p['type'] == 'journal' and p.get('language') == 'ja':
         tags += '<span class="status status-japanese">Japanese</span>'
     if p['type'] == 'journal' and p.get('corresponding'):
         tags += '<span class="status status-corresponding">Corresponding</span>'
     if p['type'] == 'journal' and p.get('international_coauthorship'):
         tags += '<span class="status status-international">International coauthorship</span>'
+    for award in p.get('awards', []):
+        tags += f'<span class="status status-award">{E(award)}</span>'
     authors = E(p['authors'])
     metric = journal_metric(p)
     metrics = ''
@@ -373,7 +379,7 @@ def news_article(item, lang):
 def publications(lang):
     ja = lang == 'ja'
     body = intro('研究業績' if ja else 'Publications', eyebrow='Publications')
-    groups = [('journal','学術論文' if ja else 'Journal Articles'),('conference','国際会議論文' if ja else 'International Conference Proceedings')]
+    groups = [('journal','学術論文' if ja else 'Journal Articles'),('conference','国際会議論文' if ja else 'International Conference Proceedings'),('domestic-conference','国内学会発表' if ja else 'Domestic Conference')]
     body += '<nav class="section-nav" aria-label="'+('業績の種別' if ja else 'Publication categories')+'">'+''.join(link('#'+key,label) for key,label in groups)+'</nav>'
     for kind,label in groups:
         items = [p for p in PUBS if p['type']==kind]
