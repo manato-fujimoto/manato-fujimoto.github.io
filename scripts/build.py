@@ -2,6 +2,7 @@
 """Rebuild the English static site using Python 3's standard library."""
 from pathlib import Path
 from html import escape
+from hashlib import sha256
 from urllib.parse import quote, urljoin, urlsplit
 import xml.etree.ElementTree as ET
 import json
@@ -200,7 +201,11 @@ def shell(page, lang, body, news_item=None):
     nav = ''.join(f'<li><a href="{home_href if p == "index" else root + p + ".html"}"' + (' aria-current="page"' if active_page == p else '') + f'>{NAV[lang][i]}</a></li>' for i,p in enumerate(PAGES))
     verification = DATA.get('google_site_verification', '')
     verification_meta = f'\n  <meta name="google-site-verification" content="{E(verification, quote=True)}">' if verification and page == 'index' else ''
-    page_scripts = f'\n  <link rel="stylesheet" href="{root}assets/timeline.css">\n  <script src="{root}assets/publications.js" defer></script>\n  <script src="{root}assets/timeline.js" defer></script>' if page == 'publications' else ''
+    page_scripts = ''
+    if page == 'publications':
+        timeline_css_version = sha256((OUT / 'assets/timeline.css').read_bytes()).hexdigest()[:12]
+        timeline_js_version = sha256((OUT / 'assets/timeline.js').read_bytes()).hexdigest()[:12]
+        page_scripts = f'\n  <link rel="stylesheet" href="{root}assets/timeline.css?v={timeline_css_version}">\n  <script src="{root}assets/publications.js" defer></script>\n  <script src="{root}assets/timeline.js?v={timeline_js_version}" defer></script>'
     if page == 'news':
         page_scripts += f'\n  <script src="{root}assets/news.js" defer></script>'
     return f'''<!doctype html>
