@@ -14,6 +14,7 @@ OUT = ROOT / 'docs'
 DATA = json.loads((ROOT / 'content/site.json').read_text(encoding='utf-8'))
 PUBS = json.loads((ROOT / 'content/publications.json').read_text(encoding='utf-8'))
 JOURNAL_METRICS = json.loads((ROOT / 'content/journal-metrics.json').read_text(encoding='utf-8'))
+FUNDING = json.loads((ROOT / 'content/funding.json').read_text(encoding='utf-8'))
 E = escape
 PAGES = ['index', 'news', 'research', 'publications', 'services']
 NAV = {'en': ['Home', 'News', 'Research', 'Publications', 'Services'], 'ja': ['ホーム', 'お知らせ', '研究内容', '研究業績', '学会活動']}
@@ -206,6 +207,10 @@ def shell(page, lang, body, news_item=None):
         timeline_css_version = sha256((OUT / 'assets/timeline.css').read_bytes()).hexdigest()[:12]
         timeline_js_version = sha256((OUT / 'assets/timeline.js').read_bytes()).hexdigest()[:12]
         page_scripts = f'\n  <link rel="stylesheet" href="{root}assets/timeline.css?v={timeline_css_version}">\n  <script src="{root}assets/publications.js" defer></script>\n  <script src="{root}assets/timeline.js?v={timeline_js_version}" defer></script>'
+    if page == 'publications':
+        funding_css_version = sha256((OUT / 'assets/funding.css').read_bytes()).hexdigest()[:12]
+        funding_js_version = sha256((OUT / 'assets/funding.js').read_bytes()).hexdigest()[:12]
+        page_scripts += f'\n  <link rel="stylesheet" href="{root}assets/funding.css?v={funding_css_version}">\n  <script src="{root}assets/funding.js?v={funding_js_version}" defer></script>'
     if page == 'news':
         page_scripts += f'\n  <script src="{root}assets/news.js" defer></script>'
     return f'''<!doctype html>
@@ -381,6 +386,10 @@ def news_article(item, lang):
         body += link(older['slug'] + '.html', '<span>Older article →</span>' + text(older['text'], lang), 'article-neighbor article-neighbor-older')
     return body + '</nav></footer></article>'
 
+def research_funding():
+    records = json.dumps(FUNDING, ensure_ascii=False, separators=(',', ':')).replace('</', '<\\/')
+    return '<section id="research-funding" class="rf" lang="en" aria-labelledby="rf-title">\n  <div class="rf-heading"><h3 id="rf-title">Research Funding</h3><span>FISCAL YEARS · 2014–2026</span></div>\n  <p class="rf-caption">Bars show project periods by fiscal year. Hover for the project title and Fujimoto’s role, or tap for details.</p>\n  <div id="rf-main-chart"></div>\n  <details class="rf-more"><summary>Other Funding <span>Foundation grants &amp; Society 5.0 · 4 projects</span></summary><div id="rf-other-chart"></div></details>\n  <div id="rf-detail" class="rf-detail" aria-live="polite" aria-atomic="true" hidden></div>\n  <p class="rf-source">Funding records: Based on the supplied research record. Awards and extensions from FY2024 onward are not included. Project titles are English translations.</p>\n</section>' + f'<script type="application/json" id="rf-data">{records}</script>'
+
 def publications(lang):
     ja = lang == 'ja'
     body = intro('研究業績' if ja else 'Publications', eyebrow='Publications')
@@ -405,7 +414,7 @@ def publications(lang):
     years_json = json.dumps(years, separators=(',',':')).replace('</','<\\/')
     fallback = 'このタイムラインの表示にはJavaScriptが必要です。' if ja else 'The timeline needs JavaScript. The full lists are available under the other tabs.'
     body += f'<section class="publication-group" id="output-timeline">'+heading(timeline_label,f'<span class="note">{len(timeline_items)} {"件" if ja else "items"}, {span}</span>')
-    body += f'<div class="ot" id="ot-root"><noscript><p>{fallback}</p></noscript></div><script type="application/json" id="ot-years">{years_json}</script></section>'
+    body += f'<div class="ot" id="ot-root"><noscript><p>{fallback}</p></noscript></div><script type="application/json" id="ot-years">{years_json}</script>' + research_funding() + '</section>'
     return body
 
 def services(lang):
