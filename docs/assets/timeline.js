@@ -58,7 +58,7 @@
   root.textContent = '';
   const recent = el('div', 'ot-recent'); recent.setAttribute('role', 'status'); recent.setAttribute('aria-atomic', 'true');
   const recentInfo = el('div', 'ot-recent-info'), recentPeriod = el('strong', 'ot-recent-period ot-mono');
-  recentInfo.append(el('span', 'ot-recent-label', 'Last 5 years'), recentPeriod, el('span', 'ot-recent-detail', 'Journal + International + Domestic'));
+  recentInfo.append(el('span', 'ot-recent-label', 'Last 5 years'), recentPeriod);
   const recentMetric = el('div', 'ot-recent-metric'), recentTotal = el('strong', 'ot-mono');
   recentMetric.append(recentTotal, el('span', '', 'publications'));
   recent.append(recentInfo, recentMetric);
