@@ -1,6 +1,13 @@
 /* Output Timeline (Publications page) */
 .ot { --ot-j: #3987e5; --ot-c: #e66767; --ot-d: #199e70; --ot-h1: #0d366b; --ot-h2: #184f95; --ot-h3: #256abf; --ot-h4: #3987e5; --ot-h5: #86b6ef; margin-top: 1.4rem; }
 .ot-mono { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-variant-numeric: tabular-nums; }
+.ot-recent { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .8rem 1.5rem; margin-bottom: .9rem; padding: 1rem 1.2rem; color: var(--ink); background: var(--wash); border: 1px solid var(--line); border-left: 3px solid var(--ot-j); border-radius: 6px; }
+.ot-recent-info { display: grid; flex: 1; min-width: 0; gap: .2rem; }
+.ot-recent-label { color: var(--blue); font-size: .8rem; font-weight: 600; }
+.ot-recent-period { color: var(--navy); font-size: 1.2rem; font-weight: 500; }
+.ot-recent-detail, .ot-recent-metric span { color: var(--muted); font-size: .78rem; }
+.ot-recent-metric { display: grid; flex-shrink: 0; gap: .15rem; text-align: right; }
+.ot-recent-metric strong { color: var(--navy); font-size: 2.3rem; line-height: 1.15; font-weight: 500; }
 .ot-tiles { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .7rem; }
 .ot-tile { font: inherit; text-align: left; line-height: 1.5; color: var(--ink); background: var(--wash); border: 1px solid var(--line); border-radius: 6px; padding: .7rem .9rem .8rem; cursor: pointer; }
 .ot-tile:hover { border-color: #2f517b; background: var(--surface-hover); }

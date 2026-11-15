@@ -47,8 +47,21 @@
   const YEARS = Array.from({length: Y1 - Y0 + 1}, (_, i) => Y0 + i);
   const state = {types: new Set(TYPES.map(t => t.k)), year: null, topic: null};
 
+  const yearInJapan = new Intl.DateTimeFormat('en', {timeZone: 'Asia/Tokyo', year: 'numeric'});
+  function fiveYearSummary(now) {
+    const endYear = Number(yearInJapan.format(now)), startYear = endYear - 4;
+    const total = PUBS.filter(p => p.y >= startYear && p.y <= endYear).length;
+    return {startYear, endYear, total};
+  }
+
   // ---------- skeleton ----------
   root.textContent = '';
+  const recent = el('div', 'ot-recent'); recent.setAttribute('role', 'status'); recent.setAttribute('aria-atomic', 'true');
+  const recentInfo = el('div', 'ot-recent-info'), recentPeriod = el('strong', 'ot-recent-period ot-mono');
+  recentInfo.append(el('span', 'ot-recent-label', 'Last 5 years'), recentPeriod, el('span', 'ot-recent-detail', 'Journal + International + Domestic'));
+  const recentMetric = el('div', 'ot-recent-metric'), recentTotal = el('strong', 'ot-mono');
+  recentMetric.append(recentTotal, el('span', '', 'publications'));
+  recent.append(recentInfo, recentMetric);
   const tiles = el('div', 'ot-tiles'); tiles.setAttribute('role', 'group'); tiles.setAttribute('aria-label', 'Filter by category');
   const status = el('div', 'ot-status'); status.setAttribute('aria-live', 'polite');
   const scroll = el('div', 'ot-scroll'), viz = el('div', 'ot-viz');
@@ -62,7 +75,25 @@
   viz.append(h1, units, years, h2, heat, scale); scroll.append(viz);
   const foot = el('p', 'ot-foot', 'Years are publication or presentation years and include accepted and scheduled items. Topics are assigned automatically from words in the title, so an item can count under several topics or under none.');
   const tip = el('div', 'ot-tip'); tip.setAttribute('role', 'status');
-  root.append(tiles, status, scroll, foot, tip);
+  root.append(recent, tiles, status, scroll, foot, tip);
+
+  // Use Japan's calendar year, independently of chart filters and visitor time zone.
+  let recentTimer;
+  function updateRecentOutput() {
+    clearTimeout(recentTimer);
+    const now = new Date(), summary = fiveYearSummary(now);
+    const period = summary.startYear + '–' + summary.endYear;
+    if (recentPeriod.textContent !== period) {
+      recentPeriod.textContent = period;
+      recentTotal.textContent = summary.total;
+    }
+    const nextYear = Date.UTC(summary.endYear + 1, 0, 1) - 9 * 60 * 60 * 1000;
+    // Keep delays within browser timer limits; refresh at New Year even while open.
+    recentTimer = setTimeout(updateRecentOutput, Math.max(1, Math.min(nextYear - now.getTime(), 86400000)));
+  }
+  document.addEventListener('visibilitychange', () => { if (!document.hidden) updateRecentOutput(); });
+  addEventListener('pageshow', updateRecentOutput);
+  updateRecentOutput();
 
   TYPES.forEach(t => {
     const b = el('button', 'ot-tile'); b.type = 'button'; b.setAttribute('aria-pressed', 'true');

@@ -76,6 +76,7 @@ Publicationsページの4つ目のタブ「Output Timeline」は、同じペー�
 - 表示用のファイルは `docs/assets/timeline.js` と `docs/assets/timeline.css` です。
 - 年の情報だけを `scripts/build.py` が `content/publications.json` から埋め込みます。論文を追加・修正して `python3 scripts/build.py` を実行すれば、タイムラインにも反映されます。
 - 研究トピックの分類は、`docs/assets/timeline.js` 内の `TOPICS` で定義しています。タイトル中の語による自動分類です。
+- 「Last 5 years」は日本時間の当年を含む5暦年について、Journal・International Conference・Domestic Conferenceの全件を合計します。グラフの絞り込みには連動しません。2026年は2022–2026年、2027年は2023–2027年です。年明けに自動更新し、開いたままのページや再表示したタブでも期間を更新します。再ビルドや年ごとの手動変更は不要です。
 
 ### NewsとPublicationsの論文情報を連動させる
 
