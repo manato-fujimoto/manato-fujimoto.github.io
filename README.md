@@ -93,7 +93,7 @@ Publicationsページの4つ目のタブ「Output Timeline」は、同じペー�
 - 和文タグ付き学術論文（`type: journal`、`language: ja`）は、`content/publications.json` の `title_ja`・`authors_ja`・`venue_ja` を日本語版の業績一覧・News・検索向け構造化データで表示します。関連論文も `title_ja` を使います。英語版は従来の `title`・`authors`・`venue` を使います。タイムラインのトピック分類は両言語とも元の `title` を使います。
 - 日本語版の検索用説明文は `page_descriptions_ja` で管理します。
 - Newsの告知本文（`body_html`）と要約（`summary`）は英語のみです。日本語版の記事は、日本語の見出し（`text.ja`）と論文情報で構成し、一覧の抜粋には論文タイトルを表示します。
-- 論文タイトル・著者・掲載先は原文のまま両言語で共通です。Output TimelineとResearch Fundingの表示は日本語版でも英語です。
+- 業績タイムラインと研究費欄はページの言語に合わせて表示します。JP版の研究費欄の研究課題名は英語表記からの日本語訳です。英語論文のタイトル・著者・掲載先は原文を維持します。
 - 各ページに `hreflang`（en / ja / x-default）を出力し、`sitemap.xml` には両言語のURLを列挙します。
 
 ## 検索エンジン・AI検索向けの設定

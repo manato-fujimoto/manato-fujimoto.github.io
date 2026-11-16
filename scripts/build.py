@@ -586,9 +586,16 @@ def news_article(item, lang):
         body += link(older['slug'] + '.html', f'<span>{"以前の記事 →" if ja else "Older article →"}</span>' + text(older['text'], lang), 'article-neighbor article-neighbor-older')
     return body + '</nav></footer></article>'
 
-def research_funding():
+def research_funding(lang):
     records = json.dumps(FUNDING, ensure_ascii=False, separators=(',', ':')).replace('</', '<\\/')
-    return '<section id="research-funding" class="rf" lang="en" aria-labelledby="rf-title">\n  <div class="rf-heading"><h3 id="rf-title">Research Funding</h3><span>FISCAL YEARS · 2014–2028</span></div>\n  <p class="rf-caption">Bars show project periods by fiscal year. Hover for the project title and Fujimoto’s role, or tap for details.</p>\n  <div id="rf-main-chart"></div>\n  <details class="rf-more"><summary>Other Funding <span>Foundation grants &amp; Society 5.0 · 4 projects</span></summary><div id="rf-other-chart"></div></details>\n  <div id="rf-detail" class="rf-detail" aria-live="polite" aria-atomic="true" hidden></div>\n  <p class="rf-source">Project titles are English translations.</p>\n</section>' + f'<script type="application/json" id="rf-data">{records}</script>'
+    ja = lang == 'ja'
+    title = '研究費獲得実績' if ja else 'Research Funding'
+    years = '年度 · 2014–2028' if ja else 'FISCAL YEARS · 2014–2028'
+    caption = 'バーは研究期間を年度単位で示します。カーソルを合わせると研究課題名と藤本の役割が表示され、選択すると詳細を確認できます。' if ja else 'Bars show project periods by fiscal year. Hover for the project title and Fujimoto’s role, or tap for details.'
+    other = 'その他の研究費' if ja else 'Other Funding'
+    other_detail = '民間財団助成・Society 5.0 · 4件' if ja else 'Foundation grants &amp; Society 5.0 · 4 projects'
+    note = '研究課題名は英語表記からの日本語訳です。' if ja else 'Project titles are English translations.'
+    return f'<section id="research-funding" class="rf" lang="{lang}" aria-labelledby="rf-title">\n  <div class="rf-heading"><h3 id="rf-title">{title}</h3><span>{years}</span></div>\n  <p class="rf-caption">{caption}</p>\n  <div id="rf-main-chart"></div>\n  <details class="rf-more"><summary>{other} <span>{other_detail}</span></summary><div id="rf-other-chart"></div></details>\n  <div id="rf-detail" class="rf-detail" aria-live="polite" aria-atomic="true" hidden></div>\n  <p class="rf-source">{note}</p>\n</section>' + f'<script type="application/json" id="rf-data">{records}</script>'
 
 def publications(lang):
     ja = lang == 'ja'
@@ -614,7 +621,7 @@ def publications(lang):
     years_json = json.dumps(years, separators=(',',':')).replace('</','<\\/')
     fallback = 'このタイムラインの表示にはJavaScriptが必要です。' if ja else 'The timeline needs JavaScript. The full lists are available under the other tabs.'
     body += f'<section class="publication-group" id="output-timeline">'+heading(timeline_label,f'<span class="note">{len(timeline_items)} {"件" if ja else "items"}, {span}</span>')
-    body += f'<div class="ot" id="ot-root"><noscript><p>{fallback}</p></noscript></div><script type="application/json" id="ot-years">{years_json}</script>' + research_funding() + '</section>'
+    body += f'<div class="ot" id="ot-root"><noscript><p>{fallback}</p></noscript></div><script type="application/json" id="ot-years">{years_json}</script>' + research_funding(lang) + '</section>'
     return body
 
 def services(lang):

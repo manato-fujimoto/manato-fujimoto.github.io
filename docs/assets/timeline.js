@@ -3,13 +3,16 @@
   const root = document.getElementById('ot-root');
   const yearsEl = document.getElementById('ot-years');
   if (!root || !yearsEl) return;
+  const ja = document.documentElement.lang === 'ja';
+  const t = (en, jp) => ja ? jp : en;
+  const count = n => ja ? n + '件' : n + (n === 1 ? ' item' : ' items');
   let YEAR_OF;
   try { YEAR_OF = JSON.parse(yearsEl.textContent); } catch { return; }
 
   const TYPES = [
-    {k: 'journal', name: 'Journal Articles', one: 'Journal article', color: 'var(--ot-j)'},
-    {k: 'conference', name: 'International Conference Proceedings', one: 'International conference', color: 'var(--ot-c)'},
-    {k: 'domestic-conference', name: 'Domestic Conference', one: 'Domestic conference', color: 'var(--ot-d)'}
+    {k: 'journal', name: t('Journal Articles', '学術論文'), one: t('Journal article', '学術論文'), color: 'var(--ot-j)'},
+    {k: 'conference', name: t('International Conference Proceedings', '国際会議論文'), one: t('International conference', '国際会議論文'), color: 'var(--ot-c)'},
+    {k: 'domestic-conference', name: t('Domestic Conference', '国内学会発表'), one: t('Domestic conference', '国内学会発表'), color: 'var(--ot-d)'}
   ];
   const TYPE = Object.fromEntries(TYPES.map((t, i) => [t.k, Object.assign(t, {i})]));
   const TOPICS = [
@@ -25,6 +28,8 @@
     {k:'med',  name:'In-body & medical',       re:/implant|in-body|puncture|blood glucose|bioindicator|semg|vaccine|穿刺|生体内|血糖|糖尿病|生体指標|生体情報|発汗|ヘルスケア/},
     {k:'net',  name:'Networking & IoT', re:/\biot\b|network|federated|\bdns\b|building|multi-hop|forwarding|streaming|blockchain|application distribution|zero-knowledge|ネットワーク|連合学習|ビル|マルチホップ|ストリーミング|cefore|キャッシング|アクセス制御|データプラットフォーム|無線lan|\bllm|ログ解析|システムログ|ログ管理|チャットボット|ヘルプデスク|パーソナルデータ|なりすまし/}
   ];
+  const topicNames = {loc:'測位・ナビゲーション', dis:'防災・避難', act:'行動認識', care:'高齢者介護', sens:'センシング', tour:'観光', bc:'行動変容', sport:'スポーツ・運動', psy:'集中・感情', med:'生体内・医療', net:'ネットワーク・IoT'};
+  if (ja) TOPICS.forEach(topic => { topic.name = topicNames[topic.k]; });
   const el = (tag, cls, text) => { const e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; };
 
   const PUBS = [];
@@ -58,22 +63,22 @@
   root.textContent = '';
   const recent = el('div', 'ot-recent'); recent.setAttribute('role', 'status'); recent.setAttribute('aria-atomic', 'true');
   const recentInfo = el('div', 'ot-recent-info'), recentPeriod = el('strong', 'ot-recent-period ot-mono');
-  recentInfo.append(el('span', 'ot-recent-label', 'Last 5 years'), recentPeriod);
+  recentInfo.append(el('span', 'ot-recent-label', t('Last 5 years', '直近5年間')), recentPeriod);
   const recentMetric = el('div', 'ot-recent-metric'), recentTotal = el('strong', 'ot-mono');
-  recentMetric.append(recentTotal, el('span', '', 'publications'));
+  recentMetric.append(recentTotal, el('span', '', t('publications', '件')));
   recent.append(recentInfo, recentMetric);
-  const tiles = el('div', 'ot-tiles'); tiles.setAttribute('role', 'group'); tiles.setAttribute('aria-label', 'Filter by category');
+  const tiles = el('div', 'ot-tiles'); tiles.setAttribute('role', 'group'); tiles.setAttribute('aria-label', t('Filter by category', '業績の種別で絞り込み'));
   const status = el('div', 'ot-status'); status.setAttribute('aria-live', 'polite');
   const scroll = el('div', 'ot-scroll'), viz = el('div', 'ot-viz');
-  const h1 = el('h3', 'ot-h', 'Output by year'); h1.append(el('small', '', '(one square = one item; select a square to jump to it in the list, select a year to highlight it)'));
+  const h1 = el('h3', 'ot-h', t('Output by year', '年別の研究業績')); h1.append(el('small', '', t('(one square = one item; select a square to jump to it in the list, select a year to highlight it)', '（1マス＝1件。マスを選ぶと該当業績へ移動し、年を選ぶとその年を強調表示します）')));
   const units = el('div', 'ot-grid ot-units'), years = el('div', 'ot-grid ot-years ot-mono');
-  const h2 = el('h3', 'ot-h', 'Research topics over time'); h2.append(el('small', '', '(extracted automatically from titles; numbers are item counts; select a row or a cell to highlight)'));
+  const h2 = el('h3', 'ot-h', t('Research topics over time', '研究トピックの推移')); h2.append(el('small', '', t('(extracted automatically from titles; numbers are item counts; select a row or a cell to highlight)', '（論文タイトルから自動分類。数値は件数です。行やセルを選ぶと該当業績を強調表示します）')));
   const heat = el('div', 'ot-grid ot-heat ot-mono');
   const scale = el('div', 'ot-scale');
-  [['1', 1], ['2–3', 2], ['4–6', 3], ['7–9', 4], ['10+', 5]].forEach(([label, l]) => { const i = el('i'); i.style.background = 'var(--ot-h' + l + ')'; scale.append(el('span', '', label), i); });
+  [['1', 1], ['2–3', 2], ['4–6', 3], ['7–9', 4], [t('10+', '10以上'), 5]].forEach(([label, l]) => { const i = el('i'); i.style.background = 'var(--ot-h' + l + ')'; scale.append(el('span', '', label), i); });
   [units, years, heat].forEach(g => g.style.setProperty('--ot-n', YEARS.length));
   viz.append(h1, units, years, h2, heat, scale); scroll.append(viz);
-  const foot = el('p', 'ot-foot', 'Years are publication or presentation years and include accepted and scheduled items. Topics are assigned automatically from words in the title, so an item can count under several topics or under none.');
+  const foot = el('p', 'ot-foot', t('Years are publication or presentation years and include accepted and scheduled items. Topics are assigned automatically from words in the title, so an item can count under several topics or under none.', '年は刊行年または発表年で、採択済み・発表予定の業績を含みます。研究トピックはタイトル中の語句から自動分類しているため、1件の業績が複数のトピックに該当する場合や、いずれにも該当しない場合があります。'));
   const tip = el('div', 'ot-tip'); tip.setAttribute('role', 'status');
   root.append(recent, tiles, status, scroll, foot, tip);
 
@@ -82,7 +87,7 @@
   function updateRecentOutput() {
     clearTimeout(recentTimer);
     const now = new Date(), summary = fiveYearSummary(now);
-    const period = summary.startYear + '–' + summary.endYear;
+    const period = summary.startYear + '–' + summary.endYear + t('', '年');
     if (recentPeriod.textContent !== period) {
       recentPeriod.textContent = period;
       recentTotal.textContent = summary.total;
@@ -127,7 +132,7 @@
   // ---------- render ----------
   function renderUnits() {
     units.textContent = ''; years.textContent = '';
-    const note = el('div', 'ot-unit-note'); note.append(el('i'), '= 1 item'); units.append(note);
+    const note = el('div', 'ot-unit-note'); note.append(el('i'), t('= 1 item', '＝1件')); units.append(note);
     YEARS.forEach((y, i) => {
       const col = el('div', 'ot-col'); col.style.gridColumn = i + 2;
       const items = PUBS.filter(p => p.y === y).sort((a, b) => TYPE[a.type].i - TYPE[b.type].i || b.n - a.n);
@@ -136,14 +141,14 @@
         const on = okBase(p) && okTopic(p) && okYear(p); if (on) lit++;
         const a = el('a', 'ot-u' + (on ? '' : ' ot-dim'));
         a.href = '#' + p.id; a.style.setProperty('--c', TYPE[p.type].color);
-        a.setAttribute('aria-label', y + ', ' + TYPE[p.type].one + ': ' + p.title);
-        hover(a, () => showTip(a, p.title, [TYPE[p.type].one + ' · ' + p.y + (p.note ? ' (' + p.note.toLowerCase() + ')' : ''), 'Select to jump to this entry'], TYPE[p.type].color));
+        a.setAttribute('aria-label', y + t(', ', '年、') + TYPE[p.type].one + ': ' + p.title);
+        hover(a, () => showTip(a, p.title, [TYPE[p.type].one + ' · ' + p.y + t('', '年') + (p.note ? ' (' + p.note.toLowerCase() + ')' : ''), t('Select to jump to this entry', '選択すると該当業績へ移動します')], TYPE[p.type].color));
         col.append(a);
       });
       col.append(el('div', 'ot-cnt ot-mono', lit === items.length ? items.length : lit + '/' + items.length));
       units.append(col);
       const b = el('button', 'ot-year', "'" + String(y).slice(2)); b.type = 'button'; b.style.gridColumn = i + 2;
-      b.setAttribute('aria-label', 'Highlight ' + y); b.setAttribute('aria-pressed', state.year === y);
+      b.setAttribute('aria-label', ja ? y + '年の業績を強調表示' : 'Highlight ' + y); b.setAttribute('aria-pressed', state.year === y);
       b.addEventListener('click', () => { state.year = state.year === y ? null : y; render(); });
       years.append(b);
     });
@@ -162,10 +167,10 @@
         const c = el('button', 'ot-cell' + (state.topic === tp.k && state.year === y ? ' ot-on' : ''), n || '');
         c.type = 'button'; c.style.gridRow = r + 1; c.style.gridColumn = i + 2;
         c.dataset.l = level(n); c.disabled = !n;
-        c.setAttribute('aria-label', tp.name + ', ' + y + ': ' + n + ' items');
+        c.setAttribute('aria-label', tp.name + ', ' + y + t('', '年') + ': ' + (ja ? count(n) : n + ' items'));
         if (n) {
           c.addEventListener('click', () => { const same = state.topic === tp.k && state.year === y; state.topic = same ? null : tp.k; state.year = same ? null : y; render(); });
-          hover(c, () => showTip(c, tp.name + ' · ' + y, [n + (n === 1 ? ' item' : ' items')]));
+          hover(c, () => showTip(c, tp.name + ' · ' + y + t('', '年'), [count(n)]));
         }
         heat.append(c);
       });
@@ -175,12 +180,12 @@
     status.textContent = '';
     const n = PUBS.filter(p => okBase(p) && okTopic(p) && okYear(p)).length;
     const filtered = state.year != null || state.topic || state.types.size < TYPES.length;
-    status.append(el('strong', '', filtered ? n + ' of ' + PUBS.length + ' items highlighted' : PUBS.length + ' items · ' + Y0 + '–' + Y1));
-    const chip = (text, clear) => { const b = el('button', 'ot-chip', text); b.type = 'button'; b.setAttribute('aria-label', 'Remove filter: ' + text); b.addEventListener('click', () => { clear(); render(); }); status.append(b); };
-    if (state.year != null) chip(String(state.year), () => { state.year = null; });
+    status.append(el('strong', '', ja ? (filtered ? '全' + PUBS.length + '件中' + n + '件を強調表示' : '全' + PUBS.length + '件 · ' + Y0 + '–' + Y1 + '年') : (filtered ? n + ' of ' + PUBS.length + ' items highlighted' : PUBS.length + ' items · ' + Y0 + '–' + Y1)));
+    const chip = (text, clear) => { const b = el('button', 'ot-chip', text); b.type = 'button'; b.setAttribute('aria-label', t('Remove filter: ', '絞り込みを解除：') + text); b.addEventListener('click', () => { clear(); render(); }); status.append(b); };
+    if (state.year != null) chip(String(state.year) + t('', '年'), () => { state.year = null; });
     if (state.topic) chip(TOPICS.find(t => t.k === state.topic).name, () => { state.topic = null; });
     if (filtered) {
-      const c = el('button', 'ot-clear', 'Clear all'); c.type = 'button';
+      const c = el('button', 'ot-clear', t('Clear all', 'すべて解除')); c.type = 'button';
       c.addEventListener('click', () => {
         state.year = null; state.topic = null;
         state.types = new Set(TYPES.map(t => t.k));
