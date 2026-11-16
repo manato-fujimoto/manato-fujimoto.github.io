@@ -13,6 +13,12 @@
     "services": "Conference organization, professional service, awards, and academic memberships of Manato Fujimoto, Osaka Metropolitan University.",
     "news": "Research news, publication announcements and conference updates from Manato Fujimoto, Osaka Metropolitan University."
   },
+  "page_descriptions_ja": {
+    "research": "大阪公立大学 藤本まなとの研究内容。介護・高齢者支援のためのセンシング、行動認識、スマート空間、無線測位などの研究テーマを紹介します。",
+    "publications": "藤本まなとの研究業績一覧。学術論文、国際会議論文、国内学会発表（採択済み・発表予定を含む）と受賞を掲載しています。",
+    "services": "大阪公立大学 藤本まなとの学会活動。国際会議の運営、受賞歴、所属学会を掲載しています。",
+    "news": "大阪公立大学 藤本まなとの研究ニュース。論文の採択や国際会議での発表に関するお知らせを掲載しています。"
+  },
   "email": "manato@omu.ac.jp",
   "lab_url": "https://omusp.jp/",
   "publications_url": "https://manato.wcss.jp/publications/",
