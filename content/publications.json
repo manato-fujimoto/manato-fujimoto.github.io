@@ -469,6 +469,28 @@
     "url": "https://search.ieice.org/bin/summary.php?id=e95-a_6_1074&category=A&lang=E&year=2012&abst="
   },
   {
+    "id": "c086",
+    "label": "C86",
+    "type": "conference",
+    "title": "Analyzing Changes in Urban Pedestrian Movement Associated with Traffic Restrictions and Events Using BLE Observations",
+    "authors": "Ryogo Ueshima, Daichi Tanaka, Soma Akaki, Kao Taniguchi, Takumi Kawamura, Manato Fujimoto, Yuji Yoshimura",
+    "venue": "34th ENTER eTourism Conference (ENTER27), pp. xx-xx, Madrid, Spain, Jan. 2027.",
+    "year": "2027",
+    "accepted": true,
+    "url": ""
+  },
+  {
+    "id": "c085",
+    "label": "C85",
+    "type": "conference",
+    "title": "From Movement Records to Operational Insights: Movement Analysis Using Passive BLE Observations and Multiple Sequence Alignment",
+    "authors": "Daichi Tanaka, Soma Akaki, Soma Hirao, Ryogo Ueshima, Taiki Egusa, Chie Koga, Yukiko Uchida, Kiminori Taguchi, Izumi Ogata, Yoshikazu Ogawa, Manato Fujimoto, Yuji Yoshimura",
+    "venue": "34th ENTER eTourism Conference (ENTER27), pp. xx-xx, Madrid, Spain, Jan. 2027.",
+    "year": "2027",
+    "accepted": true,
+    "url": ""
+  },
+  {
     "id": "c084",
     "label": "C84",
     "type": "conference",

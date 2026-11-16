@@ -2,7 +2,7 @@
 
 > Manato Fujimoto（藤本まなと） is an Associate Professor (Ph.D. in Engineering) at the Graduate School of Informatics, Osaka Metropolitan University（大阪公立大学 大学院情報学研究科）, Japan, and a member of the Smart Platform Research Group（スマートプラットフォーム研究室）. Research areas: Ubiquitous Computing, Wireless Sensing, Activity Recognition, Healthcare & Well-being（ユビキタスコンピューティング、無線センシング、行動認識、ヘルスケア・ウェルビーイング）.
 
-This is the official personal website of Manato Fujimoto. Last updated: 2026-11-06.
+This is the official personal website of Manato Fujimoto. Last updated: 2026-11-17.
 
 ## Key facts
 
@@ -13,7 +13,7 @@ This is the official personal website of Manato Fujimoto. Last updated: 2026-11-
 - Address: 3-3-138 Sugimoto, Sumiyoshi-ku, Osaka 558-8585, Japan
 - Contact: manato [at] omu.ac.jp
 - Research keywords: Ubiquitous Computing, Wireless Sensing, Activity Recognition, Healthcare & Well-being
-- Publications listed on this site: 39 journal articles, 84 international conference proceedings, 168 domestic conference presentations
+- Publications listed on this site: 39 journal articles, 86 international conference proceedings, 168 domestic conference presentations
 
 - researchmap: https://researchmap.jp/mf_may
 - Google Scholar: https://scholar.google.co.jp/citations?user=h5HEM40AAAAJ&hl=en&oi=ao
@@ -87,7 +87,7 @@ Topics: Magnetic-field-based localization, implant communications, UWB, and RFID
 - Institute of Electronics, Information and Communication Engineers (IEICE)
 - Information Processing Society of Japan (IPSJ)
 
-## Publications (291 records)
+## Publications (293 records)
 
 Source page: https://manato-fujimoto.github.io/publications.html
 
@@ -133,8 +133,10 @@ Source page: https://manato-fujimoto.github.io/publications.html
 - J2. Manato Fujimoto, Tomotaka Wada, Atsuki Inada, Emi Nakamori, Yuki Oda, Kouichi Mutsuura, Hiromi Okada. [Localization of Passive RFID Tags by Using Broad-Type Multi-Sensing-Range (B-MSR) Method](https://search.ieice.org/bin/summary.php?id=e95-a_7_1164&category=A&lang=E&year=2012&abst=). IEICE Transactions on Fundamentals of Electronics, Communications and Computer Sciences, Vol. E95-A, No. 7, pp. 1164-1174, July 2012
 - J1. Tomotaka Wada, Toshihiro Hori, Manato Fujimoto, Kouichi Mutsuura, Hiromi Okada. [An Adaptive Multi-Range-Sensing Method for 3D Localization of Passive RFID Tags](https://search.ieice.org/bin/summary.php?id=e95-a_6_1074&category=A&lang=E&year=2012&abst=). IEICE Transactions on Fundamentals of Electronics, Communications and Computer Sciences, Vol. E95-A, No. 6, pp. 1074-1083, June 2012
 
-### International Conference Proceedings (84)
+### International Conference Proceedings (86)
 
+- C86. Ryogo Ueshima, Daichi Tanaka, Soma Akaki, Kao Taniguchi, Takumi Kawamura, Manato Fujimoto, Yuji Yoshimura. Analyzing Changes in Urban Pedestrian Movement Associated with Traffic Restrictions and Events Using BLE Observations. 34th ENTER eTourism Conference (ENTER27), pp. xx-xx, Madrid, Spain, Jan. 2027. [Accepted]
+- C85. Daichi Tanaka, Soma Akaki, Soma Hirao, Ryogo Ueshima, Taiki Egusa, Chie Koga, Yukiko Uchida, Kiminori Taguchi, Izumi Ogata, Yoshikazu Ogawa, Manato Fujimoto, Yuji Yoshimura. From Movement Records to Operational Insights: Movement Analysis Using Passive BLE Observations and Multiple Sequence Alignment. 34th ENTER eTourism Conference (ENTER27), pp. xx-xx, Madrid, Spain, Jan. 2027. [Accepted]
 - C84. Taisho Isobe, Haruki Ishimaru, Manato Fujimoto, Shingo Ata, Kota Tsuchie, Nobuyuki Nakamura, Taketsugu Yao. RPL-FedID: Reliable Pseudo-Label-Enhanced Federated Device Identification. 22nd International Conference on Network and Service Management (CNSM2026), pp. xx-xx, Madrid, Spain, Oct. 2026. [Accepted]
 - C83. Sohshi Yoshida, Ko Watanabe, Andreas Dengel, Shoya Ishimaru, Shingo Ata, Manato Fujimoto. AIDOL: Augmenting Immersion with Dynamic Optical Lighting for Inducing Behavior Change in Live Concert Viewing. UbiComp Companion’26: Companion of the 2026 on ACM International Joint Conference on Pervasive and Ubiquitous Computing, Poster, Shanghai, China, Oct. 2026 [Accepted]
 - C82. Takumi Kawamura, Taiki Egusa, Takumi Kobayashi, Jaakko Hyry, Yujiro Kushiyama, Shingo Ata, Daisuke Anzai, Manato Fujimoto. An Investigation of Effective Feature Sets for Machine Learning-Based Implantable Device Localization. 20th IEEE International Symposium on Medical Information and Communication Technology (ISMICT 2026), Osaka, Japan, Sept. 2026 [Accepted]
@@ -393,6 +395,7 @@ Source page: https://manato-fujimoto.github.io/publications.html
 
 ## Recent news
 
+- 2026-11-17: [Two papers accepted for presentation at ENTER27.](https://manato-fujimoto.github.io/news/2026-11-17-enter27.html) Two papers on urban pedestrian movement and movement analysis using passive BLE observations.
 - 2026-11-06: [A paper accepted in IPSJ Journal.](https://manato-fujimoto.github.io/news/2026-11-06-ipsj-journal.html) A Pen-Based Support System with an Accelerometer for Efficient Grading of Multiple-Choice Paper Tests.
 - 2026-08-27: [A paper accepted for presentation at CNSM 2026.](https://manato-fujimoto.github.io/news/2026-08-27-cnsm-2026.html) RPL-FedID: Reliable Pseudo-Label-Enhanced Federated Device Identification.
 - 2026-07-28: [Two papers accepted for presentation at ISMICT 2026.](https://manato-fujimoto.github.io/news/2026-07-28-ismict-2026.html) Two papers on implantable-device and device-free indoor localization.
@@ -402,4 +405,3 @@ Source page: https://manato-fujimoto.github.io/publications.html
 - 2026-07-02: [An invited paper accepted in IEICE Transactions on Communications.](https://manato-fujimoto.github.io/news/2026-07-02-in-body-localization.html) Machine learning and quasi-static magnetic fields for in-body device localization.
 - 2026-05-03: [A paper accepted in IEEE Journal of Electromagnetics, RF, and Microwaves in Medicine and Biology.](https://manato-fujimoto.github.io/news/2026-05-03-ieee-jerm.html) Power and Waveform Optimization for Implant Ultra-Wideband Communications Enhanced by Dynamic Sparse Control.
 - 2026-04-12: [A short paper accepted for presentation at COMPSAC 2026.](https://manato-fujimoto.github.io/news/2026-04-12-compsac-2026.html) Realization of Application-aware Networking by Using Information-Centric Networking.
-- 2026-02-01: [A paper accepted in IEEE Open Journal of the Computer Society.](https://manato-fujimoto.github.io/news/2026-02-01-ieee-ojcs.html) zk-REAL: A Zero-Knowledge-Based Protocol for Repeated Image Edit Authenticity Proof with Lattice Hashing.

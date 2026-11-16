@@ -92,6 +92,34 @@
   ],
   "news": [
     {
+      "date": "2026-11-17",
+      "text": {
+        "en": "Two papers accepted for presentation at ENTER27.",
+        "ja": "ENTER27に2件の論文が採択されました。"
+      },
+      "slug": "2026-11-17-enter27",
+      "category": "Conference",
+      "summary": "Two papers on urban pedestrian movement and movement analysis using passive BLE observations.",
+      "body_html": "<p>Two papers have been accepted for presentation at the 34th ENTER eTourism Conference (ENTER27), to be held in Madrid, Spain, in January 2027.</p>",
+      "publications": [
+        "c086",
+        "c085"
+      ],
+      "thumbnail": {
+        "src": "assets/news/2026-11-17-enter27-green.jpg",
+        "alt": "Two papers accepted at 34th ENTER eTourism Conference (ENTER27): Analyzing Changes in Urban Pedestrian Movement Associated with Traffic Restrictions and Events Using BLE Observations; From Movement Records to Operational Insights: Movement Analysis Using Passive BLE Observations and Multiple Sequence Alignment",
+        "width": 1672,
+        "height": 941
+      },
+      "social_image": {
+        "src": "assets/news/2026-11-17-enter27-green.jpg",
+        "alt": "Two papers accepted at 34th ENTER eTourism Conference (ENTER27): Analyzing Changes in Urban Pedestrian Movement Associated with Traffic Restrictions and Events Using BLE Observations; From Movement Records to Operational Insights: Movement Analysis Using Passive BLE Observations and Multiple Sequence Alignment",
+        "width": 1672,
+        "height": 941,
+        "type": "image/jpeg"
+      }
+    },
+    {
       "date": "2026-11-06",
       "text": {
         "en": "A paper accepted in IPSJ Journal.",
