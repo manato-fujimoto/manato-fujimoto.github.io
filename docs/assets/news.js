@@ -7,6 +7,7 @@
   const cards = Array.from(page.querySelectorAll('[data-news-category]'));
   const archives = Array.from(page.querySelectorAll('.news-archive'));
   const status = page.querySelector('.news-filter-status');
+  const ja = document.documentElement.lang === 'ja';
 
   function selectCategory(category) {
     const selected = buttons.find(button => button.dataset.newsFilter === category);
@@ -18,12 +19,17 @@
     archives.forEach(archive => {
       const count = archive.querySelectorAll('.news-card:not([hidden])').length;
       archive.hidden = count === 0;
-      archive.querySelector('[data-news-count]').textContent = `${count} ${count === 1 ? 'update' : 'updates'}`;
+      archive.querySelector('[data-news-count]').textContent = ja ? `${count}件` : `${count} ${count === 1 ? 'update' : 'updates'}`;
     });
     buttons.forEach(button => {
       button.setAttribute('aria-pressed', String(button === selected));
     });
     const count = cards.filter(card => !card.hidden).length;
+    if (ja) {
+      const label = category === 'all' ? '' : `${category === 'journal' ? '論文誌' : '国際会議'}：`;
+      status.textContent = `${label}${count}件`;
+      return;
+    }
     const label = category === 'all' ? '' : `${category === 'journal' ? 'Journal' : 'Conference'} `;
     status.textContent = `${count} ${label}${count === 1 ? 'update' : 'updates'}`;
   }

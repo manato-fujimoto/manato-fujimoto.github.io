@@ -48,6 +48,11 @@ li { margin-bottom: .45rem; }
 .navigation a { display: inline-block; padding: .75rem 0; color: var(--muted); font-size: .9rem; text-decoration: none; border-bottom: 2px solid transparent; }
 .navigation a[aria-current='page'] { border-bottom-color: var(--accent); color: var(--navy); }
 .navigation a:hover { color: var(--navy); }
+.navigation .lang-switch { display: inline-flex; align-items: stretch; margin-left: .2rem; border: 1px solid #34445a; border-radius: 5px; overflow: hidden; background: #111b29; }
+.navigation .lang-switch .lang-current, .navigation .lang-switch .lang-link { display: inline-block; min-width: 2.6rem; padding: .3rem .6rem; border: 0; font-family: var(--sans); font-size: .78rem; font-weight: 600; letter-spacing: .04em; line-height: 1.5; text-align: center; text-decoration: none; }
+.navigation .lang-switch .lang-current { color: #0c1017; background: var(--blue); }
+.navigation .lang-switch .lang-link { color: var(--blue); }
+.navigation .lang-switch .lang-link:hover { color: var(--navy); background: #1a2a40; }
 .navigation .language { padding: .3rem .75rem; border: 1px solid #34445a; border-radius: 4px; color: var(--blue); background: #111b29; }
 main { padding-block: 4rem 5rem; }
 .profile { display: grid; grid-template-columns: minmax(0, 1fr) 264px; align-items: start; gap: 4.2rem; padding-block: 1rem 3rem; border-bottom: 1px solid var(--line); background: radial-gradient(ellipse at 90% 30%, #11233b77 0%, #090b1000 66%); }
@@ -166,6 +171,7 @@ main { padding-block: 4rem 5rem; }
   .navigation { column-gap: 1.05rem; row-gap: 0; margin-top: .25rem; }
   .navigation a { font-size: .875rem; padding-block: .45rem; }
   .navigation .language { padding: .15rem .45rem; }
+  .navigation .lang-switch .lang-current, .navigation .lang-switch .lang-link { padding: .15rem .5rem; font-size: .75rem; }
   .profile { grid-template-columns: minmax(0,1fr); gap: 1.8rem; padding-bottom: 2rem; }
   .profile-photo { display: flex; align-items: center; gap: 1rem; margin: 0; padding: .75rem; }
   .profile-photo img { width: 120px; min-width: 0; flex: 0 1 120px; }

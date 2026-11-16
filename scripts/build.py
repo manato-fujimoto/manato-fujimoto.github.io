@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Rebuild the English static site using Python 3's standard library."""
+"""Rebuild the English and Japanese static site using Python 3's standard library."""
 from pathlib import Path
 from html import escape
 from hashlib import sha256
@@ -18,6 +18,11 @@ FUNDING = json.loads((ROOT / 'content/funding.json').read_text(encoding='utf-8')
 E = escape
 PAGES = ['index', 'news', 'research', 'publications', 'services']
 NAV = {'en': ['Home', 'News', 'Research', 'Publications', 'Services'], 'ja': ['ホーム', 'お知らせ', '研究内容', '研究業績', '学会活動']}
+LANGS = ['en', 'ja']
+CATEGORY_JA = {'Journal': '論文誌', 'Conference': '国際会議'}
+
+def category_label(item, lang):
+    return CATEGORY_JA.get(item['category'], item['category']) if lang == 'ja' else item['category']
 
 def news_items():
     return sorted(DATA['news'], key=lambda item: item['date'], reverse=True)
@@ -72,8 +77,21 @@ def source_note(url, lang):
 def site_url(path=''):
     return urljoin(DATA['site_url'].rstrip('/') + '/', path)
 
-def canonical_url(page):
-    return site_url('' if page == 'index' else page + '.html')
+def page_path(page, lang='en'):
+    """Path from the site root. Japanese pages live under ja/ with the same file names."""
+    return ('ja/' if lang == 'ja' else '') + ('' if page == 'index' else page + '.html')
+
+def canonical_url(page, lang='en'):
+    return site_url(page_path(page, lang))
+
+def page_description(page, lang, news_item=None):
+    if news_item is not None:
+        if lang == 'ja':
+            return news_item['text']['ja'] + ' ' + ' ／ '.join(p['title'] for p in news_publications(news_item))
+        return news_item['summary']
+    if page == 'index':
+        return DATA['description'][lang]
+    return DATA['page_descriptions_ja' if lang == 'ja' else 'page_descriptions'][page]
 
 def last_modified(news_item=None):
     """Date of the last substantive change, for sitemap lastmod and dateModified."""
@@ -95,7 +113,7 @@ def validate_search_metadata():
     if url.scheme != 'https' or not url.netloc or url.query or url.fragment:
         raise ValueError('site_url must be an absolute HTTPS URL without a query or fragment')
     for page in PAGES[1:]:
-        if not DATA['page_descriptions'].get(page):
+        if not DATA['page_descriptions'].get(page) or not DATA['page_descriptions_ja'].get(page):
             raise ValueError(f'Missing search description for {page}')
     verification = DATA.get('google_site_verification', '')
     if not isinstance(verification, str) or (verification and not re.fullmatch(r'[A-Za-z0-9_-]+', verification)):
@@ -130,7 +148,7 @@ def scholarly_article(p, person_id):
         article['creativeWorkStatus'] = 'Scheduled presentation'
     return article
 
-def structured_data(page, title, description, news_item=None):
+def structured_data(page, title, description, news_item=None, lang='en'):
     person_id, website_id = site_url('#person'), site_url('#website')
     person = {
         '@type': 'Person', '@id': person_id, 'name': DATA['name']['en'],
@@ -165,15 +183,15 @@ def structured_data(page, title, description, news_item=None):
     website = {
         '@type': 'WebSite', '@id': website_id, 'url': site_url(),
         'name': DATA['name']['en'], 'alternateName': DATA['name']['ja'].replace(' ', ''),
-        'description': DATA['description']['en'], 'inLanguage': 'en',
+        'description': DATA['description']['en'], 'inLanguage': LANGS,
         'publisher': {'@id': person_id},
     }
     page_type = {'index': 'ProfilePage', 'news': 'CollectionPage', 'research': 'CollectionPage',
                  'publications': 'CollectionPage', 'services': 'WebPage'}.get(page, 'WebPage')
     webpage = {
-        '@type': page_type, '@id': canonical_url(page) + '#webpage',
-        'url': canonical_url(page), 'name': title, 'description': description,
-        'inLanguage': 'en', 'isPartOf': {'@id': website_id},
+        '@type': page_type, '@id': canonical_url(page, lang) + '#webpage',
+        'url': canonical_url(page, lang), 'name': title, 'description': description,
+        'inLanguage': lang, 'isPartOf': {'@id': website_id},
         'about': {'@id': person_id},
         'dateModified': last_modified(news_item),
     }
@@ -181,20 +199,20 @@ def structured_data(page, title, description, news_item=None):
     if page != 'index':
         # Breadcrumb trail: Home > section (> article).
         section_page = 'news' if news_item is not None else page
-        trail = [('Home', canonical_url('index')), (NAV['en'][PAGES.index(section_page)], canonical_url(section_page))]
+        trail = [(NAV[lang][0], canonical_url('index', lang)), (NAV[lang][PAGES.index(section_page)], canonical_url(section_page, lang))]
         if news_item is not None:
-            trail.append((news_item['text']['en'], canonical_url(page)))
-        breadcrumb_id = canonical_url(page) + '#breadcrumb'
+            trail.append((news_item['text'][lang], canonical_url(page, lang)))
+        breadcrumb_id = canonical_url(page, lang) + '#breadcrumb'
         graph.append({'@type': 'BreadcrumbList', '@id': breadcrumb_id, 'itemListElement': [
             {'@type': 'ListItem', 'position': i, 'name': name, 'item': url} for i, (name, url) in enumerate(trail, 1)]})
         webpage['breadcrumb'] = {'@id': breadcrumb_id}
     if news_item is not None:
         article = {
-            '@type': 'Article', '@id': canonical_url(page) + '#article',
-            'headline': news_item['text']['en'], 'description': news_item['summary'],
+            '@type': 'Article', '@id': canonical_url(page, lang) + '#article',
+            'headline': news_item['text'][lang], 'description': description,
             'datePublished': news_item['date'], 'dateModified': last_modified(news_item),
-            'inLanguage': 'en', 'author': {'@id': person_id}, 'publisher': {'@id': person_id},
-            'mainEntityOfPage': {'@id': canonical_url(page) + '#webpage'},
+            'inLanguage': lang, 'author': {'@id': person_id}, 'publisher': {'@id': person_id},
+            'mainEntityOfPage': {'@id': canonical_url(page, lang) + '#webpage'},
             'citation': [scholarly_article(p, person_id) for p in news_publications(news_item)],
         }
         image = news_item.get('social_image') or news_item.get('thumbnail')
@@ -222,10 +240,11 @@ def write_discovery_files():
     ET.register_namespace('', namespace)
     urls = ET.Element('{' + namespace + '}urlset')
     by_page = {news_path(item).removesuffix('.html'): item for item in news_items()}
-    for page in PAGES + [news_path(item).removesuffix('.html') for item in news_items()]:
-        entry = ET.SubElement(urls, '{' + namespace + '}url')
-        ET.SubElement(entry, '{' + namespace + '}loc').text = canonical_url(page)
-        ET.SubElement(entry, '{' + namespace + '}lastmod').text = last_modified(by_page.get(page))
+    for lang in LANGS:
+        for page in PAGES + [news_path(item).removesuffix('.html') for item in news_items()]:
+            entry = ET.SubElement(urls, '{' + namespace + '}url')
+            ET.SubElement(entry, '{' + namespace + '}loc').text = canonical_url(page, lang)
+            ET.SubElement(entry, '{' + namespace + '}lastmod').text = last_modified(by_page.get(page))
     ET.ElementTree(urls).write(OUT / 'sitemap.xml', encoding='utf-8', xml_declaration=True)
     robots = ('# Search engines and AI search/assistant crawlers are welcome to crawl this site.\n'
               + ''.join(f'User-agent: {agent}\n' for agent in AI_CRAWLERS) + 'Allow: /\n\n'
@@ -270,6 +289,9 @@ def write_llms_files():
     pages = ['## Pages', '',
              f'- [Home]({canonical_url("index")}): {DATA["description"]["en"]}'] + [
              f'- [{NAV["en"][PAGES.index(page)]}]({canonical_url(page)}): {DATA["page_descriptions"][page]}'
+             for page in ['research', 'publications', 'services', 'news']] + [
+             f'- [日本語版 / Japanese version]({canonical_url("index", "ja")}): {DATA["description"]["ja"]}'] + [
+             f'- [{NAV["ja"][PAGES.index(page)]}（日本語）]({canonical_url(page, "ja")}): {DATA["page_descriptions_ja"][page]}'
              for page in ['research', 'publications', 'services', 'news']] + ['']
     about = ['## About', ''] + [p['en'] for p in DATA['about']] + ['']
     career = ['## Employment', ''] + [f'- {a["period"]["en"]}: {a["title"]["en"]}, {" ".join(a["place"]["en"].split())}' for a in DATA['appointments']]
@@ -291,20 +313,38 @@ def write_llms_files():
     (OUT / 'llms-full.txt').write_text('\n'.join(full + news_md), encoding='utf-8')
 
 def shell(page, lang, body, news_item=None):
-    root = '../' if lang == 'ja' or news_item is not None else ''
-    home_href = root or './'
+    lang_root = '../' if news_item is not None else ''   # to this language's home directory
+    root = lang_root + ('../' if lang == 'ja' else '')    # to the site root, where assets live
+    home_href = lang_root or './'
     name = text(DATA['name'], lang)
     active_page = 'news' if news_item is not None else page
     label = NAV[lang][PAGES.index(active_page)]
     title = (news_item['text'][lang] + ' — ' + DATA['name'][lang]) if news_item is not None else (DATA['name'][lang] if page == 'index' else f'{label} — {DATA["name"][lang]}')
     if page == 'index' and lang == 'en':
         title += '（' + DATA['name']['ja'].replace(' ', '') + '）'
+    elif page == 'index':
+        title += '（' + DATA['name']['en'] + '）'
     full_title = title + ' | ' + ('大阪公立大学' if lang == 'ja' else 'Osaka Metropolitan University')
-    description = news_item['summary'] if news_item is not None else (DATA['description'][lang] if page == 'index' else DATA['page_descriptions'][page])
-    canonical = canonical_url(page)
+    description = page_description(page, lang, news_item)
+    canonical = canonical_url(page, lang)
+    other = 'ja' if lang == 'en' else 'en'
+    other_href = (root + page_path(page, other)) or './'
+    alternates = ''.join(f'\n  <link rel="alternate" hreflang="{code}" href="{E(canonical_url(page, code), quote=True)}">' for code in LANGS)
+    alternates += f'\n  <link rel="alternate" hreflang="x-default" href="{E(canonical_url(page, "en"), quote=True)}">'
+    # ENG / JP switch: the current language is plain text, the other links to the same page in that language.
+    switch_items = {
+        'en': ('ENG', 'English'), 'ja': ('JP', '日本語')}
+    switch = '<li class="lang-switch" role="group" aria-label="Language / 言語">'
+    for code in LANGS:
+        short, full = switch_items[code]
+        if code == lang:
+            switch += f'<span class="lang-current" lang="{code}" aria-current="true" title="{full}">{short}</span>'
+        else:
+            switch += f'<a class="lang-link" href="{E(other_href, quote=True)}" lang="{code}" hreflang="{code}" title="{full}">{short}</a>'
+    switch += '</li>'
     social_image = news_item.get('social_image') if news_item is not None else None
     image_url = site_url(social_image['src'] if social_image else 'assets/manato-fujimoto.png')
-    image_alt = social_image['alt'] if social_image else 'Portrait of Manato Fujimoto'
+    image_alt = social_image['alt'] if social_image else ('藤本まなとのポートレート' if lang == 'ja' else 'Portrait of Manato Fujimoto')
     social_tags = f'''
   <meta property="og:image:type" content="image/png">
   <meta property="og:image:width" content="620">
@@ -333,9 +373,9 @@ def shell(page, lang, body, news_item=None):
   <meta name="twitter:image" content="{E(image_url, quote=True)}">
   <meta name="twitter:image:alt" content="{E(image_alt, quote=True)}">'''
     svg = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="10" fill="#111b29"/><text x="32" y="42" text-anchor="middle" fill="#85bcff" font-family="Arial,sans-serif" font-size="28">MF</text></svg>'
-    nav = ''.join(f'<li><a href="{home_href if p == "index" else root + p + ".html"}"' + (' aria-current="page"' if active_page == p else '') + f'>{NAV[lang][i]}</a></li>' for i,p in enumerate(PAGES))
+    nav = ''.join(f'<li><a href="{home_href if p == "index" else lang_root + p + ".html"}"' + (' aria-current="page"' if active_page == p else '') + f'>{NAV[lang][i]}</a></li>' for i,p in enumerate(PAGES)) + switch
     verification = DATA.get('google_site_verification', '')
-    verification_meta = f'\n  <meta name="google-site-verification" content="{E(verification, quote=True)}">' if verification and page == 'index' else ''
+    verification_meta = f'\n  <meta name="google-site-verification" content="{E(verification, quote=True)}">' if verification and page == 'index' and lang == 'en' else ''
     page_scripts = ''
     if page == 'publications':
         timeline_css_version = sha256((OUT / 'assets/timeline.css').read_bytes()).hexdigest()[:12]
@@ -356,16 +396,17 @@ def shell(page, lang, body, news_item=None):
   <meta name="description" content="{E(description, quote=True)}">
   <meta name="author" content="Manato Fujimoto">{verification_meta}
   <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
-  <link rel="canonical" href="{E(canonical, quote=True)}">
+  <link rel="canonical" href="{E(canonical, quote=True)}">{alternates}
   <meta property="og:type" content="{'article' if news_item is not None else 'profile' if page == 'index' else 'website'}">
-  <meta property="og:locale" content="en_US">
+  <meta property="og:locale" content="{'ja_JP' if lang == 'ja' else 'en_US'}">
+  <meta property="og:locale:alternate" content="{'en_US' if lang == 'ja' else 'ja_JP'}">
   <meta property="og:site_name" content="{text(DATA['name'],lang)}">
   <meta property="og:title" content="{E(full_title, quote=True)}">
   <meta property="og:description" content="{E(description, quote=True)}">
   <meta property="og:url" content="{E(canonical, quote=True)}">
   <meta property="og:image" content="{E(image_url, quote=True)}">
   <meta property="og:image:alt" content="{E(image_alt, quote=True)}">{social_tags}
-  <script type="application/ld+json">{structured_data(page, full_title, description, news_item)}</script>
+  <script type="application/ld+json">{structured_data(page, full_title, description, news_item, lang)}</script>
   <link rel="sitemap" type="application/xml" href="{E(site_url('sitemap.xml'), quote=True)}">
   <link rel="alternate" type="text/markdown" title="Site summary for AI assistants (llms.txt)" href="{E(site_url('llms.txt'), quote=True)}">
   <meta name="theme-color" content="#090b10">
@@ -397,21 +438,21 @@ def home(lang):
     name = '<h1>藤本 まなと</h1><p class="name-en" lang="en">Manato Fujimoto</p>' if ja else '<h1>Manato Fujimoto</h1>'
     profile_links = ''.join(f'<a href="{E(profile["url"], quote=True)}" class="profile-link" rel="me">{E(profile["label"])}</a>' for profile in DATA['profile_links'])
     body = f'''<section class="profile" aria-label="{'プロフィール' if ja else 'Profile'}">
-  <div><p class="eyebrow">Osaka Metropolitan University</p>{name}
+  <div><p class="eyebrow">{'大阪公立大学' if ja else 'Osaka Metropolitan University'}</p>{name}
     <p class="position">{text(DATA['position'],lang)}</p>
     <p class="affiliation">{text(DATA['affiliation'],lang)}<br>{link(DATA['lab_url'],text(DATA['lab'],lang))}</p>
     <p class="lead">{text(DATA['intro'],lang)}</p>
     <dl class="contact-list"><dt>Email</dt><dd>{link('mailto:'+DATA['email'], E(DATA['email'].replace('@',' [at] ')))}</dd>
     <dt>{'所在地' if ja else 'Address'}</dt><dd><address>{text(DATA['address'],lang)}</address></dd></dl>
-    <nav class="profile-links" aria-label="Research profiles">{profile_links}</nav>
+    <nav class="profile-links" aria-label="{'研究者プロフィール' if ja else 'Research profiles'}">{profile_links}</nav>
   </div>
   <figure class="profile-photo"><picture><source srcset="{root}assets/manato-fujimoto.webp" type="image/webp"><img src="{root}assets/manato-fujimoto.png" width="620" height="560" alt="{'藤本まなとのポートレート' if ja else 'Portrait of Manato Fujimoto'}" fetchpriority="high"></picture><figcaption>{'大阪公立大学<br>スマートプラットフォーム研究室' if ja else 'Smart Platform Research Group<br>Osaka Metropolitan University'}</figcaption></figure>
 </section>'''
     about = ''.join(f'<p>{text(p,lang)}</p>' for p in DATA['about'])
     about += '<ul class="keywords">'+''.join(f'<li>{text(t,lang)}</li>' for t in DATA['keywords'])+'</ul>'
     body += section('プロフィール' if ja else 'About', '<div class="about-copy">'+about+'</div>')
-    news_list = '<ul class="news-list">'+''.join(f'<li><time datetime="{E(n["date"])}">{E(n["date"].replace("-","."))}</time><span class="news-category">{E(n["category"])}</span><span class="news-item-title">{link(news_path(n),text(n["text"],lang))}</span></li>' for n in news_items()[:10])+'</ul>'
-    all_news = link('news.html', 'View all news →', 'news-all-link')
+    news_list = '<ul class="news-list">'+''.join(f'<li><time datetime="{E(n["date"])}">{E(n["date"].replace("-","."))}</time><span class="news-category">{E(category_label(n, lang))}</span><span class="news-item-title">{link(news_path(n),text(n["text"],lang))}</span></li>' for n in news_items()[:10])+'</ul>'
+    all_news = link('news.html', 'お知らせ一覧 →' if ja else 'View all news →', 'news-all-link')
     body += f'<section class="section" id="recent-news"><div class="section-heading news-home-heading"><h2>{"お知らせ" if ja else "Recent News"}</h2>{all_news}</div>{news_list}</section>'
     body += '<div class="two-columns">'+section('職歴' if ja else 'Employment',timeline(DATA['appointments'],lang))+section('学歴' if ja else 'Education',timeline(DATA['education'],lang))+'</div>'
     a = DATA['awards'][0]
@@ -424,7 +465,7 @@ def intro(title, subtitle='', eyebrow=''):
 
 def research(lang):
     ja = lang == 'ja'
-    body = intro('研究内容' if ja else 'Research', text(DATA['research_intro'],lang),'Research interests')
+    body = intro('研究内容' if ja else 'Research', text(DATA['research_intro'],lang),'研究テーマ' if ja else 'Research interests')
     body += '<div class="research-grid">'
     for i,r in enumerate(DATA['research'],1):
         related = ''.join(link('publications.html#'+E(k),E(next(p['title'] for p in PUBS if p['id']==k))) for k in r['publications'])
@@ -451,12 +492,13 @@ def publication_item(p, lang, *, title_url=None, id_prefix=''):
         tags += f'<span class="status">{"採択済み" if lang == "ja" else "Accepted"}</span>'
     if p.get('scheduled'):
         tags += '<span class="status status-scheduled">発表予定</span>'
+    ja = lang == 'ja'
     if p['type'] == 'journal' and p.get('language') == 'ja':
-        tags += '<span class="status status-japanese">Japanese</span>'
+        tags += f'<span class="status status-japanese">{"和文" if ja else "Japanese"}</span>'
     if p['type'] == 'journal' and p.get('corresponding'):
-        tags += '<span class="status status-corresponding">Corresponding</span>'
+        tags += f'<span class="status status-corresponding">{"責任著者" if ja else "Corresponding"}</span>'
     if p['type'] == 'journal' and p.get('international_coauthorship'):
-        tags += '<span class="status status-international">International coauthorship</span>'
+        tags += f'<span class="status status-international">{"国際共著" if ja else "International coauthorship"}</span>'
     for award in p.get('awards', []):
         tags += f'<span class="status status-award">{E(award)}</span>'
     authors = E(p['authors'])
@@ -467,11 +509,11 @@ def publication_item(p, lang, *, title_url=None, id_prefix=''):
         metric_label = f'Impact Factor: <strong>{E(metric["value"])}</strong> <span class="metric-year">({E(when)})</span>'
         metrics = '<p class="pub-metrics">' + link(metric['source_url'], metric_label, 'impact-factor') + '</p>'
     if tags:
-        tags = '<div class="pub-tags" aria-label="Publication tags">' + tags + '</div>'
+        tags = f'<div class="pub-tags" aria-label="{"論文のタグ" if lang == "ja" else "Publication tags"}">' + tags + '</div>'
     return f'<li class="publication" id="{E(id_prefix + p["id"])}"><span class="pub-index">{E(p["label"])}</span><div class="pub-content"><h3 class="pub-title">{title}</h3><p class="pub-authors">{authors}</p><p class="pub-venue">{E(p["venue"])}</p>{metrics}{tags}</div></li>'
 
-def news_meta(item):
-    return f'<div class="news-card-meta"><span class="news-category">{E(item["category"])}</span><time class="news-date" datetime="{E(item["date"])}">{E(item["date"].replace("-", "."))}</time></div>'
+def news_meta(item, lang='en'):
+    return f'<div class="news-card-meta"><span class="news-category">{E(category_label(item, lang))}</span><time class="news-date" datetime="{E(item["date"])}">{E(item["date"].replace("-", "."))}</time></div>'
 
 def news_thumbnail(item, root='', *, article=False):
     thumbnail = item.get('thumbnail')
@@ -481,46 +523,58 @@ def news_thumbnail(item, root='', *, article=False):
     loading = 'eager' if article else 'lazy'
     return f'<img class="news-thumbnail" src="{E(root + thumbnail["src"], quote=True)}" width="{thumbnail["width"]}" height="{thumbnail["height"]}" alt="{E(alt, quote=True)}" loading="{loading}" decoding="async">'
 
+def news_excerpt(item, lang):
+    """Card excerpt. Japanese cards show the paper titles, because summaries are written in English."""
+    if lang == 'ja':
+        return ' ／ '.join(p['title'] for p in news_publications(item))
+    return item['summary']
+
 def news(lang):
-    body = intro('News', eyebrow='Latest updates')
+    ja = lang == 'ja'
+    root = '../' if ja else ''
+    body = intro('お知らせ' if ja else 'News', eyebrow='最新情報' if ja else 'Latest updates')
     items = news_items()
-    body += '<div data-news-index><div class="news-filters" role="group" aria-label="Filter news" hidden>'
-    for value, label in [('all', 'All'), ('journal', 'Journal'), ('conference', 'Conference')]:
+    body += f'<div data-news-index><div class="news-filters" role="group" aria-label="{"お知らせの絞り込み" if ja else "Filter news"}" hidden>'
+    for value, label in [('all', 'すべて' if ja else 'All'), ('journal', '論文誌' if ja else 'Journal'), ('conference', '国際会議' if ja else 'Conference')]:
         count = sum(value == 'all' or item['category'].lower() == value for item in items)
         pressed = 'true' if value == 'all' else 'false'
         body += f'<button type="button" class="news-filter" data-news-filter="{value}" aria-pressed="{pressed}" aria-controls="news-results">{label}<span class="news-filter-count">{count}</span></button>'
     body += '</div><p class="news-filter-status" role="status" aria-live="polite" aria-atomic="true"></p><div id="news-results">'
     for year in sorted({item['date'][:4] for item in items}, reverse=True):
         yearly = [item for item in items if item['date'].startswith(year)]
-        body += f'<section class="news-archive" aria-labelledby="news-year-{E(year)}"><div class="section-heading"><h2 id="news-year-{E(year)}">{E(year)}</h2><span class="note" data-news-count>{len(yearly)} updates</span></div><ol class="news-grid">'
+        count_note = f'{len(yearly)}件' if ja else f'{len(yearly)} updates'
+        body += f'<section class="news-archive" aria-labelledby="news-year-{E(year)}"><div class="section-heading"><h2 id="news-year-{E(year)}">{E(year)}</h2><span class="note" data-news-count>{count_note}</span></div><ol class="news-grid">'
         for item in yearly:
-            summary = news_meta(item) + f'<h3 class="news-card-title">{text(item["text"],lang)}</h3><p class="news-card-excerpt">{E(item["summary"])}</p><span class="news-read-link">Read article →</span>'
+            summary = news_meta(item, lang) + f'<h3 class="news-card-title">{text(item["text"],lang)}</h3><p class="news-card-excerpt">{E(news_excerpt(item, lang))}</p><span class="news-read-link">{"記事を読む →" if ja else "Read article →"}</span>'
             card_class = 'news-card-link'
             if item.get('thumbnail'):
-                summary = news_thumbnail(item) + '<div class="news-card-copy">' + summary + '</div>'
+                summary = news_thumbnail(item, root) + '<div class="news-card-copy">' + summary + '</div>'
                 card_class += ' news-card-with-thumbnail'
             body += f'<li class="news-card" id="news-{E(item["date"])}" data-news-category="{E(item["category"].lower())}">{link(news_path(item), summary, card_class)}</li>'
         body += '</ol></section>'
-    return body + '</div></div><p class="news-return">' + link('./#recent-news', '← Back to Recent News') + '</p>'
+    return body + '</div></div><p class="news-return">' + link('./#recent-news', '← ホームのお知らせへ戻る' if ja else '← Back to Recent News') + '</p>'
 
 def news_article(item, lang):
-    breadcrumb = link('../', 'Home') + '<span aria-hidden="true">/</span>' + link('../news.html', 'News') + '<span aria-hidden="true">/</span>' + f'<span aria-current="page">{E(item["date"].replace("-", "."))}</span>'
-    body = f'<nav class="article-breadcrumb" aria-label="Breadcrumb">{breadcrumb}</nav><article aria-labelledby="news-article-title"><header class="article-heading">{news_meta(item)}<h1 id="news-article-title">{text(item["text"],lang)}</h1></header>'
+    ja = lang == 'ja'
+    breadcrumb = link('../', NAV[lang][0]) + '<span aria-hidden="true">/</span>' + link('../news.html', NAV[lang][1]) + '<span aria-hidden="true">/</span>' + f'<span aria-current="page">{E(item["date"].replace("-", "."))}</span>'
+    body = f'<nav class="article-breadcrumb" aria-label="{"パンくずリスト" if ja else "Breadcrumb"}">{breadcrumb}</nav><article aria-labelledby="news-article-title"><header class="article-heading">{news_meta(item, lang)}<h1 id="news-article-title">{text(item["text"],lang)}</h1></header>'
     # News stores only publication IDs; every bibliographic field comes from PUBS.
     records = news_publications(item)
     citations = ''.join(publication_item(p, lang, title_url='../publications.html#' + p['id'], id_prefix='news-') for p in records)
-    publication_heading = heading('Publications' if len(records) != 1 else 'Publication')
-    thumbnail = '<figure class="news-article-image">' + news_thumbnail(item, '../', article=True) + '</figure>' if item.get('thumbnail') else ''
-    body += '<div class="article-body">' + thumbnail + '<div class="news-announcement">' + item['body_html'] + publication_heading + '<ol class="publications news-publications">' + citations + '</ol></div></div>'
-    body += '<footer class="article-end"><p class="news-return">' + link('../news.html', '← All news') + '</p><nav class="article-neighbors" aria-label="Other news articles">'
+    publication_heading = heading('論文' if ja else ('Publications' if len(records) != 1 else 'Publication'))
+    thumbnail = '<figure class="news-article-image">' + news_thumbnail(item, '../../' if ja else '../', article=True) + '</figure>' if item.get('thumbnail') else ''
+    # The announcement text is stored in English only; the Japanese page uses the Japanese headline as the announcement.
+    announcement = item['body_html'] if not ja else ''
+    body += '<div class="article-body">' + thumbnail + '<div class="news-announcement">' + announcement + publication_heading + '<ol class="publications news-publications">' + citations + '</ol></div></div>'
+    body += '<footer class="article-end"><p class="news-return">' + link('../news.html', '← お知らせ一覧' if ja else '← All news') + f'</p><nav class="article-neighbors" aria-label="{"ほかのお知らせ" if ja else "Other news articles"}">'
     items = news_items()
     index = next(i for i, other in enumerate(items) if other['slug'] == item['slug'])
     if index > 0:
         newer = items[index - 1]
-        body += link(newer['slug'] + '.html', '<span>← Newer article</span>' + text(newer['text'], lang), 'article-neighbor')
+        body += link(newer['slug'] + '.html', f'<span>{"← 新しい記事" if ja else "← Newer article"}</span>' + text(newer['text'], lang), 'article-neighbor')
     if index + 1 < len(items):
         older = items[index + 1]
-        body += link(older['slug'] + '.html', '<span>Older article →</span>' + text(older['text'], lang), 'article-neighbor article-neighbor-older')
+        body += link(older['slug'] + '.html', f'<span>{"以前の記事 →" if ja else "Older article →"}</span>' + text(older['text'], lang), 'article-neighbor article-neighbor-older')
     return body + '</nav></footer></article>'
 
 def research_funding():
@@ -529,7 +583,7 @@ def research_funding():
 
 def publications(lang):
     ja = lang == 'ja'
-    body = intro('研究業績' if ja else 'Publications', eyebrow='Publications')
+    body = intro('研究業績' if ja else 'Publications', eyebrow='業績一覧' if ja else 'Publications')
     groups = [('journal','学術論文' if ja else 'Journal Articles'),('conference','国際会議論文' if ja else 'International Conference Proceedings'),('domestic-conference','国内学会発表' if ja else 'Domestic Conference')]
     timeline_label = '業績タイムライン' if ja else 'Output Timeline'
     body += '<nav class="section-nav" aria-label="'+('業績の種別' if ja else 'Publication categories')+'">'+''.join(link('#'+key,label) for key,label in groups+[('output-timeline',timeline_label)])+'</nav>'
@@ -556,7 +610,7 @@ def publications(lang):
 
 def services(lang):
     ja = lang == 'ja'
-    body = intro('学会活動・受賞' if ja else 'Services & Awards', '主な学会活動と受賞歴。' if ja else 'Selected professional services and awards.','Academic community')
+    body = intro('学会活動・受賞' if ja else 'Services & Awards', '主な学会活動と受賞歴。' if ja else 'Selected professional services and awards.','学会・コミュニティ' if ja else 'Academic community')
     rows = '<ul class="service-list">'
     for s in DATA['services']:
         rows += f'<li><span class="year">{E(s["year"])}</span><div><h3>{text(s["role"],lang)}</h3><p>{text(s["event"],lang)}</p></div></li>'
@@ -577,20 +631,17 @@ def main():
     validate_news()
     validate_search_metadata()
     OUT.mkdir(parents=True,exist_ok=True)
-    for page, render in [('index',home),('news',news),('research',research),('publications',publications),('services',services)]:
-        (OUT / (page+'.html')).write_text(shell(page,'en',render('en')),encoding='utf-8')
-    (OUT / 'news').mkdir(parents=True, exist_ok=True)
-    for item in news_items():
-        path = news_path(item)
-        (OUT / path).write_text(shell(path.removesuffix('.html'), 'en', news_article(item, 'en'), item), encoding='utf-8')
-    for page in PAGES:
-        (OUT / 'ja' / (page+'.html')).unlink(missing_ok=True)
-    japanese_output = OUT / 'ja'
-    if japanese_output.is_dir() and not any(japanese_output.iterdir()):
-        japanese_output.rmdir()
+    for lang in LANGS:
+        out = OUT / 'ja' if lang == 'ja' else OUT
+        (out / 'news').mkdir(parents=True, exist_ok=True)
+        for page, render in [('index',home),('news',news),('research',research),('publications',publications),('services',services)]:
+            (out / (page+'.html')).write_text(shell(page,lang,render(lang)),encoding='utf-8')
+        for item in news_items():
+            path = news_path(item)
+            (out / path).write_text(shell(path.removesuffix('.html'), lang, news_article(item, lang), item), encoding='utf-8')
     (OUT / '.nojekyll').touch()
     write_discovery_files()
-    print(f'Generated {len(PAGES) + len(news_items())} English HTML pages with {len(PUBS)} publication records, plus sitemap.xml, robots.txt, llms.txt and llms-full.txt.')
+    print(f'Generated {len(PAGES) + len(news_items())} HTML pages in each of English and Japanese with {len(PUBS)} publication records, plus sitemap.xml, robots.txt, llms.txt and llms-full.txt.')
 
 if __name__=='__main__':
     main()

@@ -25,6 +25,11 @@ This is the official personal website of Manato Fujimoto. Last updated: 2026-11-
 - [Publications](https://manato-fujimoto.github.io/publications.html): Journal articles, international conference papers, and domestic conference presentations by Manato Fujimoto, including accepted work, scheduled presentations, and awards.
 - [Services](https://manato-fujimoto.github.io/services.html): Conference organization, professional service, awards, and academic memberships of Manato Fujimoto, Osaka Metropolitan University.
 - [News](https://manato-fujimoto.github.io/news.html): Research news, publication announcements and conference updates from Manato Fujimoto, Osaka Metropolitan University.
+- [日本語版 / Japanese version](https://manato-fujimoto.github.io/ja/): 大阪公立大学大学院情報学研究科 准教授・藤本まなとのホームページ。ユビキタスコンピューティング、無線センシング、行動認識、高齢者モニタリングに関する研究内容・業績・学会活動を紹介します。
+- [研究内容（日本語）](https://manato-fujimoto.github.io/ja/research.html): 大阪公立大学 藤本まなとの研究内容。介護・高齢者支援のためのセンシング、行動認識、スマート空間、無線測位などの研究テーマを紹介します。
+- [研究業績（日本語）](https://manato-fujimoto.github.io/ja/publications.html): 藤本まなとの研究業績一覧。学術論文、国際会議論文、国内学会発表（採択済み・発表予定を含む）と受賞を掲載しています。
+- [学会活動（日本語）](https://manato-fujimoto.github.io/ja/services.html): 大阪公立大学 藤本まなとの学会活動。国際会議の運営、受賞歴、所属学会を掲載しています。
+- [お知らせ（日本語）](https://manato-fujimoto.github.io/ja/news.html): 大阪公立大学 藤本まなとの研究ニュース。論文の採択や国際会議での発表に関するお知らせを掲載しています。
 
 ## About
 
