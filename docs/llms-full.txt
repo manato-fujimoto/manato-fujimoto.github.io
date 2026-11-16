@@ -36,9 +36,11 @@ I am an associate professor in the Graduate School of Informatics at Osaka Metro
 
 ## Awards
 
-- 2025: Best Student Paper Award — BodyNets. Co-authored research paper.
+- 2025: Best Student Paper Award — BodyNets. Evaluation of 3-Dimensional In-Body Device Localization Using Machine Learning Algorithms with Reduced Training Data
+Co-authored research paper.
 - 2023: IPSJ / ACM Award for Early Career Contributions to Global Research. Advanced Ubiquitous Computing System for Realization of Society 5.0
-- 2021: Best Paper Award — ICMU. Co-authored research paper.
+- 2021: Best Paper Award — ICMU. Multi-Person Daily Activity Recognition with Non-Contact Sensors Based on Activity Co-Occurrence
+Co-authored research paper.
 
 ## Research
 
