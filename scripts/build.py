@@ -62,6 +62,11 @@ def validate_journal_metrics():
 def text(value, lang):
     return E(value[lang] if isinstance(value, dict) else str(value))
 
+def publication_title(p, lang):
+    if lang == 'ja' and p['type'] == 'journal' and p.get('language') == 'ja':
+        return p.get('title_ja', p['title'])
+    return p['title']
+
 def link(url, label, cls=''):
     return f'<a href="{E(url, quote=True)}"' + (f' class="{cls}"' if cls else '') + f'>{label}</a>'
 
@@ -87,7 +92,7 @@ def canonical_url(page, lang='en'):
 def page_description(page, lang, news_item=None):
     if news_item is not None:
         if lang == 'ja':
-            return news_item['text']['ja'] + ' ' + ' ／ '.join(p['title'] for p in news_publications(news_item))
+            return news_item['text']['ja'] + ' ' + ' ／ '.join(publication_title(p, lang) for p in news_publications(news_item))
         return news_item['summary']
     if page == 'index':
         return DATA['description'][lang]
@@ -122,7 +127,7 @@ def validate_search_metadata():
         if DATA.get(key):
             date.fromisoformat(DATA[key])
 
-def scholarly_article(p, person_id):
+def scholarly_article(p, person_id, lang='en'):
     authors = []
     for raw_name in re.split(r'[,，、]', p['authors']):
         name = raw_name.strip().removeprefix('and ')
@@ -133,7 +138,7 @@ def scholarly_article(p, person_id):
     url = canonical_url('publications') + '#' + p['id']
     article = {
         '@type': 'ScholarlyArticle', '@id': url, 'url': url,
-        'identifier': p['label'], 'name': p['title'],
+        'identifier': p['label'], 'name': publication_title(p, lang),
         'author': authors, 'description': p['venue'],
     }
     if p['url']:
@@ -213,7 +218,7 @@ def structured_data(page, title, description, news_item=None, lang='en'):
             'datePublished': news_item['date'], 'dateModified': last_modified(news_item),
             'inLanguage': lang, 'author': {'@id': person_id}, 'publisher': {'@id': person_id},
             'mainEntityOfPage': {'@id': canonical_url(page, lang) + '#webpage'},
-            'citation': [scholarly_article(p, person_id) for p in news_publications(news_item)],
+            'citation': [scholarly_article(p, person_id, lang) for p in news_publications(news_item)],
         }
         image = news_item.get('social_image') or news_item.get('thumbnail')
         if image:
@@ -227,7 +232,7 @@ def structured_data(page, title, description, news_item=None, lang='en'):
             '@type': 'ItemList', 'name': 'Publications by ' + DATA['name']['en'],
             'numberOfItems': len(PUBS),
             'itemListElement': [
-                {'@type': 'ListItem', 'position': i, 'item': scholarly_article(p, person_id)}
+                {'@type': 'ListItem', 'position': i, 'item': scholarly_article(p, person_id, lang)}
                 for i, p in enumerate(PUBS, 1)
             ],
         }
@@ -468,7 +473,7 @@ def research(lang):
     body = intro('研究内容' if ja else 'Research', text(DATA['research_intro'],lang),'研究テーマ' if ja else 'Research interests')
     body += '<div class="research-grid">'
     for i,r in enumerate(DATA['research'],1):
-        related = ''.join(link('publications.html#'+E(k),E(next(p['title'] for p in PUBS if p['id']==k))) for k in r['publications'])
+        related = ''.join(link('publications.html#'+E(k),E(publication_title(next(p for p in PUBS if p['id']==k), lang))) for k in r['publications'])
         body += f'<section class="research-row" id="{E(r["id"])}" aria-labelledby="{E(r["id"])}-title"><p class="research-number">{i:02}</p><h2 id="{E(r["id"])}-title">{text(r["title"],lang)}</h2><p class="research-description">{text(r["description"],lang)}</p><p class="research-topics">{text(r["topics"],lang)}</p><details class="related"><summary>{"関連論文" if ja else "Related publications"} <span class="related-count">({len(r["publications"])})</span></summary><div class="related-links">{related}</div></details></section>'
     return body + '</div>'
 
@@ -483,7 +488,8 @@ def journal_metric(p):
     return matches[0] if matches else None
 
 def publication_item(p, lang, *, title_url=None, id_prefix=''):
-    title = E(p['title'])
+    title = E(publication_title(p, lang))
+    topic_title = f' data-topic-title="{E(p["title"], quote=True)}"' if publication_title(p, lang) != p['title'] else ''
     target = p['url'] if title_url is None else title_url
     if target:
         title = link(target,title)
@@ -510,7 +516,7 @@ def publication_item(p, lang, *, title_url=None, id_prefix=''):
         metrics = '<p class="pub-metrics">' + link(metric['source_url'], metric_label, 'impact-factor') + '</p>'
     if tags:
         tags = f'<div class="pub-tags" aria-label="{"論文のタグ" if lang == "ja" else "Publication tags"}">' + tags + '</div>'
-    return f'<li class="publication" id="{E(id_prefix + p["id"])}"><span class="pub-index">{E(p["label"])}</span><div class="pub-content"><h3 class="pub-title">{title}</h3><p class="pub-authors">{authors}</p><p class="pub-venue">{E(p["venue"])}</p>{metrics}{tags}</div></li>'
+    return f'<li class="publication" id="{E(id_prefix + p["id"])}"{topic_title}><span class="pub-index">{E(p["label"])}</span><div class="pub-content"><h3 class="pub-title">{title}</h3><p class="pub-authors">{authors}</p><p class="pub-venue">{E(p["venue"])}</p>{metrics}{tags}</div></li>'
 
 def news_meta(item, lang='en'):
     return f'<div class="news-card-meta"><span class="news-category">{E(category_label(item, lang))}</span><time class="news-date" datetime="{E(item["date"])}">{E(item["date"].replace("-", "."))}</time></div>'
@@ -526,7 +532,7 @@ def news_thumbnail(item, root='', *, article=False):
 def news_excerpt(item, lang):
     """Card excerpt. Japanese cards show the paper titles, because summaries are written in English."""
     if lang == 'ja':
-        return ' ／ '.join(p['title'] for p in news_publications(item))
+        return ' ／ '.join(publication_title(p, lang) for p in news_publications(item))
     return item['summary']
 
 def news(lang):

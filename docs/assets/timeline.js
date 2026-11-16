@@ -34,7 +34,7 @@
       const y = Number(YEAR_OF[li.id]);
       if (!y) return;
       const title = (li.querySelector('.pub-title') || li).textContent.trim();
-      const lt = title.toLowerCase();
+      const lt = (li.dataset.topicTitle || title).toLowerCase();
       const tags = Array.from(li.querySelectorAll('.pub-tags .status')).map(s => s.textContent.trim());
       PUBS.push({id: li.id, type: group.id, y, n, title,
         note: tags.find(x => /^(Accepted|Scheduled|採択済み|発表予定)$/i.test(x)) || '',
