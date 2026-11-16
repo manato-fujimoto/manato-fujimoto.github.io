@@ -24,6 +24,16 @@
     "en": "Graduate School of Informatics, Osaka Metropolitan University",
     "ja": "大阪公立大学 大学院情報学研究科"
   },
+  "university": {
+    "en": "Osaka Metropolitan University",
+    "ja": "大阪公立大学",
+    "url": "https://www.omu.ac.jp/"
+  },
+  "alma_mater": {
+    "en": "Kansai University",
+    "ja": "関西大学",
+    "url": "https://www.kansai-u.ac.jp/"
+  },
   "lab": {
     "en": "Smart Platform Research Group",
     "ja": "スマートプラットフォーム研究室"

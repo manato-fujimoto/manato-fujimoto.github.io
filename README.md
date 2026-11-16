@@ -96,6 +96,11 @@ Publicationsページの4つ目のタブ「Output Timeline」は、同じペー�
 - HomeをProfilePageとして記述し、氏名・所属・研究分野をPerson情報に整理します。本人の外部プロフィールは `profile_links` から `sameAs` として関連付けます。
 - Publicationsでは、表示中の全業績のタイトル・著者・掲載情報・採択状態をItemListとScholarlyArticleで記述します。未確定の刊行日や外部評価は追加しません。
 - `sitemap.xml` に基本ページとNews個別記事の正規URLを列挙し、`robots.txt` から案内します。`robots.txt` は検索・AI検索クローラーの巡回を許可する設定です。
+- `robots.txt` には Googlebot・Bingbot に加え、GPTBot / OAI-SearchBot / ChatGPT-User、ClaudeBot / Claude-SearchBot / Claude-User、PerplexityBot、Google-Extended などのAIクローラーを名指しで許可しています。一覧は `scripts/build.py` の `AI_CRAWLERS` です。
+- `llms.txt`（要約と各ページへの案内）と `llms-full.txt`（プロフィール・研究テーマ・全業績のMarkdown）を `content/` のデータから自動生成します。手で編集する必要はありません。
+- `sitemap.xml` の `lastmod` と構造化データの `dateModified` は、News個別記事では記事の日付（`updated` があればその値）、基本ページでは「最新Newsの日付・`content_checked`・`last_updated`」のうち最も新しい日付です。News以外（業績・職歴など）だけを更新したときは、`content/site.json` に `"last_updated": "YYYY-MM-DD"` を設定してください。
+- Personには受賞・学位・所属学会・出身大学（`alma_mater`）・大学（`university`）を追加し、Home以外のページにはパンくずリスト（BreadcrumbList）を出力します。ORCIDなどの本人プロフィールを `profile_links` に追加すると、`sameAs` と `rel="me"` に反映されます。
+- プロフィール写真はWebP版（`docs/assets/manato-fujimoto.webp`）を優先して配信し、PNGは非対応環境とSNS共有用に残しています。写真を差し替えるときは両方を更新してください。
 - これらの設定は検索結果への掲載やAIによる引用を保証するものではありません。Googleの登録状況や掲載実績は、サイト所有者のSearch Consoleで確認できます。
 
 参考：[Googleの生成AI検索向けガイド](https://developers.google.com/search/docs/fundamentals/ai-optimization-guide)、[OpenAIクローラーの仕様](https://developers.openai.com/api/docs/bots)。

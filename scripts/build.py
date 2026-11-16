@@ -75,6 +75,21 @@ def site_url(path=''):
 def canonical_url(page):
     return site_url('' if page == 'index' else page + '.html')
 
+def last_modified(news_item=None):
+    """Date of the last substantive change, for sitemap lastmod and dateModified."""
+    if news_item is not None:
+        return news_item.get('updated', news_item['date'])
+    dates = [DATA['content_checked'], news_items()[0]['date']]
+    if DATA.get('last_updated'):
+        dates.append(DATA['last_updated'])
+    return max(dates)
+
+# Search and AI crawlers that are named explicitly in robots.txt. All are allowed.
+AI_CRAWLERS = ['Googlebot', 'Bingbot', 'Google-Extended', 'GPTBot', 'OAI-SearchBot', 'ChatGPT-User',
+               'ClaudeBot', 'Claude-SearchBot', 'Claude-User', 'PerplexityBot', 'Perplexity-User',
+               'Applebot', 'Applebot-Extended', 'Amazonbot', 'DuckAssistBot', 'meta-externalagent',
+               'MistralAI-User', 'CCBot']
+
 def validate_search_metadata():
     url = urlsplit(DATA['site_url'])
     if url.scheme != 'https' or not url.netloc or url.query or url.fragment:
@@ -85,6 +100,9 @@ def validate_search_metadata():
     verification = DATA.get('google_site_verification', '')
     if not isinstance(verification, str) or (verification and not re.fullmatch(r'[A-Za-z0-9_-]+', verification)):
         raise ValueError('google_site_verification must contain only the token from the Google HTML tag, or be empty')
+    for key in ('content_checked', 'last_updated'):
+        if DATA.get(key):
+            date.fromisoformat(DATA[key])
 
 def scholarly_article(p, person_id):
     authors = []
@@ -104,6 +122,8 @@ def scholarly_article(p, person_id):
         article['sameAs'] = p['url']
     if p.get('language'):
         article['inLanguage'] = p['language']
+    if not p['accepted'] and not p.get('scheduled') and re.fullmatch(r'\d{4}', str(p['year'])):
+        article['datePublished'] = str(p['year'])
     if p['accepted']:
         article['creativeWorkStatus'] = 'Accepted'
     if p.get('scheduled'):
@@ -125,10 +145,27 @@ def structured_data(page, title, description, news_item=None):
         'knowsAbout': [keyword['en'] for keyword in DATA['keywords']],
         'sameAs': [profile['url'] for profile in DATA['profile_links']],
         'email': 'mailto:' + DATA['email'],
+        'honorificSuffix': 'Ph.D.',
+        'award': [f"{a['title']['en']} ({a['year']})" for a in sorted(DATA['awards'], key=lambda a: a['year'], reverse=True)],
+        'memberOf': [{'@type': 'Organization', 'name': m['name']['en'], 'url': m['url']} for m in DATA['memberships']],
+        'hasCredential': [{'@type': 'EducationalOccupationalCredential', 'name': e['title']['en'],
+                           'credentialCategory': 'degree',
+                           'recognizedBy': {'@type': 'CollegeOrUniversity', 'name': e['place']['en'].split(', ')[-1]}}
+                          for e in DATA['education']],
+        'workLocation': {'@type': 'Place', 'address': DATA['address']['en']},
     }
+    university, alma_mater = DATA.get('university'), DATA.get('alma_mater')
+    if university:
+        person['worksFor']['parentOrganization'] = {
+            '@type': 'CollegeOrUniversity', 'name': university['en'],
+            'alternateName': university['ja'], 'url': university['url']}
+    if alma_mater:
+        person['alumniOf'] = {'@type': 'CollegeOrUniversity', 'name': alma_mater['en'],
+                              'alternateName': alma_mater['ja'], 'url': alma_mater['url']}
     website = {
         '@type': 'WebSite', '@id': website_id, 'url': site_url(),
-        'name': DATA['name']['en'], 'inLanguage': 'en',
+        'name': DATA['name']['en'], 'alternateName': DATA['name']['ja'].replace(' ', ''),
+        'description': DATA['description']['en'], 'inLanguage': 'en',
         'publisher': {'@id': person_id},
     }
     page_type = {'index': 'ProfilePage', 'news': 'CollectionPage', 'research': 'CollectionPage',
@@ -138,13 +175,33 @@ def structured_data(page, title, description, news_item=None):
         'url': canonical_url(page), 'name': title, 'description': description,
         'inLanguage': 'en', 'isPartOf': {'@id': website_id},
         'about': {'@id': person_id},
+        'dateModified': last_modified(news_item),
     }
+    graph = [person, website, webpage]
+    if page != 'index':
+        # Breadcrumb trail: Home > section (> article).
+        section_page = 'news' if news_item is not None else page
+        trail = [('Home', canonical_url('index')), (NAV['en'][PAGES.index(section_page)], canonical_url(section_page))]
+        if news_item is not None:
+            trail.append((news_item['text']['en'], canonical_url(page)))
+        breadcrumb_id = canonical_url(page) + '#breadcrumb'
+        graph.append({'@type': 'BreadcrumbList', '@id': breadcrumb_id, 'itemListElement': [
+            {'@type': 'ListItem', 'position': i, 'name': name, 'item': url} for i, (name, url) in enumerate(trail, 1)]})
+        webpage['breadcrumb'] = {'@id': breadcrumb_id}
     if news_item is not None:
-        webpage['mainEntity'] = {
-            '@type': 'Article', 'headline': news_item['text']['en'],
-            'datePublished': news_item['date'], 'author': {'@id': person_id},
+        article = {
+            '@type': 'Article', '@id': canonical_url(page) + '#article',
+            'headline': news_item['text']['en'], 'description': news_item['summary'],
+            'datePublished': news_item['date'], 'dateModified': last_modified(news_item),
+            'inLanguage': 'en', 'author': {'@id': person_id}, 'publisher': {'@id': person_id},
+            'mainEntityOfPage': {'@id': canonical_url(page) + '#webpage'},
             'citation': [scholarly_article(p, person_id) for p in news_publications(news_item)],
         }
+        image = news_item.get('social_image') or news_item.get('thumbnail')
+        if image:
+            article['image'] = {'@type': 'ImageObject', 'url': site_url(image['src']),
+                                'width': image['width'], 'height': image['height']}
+        webpage['mainEntity'] = article
     elif page == 'index':
         webpage['mainEntity'] = {'@id': person_id}
     elif page == 'publications':
@@ -156,7 +213,7 @@ def structured_data(page, title, description, news_item=None):
                 for i, p in enumerate(PUBS, 1)
             ],
         }
-    data = {'@context': 'https://schema.org', '@graph': [person, website, webpage]}
+    data = {'@context': 'https://schema.org', '@graph': graph}
     # Keep data inside the JSON-LD script even if a title contains HTML-like text.
     return json.dumps(data, ensure_ascii=False, separators=(',', ':')).replace('<', '\\u003c')
 
@@ -164,12 +221,74 @@ def write_discovery_files():
     namespace = 'http://www.sitemaps.org/schemas/sitemap/0.9'
     ET.register_namespace('', namespace)
     urls = ET.Element('{' + namespace + '}urlset')
+    by_page = {news_path(item).removesuffix('.html'): item for item in news_items()}
     for page in PAGES + [news_path(item).removesuffix('.html') for item in news_items()]:
         entry = ET.SubElement(urls, '{' + namespace + '}url')
         ET.SubElement(entry, '{' + namespace + '}loc').text = canonical_url(page)
+        ET.SubElement(entry, '{' + namespace + '}lastmod').text = last_modified(by_page.get(page))
     ET.ElementTree(urls).write(OUT / 'sitemap.xml', encoding='utf-8', xml_declaration=True)
-    robots = 'User-agent: *\nAllow: /\n\nSitemap: ' + site_url('sitemap.xml') + '\n'
+    robots = ('# Search engines and AI search/assistant crawlers are welcome to crawl this site.\n'
+              + ''.join(f'User-agent: {agent}\n' for agent in AI_CRAWLERS) + 'Allow: /\n\n'
+              + 'User-agent: *\nAllow: /\n\nSitemap: ' + site_url('sitemap.xml') + '\n')
     (OUT / 'robots.txt').write_text(robots, encoding='utf-8')
+    write_llms_files()
+
+def publication_line(p):
+    status = ' [Accepted]' if p['accepted'] else ' [Scheduled presentation]' if p.get('scheduled') else ''
+    awards = ''.join(f' [{award}]' for award in p.get('awards', []))
+    title = f'[{p["title"]}]({p["url"]})' if p['url'] else p['title']
+    return f'- {p["label"]}. {p["authors"]}. {title}. {p["venue"]}{status}{awards}'
+
+def write_llms_files():
+    """Plain-Markdown summaries for AI assistants: llms.txt (index) and llms-full.txt (all records)."""
+    name, name_ja = DATA['name']['en'], DATA['name']['ja'].replace(' ', '')
+    groups = [('journal', 'Journal Articles'), ('conference', 'International Conference Proceedings'),
+              ('domestic-conference', 'Domestic Conference Presentations')]
+    counts = {kind: sum(p['type'] == kind for p in PUBS) for kind, _ in groups}
+    updated = last_modified()
+    head = [
+        f'# {name}（{name_ja}）',
+        '',
+        f'> {name}（{name_ja}） is an {DATA["appointments"][0]["title"]["en"]} (Ph.D. in Engineering) at the '
+        f'{DATA["affiliation"]["en"]}（{DATA["affiliation"]["ja"]}）, Japan, and a member of the {DATA["lab"]["en"]}'
+        f'（{DATA["lab"]["ja"]}）. Research areas: ' + ', '.join(k['en'] for k in DATA['keywords'])
+        + '（' + '、'.join(k['ja'] for k in DATA['keywords']) + '）.',
+        '',
+        f'This is the official personal website of {name}. Last updated: {updated}.',
+        '',
+    ]
+    facts = ['## Key facts', '',
+             f'- Name: {name} (Japanese: {DATA["name"]["ja"]})',
+             f'- Position: {DATA["position"]["en"]}',
+             f'- Affiliation: {DATA["affiliation"]["en"]}',
+             f'- Laboratory: [{DATA["lab"]["en"]}]({DATA["lab_url"]})',
+             f'- Address: {DATA["address"]["en"]}',
+             f'- Contact: {DATA["email"].replace("@", " [at] ")}',
+             '- Research keywords: ' + ', '.join(k['en'] for k in DATA['keywords']),
+             '- Publications listed on this site: ' + ', '.join(f'{counts[kind]} {label.lower()}' for kind, label in groups),
+             ''] + [f'- {profile["label"]}: {profile["url"]}' for profile in DATA['profile_links']] + ['']
+    pages = ['## Pages', '',
+             f'- [Home]({canonical_url("index")}): {DATA["description"]["en"]}'] + [
+             f'- [{NAV["en"][PAGES.index(page)]}]({canonical_url(page)}): {DATA["page_descriptions"][page]}'
+             for page in ['research', 'publications', 'services', 'news']] + ['']
+    about = ['## About', ''] + [p['en'] for p in DATA['about']] + ['']
+    career = ['## Employment', ''] + [f'- {a["period"]["en"]}: {a["title"]["en"]}, {" ".join(a["place"]["en"].split())}' for a in DATA['appointments']]
+    career += ['', '## Education', ''] + [f'- {e["period"]["en"]}: {e["title"]["en"]}, {e["place"]["en"]}' for e in DATA['education']]
+    career += ['', '## Awards', ''] + [f'- {a["year"]}: {a["title"]["en"]}. {a["detail"]["en"]}' for a in sorted(DATA['awards'], key=lambda a: a['year'], reverse=True)] + ['']
+    research_md = ['## Research', '', DATA['research_intro']['en'], '']
+    for r in DATA['research']:
+        research_md += [f'### {r["title"]["en"]}', '', r['description']['en'], '', 'Topics: ' + r['topics']['en'], '']
+    news_md = ['## Recent news', ''] + [f'- {n["date"]}: [{n["text"]["en"]}]({site_url(news_path(n))}) {n["summary"]}' for n in news_items()[:10]] + ['']
+    optional = ['## Optional', '', f'- [Full text for AI assistants]({site_url("llms-full.txt")}): profile, research themes, and the complete publication list in Markdown',
+                f'- [Sitemap]({site_url("sitemap.xml")})', '']
+    (OUT / 'llms.txt').write_text('\n'.join(head + facts + pages + about + research_md + news_md + optional), encoding='utf-8')
+    full = head + facts + about + career + research_md
+    full += ['## Professional service', ''] + [f'- {s["year"]}: {s["role"]["en"]}, {s["event"]["en"]}' for s in DATA['services']]
+    full += ['', '## Memberships', ''] + [f'- {m["name"]["en"]}' for m in DATA['memberships']] + ['']
+    full += [f'## Publications ({len(PUBS)} records)', '', f'Source page: {canonical_url("publications")}', '']
+    for kind, label in groups:
+        full += [f'### {label} ({counts[kind]})', ''] + [publication_line(p) for p in PUBS if p['type'] == kind] + ['']
+    (OUT / 'llms-full.txt').write_text('\n'.join(full + news_md), encoding='utf-8')
 
 def shell(page, lang, body, news_item=None):
     root = '../' if lang == 'ja' or news_item is not None else ''
@@ -186,13 +305,28 @@ def shell(page, lang, body, news_item=None):
     social_image = news_item.get('social_image') if news_item is not None else None
     image_url = site_url(social_image['src'] if social_image else 'assets/manato-fujimoto.png')
     image_alt = social_image['alt'] if social_image else 'Portrait of Manato Fujimoto'
-    social_tags = ''
+    social_tags = f'''
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="620">
+  <meta property="og:image:height" content="560">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="{E(full_title, quote=True)}">
+  <meta name="twitter:description" content="{E(description, quote=True)}">
+  <meta name="twitter:image" content="{E(image_url, quote=True)}">
+  <meta name="twitter:image:alt" content="{E(image_alt, quote=True)}">'''
+    if page == 'index':
+        given, family = DATA['name']['en'].split(' ', 1)
+        social_tags += f'''
+  <meta property="profile:first_name" content="{E(given, quote=True)}">
+  <meta property="profile:last_name" content="{E(family, quote=True)}">'''
     if social_image:
         social_tags = f'''
   <meta property="og:image:secure_url" content="{E(image_url, quote=True)}">
   <meta property="og:image:type" content="{E(social_image['type'], quote=True)}">
   <meta property="og:image:width" content="{social_image['width']}">
   <meta property="og:image:height" content="{social_image['height']}">
+  <meta property="article:published_time" content="{E(news_item['date'], quote=True)}">
+  <meta property="article:modified_time" content="{E(last_modified(news_item), quote=True)}">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="{E(full_title, quote=True)}">
   <meta name="twitter:description" content="{E(description, quote=True)}">
@@ -223,7 +357,8 @@ def shell(page, lang, body, news_item=None):
   <meta name="author" content="Manato Fujimoto">{verification_meta}
   <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
   <link rel="canonical" href="{E(canonical, quote=True)}">
-  <meta property="og:type" content="{'article' if social_image else 'website'}">
+  <meta property="og:type" content="{'article' if news_item is not None else 'profile' if page == 'index' else 'website'}">
+  <meta property="og:locale" content="en_US">
   <meta property="og:site_name" content="{text(DATA['name'],lang)}">
   <meta property="og:title" content="{E(full_title, quote=True)}">
   <meta property="og:description" content="{E(description, quote=True)}">
@@ -231,6 +366,8 @@ def shell(page, lang, body, news_item=None):
   <meta property="og:image" content="{E(image_url, quote=True)}">
   <meta property="og:image:alt" content="{E(image_alt, quote=True)}">{social_tags}
   <script type="application/ld+json">{structured_data(page, full_title, description, news_item)}</script>
+  <link rel="sitemap" type="application/xml" href="{E(site_url('sitemap.xml'), quote=True)}">
+  <link rel="alternate" type="text/markdown" title="Site summary for AI assistants (llms.txt)" href="{E(site_url('llms.txt'), quote=True)}">
   <meta name="theme-color" content="#090b10">
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,{quote(svg)}">
   <link rel="stylesheet" href="{root}assets/style.css">
@@ -258,7 +395,7 @@ def home(lang):
     ja = lang == 'ja'
     root = '../' if ja else ''
     name = '<h1>藤本 まなと</h1><p class="name-en" lang="en">Manato Fujimoto</p>' if ja else '<h1>Manato Fujimoto</h1>'
-    profile_links = ''.join(link(profile['url'], E(profile['label']), 'profile-link') for profile in DATA['profile_links'])
+    profile_links = ''.join(f'<a href="{E(profile["url"], quote=True)}" class="profile-link" rel="me">{E(profile["label"])}</a>' for profile in DATA['profile_links'])
     body = f'''<section class="profile" aria-label="{'プロフィール' if ja else 'Profile'}">
   <div><p class="eyebrow">Osaka Metropolitan University</p>{name}
     <p class="position">{text(DATA['position'],lang)}</p>
@@ -268,7 +405,7 @@ def home(lang):
     <dt>{'所在地' if ja else 'Address'}</dt><dd><address>{text(DATA['address'],lang)}</address></dd></dl>
     <nav class="profile-links" aria-label="Research profiles">{profile_links}</nav>
   </div>
-  <figure class="profile-photo"><img src="{root}assets/manato-fujimoto.png" width="620" height="560" alt="{'藤本まなとのポートレート' if ja else 'Portrait of Manato Fujimoto'}" fetchpriority="high"><figcaption>{'大阪公立大学<br>スマートプラットフォーム研究室' if ja else 'Smart Platform Research Group<br>Osaka Metropolitan University'}</figcaption></figure>
+  <figure class="profile-photo"><picture><source srcset="{root}assets/manato-fujimoto.webp" type="image/webp"><img src="{root}assets/manato-fujimoto.png" width="620" height="560" alt="{'藤本まなとのポートレート' if ja else 'Portrait of Manato Fujimoto'}" fetchpriority="high"></picture><figcaption>{'大阪公立大学<br>スマートプラットフォーム研究室' if ja else 'Smart Platform Research Group<br>Osaka Metropolitan University'}</figcaption></figure>
 </section>'''
     about = ''.join(f'<p>{text(p,lang)}</p>' for p in DATA['about'])
     about += '<ul class="keywords">'+''.join(f'<li>{text(t,lang)}</li>' for t in DATA['keywords'])+'</ul>'
@@ -453,7 +590,7 @@ def main():
         japanese_output.rmdir()
     (OUT / '.nojekyll').touch()
     write_discovery_files()
-    print(f'Generated {len(PAGES) + len(news_items())} English HTML pages with {len(PUBS)} publication records.')
+    print(f'Generated {len(PAGES) + len(news_items())} English HTML pages with {len(PUBS)} publication records, plus sitemap.xml, robots.txt, llms.txt and llms-full.txt.')
 
 if __name__=='__main__':
     main()
