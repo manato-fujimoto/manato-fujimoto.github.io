@@ -629,7 +629,8 @@ def services(lang):
         title = text(a['title'], lang)
         if a.get('url'):
             title = link(a['url'], title)
-        rows += f'<li><span class="year">{E(a["year"])}</span><div><h3>{title}</h3><p>{text(a["detail"],lang)}</p></div></li>'
+        detail = '<br>'.join(text(a['detail'], lang).splitlines())
+        rows += f'<li><span class="year">{E(a["year"])}</span><div><h3>{title}</h3><p>{detail}</p></div></li>'
     body += section('主な受賞' if ja else 'Selected Awards',rows+'</ul>')
     member = '<ul class="memberships">'+''.join(f'<li>{link(m["url"],text(m["name"],lang))}</li>' for m in DATA['memberships'])+'</ul>'
     body += section('所属学会' if ja else 'Memberships',member)
