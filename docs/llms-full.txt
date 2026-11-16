@@ -1,0 +1,403 @@
+# Manato Fujimoto（藤本まなと）
+
+> Manato Fujimoto（藤本まなと） is an Associate Professor (Ph.D. in Engineering) at the Graduate School of Informatics, Osaka Metropolitan University（大阪公立大学 大学院情報学研究科）, Japan, and a member of the Smart Platform Research Group（スマートプラットフォーム研究室）. Research areas: Ubiquitous Computing, Wireless Sensing, Activity Recognition, Healthcare & Well-being（ユビキタスコンピューティング、無線センシング、行動認識、ヘルスケア・ウェルビーイング）.
+
+This is the official personal website of Manato Fujimoto. Last updated: 2026-11-06.
+
+## Key facts
+
+- Name: Manato Fujimoto (Japanese: 藤本 まなと)
+- Position: Associate Professor · Ph.D. in Engineering
+- Affiliation: Graduate School of Informatics, Osaka Metropolitan University
+- Laboratory: [Smart Platform Research Group](https://omusp.jp/)
+- Address: 3-3-138 Sugimoto, Sumiyoshi-ku, Osaka 558-8585, Japan
+- Contact: manato [at] omu.ac.jp
+- Research keywords: Ubiquitous Computing, Wireless Sensing, Activity Recognition, Healthcare & Well-being
+- Publications listed on this site: 39 journal articles, 84 international conference proceedings, 168 domestic conference presentations
+
+- researchmap: https://researchmap.jp/mf_may
+- Google Scholar: https://scholar.google.co.jp/citations?user=h5HEM40AAAAJ&hl=en&oi=ao
+
+## About
+
+I am an associate professor in the Graduate School of Informatics at Osaka Metropolitan University and a member of the Smart Platform Research Group. My research spans ubiquitous computing, wireless networks, sensing technologies, and elderly monitoring. I received my B.E., M.E., and Ph.D. in Engineering from Kansai University in 2009, 2011, and 2015. Before joining Osaka Metropolitan University in 2022, I worked at Nara Institute of Science and Technology and Osaka City University. I was also a visiting scientist at RIKEN's Center for Advanced Intelligence Project (AIP) from May 2018 to March 2026.
+
+## Employment
+
+- Apr. 2022 — Present: Associate Professor, Graduate School of Informatics, Osaka Metropolitan University
+- Oct. 2021 — Present: Associate Professor, Graduate School of Engineering, Osaka City University
+- Apr. 2015 — Sept. 2021: Assistant Professor, Graduate School of Science and Technology, Nara Institute of Science and Technology
+
+## Education
+
+- Mar. 2015: Ph.D. in Engineering, Graduate School of Science and Engineering, Kansai University
+- Mar. 2011: Master of Engineering, Graduate School of Science and Engineering, Kansai University
+- Mar. 2009: Bachelor of Engineering, Kansai University
+
+## Awards
+
+- 2025: Best Student Paper Award — BodyNets. Co-authored research paper.
+- 2023: IPSJ / ACM Award for Early Career Contributions to Global Research. Advanced Ubiquitous Computing System for Realization of Society 5.0
+- 2021: Best Paper Award — ICMU. Co-authored research paper.
+
+## Research
+
+Connecting sensing, machine learning, and real-world applications to understand people and their environments.
+
+### Sensing for Care & Healthy Aging
+
+We study ways to recognize the daily activities of older adults and the work of caregivers. By bringing together activity logs and measurements of physical or psychological state, we aim to support care reporting and a better understanding of caregiver workload.
+
+Topics: BLE-based activity logging, caregiver stress analysis, and sensor-based walking and exercise support.
+
+### Human Activity & State Recognition
+
+We combine wearable and environmental sensors to capture everyday behavior. Our work includes SipSense for beverage type and volume estimation, FocusSense for concentration estimation, and device-free recognition of activities in living spaces.
+
+Topics: Acoustic sensing, multimodal concentration estimation, Doppler sensing, and daily activity recognition.
+
+### Smart Spaces & Cities
+
+We explore how everyday spaces can sense people and support their activities. Research ranges from turning ordinary furniture into touch interfaces to wireless crowd sensing and participatory sensing for tourism.
+
+Topics: Vibration-based interfaces, Wi-Fi sensing, participatory sensing, and context-aware services.
+
+### Wireless Localization & In-body Systems
+
+We investigate localization and wireless communication for devices in challenging environments, including the human body. This work combines wireless and magnetic-field measurements with machine learning to support future medical and healthcare systems.
+
+Topics: Magnetic-field-based localization, implant communications, UWB, and RFID localization.
+
+## Professional service
+
+- 2027: Program Co-Chair, 21st International Workshop on Informatics (IWIN 2027)
+- 2026: Program Co-Chair, 20th International Workshop on Informatics (IWIN 2026)
+- 2026: Web Chair, 20th IEEE International Symposium on Medical Information and Communication Technology (ISMICT 2026)
+- 2025: Tutorial Chair, 20th EAI International Conference on Body Area Networks: Intelligent Edge Cloud for Dependable Globally Connected BAN (BodyNets 2025)
+- 2024: Local-Organization and Registration Co-Chairs, 10th IEEE International Conference on Smart Computing (SMARTCOMP 2024)
+- 2023: Financial Co-Chairs, 14th International Conference on Mobile Computing and Ubiquitous Networking (ICMU 2023)
+- 2020: Local Arrangement Co-Chairs, 14th IEEE International Symposium on Medical Information Communication Technology (ISMICT 2020)
+
+## Memberships
+
+- Institute of Electrical and Electronics Engineers (IEEE)
+- Association for Computing Machinery (ACM)
+- Institute of Electronics, Information and Communication Engineers (IEICE)
+- Information Processing Society of Japan (IPSJ)
+
+## Publications (291 records)
+
+Source page: https://manato-fujimoto.github.io/publications.html
+
+### Journal Articles (39)
+
+- J39. Hiromichi Taniguchi, Ryo Katsuma, Manato Fujimoto. A Pen-Based Support System with an Accelerometer for Efficient Grading of Multiple-Choice Paper Tests. IPSJ Journal, Vol. xx, No. x, pp. xxx-xxx, Feb. 2027. [Accepted]
+- J38. Takumi Kobayashi, Taiki Egusa, Yuki Matsuhiro, Jaakko Hyry, Jens Kirchner, Georg Fischer, Manato Fujimoto, Daisuke Anzai. [[Invited Paper] In-body Cybernetic Avatar Localization Using Quasi-static Magnetic Field Based on Machine Learning for Future Medicine and Healthcare](https://ieeexplore.ieee.org/document/11611596). IEICE Transactions on Communications — accepted; scheduled for 2027. [Accepted]
+- J37. Noriyuki Tanaka, Ko Watanabe, Shoya Ishimaru, Andreas Dengel, Shingo Ata, Manato Fujimoto. FocusSense: Usability Study of Dashboard Application for Deeplearning Based Concentration Estimation Using Multimodal Sensors. International Journal of Informatics Society — accepted; scheduled for 2027. [Accepted]
+- J36. Takumi Kobayashi, Jaakko Hyry, Manato Fujimoto, Shingo Ata, Daisuke Anzai. [Power and Waveform Optimization for Implant Ultra-Wideband Communications Enhanced by Dynamic Sparse Control](https://ieeexplore.ieee.org/document/11540991). IEEE Journal of Electromagnetics, RF, and Microwaves in Medicine and Biology, Vol. 10, No. 3, pp. 410-418, Sept. 2026
+- J35. Satoshi Morita, Yuta Otsuka, Yoshihisa Kaneda, Takayuki Izumo, Yoshihiro Nakao, Taiki Egusa, Yui Ogawa, Manato Fujimoto, Yukiko Uchida. [A case study of the “Be supporters!”: Promoting well-being among nursing home residents](https://www.jstage.jst.go.jp/article/sagj/20/1/20_166/_article/-char/ja). Applied Gerontology, Vol. 20, No. 1, pp. 166-176, Aug. 2026
+- J34. Ryogo Ueshima, Shunta Sato, Ko Watanabe, Mengxi Liu, Sungho Suh, Paul Lukowicz, Andreas Dengel, Shoya Ishimaru, Shingo Ata, Manato Fujimoto. [SipSense: Acoustic Sensing of Beverage Type and Volume Using Dual-Microphone Wearable System](https://www.jstage.jst.go.jp/article/ijabc/2026/1/2026_130/_article/-char/ja/). International Journal of Activity and Behavior Computing, Vol. 2026, Issue 1, pp. 1-18, April 2026
+- J33. Atsuki Koyama, Kentaroh Toyoda, Manato Fujimoto, Thi Hong Tran. [zk-REAL: A Zero-Knowledge-Based Protocol for Repeated Image Edit Authenticity Proof with Lattice Hashing](https://ieeexplore.ieee.org/document/11372060). IEEE Open Journal of the Computer Society, Vol. 7, pp. 443-454, Feb. 2026
+- J32. Takumi Kobayashi, Jaakko Hyry, Manato Fujimoto, Daisuke Anzai. [Weight Optimization of MIMO-UWB Distributed Beamforming for Implant Communications](https://www.nature.com/articles/s41598-026-36694-w). Scientific Reports, Vol. 16, Article number: 5920, pp. 1-13, Jan. 2026
+- J31. Yusuke Gotoh, Aoi Takeda, Koji Masui, Koji Sakai, and Manato Fujimoto. [Searching Method for Three-Dimensional Puncture Route to Support CT-Guided Percutaneous Puncture](https://www.mdpi.com/2313-433X/10/10/251). Journal of Imaging, Vol. 10, Issue 10, Article ID 251, pp. 1-18, Oct. 2024
+- J30. Makoto Yoshida, Tomokazu Matsui, Tokimune Ishiyama, Manato Fujimoto, Hirohiko Suwa, Keiichi Yasumoto. [Smatable: A Vibration-based Sensing Method for Making Ordinary Tables Touch-interfaces](https://ieeexplore.ieee.org/document/10360828). IEEE Access, Vol. 11, pp. 142611-142627, Dec. 2023
+- J29. Shinya Misaki, Makoto Yoshida, Hyuckjin Choi, Tomokazu Matsui, Manato Fujimoto, Keiichi Yasumoto. [Location-Independent Doppler Sensing System for Device-Free Daily Living Activity Recognition](https://ieeexplore.ieee.org/document/10310205). IEEE Access, Vol. 11, pp. 127754-127768, Nov. 2023
+- J28. Jiaxuan Zhang, Yuki Matsuda, Manato Fujimoto, HIrohiko Suwa, Keiichi Yasumoto. [Movement Recognition via Channel-Activation-Wise sEMG Attention](https://www.sciencedirect.com/science/article/pii/S1046202323001093). Methods, Vol. 218, pp. 39-47, Oct. 2023
+- J27. Atsuki Koyama, Van Chuong Tran, Manato Fujimoto, Vo Nguyen Quoc Bao, Thi Hong Tran. [A Decentralized COVID-19 Vaccine Tracking System using Blockchain Technology](https://www.mdpi.com/2410-387X/7/1/13). Cryptography, Vol. 7, Issue 1, No. 13, pp. 1-15, Mar. 2023
+- J26. Kazuhito Umeki, Tomoki Tanaka, Yugo Nakamura, Manato Fujimoto, Teruhiro Mizumoto, Hirohiko Suwa, Yutaka Arakawa, Keiichi Yasumoto. [Large-Scale Evacuation Shelter Selection Method Through Iterations of Pedestrian Simulations With Dynamic Congestion Reproduction](https://ieeexplore.ieee.org/document/9867918). IEEE Access, Vol. 10, pp. 89387-89401, Aug. 2022
+- J25. Atsushi Miyaji, Yuta Kimata, Tomokazu Matsui, Manato Fujimoto, Keiichi Yasumoto. [Analysis and Visualization of Relationship between Stress and Care Activities toward Reduction of Caregiver Workload](https://sensors.myu-group.co.jp/article.php?ss=3972). Sensors and Materials, Vol. 34, No. 8(1), pp. 2929-2954, Aug. 2022
+- J24. Kazuki Oi, Yugo Nakamura, Yuki Matsuda, Manato Fujimoto, Keiichi Yasumoto. [Inertial measurement unit-sensor-based Short Stick Exercise Tracking to Improve Health of Elderly People](https://sensors.myu-group.co.jp/article.php?ss=3968). Sensors and Materials, Vol. 34, No. 8(1), pp. 2911-2928, Aug. 2022
+- J23. Hyuckjin Choi, Manato Fujimoto, Tomokazu Matsui, Shinya Misaki, Keiichi Yasumoto. [Wi-CaL: WiFi Sensing and Machine Learning based Device-Free Crowd Counting and Localization](https://ieeexplore.ieee.org/document/9724220). IEEE Access, Vol. 10, pp. 24395-24410, Mar. 2022
+- J22. Zhihua Zhang, Juliana Miehle, Yuki Matsuda, Manato Fujimoto, Yutaka Arakawa, Keiichi Yasumoto, Wolfgang Minker. [Exploring the Impacts of Elaborateness and Indirectness in a Behavior Change Support System](https://ieeexplore.ieee.org/document/9429258/authors#authors). IEEE Access, Vol. 9, pp. 74778-74788, May 2021
+- J21. Tomoki Tanaka, Yuki Matsuda, Manato Fujimoto, Hirohiko Suwa, Keiichi Yasumoto. [Evacuation Shelter Decision Method Considering Non-Cooperative Evacuee Behavior to Support the Disaster Weak](https://www.mdpi.com/2071-1050/13/9/5106). Sustainability, Vol. 13, Issue 9, Article ID 5106, pp. 1-21, May 2021
+- J20. Tomokazu Matsui, Kosei Onishi, Shinya Misaki, Manato Fujimoto, Hirohiko Suwa, Keiichi Yasumoto. [SALON: Simplified Sensing System for Activity of Daily Living in Ordinary Home](https://www.mdpi.com/1424-8220/20/17/4895). Sensors, Vol. 20, Issue 17, Article ID 4895, pp. 1-24, Aug. 2020
+- J19. Shogo Kawanaka, Yuki Matsuda, Hirohiko Suwa, Manato Fujimoto, Yutaka Arakawa, Keiichi Yasumoto. [Gamified Participatory Sensing in Tourism: An Experimental Study of the Effects on Tourist Behavior and Satisfaction](https://www.mdpi.com/2624-6511/3/3/37). Smart Cities, Vol. 3, Issue 3, pp. 736-757, July 2020
+- J18. Masato Hidaka, Yuki Kanaya, Shogo Kawanaka, Yuki Matsuda, Yugo Nakamura, Hirohiko Suwa, Manato Fujimoto, Yutaka Arakawa, Keiichi Yasumoto. [On-site Trip Planning Support System Based on Dynamic Information on Tourism Spots](https://doi.org/10.3390/smartcities3020013). Smart Cities, Vol. 3, Issue 2, pp. 212-231, Apr. 2020
+- J17. Yohei Torigoe, Yugo Nakamura, Manato Fujimoto, Yutaka Arakawa, Keiichi Yasumoto. [Strike Activity Detection and Recognition Using Inertial Measurement Unit Towards Kendo Skill Improvement Support System](https://doi.org/10.18494/SAM.2020.2615). Sensors and Materials, Vol. 32, No. 2(2), pp. 651-673, Feb. 2020
+- J16. Kazuki Moriya, Manato Fujimoto, Yutaka Arakawa, Keiichi Yasumoto. [Effective Trilateration-based Indoor Localization Method Utilizing Active Control of Lighting Devices](https://doi.org/10.18494/SAM.2020.2613). Sensors and Materials, Vol. 32, No. 2(2), pp. 625-650, Feb. 2020
+- J15. Manato Fujimoto, Seigi Matsumoto, Edgar Marko Trono, Yutaka Arakawa, Keiichi Yasumoto. [Effective Application Distribution System for Internet-Less Communication during Disasters](https://doi.org/10.18494/SAM.2020.2614). Sensors and Materials, Vol. 32, No. 1(1), pp. 79-95, Jan. 2020
+- J14. Zhihua Zhang, Yuta Takahashi, Manato Fujimoto, Yutaka Arakawa, Keiichi Yasumoto. [Investigating effects of interactive-signage-based stimulation for promoting behavior change](https://onlinelibrary.wiley.com/doi/full/10.1111/coin.12234). Computational Intelligence, vol. 35, Issue 3, pp. 643-668, Aug. 2019
+- J13. Kazuhito Umeki, Yugo Nakamura, Manato Fujimoto, Teruhiro Mizumoto, Hirohiko Suwa, Yutaka Arakawa, Keiichi Yasumoto. [Evacuation Center Determination Method Considering Bias of Congestion Degree on Areas](https://ipsj.ixsq.nii.ac.jp/ej/index.php?active_action=repository_view_main_item_detail&page_id=13&block_id=8&item_id=194384&item_no=1). IPSJ Journal, Vol. 60, No. 2, pp. 608-616, Feb. 2019
+- J12. Tatsuya Morita, Kenta Taki, Manato Fujimoto, Hirohiko Suwa, Yutaka Arakawa, Keiichi Yasumoto. [Beacon-based Time-Spatial Recognition toward Automatic Daily Care Reporting for Nursing Homes](https://www.hindawi.com/journals/js/2018/2625195/). Journal of Sensors, Vol. 2018, Article ID 2625195, 15 pages, Aug. 2018
+- J11. Yuta Takahashi, Yasuhiro Otoda, Manato Fujimoto, Yutaka Arakawa. [Walking Activity Detection Through a Cane Attached Sensor](https://ipsj.ixsq.nii.ac.jp/ej/?action=pages_view_main&active_action=repository_view_main_item_detail&item_id=189565&item_no=1&page_id=13&block_id=8). IPSJ Transactions on Consumer Devices & Systems, Vol. 8, No. 2, pp. 43-55, May 2018
+- J10. Masashi Fujiwara, Yukitoshi Kashimoto, Manato Fujimoto, Hirohiko Suwa, Yutaka Arakawa, Keiichi Yasumoto. [Implementation and Evaluation of Analog-PIR-sensor-based Activity Recognition](https://www.tandfonline.com/doi/abs/10.9746/jcmsi.10.385). SICE Journal of Control, Measurement, and System Integration, Vol. 10, No. 4, pp. 385-392, Sept. 2017
+- J9. Shogo Kawanaka, Yuta Takahashi, Chishu Amenomori, Manato Fujimoto, Yutaka Arakawa, Akira Fujiwara, Tetsuya Fukushima, Takanobu Matsubara. [Implementation and Evaluation of a Participatory Location Sharing System for Cycling Road Race with Reducing Burden for the Athletes](https://ipsj.ixsq.nii.ac.jp/ej/?action=pages_view_main&active_action=repository_view_main_item_detail&item_id=181093&item_no=1&page_id=13&block_id=8). IPSJ Transactions on Consumer Devices & Systems, Vol. 7, No. 2, pp. 12-23, May 2017
+- J8. Edgar Marko Trono, Manato Fujimoto, Hirohiko Suwa, Yutaka Arakawa, Keiichi Yasumoto. [Generating pedestrian maps of disaster areas through ad-hoc deployment of computing resources across a DTN](https://www.sciencedirect.com/science/article/pii/S0140366416306399). Computer Communications, Vol. 100, pp. 129-142, Mar. 2017
+- J7. Yukitoshi Kashimoto, Kyoji Hata, Eri Nakagawa, Hirohiko Suwa, Manato Fujimoto, Yutaka Arakawa, Takeya Shigezumi, Kunihiro Komiya, Kenta Konishi, Keiichi Yasumoto. [A Living Activity Recognition System Based on Power Consumption of Appliances and Energy Harvesting PIR and Door Sensors](https://ipsj.ixsq.nii.ac.jp/ej/?action=pages_view_main&active_action=repository_view_main_item_detail&item_id=177501&item_no=1&page_id=13&block_id=8). IPSJ Journal, Vol. 58, No. 2, pp. 409-418, Feb. 2017
+- J6. Manato Fujimoto, Yukio Iida. [Array Antennas Comprised of Hexagons for RFID Applications](https://www.tandfonline.com/doi/abs/10.1080/21681724.2015.1082197). International Journal of Electronics Letters, Vol. 4, No. 4, pp. 472-479, Sept. 2016
+- J5. Manato Fujimoto, Yukio Iida. [Array Antennas Comprised of Tetragons for RFID Applications](http://www.sciencepublishinggroup.com/journal/paperinfo?journalid=133&doi=10.11648/j.wcmc.20150302.11). International Journal of Wireless Communications and Mobile Computing, Vol. 3, No. 2, pp. 13-17, Mar. 2015
+- J4. Manato Fujimoto, Hayato Ozaki, Takuya Suzuki, Hiroaki Koyamashita, Tomotaka Wada, Kouichi Mutsuura, Hiromi Okada. [Effective Barrier Coverage Constructions for Improving Border Security in Wireless Sensor Networks](https://search.ieice.org/bin/summary.php?id=e96-b_12_3007&category=B&year=2013&lang=E&abst=). IEICE Transactions on Communications, Vol. E96-B, No. 12, pp. 3007-3016, Dec. 2013
+- J3. Manato Fujimoto, Tomotaka Wada, Atsuki Inada, Kouichi Mutsuura, Hiromi Okada. [Swift Communication Range Recognition Method for Quick and Accurate Position Estimation of Passive RFID Tags](https://search.ieice.org/bin/summary.php?id=e95-a_9_1596&category=A&lang=E&year=2012&abst=). IEICE Transactions on Fundamentals of Electronics, Communications and Computer Sciences, Vol. E95-A, No. 9, pp. 1596-1605, Sept. 2012
+- J2. Manato Fujimoto, Tomotaka Wada, Atsuki Inada, Emi Nakamori, Yuki Oda, Kouichi Mutsuura, Hiromi Okada. [Localization of Passive RFID Tags by Using Broad-Type Multi-Sensing-Range (B-MSR) Method](https://search.ieice.org/bin/summary.php?id=e95-a_7_1164&category=A&lang=E&year=2012&abst=). IEICE Transactions on Fundamentals of Electronics, Communications and Computer Sciences, Vol. E95-A, No. 7, pp. 1164-1174, July 2012
+- J1. Tomotaka Wada, Toshihiro Hori, Manato Fujimoto, Kouichi Mutsuura, Hiromi Okada. [An Adaptive Multi-Range-Sensing Method for 3D Localization of Passive RFID Tags](https://search.ieice.org/bin/summary.php?id=e95-a_6_1074&category=A&lang=E&year=2012&abst=). IEICE Transactions on Fundamentals of Electronics, Communications and Computer Sciences, Vol. E95-A, No. 6, pp. 1074-1083, June 2012
+
+### International Conference Proceedings (84)
+
+- C84. Taisho Isobe, Haruki Ishimaru, Manato Fujimoto, Shingo Ata, Kota Tsuchie, Nobuyuki Nakamura, Taketsugu Yao. RPL-FedID: Reliable Pseudo-Label-Enhanced Federated Device Identification. 22nd International Conference on Network and Service Management (CNSM2026), pp. xx-xx, Madrid, Spain, Oct. 2026. [Accepted]
+- C83. Sohshi Yoshida, Ko Watanabe, Andreas Dengel, Shoya Ishimaru, Shingo Ata, Manato Fujimoto. AIDOL: Augmenting Immersion with Dynamic Optical Lighting for Inducing Behavior Change in Live Concert Viewing. UbiComp Companion’26: Companion of the 2026 on ACM International Joint Conference on Pervasive and Ubiquitous Computing, Poster, Shanghai, China, Oct. 2026 [Accepted]
+- C82. Takumi Kawamura, Taiki Egusa, Takumi Kobayashi, Jaakko Hyry, Yujiro Kushiyama, Shingo Ata, Daisuke Anzai, Manato Fujimoto. An Investigation of Effective Feature Sets for Machine Learning-Based Implantable Device Localization. 20th IEEE International Symposium on Medical Information and Communication Technology (ISMICT 2026), Osaka, Japan, Sept. 2026 [Accepted]
+- C81. Mairu Sakamoto, Jaakko Hyry, Yujiro Kushiyama, Takumi Kobayashi, Manato Fujimoto, Shingo Ata, Daisuke Anzai. Experimental Evaluation of WLAN CSI-Based Device-Free Indoor Localization. 20th IEEE International Symposium on Medical Information and Communication Technology (ISMICT 2026), Osaka, Japan, Sept. 2026 [Accepted]
+- C80. Yuki Hashimoto, Manato Fujimoto, Shingo Ata. Realization of Application-aware Networking by Using Information-Centric Networking. IEEE International Conference on Computers, Software, and Applications (COMPSAC 2026), short paper, pp. 1295-1300, Madrid, Spain, July 2026
+- C79. Haruki Ishimaru, Manato Fujimoto, Shingo Ata. IoT Device Identification Method by Using DNS Queries at Initial Phase. The 8th International Conference on Artificial Intelligence in Information and Communication (ICAIIC 2026), pp. 251-256, Tokyo, Japan, Feb. 2026
+- C78. Kazushi Matsukura, Kentaro Noda, Yuki Hashimoto, Haruki Ishimaru, Manato Fujimoto, Shingo Ata. Vendor-Independent Data Platform Architecture in Smart Buildings. IEEE Consumer Communications & Networking Conference (CCNC), Work-in-Progress, pp. 1-4, Las Vegas, NV, USA, Jan. 2026
+- C77. Taiki Egusa, Takumi Kobayashi, Jaakko Hyry, Manato Fujimoto, Shingo Ata, Daisuke Anzai. Evaluation of 3-Dimensional In-Body Device Localization Using Machine Learning Algorithms with Reduced Training Data. 20th EAI International Conference on Body Area Networks: Intelligent Edge Cloud for Dependable Globally Connected BAN (BodyNets2025), Okayama, Japan, Dec. 2025
+- C76. Yoshiki Kitatani, Manato Fujimoto, Shingo Ata. Sandboxing Building OS: Enabling Isolated Development Environment for Smart Buildings. 21st International Conference on Network and Service Management (CNSM), Mini-conference paper, pp. 1-7, Bologna, Italy, Oct. 2025
+- C75. Sohshi Yoshida, Ko Watanabe, Andreas Dengel, Shoya Ishimaru, Shingo Ata, Manato Fujimoto. Push or Light: Nudging Standing to Break Prolonged Sitting. UbiComp Companion’25: Companion of the 2025 on ACM International Joint Conference on Pervasive and Ubiquitous Computing, Poster, pp. 231-235, Espoo, Finland, Oct. 2025
+- C74. Taisho Isobe, Manato Fujimoto, Shingo Ata, Kota Tsuchie, Nobuyuki Nakamura, Taketsugu Yao. Federated Learning for Privacy-Preserving and Generalizable IoT Device Identification. The 25th Asia-Pacific Network Operations and Management Symposium (APNOMS), Poster, pp. 1-4, Kaohsiung, Taiwan, Sept. 2025
+- C73. Kazuma Hashimoto, Hiroki Oyoshi, Manato Fujimoto, Shingo Ata. Enhancement of Chatbot Conversation for Network Troubleshooting by Combining LLM and System Log Analysis. The 25th Asia-Pacific Network Operations and Management Symposium (APNOMS 2025), pp. 1-6, Kaohsiung, Taiwan, Sept. 2025
+- C72. Noriyuki Tanaka, Ko Watanabe, Shoya Ishimaru, Andreas Dengel, Shingo Ata, Manato Fujimoto. FocusSense: Construction and Evaluation of a Multimodal Concentration Estimation Application. 19th International Workshop on Informatics (IWIN2025), pp. 41-47, Miyagi, Japan, Sept. 2025
+- C71. Noriyuki Tanaka, Ko Watanabe, Shoya Ishimaru, Andreas Dengel, Shingo Ata, and Manato Fujimoto. Concentration Estimation in Online Video Lecture Using Multimodal Sensors. UbiComp Companion’24: Companion of the 2024 on ACM International Joint Conference on Pervasive and Ubiquitous Computing, Poster, pp. 71-75, Melbourne, Australia, Oct. 2024
+- C70. Yui Ogawa, Manato Fujimoto, Shingo Ata. Consideration of Tourist Spot Extraction by Combining Map Search Service and Social Media. Advances in Networked-based Information Systems, pp. 239-250, Chiang Mai, Thailand, Sept. 2023
+- C69. Yoshihiro Nakaso, Manato Fujimoto, Shingo Ata. Toward Extracting Orientation of Personal Interest for Human Activity Recognition. Advances in Networked-based Information Systems, pp. 227-238, Chiang Mai, Thailand, Sept. 2023
+- C68. Makoto Yoshida, Tomokazu Matsui, Tokimune Ishiyama, Manato Fujimoto, Hirohiko Suwa, Keiichi Yasumoto. Smatable: A System to Transform Furniture into Interface using Vibration Sensor. 19th International Conference on Intelligent Environments (IE2023), pp. 1-8, Mauritius, Africa, June 2023
+- C67. Hiroki Ishimaru, Yugo Nakamura, Manato Fujimoto, Hirohiko Suwa, Keiichi Yasumoto. A QoS-Aware 3D Point Cloud Streaming from Real Space for Interaction in Metaverse. 3rd Workshop on From Cloud to Things: harnessing pervasive data in the Computing (Cloud2Things 2023), pp. 68-73, Atlanta, GA, USA, Mar. 2023
+- C66. Hiroki Ishimaru, Yugo Nakamura, Manato Fujimoto, Hirohiko Suwa, Keiichi Yasumoto. QoS-Aware Point Cloud Streaming of Wild Animals/Humans for Interactions in Virtual Space. 2023 IEEE International Conference on Pervasive Computing and Communications Workshops and other Affiliated Events, Demo, pp. 301-303, Atlanta, GA, USA, Mar. 2023
+- C65. Ryota Saze, Manato Fujimoto, HIrohiko Suwa, Keiichi Yasumoto. Construction and Evaluation of a Return Prediction Model for One-Way Car Sharing. 13th EAI International Conference on Mobile Computing, Applications and Services (MobiCASE 2022), Online, Nov. 2022
+- C64. Nozomi Toba, Manato Fujimoto, Hirohiko Suwa, Motoki Sakai, Masaki Shuzo, Keiichi Yasumoto. Comparison between Machine Learning and Objective Evaluation in Estimating Emotions of Participants in Video Conferencing. The 4th International Conference on Activity and Behavior Computing (ABC2022), Position Paper, London, United Kingdom (Hybrid), Oct. 2022
+- C63. Jiaxuan Zhang, Yuki Matsuda, Manato Fujimoto, Hirohiko Suwa, Keiichi Yasumoto. Feasibility Analysis of sEMG Recognition via Channel-Wise Transformer. 2022 IEEE 11th Global Conference on Consumer Electronics (GCCE 2022), pp. 103-104, Osaka, Japan, Oct. 2022
+- C62. Kazuki Oi, Yugo Nakamura, Yuki Matsuda, Manato Fujimoto, Keiichi Yasumoto. Short Stick Exercise Tracking System for Elderly Rehabilitation using IMU Sensor. The Second International Workshop on Cyber-Physical-Human System Design and Implementation (CPHS22), pp. 13-18, Online, May 2022
+- C61. Hyuckjin Choi, Tomokazu Matsui, Shinya Misaki, Atsushi Miyaji, Manato Fujimoto, Keiichi Yasumoto. Simultaneous Crowd Estimation in Counting and Localization Using WiFi CSI. Eleventh International Conference on Indoor Positioning and Indoor Navigation (IPIN 2021), pp. 1-8, Online, Nov. 2021
+- C60. Tomokazu Matsui, Shinya Misaki, Yuma Sato, Manato Fujimoto, Hirohiko Suwa, Keiichi Yausmoto. Multi-Person Daily Activity Recognition with Non-Contact Sensors Based on Activity Co-Occurrence. The 13th International Conference on Mobile Computing and Ubiquitous Networking (ICMU 2021), pp. 157-164, Tokyo, Japan, Nov. 2021
+- C59. Ryoya Hayashi, Yuki Matsuda, Manato Fujimoto, Hirohiko Suwa, Keiichi Yausmoto. Multimodal Tourists’ Emotion and Satisfaction Estimation Considering Weather Conditions and Analysis of Feature Importance. The 13th International Conference on Mobile Computing and Ubiquitous Networking (ICMU 2021), pp. 145-150, Tokyo, Japan, Nov. 2021
+- C58. Atsushi Miyaji, Tomokazu Matsui, Zhihua Zhang, Hyuckjin Choi, Manato Fujimoto, Keiichi Yasumoto. Analysis on Nursing Care Activity Related Stress Level for Reduction of Caregiving Workload. 50th International Conference on Parallel Processing Workshop (ICPP Warkshops’21), pp. 1-8, Online, Aug. 2021
+- C57. Keisuke Umakoshi, Tomokazu Matsui, Makoto Yoshida, Hyuckjin Choi, Manato Fujimoto, Hirohiko Suwa, Keiichi Yasumoto. Non-Contact Person Identification by Piezoelectric-based Gait Vibration Sensing. The 35th International Conference on Advanced Information Networking and Applications (AINA-2021), Volume 1, pp. 745-757, Online, May 2021
+- C56. Tomokazu Matsui, Kosei Onishi, Shinya Misaki, Hirohiko Suwa, Manato Fujimoto, Teruhiro Mizumoto, Wataru Sasaki, Aki Kimura, Kiyoyasu Maruyama, Keiichi Yasumoto. Analysis of Visualized Bioindicators Related to Activities of Daily Living. The 35th International Conference on Advanced Information Networking and Applications (AINA-2021), Volume 1, pp. 731-744, Online, May 2021
+- C55. Hyuckjin Choi, Tomokazu Matsui, Manato Fujimoto, Keiichi Yasumoto. Simultaneous Crowd Counting and Localization by WiFi CSI. International Conference on Distributed Computing and Networking 2021 (ICDCN ’21), Doctoral Symposium, pp. 239-240, Online, Jan. 2021
+- C54. Shinya Misaki, Keisuke Umakoshi, Tomokazu Matsui, Hyuckjin Choi, Manato Fujimoto, Keiichi Yasumoto. Non-Contact In-Home Activity Recognition System Utilizing Doppler Sensors. Adjunct Proceedings of the 2021 International Conference on Distributed Computing and Networking, pp. 169-174, Online, Jan. 2021
+- C53. Risa Tamaki, Manato Fujimoto, Hirohiko Suwa, Keiichi Yasumoto. Data Analysis for Developing Blood Glucose Level Control System. Adjunct Proceedings of the 2021 International Conference on Distributed Computing and Networking, pp. 104-109, Online, Jan. 2021
+- C52. Haruka Wada, Zhihua Zhang, Manato Fujimoto, Yutaka Arakawa, Keiichi Yasumoto. Implementation and Field Evaluation of Location-based Nursing Record System QuickCareRecord. 14th International Symposium on Medical Information and Communication Technology (ISMICT 2020), pp. 1-6, Online, May 2020
+- C51. Zhihua Zhang, Yuki Matsuda, Manato Fujimoto, Yutaka Arakawa, Keiichi Yasumoto. Embedding Additional Behaviors Into Users’ Daily Routines for Improving Users’ Awareness of Self-Health Condition. Eighth International Workshop on Behavior Change Support Systems (BCSS 2020), pp. 1-6, Online, Apr. 2020
+- C50. Tomokazu Matsui, Kosei Onishi, Shinya Misaki, Manato Fujimoto, Hirohiko Suwa, Keiichi Yasumoto. Easy-to-Deploy Living Activity Sensing System and Data Collection in General Homes. 2020 IEEE International Conference on Pervasive Computing and Communications Workshops (PerCom Workshops), pp. 460-465, Online, Mar. 2020
+- C49. Manato Fujimoto, Haruka Wada, Zhihua Zhang. A Proposal of Care Planning Infrastructure Platform for Reducing Burden on Caretakers in Nursing Homes. 48th International Conference on Parallel Processing: Workshops, pp. 1-4, Kyoto, Japan, Aug. 2019
+- C48. Haruka Wada, Zhihua Zhang, Manato Fujimoto, Yutaka Arakawa, Keiichi Yasumoto. QuickCareRecord: Efficient Care Recording Application with Location-based Automatic View Transition and Information Complement. 13th International Symposium on Medical Information and Communication Technology (ISMICT 2019), pp. 1-6, Oslo, Norway, May 2019
+- C47. Wataru Sasaki, Masashi Fujiwara, Manato Fujimoto, Hirohiko Suwa, Yutaka Arakawa, Keiichi Yasumoto. Predicting Occurrence Time of Daily Living Activities Through Time Series Analysis of Smart Home Data. 2019 IEEE International Conference on Pervasive Computing and Communications Workshops (PerCom Workshops), pp. 233-238, Kyoto, Japan, Mar. 2019
+- C46. Masashi Takata, Yugo Nakamura, Yohei Torigoe, Manato Fujimoto, Yutaka Arakawa, Keiichi Yasumoto. Strikes-Thrusts Activity Recognition Using Wrist Sensor Towards Pervasive Kendo Support System. 2019 IEEE International Conference on Pervasive Computing and Communications Workshops (PerCom Workshops), pp. 243-248, Kyoto, Japan, Mar. 2019
+- C45. Yoshinori Umetsu, Yugo Nakamura, Yutaka Arakawa, Manato Fujimoto, Hirohiko Suwa. EHAAS: Energy Harvesters As A Sensor for Place Recognition on Wearables. IEEE International Conference on Pervasive Computing and Communications (PerCom 2019), pp. 222-231, Kyoto, Japan, Mar. 2019
+- C44. Yutaka Arakawa, Yoshinori Umetsu, Yugo Nakamura, Manato Fujimoto, Hirohiko Suwa, Keiichi Yasumoto. Poster: Feasibility Study toward a Battery-free Place Recognition System based on Solar Cells. ACM International Joint Conference on Pervasive and Ubiquitous Computing (Ubicomp’18), pp. 1-4, Poster, Singapore, Singapore, Oct. 2018
+- C43. Masashi Takata, Yugo Nakamura, Manato Fujimoto, Yutaka Arakawa, Keiichi Yasumoto. Investigating the effect of sensor position for training type recognition in a body weight training support system. Adjunct Proceedings of the 2018 ACM International Joint Conference on Pervasive and Ubiquitous Computing, pp. 1404-1408, Singapore, Singapore, Oct. 2018
+- C42. Philipp Voigt, Matthias Budde, Erik Pescara, Manato Fujimoto, Keiichi Yasumoto, Michael Beigl. Feasibility of Human Activity Recognition Using Wearable Depth Cameras. ACM International Symposium on Wearable Computers (ISWC’18), pp. 92-95, Singapore, Singapore, Oct. 2018
+- C41. Zhihua Zhang, Yuta Takahashi, Manato Fujimoto, Yutaka Arakawa, Keiichi Yasumoto. Investigating User Reactions to Interactive-signage-based Stimulation Toward Behavior Change. The 11th International Conference on Mobile Computing and Ubiquitous Networking (ICMU 2018), pp. 1-6, Auckland, New Zealand, Oct. 2018
+- C40. Masashi Fujiwara, Kazuki Moriya, Wataru Sasaki, Manato Fujimoto, Yutaka Arakawa, Keiichi Yasumoto. A Smart Fridge for Efficient Foodstuff Management with Weight Sensor and Voice Interface. 47th International Conference on Parallel Processing Companion, pp. 2:1-2:7, Eugene, OR, USA, Aug. 2018
+- C39. Shogo Kawanaka, Yuki Matsuda, Hirohiko Suwa, Manato Fujimoto, Yutaka Arakawa, Keiichi Yasumoto. A gamified participatory sensing for tourism: the effect to a sightseeing. The Third International Workshop on Smart Sensing Systems (IWSSS’18), pp. 196-205, Italy, Rome, June 2018
+- C38. Kazuhito Umeki, Yugo Nakamura, Manato Fujimoto, Yutaka Arakawa, Keiichi Yasumoto. Real-Time Congestion Estimation in Sightseeing Spots with BLE Devices. 2018 IEEE International Conference on Pervasive Computing and Communications Workshops (PerCom Workshops), Demo, pp. 430-432, Athens, Greece, Mar. 2018
+- C37. Tatsuya Morita, Kenta Taki, Manato Fujimoto, Hirohiko Suwa, Yutaka Arakawa, Keiichi Yasumoto. Development of Automatic Daily Report Generation System for Supporting Daily Works on Carers. 2018 IEEE International Conference on Pervasive Computing and Communications Workshops (PerCom Workshops), pp. 172-177, Athens, Greece, Mar. 2018
+- C36. Manato Fujimoto. Smart Sensing for Automatic Care Report Generation in Day Care Center. 2017 International Workshop on Smart Info-Media System in Asia (SISA 2017), pp. 337-341, Fukuoka, Japan, Sept. 2017
+- C35. Masato Hidaka, Yuki Matsuda, Shogo Kawanaka, Yugo Nakamura, Manato Fujimoto, Yutaka Arakawa, Keiichi Yasumoto. A System for Collecting and Curating Sightseeing Information toward Satisfactory Tour Plan Creation. The Second International Workshop on Smart Sensing Systems (IWSSS’17), pp. 1-6, Oulu, Finland, Aug. 2017
+- C34. Yuko Hirabe, Manato Fujimoto, Yutaka Arakawa, Hirohiko Suwa, Keiichi Yasumoto. Effect on Group Detection Based on Human Proximity for Human Relationship Extraction in Daily Life. 2017 46th International Conference on Parallel Processing Workshops (ICPPW), pp 1-7, Bristol, United Kingdom, Aug. 2017
+- C33. Ryota Koshiba, Yuko Hirabe, Manato Fujimoto, Hirohiko Suwa, Yutaka Arakawa, Keiichi Yasumoto. Group Detection Based on User-to-User Distance in Everyday life for Office Lunch Group Recommendation. 2017 31st International Conference on Advanced Information Networking and Applications Workshops (WAINA), pp. 309-314, Taipei, Taiwan, Mar. 2017
+- C32. Yukitoshi Kashimoto, Tatsuya Morita, Manato Fujimoto, Yutaka Arakawa, Hirohiko Suwa, Keiichi Yasumoto. Sensing Activities and Locations of Senior Citizens toward Automatic Daycare Report Generation. The 31st IEEE International Conference on Advanced Information Networking and Applications (AINA-2017), pp. 174-181, Taipei, Taiwan, Mar. 2017
+- C31. Yukitoshi Kashimoto, Masashi Fujiwara, Manato Fujimoto, Hirohiko Suwa, Yutaka Arakawa, Keiichi Yasumoto. ALPAS: Analog-PIR-sensor-based Activity Recognition System in Smarthome. The 31st IEEE International Conference on Advanced Information Networking and Applications (AINA-2017), pp. 880-885, Taipei, Taiwan, Mar. 2017
+- C30. Kazuki Moriya, Eri Nakagawa, Manato Fujimoto, Hirohiko Suwa, Yutaka Arakawa, Aki Kimura, Satoko Miki, Keiichi Yasumoto. Daily Living Activity Recognition with ECHONET Lite Appliances and Motion Sensors. 2017 IEEE International Conference on Pervasive Computing and Communications Workshops (PerCom Workshops), pp. 437-442, Hawaii, HI, USA, Mar. 2017
+- C29. Eri Nakagawa, Kazuki Moriya, Hirohiko Suwa, Manato Fujimoto, Yutaka Arakawa, Keiichi Yasumoto. Toward Real-Time In-Home Activity Recognition Using Indoor Positioning Sensor and Power Meters. 2017 IEEE International Conference on Pervasive Computing and Communications Workshops (PerCom Workshops), pp. 539-544, Hawaii, HI, USA, Mar. 2017
+- C28. Yukitoshi Kashimoto, Tatsuya Morita, Manato Fujimoto, Yutaka Arakawa, Hirohiko Suwa, Keiichi Yasumoto. Implementation and Evaluation of Daycare Report Generation System based on BLE Tag. 15th International Conference on Mobile and Ubiquitous Multimedia (MUM 2016), Poster, pp. 327-329, Rovaniemi, Finland, Dec. 2016
+- C27. Edgar Marko Trono, Manato Fujimoto, Hirohiko Suwa, Yutaka Arakawa, Keiichi Yasumoto. Milk Carton: Family Tracing and Reunification System using Face Recognition over a DTN with Deployed Computing Nodes. Adjunct Proceedings of the 13th International Conference on Mobile and Ubiquitous Systems: Computing Networking and Services, Hiroshima, pp. 24-28, Japan, Nov. 2016
+- C26. Yukitoshi Kashimoto, Kyoji Hata, Hirohiko Suwa, Manato Fujimoto, Yutaka Arakawa, Takeya Shigezumi, Kunihiro Komiya, Kenta Konishi, Keiichi Yasumoto. Low-cost and Device-free Activity Recognition System with Energy Harvesting PIR and Door Sensors. Adjunct Proceedings of the 13th International Conference on Mobile and Ubiquitous Systems: Computing Networking and Services, Hiroshima, pp. 6-11, Japan, Nov. 2016
+- C25. Eri Nakagawa, Kazuki Moriya, Hirohiko Suwa, Manato Fujimoto, Yutaka Arakawa, Toshiyuki Hatta, Shotaro Miwa, Keiichi Yasumoto. Investigating recognition accuracy improvement by adding user’s acceleration data to location and power consumption-based in-home activity recognition system. Adjunct Proceedings of the 13th International Conference on Mobile and Ubiquitous Systems: Computing Networking and Services, pp. 100-105, Hiroshima, Japan, Nov. 2016
+- C24. Seiya Chihara, Bin Sun, Sho Tatsukawa, Tomotaka Wada, Manato Fujimoto, Kouichi Mutsuura. A New Combination Method of RFID and Geomagnetic Sensor for Indoor Navigation. The 7th International Conference on Indoor Positioning and Indoor Navigation (IPIN 2016), Work in Progress, pp. 1-4, Madrid, Spain, Oct. 2016
+- C23. Yukitoshi Kashimoto, Manato Fujimoto, Hirohiko Suwa, Yutaka Arakawa, Keiichi Yasumoto. Floor vibration type estimation with piezo sensor toward indoor positioning system. The 7th International Conference on Indoor Positioning and Indoor Navigation (IPIN 2016), pp. 1-6, Madrid, Spain, Oct. 2016
+- C22. Kazuki Moriya, Manato Fujimoto, Yutaka Arakawa, Keiichi Yasumoto. Indoor Localization based on Distance-illuminance Model and Active Control of Lighting Devices. The 7th International Conference on Indoor Positioning and Indoor Navigation (IPIN 2016), pp. 1-6, Madrid, Spain, Oct. 2016
+- C21. Manato Fujimoto, Seigi Matsumoto, Yutaka Arakawa, Keiichi Yasumoto. RecurChat: BLE-based Message Forwarding System with On-Site Application Distribution. Ninth International Conference on Mobile Computing and Ubiquitous Networking (ICMU 2016), pp. 122-127, Kaiserslautern, Germany, Oct. 2016
+- C20. Manato Fujimoto, Seigi Matsumoto, Yutaka Arakawa, Hirohiko Suwa, Keiichi Yasumoto. Development of BLE-based Multi-Hop Communication System for Detecting Slope Failure Using Smartphones. 2016 45th International Conference on Parallel Processing Workshops (ICPPW), pp. 16-21, Philadelphia, PA, USA, Aug. 2016
+- C19. Toshiki Yamasaki, Tomohiro Kitamura, Ken Komaki, Koki Matsumoto, Tomotaka Wada, Manato Fujimoto, Kazuhiro Ohtsuki. Development of Prototype System Using iOS Terminals for Emergency Rescue Evacuation Support System (ERESS). 2016 45th International Conference on Parallel Processing Workshops (ICPPW), pp. 7-15, Philadelphia, PA, USA, Aug. 2016
+- C18. Yutaka Arakawa, Keiichi Yasumoto, Kenichi Matsumoto, Hideaki Hata, Hirohiko Suwa, Akihiro Ihara, Manato Fujimoto. Project IS^3: Incentive-based Intelligent Intervention for Smart and Sustainable Society. 5th IIAI International Congress on Advanced Applied Informatics (IIAI AAI 2016), pp. 215-218, Kumamoto, Japan, July 2016
+- C17. Edgar Marko Trono, Manato Fujimoto, Hirohiko Suwa, Yutaka Arakawa, Keiichi Yasumoto. Milk Carton: A Face Recognition-based FTR system using Opportunistic Clustered Computing. The 36th IEEE International Conference on Distributed Computing Systems (ICDCS 2016), Demo, pp. 759-760, Nara, Japan, June 2016
+- C16. Kiyoaki Komai, Manato Fujimoto, Yutaka Arakawa, Hirohiko Suwa, Yukitoshi Kashimoto, Keiichi Yasumoto. Elderly Person Monitoring in Day Care Center using Bluetooth Low Energy. 10th International Symposium on Medical Information and Communication Technology (ISMICT 2016), pp.140-144, Worcester, MA, USA, Mar. 2016
+- C15. Edgar Marko Trono, Manato Fujimoto, Hirohiko Suwa, Yutaka Arakawa, Mineo Takai, Keiichi Yasumoto. Disaster Area Mapping Using Spatially-Distributed Computing Nodes Across a DTN. 2016 IEEE International Conference on Pervasive Computing and Communications Workshops (PerCom Workshops), pp. 1-6, Sydney, Australia, Mar. 2016
+- C14. Kiyoaki Komai, Manato Fujimoto, Yutaka Arakawa, Hirohiko Suwa, Yukitoshi Kashimoto, Keiichi Yasumoto. Beacon-Based Multi-Person Activity Monitoring System for Day Care Center. 2016 IEEE International Conference on Pervasive Computing and Communications Workshops (PerCom Workshops), pp. 1-6, Sydney, Australia, Mar. 2016
+- C13. Manato Fujimoto, Seigi Matsumoto, John Noel Victorino, Hirohiko Suwa, Yutaka Arakawa, Yafei Hou, Julian Webber, Kazuto Yano, Satoshi Tsukamoto, Michinori Hatayama. Downhill: BLE-based Multi-Hop Communication Using Smartphones for Detecting Slope Failures. The 17th International Workshop on Mobile Computing Systems and Applications (HotMobile 2016), Demo, 1 page, St. Augustine, FL, USA, Feb. 2016
+- C12. Sho Tatsukawa, Tadashi Nakanishi, Ryo Nagao, Tomotaka Wada, Manato Fujimoto, Kouichi Mutsuura. New Moving Control of Mobile Robot Without Collision with Wall and Obstacles by Passive RFID System. The 6th International Conference on Indoor Positioning and Indoor Navigation (IPIN 2015), pp. 1-7, Banff, Canada, Oct. 2015
+- C11. Hiroki Murotsu, Manato Fujimoto, Tatsuya Suzuki, Hiroyuki Ebara, Tomotaka Wada, Hiromi Okada. A Novel Evacuation Route Search Algorithm for Route Distribution of Evacuees Groups in Fire Disasters. Australasian Telecommunication Networks and Applications Conference (ATNAC 2014), pp. 204-210, Melbourne, Australia, Nov. 2014
+- C10. Tadashi Nakanishi, Manato Fujimoto, Ryo Nagao, Sho Tatsukawa, Tomotaka Wada, Kouichi Mutsuura, Hiromi Okada. Moving Correction Method of a Mobile Robot Using Passive RFID System Based on Obstacle Prediction. The 5th International Conference on Indoor Positioning and Indoor Navigation (IPIN 2014), pp. 1-9, Busan, Korea, Oct. 2014
+- C9. Ryo Nagao, Manato Fujimoto, Daiki Tsukuda, Tadashi Nakanishi, Tomotaka Wada, Kouichi Mutsuura, Hiromi Okada. Routing and Moving Control Method Using Passive RFID for Robot Navigation System. 8th Annual IEEE International Conference on RFID (RFID 2014), Poster, pp.68-69, Orlando, FL, USA, Apr. 2014
+- C8. Manato Fujimoto, Emi Nakamori, Daiki Tsukuda, Tomotaka Wada, Kouichi Mutsuura, Hiromi Okada, Yukio Iida. A New Indoor Robot Navigation System Using RFID Technology. The 4th International Conference on Indoor Positioning and Indoor Navigation (IPIN 2013), Poster, pp. 637-638, Montbéliard, France, Oct. 2013
+- C7. Ken Ichitani, Manato Fujimoto, Satoshi Katayama, Ryota Imanishi, Tomotaka Wada, Yong-Bok Choi, Hiromi Okada. An Isopleth Information Exchanging Method in MANETs for Emergency Evacuation. The 28th International Technical Conference on Circuits/Systems, Computers and Communications (ITC-CSCC 2013), pp. 1-4, Yeosu, Korea, July 2013
+- C6. Emi Nakamori, Daiki Tsukuda, Manato Fujimoto, Yuki Oda, Tomotaka Wada, Kouichi Mutsuura, Hiromi Okada. A New Indoor Position Estimation Method of RFID Tags for Continuous Moving Navigation Systems. The 3rd International Conference on Indoor Positioning and Indoor Navigation (IPIN 2012), pp. 1-8, Sydney, Australia, Nov. 2012
+- C5. Yuki Oda, Atsuki Inada, Emi Nakamori, Manato Fujimoto, Tomotaka Wada, Kouichi Mutsuura, Hiromi Okada. Dual Type Communication Range Recognition Method (D-CRR) for Indoor Position Estimation of Passive RFID Tags. IEEE 76th Vehicular Technology Conference (VTC2012-Fall), Poster, 5 pages, Québec City, Canada, Sept. 2012
+- C4. Manato Fujimoto, Emi Nakamori, Atsuki Inada, Yuki Oda, Tomotaka Wada, Kouichi Mutsuura, Hiromi Okada. A Broad-Typed Multi-Sensing-Range Method for Indoor Position Estimation of Passive RFID Tags. The 2nd International Conference on Indoor Positioning and Indoor Navigation (IPIN 2011), Short Paper, pp. 1-4, Guimarães, Portugal, Sept. 2011
+- C3. Atsuki Inada, Yuki Oda, Emi Nakamori, Manato Fujimoto, Tomotaka Wada, Kouichi Mutsuura, Hiromi Okada. Sliding-Typed Communication Range Recognition Method for Indoor Position Estimation in Passive RFID Systems. 40th International Conference on Parallel Processing Workshops (ICPPW), pp. 42-49, Taipei, Taiwan, Sept. 2011
+- C2. Manato Fujimoto, Norie Uchitomi, Atsuki Inada, Tomotaka Wada, Kouichi Mutsuura, Hiromi Okada. A Novel Method for Position Estimation of Passive RFID Tags; Swift Communication Range Recognition (S-CRR) Method. IEEE Global Telecommunications Conference (GLOBECOM 2010), pp. 1-6, Miami, FL, USA, Dec. 2010
+- C1. Norie Uchitomi, Atsuki Inada, Manato Fujimoto, Tomotaka Wada, Kouichi Mutsuura, Hiromi Okada. Accurate Indoor Position Estimation by Swift Communication Range Recognition (S-CRR) Method in Passive RFID systems. The 1st International Conference on Indoor Positioning and Indoor Navigation (IPIN 2010), pp. 1-7, Zürich, Switzerland, Sept. 2010
+
+### Domestic Conference Presentations (168)
+
+- D168. 藤岡英都，増井浩二，酒井晃二，藤本まなと，後藤佑介. CTガイド下穿刺における探索数削減に基づく穿刺経路探索手法の提案. 研究報告マルチメディア通信と分散処理（DPS），Vol. 2026-DPS-209，No. xx，pp. x-x，山代温泉瑠璃光，石川県，2026年12月． [Scheduled presentation]
+- D167. 佐藤俊太，渡邉洸，植嶋亮伍，石丸翔也，阿多信吾，藤本まなと. ウェアラブル音響センサを用いた飲料嗜好推定. 2026年度情報処理学会関西支部支部大会講演論文集，G-15，pp. 1-6，立命館大学大阪いばらきキャンパス，大阪府，2026年9月．
+- D166. 藤井海斗，渡邉洸，石丸翔也，阿多信吾，藤本まなと. 遠隔授業における学習者集中度推定への講師行動情報の統合と評価. 2026年度情報処理学会関西支部支部大会講演論文集，G-14，pp. 1-5，立命館大学大阪いばらきキャンパス，大阪府，2026年9月．
+- D165. 平野杉，山崎いづみ，森田賢，大塚祐多，金田喜久，出雲貴幸，中尾嘉宏，江種大希，田中大智，植嶋亮伍，田中紀行，佐藤俊太，藤本まなと，内田由紀子. 集合活動における滞在場所は生きがい形成に影響するか？―介護施設におけるBe Supporters!活動事例からの検討―. 日本社会心理学会第67回大会，P04B14，関西大学，大阪府，2026年9月．
+- D164. 吉村有司，古賀千絵，内田由紀子，小川達也，下田彰子，有田寛之，田口公則，江種大希，植嶋亮伍，田中大智，藤本まなと，緒方泉，小川義和. 来館者研究におけるAIとビッグデータを用いた新しいデータ収集法の提案. 日本ミュージアム・マネージメント学会第31回大会，金沢美術工芸大学３号館，石川県，2026年5月．
+- D163. 須摩歩士，増井浩二，酒井晃二，藤本まなと，後藤佑介. MRデバイスを用いたCTガイド下穿刺補助システムの操作を支援する音声認識手法の提案. 研究報告マルチメディア通信と分散処理（DPS），Vol. 2026-DPS-207，No. 50，pp. 1-8，宮古島市未来創造センター，沖縄県，2026年5月．
+- D162. 松倉一志，橋本侑樹，石丸晴基，山田正也，花園新太郎，熊尾隆丈，玉田義幸，藤本まなと，阿多信吾. 個別最適な室内環境に向けたデータプラットフォームの構築：物品使用トラッキングとPMV計測の統合. 電子情報通信学会技術研究報告，Vol. 125，No. 375，LOIS2025-54，pp. 30-35，大濱信泉記念館多目的ホール，沖縄県，2026年3月．
+- D161. 橋本和磨，大吉寛希，藤本まなと，阿多信吾. ［ポスター講演］システムログ解析とLLMの統合による効率的なネットワークトラブル対応チャットボット. 超知性ネットワーキングに関する分野横断型研究会（RISING），てんぶす那覇テンブスホール，沖縄県，2025年11月．
+- D160. 石丸晴基，藤本まなと，阿多信吾. 初期フェーズにおけるDNSクエリパターンに基づくIoT機器同定. 電子情報通信学会技術研究報告，Vol. 125，No. 138，ICM2025-8，pp. 19-24，アイーナいわて県民情報交流センター，岩手県，2025年7月． [2025年情報通信マネジメント研究賞]
+- D159. 江種大希，小林匠，藤本まなと，阿多信吾，安在大祐. 機械学習を用いた生体内位置推定における学習データ削減に関する一検討. 電子情報通信学会技術研究報告，Vol. 125，No. 129，MICT2025-19，pp. 7-12，山形テルサ，山形県，2025年7月． [2025年度ヘルスケア・医療情報通信技術研究賞若手奨励賞]
+- D158. 藤岡英都，増井浩二，酒井晃二，藤本まなと，後藤佑介. CTガイド下穿刺における赤外線センサを用いた穿刺針の位置座標の推定手法. 研究報告マルチメディア通信と分散処理（DPS），Vol. 2025-DPS-203，No. 4，pp. 1-8，名桜大学北部生涯学習推進センター，沖縄県，2025年5月．
+- D157. 江種大希，土田純平，小林匠，藤本まなと，安在大祐. 機械学習に基づく3次元生体内機器位置推定法に関する一検討. 電子情報通信学会技術研究報告，Vol. 125，No. 22，MICT2025-3，pp. 12-17，KKR伊豆長岡千歳荘，静岡県，2025年5月．
+- D156. 植嶋亮伍，渡邉洸，阿多信吾，藤本まなと. IoTナッジを活用した生活支援の実現を目指すスマートウォッチによる飲水量推定の提案. 電子情報通信学会関西支部学生会第29回学生会研究発表講演会，p. 51，大阪公立大学杉本キャンパス，大阪府，2025年3月．
+- D155. 橋本和磨，藤本まなと，阿多信吾. 情報インフラにおけるLLMを用いたトラブルシューティングのためのログ管理の効率化. 電子情報通信学会関西支部学生会第29回学生会研究発表講演会，p. 20，大阪公立大学杉本キャンパス，大阪府，2025年3月．
+- D154. 石丸晴基，藤本まなと，阿多信吾. DNS観測による初期フェーズIoT機器同定. 電子情報通信学会関西支部学生会第29回学生会研究発表講演会，p. 15，大阪公立大学杉本キャンパス，大阪府，2025年3月． [関西支部長賞奨励賞]
+- D153. 橋本侑樹，藤本まなと，阿多信吾. ネットワークベース関数キャッシング機構におけるパラメータ共有手法. 電子情報通信学会関西支部学生会第29回学生会研究発表講演会，p. 14，大阪公立大学杉本キャンパス，大阪府，2025年3月．
+- D152. 田中大智，江種大希，阿多信吾，藤本まなと. 日本語アスペクトカテゴリ検出における翻訳データセットの有効性. 電子情報通信学会関西支部学生会第29回学生会研究発表講演会，p. 24，大阪公立大学杉本キャンパス，大阪府，2025年3月．
+- D151. 小川唯，阿多信吾，藤本まなと. コンジョイント分析と自然言語処理を組み合わせた観光地推薦システムの提案. 電子情報通信学会技術研究報告，Vol. 124，No. 433，ICM2024-54，pp. 87-92，石垣市民会館，沖縄県，2025年3月．
+- D150. 江種大希，小川唯，阿多信吾，藤本まなと. コンテンツモデレーションシステムの構築に向けたオンラインソーシャルメディア上の有害コンテンツ検出. 電子情報通信学会技術研究報告，Vol. 124，No. 433，ICM2024-42，pp. 23-28，石垣市民会館，沖縄県，2025年3月．
+- D149. 北谷嘉規，藤本まなと，阿多信吾. ビルOSにおける柔軟なアクセス制御を実現する認可サーバおよびAPIゲートウェイの設計と実装. 電子情報通信学会技術研究報告，Vol. 124，No. 433，ICM2024-40，pp. 12-17，石垣市民会館，沖縄県，2025年3月．
+- D148. 松倉一志，橋本侑樹，石丸晴基，藤本まなと，阿多信吾. スマートビルにおける設備のマルチベンダ化を実現するデータプラットフォームの設計開発. 電子情報通信学会技術研究報告，Vol. 124，No. 433，ICM2024-39，pp. 6-11，石垣市民会館，沖縄県，2025年3月．
+- D147. 森田賢，大塚祐多，金田喜久，出雲貴幸，中尾嘉宏，中曽禎啓，江種大希，小川唯，藤本まなと，内田由紀子. 介護施設利用者の生きがい形成 ―Be supporters!の活動事例分析―. 第43回日本認知症学会学術集会，ポスター，P252，ビッグパレットふくしま，福島県，2024年11月．
+- D146. 磯部大翔，藤本まなと，阿多信吾，土江康太，中村信之，八百健嗣. ［ポスター講演］連合学習を使用した分散学習によるIoT機器同定手法. 超知性ネットワーキングに関する分野横断型研究会（RISING），北海道立道民活動センターかでる2・7，北海道，2024年11月．
+- D145. 田中良佑，藤本まなと，阿多信吾. ［ポスター講演］通信挙動の特徴量にもとづく継続的ななりすまし検知. 超知性ネットワーキングに関する分野横断型研究会（RISING），北海道立道民活動センターかでる2・7，北海道，2024年11月．
+- D144. 谷口弘通，勝間亮，藤本まなと. 直近の作業進度を通知するテスト採点促進システムの実装. 第32回マルチメディア通信と分散処理ワークショップ（DPSWS 2024）論文集，デモ，pp. 188-192，安芸グランドホテル，広島県，2024年10月． [優秀デモンストレーション賞]
+- D143. 谷口弘通，勝間亮，藤本まなと. 視聴覚情報を利用したテスト採点効率のリアルタイム通知による採点促進システム. 第32回マルチメディア通信と分散処理ワークショップ（DPSWS 2024）論文集，pp. 103-111，安芸グランドホテル，広島県，2024年10月． [優秀プレゼンテーション賞]
+- D142. 橋本侑樹，藤本まなと，阿多信吾. 単一プログラムコードによる動的ネットワーク内処理配置機構. 第27回ICN研究会ワークショップ，ポスター，KKRはこだて，北海道，2024年8月．
+- D141. 中曽禎啓，Angel Garcia Contreras，河野誠也，阿多信吾，吉野幸一郎，藤本まなと. 環境情報等からなるユーザ状況を考慮したロボットからの能動的な話しかけ. マルチメディア，分散，協調とモバイル（DICOMO2024）シンポジウム論文集，pp. 1165-1170，花巻温泉ホテル千秋閣，岩手県，2024年6月． [ヤングリサーチャー賞]
+- D140. 眞鍋知里，武田碧生，増井浩二，酒井晃二，藤本まなと，後藤佑介. CTガイド下穿刺における3次元穿刺経路作成手法の提案. 研究報告マルチメディア通信と分散処理（DPS），Vol. 2024-DPS-199，No. 36，pp. 1-8，沖縄県青年会館，沖縄県，2024年5月．
+- D139. 大吉寛希，藤本まなと，阿多信吾. ヘルプデスク業務におけるシステムログを活用した対話効率化. 電子情報通信学会技術研究報告，Vol. 123，No. 449，ICM2023-48，pp. 19-24，沖縄県立博物館・美術館，沖縄県，2024年3月． [2024年情報通信マネジメント研究賞]
+- D138. 藤田凱斗，藤本まなと，阿多信吾. 個別同意に基づくパーソナルデータ活用基盤の開発と構築. 電子情報通信学会技術研究報告，Vol. 123，No. 449，ICM2023-47，pp. 13-18，沖縄県立博物館・美術館，沖縄県，2024年3月．
+- D137. 濵垣海都，阿多信吾，藤本まなと. 椅子設置型カメラによる脚の動作認識に基づく直感的インタラクションシステムの提案. 電子情報通信学会技術研究報告，Vol. 123，No. 449，ICM2023-45，pp. 1-6，沖縄県立博物館・美術館，沖縄県，2024年3月．
+- D136. 松倉一志，藤本まなと，阿多信吾. IoTデバイスのマルチベンダ化のためのデータプラットフォームの設計. 電子情報通信学会関西支部学生会第28回学生会研究発表講演会，p. 15，関西大学千里山キャンパス，大阪府，2024年3月．
+- D135. 磯部大翔，藤本まなと，阿多信吾. 分散型連合学習を用いたIoT機器の同定. 電子情報通信学会関西支部学生会第28回学生会研究発表講演会，p. 14，関西大学千里山キャンパス，大阪府，2024年3月．
+- D134. 北谷嘉規，藤本まなと，阿多信吾. スコープ認可とライフタイム管理にもとづくAPIアクセス制御. 電子情報通信学会関西支部学生会第28回学生会研究発表講演会，p. 13，関西大学千里山キャンパス，大阪府，2024年3月．
+- D133. 江種大希，小川唯，金澤真理，阿多信吾，藤本まなと. 有害コンテンツ検出のためのデータセット作成. 電子情報通信学会関西支部学生会第28回学生会研究発表講演会，p. 12，関西大学千里山キャンパス，大阪府，2024年3月．
+- D132. 田中紀行，阿多信吾，藤本まなと. 卓球のサーブ動作認識における効果的なセンサ装着位置の検討. 電子情報通信学会関西支部学生会第28回学生会研究発表講演会，p. 11，関西大学千里山キャンパス，大阪府，2024年3月．
+- D131. 小村奎登，藤本まなと，島崎拓則，阿多信吾. 赤外線センサを用いた発汗量推定に関する研究. 電子情報通信学会技術研究報告，Vol. 123，No. 394，BioX2023-74，pp. 24-29，NHK放送技術研究所，東京都，2024年2月．
+- D130. 出口拓人，後藤佑介，増井浩二，酒井晃二，藤本まなと. CTガイド下穿刺におけるセンサカメラによる穿刺位置のリアルタイム推定手法. 研究報告マルチメディア通信と分散処理（DPS），Vol. 2023-DPS-197，No. 13，pp. 1-7，鳴子温泉幸雲閣，宮城県，2023年12月．
+- D129. 小川瞬也，藤本まなと，阿多信吾. Ceforeを用いた関数キャッシングの性能評価. 第25回ICN研究会，サテライトキャンパスひろしま，広島県，2023年12月．
+- D128. 江種大希，中曽禎啓，小川唯，藤本まなと，阿多信吾. ［ポスター講演］Well-beingの影響調査に向けた家族の同室滞在時間把握のための位置情報取得システムの開発と評価. 超知性ネットワーキングに関する分野横断型研究会（RISING），北海道立道民活動センターかでる2・7，北海道，2023年10月．
+- D127. 谷口弘通，勝間亮，藤本まなと. ペンに搭載された慣性センサにより得られる情報を利用したテスト採点促進システムの検討. 第31回マルチメディア通信と分散処理ワークショップ（DPSWS 2023）論文集，ポスター，pp. 228-232，雨晴温泉「磯はなび」，富山県，2023年10月． [最優秀ポスター賞]
+- D126. 木村真，藤本まなと，蔡凱. ヒューマン・イン・ザ・ループ倉庫物流オートメーションのためのオンラインスーパーバイザ制御. 第66回自動制御連合講演会，2E3-4，pp. 1266-1270，東北大学，宮城県，2023年10月．
+- D125. 木村真，藤本まなと，蔡凱. 自律走行ロボットを用いたスマートナッジシステム. 第66回自動制御連合講演会，2E3-3，pp. 1261-1265，東北大学，宮城県，2023年10月．
+- D124. 望月尋斗，藤本まなと，阿多信吾. データ利活用サービス構築のためのパーソナルデータストアサンドボックスの設計. 電子情報通信学会技術研究報告，Vol. 123，No. 198，NS2023-77，pp. 31-36，北海道大学，北海道，2023年10月．
+- D123. 湊健太郎，藤本まなと，阿多信吾. ユーザの潜在的嗜好を考慮した楽曲推薦システムの検討. 電子情報通信学会ソサイエティ大会，B-15-47，p. 372，名古屋大学東山キャンパス，愛知県，2023年9月．
+- D122. 江種大希，中曽禎啓，小川唯，藤本まなと，阿多信吾. 家庭内におけるWell-beingの影響調査に向けた位置情報取得システムの検討. 電子情報通信学会ソサイエティ大会，B-15-45，p. 370，名古屋大学東山キャンパス，愛知県，2023年9月．
+- D121. 田中紀行，松岡凛太郎，渡邊洸，石丸翔也，藤本まなと，阿多信吾. マルチモーダルセンシングによる映像授業受講時における集中状態推定システムの検討. 電子情報通信学会ソサイエティ大会，B-15-8，p. 333，名古屋大学東山キャンパス，愛知県，2023年9月．
+- D120. 小川瞬也，藤本まなと，阿多信吾. Cefore 環境におけるパッシブ観測によるインタレスト計測. 第24回ICN研究会ワークショップ，ポスター，福岡大学，福岡県，2023年8月．
+- D119. 森下恵理，後藤佑介，増井浩二，酒井晃二，藤本まなと. MRデバイスを用いたCTガイド下穿刺画面表示手法の提案. 研究報告マルチメディア通信と分散処理（DPS），Vol. 2023-DPS-195，No. 48，pp. 1-8，沖縄科学技術大学院大学，沖縄県，2023年5月．
+- D118. 丸山友明，藤本まなと，阿多信吾. ヘルプデスク業務を支援するチャットボットにおける対話効率化. 電子情報通信学会技術研究報告，Vol. 122，No. 422，ICM2022-53，pp. 49-54，沖縄県立博物館・美術館，沖縄県，2023年3月．
+- D117. 佐瀬凌太，藤本まなと，諏訪博彦，安本慶一. 車両時系列位置情報の逐次適用による車両返却予測手法. 社会システムと情報技術研究ウィーク（WSSIT2023），pp. 1-8，ルスツリゾートホテル，北海道，2023年3月．
+- D116. 石丸大稀，中村優吾，藤本まなと，諏訪博彦，安本慶一. 骨格部位毎の変動性を考慮した人間/動物の点群の軽量化とストリーミングを行う3次元空間共有システム. 研究報告マルチメディア通信と分散処理（DPS），Vol. 2023-DPS-194，No. 27，pp. 1-8，東海大学高輪キャンパス，東京都，2023年3月．
+- D115. 木俣雄太，松井智一，藤本まなと，諏訪博彦，安本慶一. 高齢者の転倒予防に向けた歩容分析に基づく生活改善フレームワークの開発と評価. 研究報告マルチメディア通信と分散処理（DPS），Vol. 2022-DPS-193, No. 17，pp. 1-7，東北大学サイバーサイエンスセンター，宮城県，2022年12月．
+- D114. 佐瀬凌太，藤本まなと，諏訪博彦，安本慶一. 乗り捨て型カーシェアにおける返却予測モデルの構築と評価. 第30回マルチメディア通信と分散処理ワークショップ（DPSWS 2022）論文集，pp. 29-35，皆生グランドホテル 天水，鳥取県，2022年10月．
+- D113. 吉田誠，松井智一，石山時宗，三崎慎也，藤本まなと，諏訪博彦，安本慶一. Smartable：マルチ振動センサと深層学習を用いた既存家具のインターフェース化の検討. 第30回マルチメディア通信と分散処理ワークショップ（DPSWS 2022）論文集，pp. 74-81，皆生グランドホテル 天水，鳥取県，2022年10月． [優秀論文賞]
+- D112. 小浜彩矢佳，勝間亮，藤本まなと. ソフトテニスのカットサーブにおける熟練度分析に向けた効果的な慣性センサ位置の検討. 2022年度情報処理学会関西支部支部大会講演論文集，G-15，pp. 1-6，オンライン開催，2022年9月． [支部大会奨励賞]
+- D111. 谷口弘通，勝間亮，藤本まなと. テスト採点行動の促進を目的としたペン上の加速度センサによる作業量推定の検討. 2022年度情報処理学会関西支部支部大会講演論文集，G-14，pp. 1-6，オンライン開催，2022年9月． [支部大会奨励賞]
+- D110. 小川唯，藤本まなと，阿多信吾. 組み合わせ最適化に基づく観光ルート推薦アルゴリズムの提案. 電子情報通信学会ソサイエティ大会，B-15-36，p. 313，オンライン開催，2022年9月．
+- D109. 中曽禎啓，藤本まなと，阿多信吾. マルチモーダルデータに基づいたエージェントによる話題生成システムの検討. 電子情報通信学会ソサイエティ大会，B-15-24，p. 301，オンライン開催，2022年9月．
+- D108. 石丸大稀，中村優吾，藤本まなと，諏訪博彦，安本慶一. 実空間の人や動物とのリアルな遠隔コミュニケーションのためのQoS-Aware点群ストリーミング手法. マルチメディア，分散，協調とモバイル（DICOMO2022）シンポジウム論文集，pp. 1527-1533，オンライン開催，2022年7月．
+- D107. 鳥羽望海，藤本まなと，諏訪博彦，酒井元気，酒造正樹，安本慶一. オンラインミーティング参加者の感情推定における機械学習モデルと客観的評価との比較. マルチメディア，分散，協調とモバイル（DICOMO2022）シンポジウム論文集，pp. 697-704，オンライン開催，2022年7月．
+- D106. 三崎慎也，松井智一，諏訪博彦，藤本まなと，水本旭洋，谷伊織，佐々木渉，木村亜紀，丸山清泰，安本慶一. Big Fiveパーソナリティ特性に応じた家電自動制御手法の検討. 社会システムと情報技術研究ウィーク（WSSIT2022），pp. 1-7，ルスツリゾートホテル，北海道，2022年3月． [研究会優秀賞]
+- D105. 木俣雄太，宮地篤士，松井智一，藤本まなと，諏訪博彦，安本慶一. 高齢者のフレイル予防に向けた生活改善フレームワークの提案及び実用性の検証. 社会システムと情報技術研究ウィーク（WSSIT2022），pp. 1-8，ルスツリゾートホテル，北海道，2022年3月．
+- D104. 宮地篤士，木俣雄太，松井智一，張志華，藤本まなと，安本慶一. 介護士の負担軽減に向けた介護業務における生体情報の収集及び心身状態変化の分析. 社会システムと情報技術研究ウィーク（WSSIT2022），pp. 1-8，ルスツリゾートホテル，北海道，2022年3月．
+- D103. 鳥羽望海，藤本まなと，諏訪博彦，酒井元気，酒造正樹，安本慶一. マルチモーダルデータを用いたオンラインミーティング参加者の感情推定. 社会システムと情報技術研究ウィーク（WSSIT2022），pp. 1-7，ルスツリゾートホテル，北海道，2022年3月．
+- D102. 吉田誠，馬越圭介，藤本まなと，三﨑慎也，松井智一，諏訪博彦，安本慶一. ダイナミックレンジを拡大するアダプティブゲイン歩行振動センサシステムの検討. 第29回マルチメディア通信と分散処理ワークショップ（DPSWS 2021）論文集，pp. 246-251，ポスター，霧島観光ホテル，鹿児島県，2021年10月． [優秀ポスター賞]
+- D101. 天野辰哉，水本旭洋，山口弘純，松田裕貴，藤本まなと，諏訪博彦，安本慶一，中村優吾，田上敦士. 新生活様式におけるコミュニティ形成のためのサイバーフィジカル空間共有基盤の設計開発. 第29回マルチメディア通信と分散処理ワークショップ（DPSWS 2021）論文集，pp. 129-138，霧島観光ホテル，鹿児島県，2021年10月． [優秀論文賞]
+- D100. 石丸大稀，中村優吾，藤本まなと，諏訪博彦，安本慶一. リアル/バーチャル空間でのコミュニケーションの違いとその差を埋めるAR技術の検討. 2021年度情報処理学会関西支部支部大会講演論文集，G-74，pp. 1-8，オンライン開催，2021年9月．
+- D99. 石山時宗，松井智一，藤本まなと，諏訪博彦，安本慶一. マルチモーダルセンシングに基づく料理中のマイクロ行動認識の提案. 2021年度情報処理学会関西支部支部大会講演論文集，G-19，pp. 1-4，オンライン開催，2021年9月．
+- D98. 佐瀬凌太，藤本まなと，諏訪博彦，安本慶一. 乗り捨て型カーシェアの利用効率向上のための車両再配置手法. 2021年度情報処理学会関西支部支部大会講演論文集，G-36，pp. 1-6，オンライン開催，2021年9月． [学生優秀発表賞]
+- D97. 木俣雄太，宮地篤士，松井智一，張志華，藤本まなと，諏訪博彦，安本慶一. 高齢者のフレイル状態の予防に向けた生活改善フレームワークの提案. 2021年度情報処理学会関西支部支部大会講演論文集，C-03，pp. 1-8，アンライン開催，2021年9月． [支部大会奨励賞]
+- D96. 鳥羽望海，藤本まなと，諏訪博彦，酒井元気，酒造正樹，安本慶一. 遠隔会議サービスを用いたWork Attitude推定手法の検討. 2021年度情報処理学会関西支部支部大会講演論文集，B-01，pp. 1-6，オンライン開催，2021年9月．
+- D95. 諏訪博彦，安本慶一，藤本まなと，松田裕貴，須藤克仁，Sakti Sakriani，田中宏季，吉野幸一郎，中村哲. スマート観光と行動変容. 観光情報学会第22回研究発表会講演論文集，pp. 29-32，オンライン開催，2021年9月．
+- D94. 宮地篤士，松井智一，張志華，藤本まなと，安本慶一. 介護士の業務負担軽減に向けた介護行動時における心身状態の変化の可視化と分析. マルチメディア，分散，協調とモバイル（DICOMO2021）シンポジウム論文集，pp. 1527-1534，オンライン開催，2021年7月．
+- D93. 大井一輝，中村優吾，松田裕貴，藤本まなと，安本慶一. IMUセンサを用いた棒体操トラッキングシステムの検討. マルチメディア，分散，協調とモバイル（DICOMO2021）シンポジウム論文集，pp. 1520-1526，オンライン開催，2021年7月．
+- D92. 林涼弥，松田裕貴，平野陽大，藤本まなと，諏訪博彦，安本慶一. 観光客の感情・満足度推定のための簡易なデータ収集システムの提案. マルチメディア，分散，協調とモバイル（DICOMO2021）シンポジウム論文集，pp. 1006-1012，オンライン 開催，2021年7月．
+- D91. 林涼弥，松田裕貴，藤本まなと，諏訪博彦，安本慶一. 天気情報に着目したマルチモーダルな観光客の満足度推定と特徴量の重要度分析. 社会システムと情報技術研究ウィーク（RST2021），pp. 1-7，ルスツリゾートホテル，北海道，2021年3月．
+- D90. 中村哲，諏訪博彦，須藤克仁，Sakti Sakriani，田中宏季，吉野幸一郎，藤本まなと，松田裕貴，安本慶一. 理研AIPにおける人流データ解析と行動変容. 観光情報学会第21回研究発表会講演論文集，pp. 57-60，オンライン開催，2020年12月．
+- D89. 三崎慎也，馬越圭介，松井智一，Hyuckjin Choi，藤本まなと，安本慶一. ドップラーセンサを用いた非接触型宅内行動認識システムの開発と評価. 研究報告モバイルコンピューティングとパーベイシブシステム（MBL），Vol. 2020-MBL-97，No. 21，pp. 1-7，オンライン開催，2020年11月． [奨励発表賞]
+- D88. 林涼弥，松田裕貴，藤本まなと，諏訪博彦，安本慶一. 天気を考慮した観光中の感情・満足度推定手法の検討. 研究報告モバイルコンピューティングとパーベイシブシステム（MBL），Vol. 2020-MBL-97，No. 14，pp. 1-6，オンライン開催，2020年11月．
+- D87. HungYi Liao, Manato Fujimoto, and Keiichi Yasumoto. Context-Aware Smart Lighting Control for Better Mood Creation. IPSJ SIG-MBL Technical Report, Vol. 2020-MBL-97, No. 2, pp. 1-3, Online, Nov. 2020.
+- D86. 玉置理沙，藤本まなと，諏訪博彦，安本慶一. 血糖値コントロールシステムの実現に向けたデータ分析. 第28回マルチメディア通信と分散処理ワークショップ（DPSWS 2020）論文集，pp. 98-105，ホテル暖香園・伊東市観光会館別館，静岡県，2020年11月． [奨励賞]
+- D85. 馬越圭介，松井智一，吉田誠，藤本まなと，諏訪博彦，安本慶一. ピエゾセンサを用いた個人識別システムの実装と評価. 第28回マルチメディア通信と分散処理ワークショップ（DPSWS 2020）論文集，pp. 90-97，ホテル暖香園・伊東市観光会館別館，静岡県，2020年11月． [優秀プレゼンテーション賞]
+- D84. 松井智一，大西晃正，三崎慎也，諏訪博彦，藤本まなと，水本旭洋，佐々木渉，木村亜紀，玉田隆史，丸山清泰，安本慶一. 日常生活行動に紐付けた生体指標の可視化と分析. 第28回マルチメディア通信と分散処理ワークショップ（DPSWS 2020）論文集，pp. 34-41，ホテル暖香園・伊東市観光会館別館，静岡県，2020年11月．
+- D83. 宮地篤士，松井智一，張志華，藤本まなと，安本慶一. デイケア施設における介護士のストレス推定に向けた一検討. 2020年度情報処理学会関西支部支部大会講演論文集，D-05，pp. 1-5，オンライン開催，2020年9月．
+- D82. 大井一輝，中村優吾，松田裕貴，藤本まなと，安本慶一. スマート棒を用いた棒体操支援システムの検討. 2020年度情報処理学会関西支部支部大会講演論文集，D-02，pp. 1-5，オンライン開催，大阪府，2020年9月．
+- D81. 田中智基，松田裕貴，藤本まなと，諏訪博彦，安本慶一. 被災者行動の不確実性を考慮した災害弱者のための避難所決定手法の提案. マルチメディア，分散，協調とモバイル（DICOMO2020）シンポジウム論文集，pp. 778-784，オンライン開催，2020年6月．
+- D80. 鳥越庸平，中村優吾，藤本まなと，荒川豊，安本慶一. 剣道上達支援システムの実現に向けたウェアラブルセンサによる打突動作の熟練度評価. 社会システムと情報技術研究ウィーク（WSSIT20），pp. 1-8，ルスツリゾートホテル，北海道，2020年3月．
+- D79. 玉置理沙，藤本まなと，諏訪博彦，安本慶一. 糖尿病予防のための血糖値コントロールに向けた予測モデルの開発. 第22回社会情報システム学シンポジウム，pp. 1-6，立命館大学東京キャンパス，東京都，2020年1月．
+- D78. 松井智一，大西晃正，三崎慎也，藤本まなと，諏訪博彦，安本慶一. 設置が容易な生活行動センシングシステムの構築と一般家庭でのデータ収集・解析実験. 研究報告モバイルコンピューティングとパーベイシブシステム（MBL），Vol. 2018-MBL-93，No. 19，pp.1-8，奈良先端科学技術大学院大学，奈良県，2019年11月．
+- D77. 鳥越庸平，中村優吾，藤本まなと，荒川豊，安本慶一. IMUを用いた剣道の素振り稽古における打突動作区間の検出手法. 第27回マルチメディア通信と分散処理ワークショップ（DPSWS 2019）論文集，pp. 164-171，北海道登別温泉登別万世閣，北海道，2019年11月． [奨励賞]
+- D76. 和田遥香，張志華，藤本まなと，荒川豊，安本慶一. 位置に応じたビュー切り替え機能と情報補完機能を有するモバイルアプリの実証実験と評価. 第27回マルチメディア通信と分散処理ワークショップ（DPSWS 2019）論文集，pp. 156-163，北海道登別温泉登別万世閣，北海道，2019年11月． [優秀プレゼンテーション賞]
+- D75. 三崎慎也，馬越圭介，藤本まなと，安本慶一. 認識対象の動作速度に着目したドップラーセンサによる宅内行動認識手法. 第27回マルチメディア通信と分散処理ワークショップ（DPSWS 2019）論文集，pp. 76-83，北海道登別温泉登別万世閣，北海道，2019年11月．
+- D74. 片山洋平，藤本まなと，諏訪博彦，伍洋，安本慶一. ドローンを用いたオフィスルームの使用可能状態監視システムの検討. 2019年度情報処理学会関西支部支部大会講演論文集，B-01，pp. 1-3，大阪大学中之島センター，大阪府，2019年9月．
+- D73. 田中智基，松田裕貴，藤本まなと，諏訪博彦，安本慶一. 被災者の特徴を考慮した避難所決定手法. 2019年度情報処理学会関西支部支部大会講演論文集，G-48，pp. 1-5，大阪大学中之島センター，大阪府，2019年9月．
+- D72. 馬越圭介，三崎慎也，藤本まなと，安本慶一. デバイスフリー行動認識に向けたドップラーセンサを用いた位置推定手法に関する一検討. 2019年度情報処理学会関西支部支部大会講演論文集，G-27，pp. 1-6，大阪大学中之島センター，大阪府，2019年9月．
+- D71. 玉置理沙，藤本まなと，諏訪博彦，安本慶一. 食事量・タイミング推薦に向けた血糖値測定に基づく空腹度推定・予測手法の開発. 2019年度情報処理学会関西支部支部大会講演論文集，D-01，pp. 1-3，大阪大学中之島センター，大阪府，2019年9月．
+- D70. 張志華，松田裕貴，藤本まなと，荒川豊，安本慶一. 行動変容タスクを考慮したサービス間連携フレームワークの設計と実装. マルチメディア，分散，協調とモバイル（DICOMO2019）シンポジウム論文集，pp. 1708-1715，磐梯熱海温泉華の湯，福島県，2019年7月．
+- D69. 佐々木渉，大西晃正，三崎慎也，諏訪博彦，藤本まなと，水本旭洋，荒川豊，木村亜紀，三木智子，安本慶一. 生活の質の向上を目指した宅内行動・生体情報収集システムとQoLアウェア家電制御の検討. 社会システムと情報技術研究ウィーク（WSSIT19），pp. 1-8，ルスツリゾートホテル，北海道，2019年3月．
+- D68. 鈴木優，藤本まなと，吉野幸一郎，日高真人，Nguyen Quynh Mai，永野一馬，中村優吾，大坪敦，田中翔平，安本慶一，中村哲. 京都インバウンド観光におけるIoT2H観光情報アプリケーションの構築. 第11回データ工学と情報マネジメントに関するフォーラム（DEIM2019），DEIM Forum 2019 I3-4，pp. 1-9，ホテオークラJRハウステンボス，長崎県，2019年3月．
+- D67. 鳥越庸平，髙田将志，中村優吾，藤本まなと，荒川豊，安本慶一. 剣道上達支援のためのIMUを用いた打突動作認識. 研究報告ユビキタスコンピューティングシステム（UBI），vol. 2019-UBI-61，No. 37，pp. 1-7，東京大学駒場IIキャンパス，東京都，2019年3月．
+- D66. 和田遥香，張志華，藤本まなと，荒川豊，安本慶一. 位置に応じたビュー切り替え機能と情報補完機能を有するモバイルアプリの実装と評価. 電子情報通信学会技術研究報告，IEICE-118，no. 383，IEICE-MICT2018-60，pp. 5-10，明治大学，東京都，2019年1月．
+- D65. 和田遥香，張志華，藤本まなと，荒川豊，安本慶一. 位置に応じたビュー切り替え機能と情報補完機能を有するモバイルアプリの設計. 2018年度情報処理学会関西支部支部大会講演論文集，D-09，pp. 1-6，大阪大学中之島センター，大阪府，2018年9月．
+- D64. 河中祥吾，松田裕貴，諏訪博彦，藤本まなと，荒川豊，安本慶一. 観光客参加型センシングによる観光情報収集におけるゲーミフィケーションの有効性調査. マルチメディア，分散，協調とモバイル（DICOMO2018）シンポジウム論文集，pp. 145-151，芦原温泉清風荘，福井県，2018年7月．
+- D63. 梅津吉雅，中村優吾，荒川豊，藤本まなと，諏訪博彦，安本慶一. EHAAS：環境発電素子の発電量に基づくウェアラブル場所推定システム. マルチメディア，分散，協調とモバイル（DICOMO2018）シンポジウム論文集，pp. 400-405，芦原温泉清風荘，福井県，2018年7月． [ヤングリサーチャ賞] [優秀論文賞]
+- D62. 渡邊洸，高橋雄太，大坪敦，藤本まなと，荒川豊，安本慶一. BLEビーコンと反響音センシングによる屋内スポット推定. マルチメディア，分散，協調とモバイル（DICOMO2018）シンポジウム論文集，pp. 620-626，芦原温泉清風荘，福井県，2018年7月．
+- D61. 髙田将志，中村優吾，藤本まなと，荒川豊，安本慶一. メニュー推薦に向けたセンサ取り付け位置に依存しない自重トレーニング種目認識手法の提案. マルチメディア，分散，協調とモバイル（DICOMO2018）シンポジウム論文集，pp. 780-790，芦原温泉清風荘，福井県，2018年7月． [ヤングリサーチャ賞] [優秀論文賞]
+- D60. 佐々木渉，藤原聖司，藤本まなと，諏訪博彦，荒川豊，安本慶一. スマートホームデータの時系列分析に基づく宅内行動生起タイミングの予測. マルチメディア，分散，協調とモバイル（DICOMO2018）シンポジウム論文集，pp. 1220-1226，芦原温泉清風荘，福井県，2018年7月． [優秀プレゼンテーション賞]
+- D59. Zhihua Zhang，高橋雄太，藤本まなと，荒川豊，安本慶一. 行動変容を誘発するインタラクティブサイネージへのユーザの反応調査. マルチメディア，分散，協調とモバイル（DICOMO2018）シンポジウム論文集，pp. 1453-1462，芦原温泉清風荘，福井県，2018年7月．
+- D58. 梅津吉雅，中村優吾，荒川豊，藤本まなと，諏訪博彦，安本慶一. 環境発電素子の発電量に基づくコンテキスト認識手法の提案. 研究報告モバイルコンピューティングとパーベイシブシステム（MBL），Vol. 2018-MBL-87，No. 35，pp. 1-8，イーフ情報プラザ，沖縄県，2018年5月． [奨励発表賞]
+- D57. 髙田将志，中村優吾，藤本まなと，荒川豊，安本慶一. ウェアラブルデバイスを用いた体幹トレーニング種目認識手法. 電子情報通信学会総合大会，学生ポスターセッション，ISS-SP-017，p. 132，東京電機大学，東京都，2018年3月．
+- D56. 梅津吉雅，藤原聖司，中村優吾，藤本まなと，荒川豊，安本慶一. 環境発電素子の発電量に基づく屋内行動認識システムの検討. 電子情報通信学会総合大会，学生ポスターセッション，ISS-SP-063，p. 178，東京電機大学，東京都，2018年3月． [優秀ポスター賞]
+- D55. 高田将志，中村優吾，藤本まなと，荒川豊，安本慶一. 体幹トレーニング支援に向けたウェアラブルデバイスによる種目認識手法の提案. 研究報告ヒューマンコンピュータインタラクション（HCI），Vol. 2018-HCI-177，No. 20，pp. 1-8，明治大学，東京都，2018年3月． [学生奨励賞]
+- D54. 藤原聖司，藤本まなと，荒川豊，安本慶一. ドップラーセンサを活用した宅内行動認識システムの開発と評価. 社会システムと情報技術研究ウィーク（WSSIT18），pp. 1-8，ルスツリゾートホテル，北海道，2018年3月．
+- D53. 佐々木渉，藤原聖司，諏訪博彦，藤本まなと，荒川豊，木村亜紀，三木智子，安本慶一. ECHONET Lite対応家電情報と人感センサの時系列データ分析による宅内行動認識. 社会システムと情報技術研究ウィーク（WSSIT18），pp. 1-8，ルスツリゾートホテル，北海道，2018年3月．
+- D52. 梅木寿人，中村優吾，藤本まなと，水本旭洋，諏訪博彦，荒川豊，安本慶一. 災害時の混雑情報を考慮した避難場所決定手法の提案. 研究報告モバイルコンピューティングとパーベイシブシステム（MBL），Vol. 2018-MBL-86，No. 20，pp. 1-8，上智大学，東京都，2018年2月． [研究会学生奨励賞]
+- D51. 梅木寿人，中村優吾，水本旭洋，藤本まなと，諏訪博彦，荒川豊，安本慶一. 混雑地域における災害発生時の避難場所決定手法に関する一検討. 第25回マルチメディア通信と分散処理ワークショップ（DPSWS2017）論文集，pp. 138-144，北海道温根湯温泉，北海道，2017年10月．
+- D50. 張志華，高橋雄太，藤本まなと，荒川豊，安本慶一. 行動変容を誘発するためのインタラクティブサイネージの検討. 2017年度情報処理学会関西支部支部大会，D-01，pp. 1-4，大阪大学中之島センター，大阪府，2017年9月．
+- D49. 渡邊洸，高城賢大，高橋雄太，音田恭宏，藤本まなと，荒川豊，安本慶一. 内的活性度の振り返りを支援するための生体情報を含むキャンパスライフログシステムの設計. 2017年度情報処理学会関西支部支部大会，D-02，pp. 1-2，大阪大学中之島センター，大阪府，2017年9月．
+- D48. 高城賢大，高橋雄太，藤本まなと，荒川豊，安本慶一. コールセンタにおけるヘッドモーションセンシングによるストレス検知システムの検討. 2017年度情報処理学会関西支部支部大会，D-09，pp. 1-2，大阪大学中之島センター，大阪府，2017年9月．
+- D47. 佐々木渉，藤本まなと，荒川豊，安本慶一. スマートホームにおける先行行動の継続時間分類に基づく行動予測手法の検討. 2017年度情報処理学会関西支部支部大会，D-08，pp. 1-5，大阪大学中之島センター，大阪府，2017年9月． [支部大会奨励賞]
+- D46. 高橋雄太，音田恭宏，藤本まなと，荒川豊. 杖装着型センサデバイスによる歩行パラメータのロギング. マルチメディア，分散，協調とモバイル（DICOMO2017）シンポジウム論文集，pp. 44-51，定山渓万世閣ホテルミリオーネ，北海道，2017年6月．
+- D45. 河中祥吾，松田裕貴，藤本まなと，荒川豊，安本慶一. スマートフォンで撮影した近接群衆画像からの混雑度推定. マルチメディア，分散，協調とモバイル（DICOMO2017）シンポジウム論文集，pp. 52-57，定山渓万世閣ホテルミリオーネ，北海道，2017年6月．
+- D44. 河中祥吾，高橋雄太，雨森千周，藤本まなと，荒川豊，安本慶一. 自転車競技向け参加型位置共有システムにおけるBLEビーコンの出力変化による捕捉率の影響. 研究報告モバイルコンピューティングとパーベイシブシステム（MBL），Vol. 2017-MBL-82，No. 1，pp. 1-8，東京大学，東京都，2017年3月．
+- D43. 日高真人，松田裕貴，河中祥吾，中村優吾，藤本まなと，荒川豊，安本慶一. 実時間観光コンテンツ提供に向けた観光情報収集・キュレーションシステムの提案. 研究報告高度交通システムとスマートコミュニティ（ITS），Vol. 2017-ITS-68，No. 15，pp. 1-8，公立はこだて未来大学，北海道，2017年3月．
+- D42. 森田達弥，柏本幸俊，藤本まなと，荒川豊，諏訪博彦，安本慶一. デイケアセンタにおける業務支援のためのケアレポート自動作成システムの開発と評価. 研究報告ユビキタスコンピューティングシステム（UBI），Vol. 2016-UBI-52，No. 6，pp. 1-8，筑波大学，茨城県，2016年10月．
+- D41. 藤原聖司，柏本幸俊，藤本まなと，諏訪博彦，荒川豊，安本慶一. アナログ出力焦電型赤外線センサを活用したスマートホーム向け宅内行動認識. 第24回マルチメディア通信と分散処理ワークショップ（DPSWS 2016）論文集，pp. 59-65，プラザホテル山麓荘，秋田県，2016年10月．
+- D40. 森田達弥，柏本幸俊，藤本まなと，荒川豊，諏訪博彦，安本慶一. 宅内行動履歴自動生成に向けた加速度センサ内蔵BLEビーコンを用いた行動認識手法. 2016年度 情報処理学会関西支部 支部大会，D-12，pp. 1-7，大阪大学中之島センター，大阪府，2016年9月． [学生優秀発表賞]
+- D39. 梅木寿人，中村優吾，水本旭洋，藤本まなと，荒川豊，安本慶一. 実時間雨量情報に基づく動的ハザードマップの検討. 2016年度 情報処理学会関西支部 支部大会，G-13，pp. 1-4，大阪大学中之島センター，大阪府，2016年9月． [支部大会奨励賞]
+- D38. 孫斌，堀野真太郎，藤本まなと，和田友孝，六浦光一. 屋内ナビゲーションのためのiBeaconを用いた携帯端末の位置推定法. 電子情報通信学会ソサイエティ大会，no. B-18-33，pp. 397，北海道大学，北海道，2016年9月．
+- D37. 河中祥吾，高橋雄太，雨森千周，藤本まなと，荒川豊，藤原晶，福島徹也，松原敬信. 競技者の負担を軽減した参加型位置共有システムの提案と実装. 研究報告コンシューマ・デバイス＆システム（CDS），Vol. 2016-CDS-17，No. 6，pp. 1-8，芝浦工業大学豊洲校舎，東京都，2016年8月．
+- D36. 八田俊之，三輪祥太郎，中川愛梨，守谷一希，諏訪博彦，藤本まなと，荒川豊，安本慶一. トピックモデルに基づく宅内行動分析技術. 研究報告ユビキタスコンピューティングシステム（UBI），Vol. 2016-UBI-51，No. 6，pp. 1-6，大阪パナソニックワンダーラボ，大阪府，2016年8月．
+- D35. 小芝涼太，平部裕子，藤本まなと，諏訪博彦，荒川豊，長沢忠郎，岡本昌和，奥田真也，瀧塚清孝，安本慶一. 社内ランチグループ推薦のための日常生活におけるユーザ間距離に基づいたグループ検出. マルチメディア，分散，協調とモバイル（DICOMO 2016）シンポジウム論文集，pp. 1537-1543，鳥羽シーサイドホテル，三重県，2016年7月． [ヤングリサーチャ賞]
+- D34. 柏本幸俊，秦恭史，諏訪博彦，藤本まなと，荒川豊，繁住健哉，小宮邦裕，小西健太，安本慶一. エナジーハーベスト赤外線センサ・ドア開閉センサを活用したスマートホーム向け行動推定. マルチメディア，分散，協調とモバイル（DICOMO 2016）シンポジウム論文集，pp. 1510-1515，鳥羽シーサイドホテル，三重県，2016年7月． [優秀プレゼンテーション賞]
+- D33. 藤本まなと，駒井清顕，荒川豊，諏訪博彦，柏本幸俊，安本慶一. デイケアセンターにおける高齢者の行動履歴自動生成システムの開発. マルチメディア，分散，協調とモバイル（DICOMO 2016）シンポジウム，pp. 1504-1509，鳥羽シーサイドホテル，三重県，2016年7月．
+- D32. 守谷一希，中川愛梨，諏訪博彦，藤本まなと，荒川豊，木村亜紀，三木智子，安本慶一. ECHONET Lite対応家電を用いた宅内行動データの収集と分析. マルチメディア，分散，協調とモバイル（DICOMO 2016）シンポジウム論文集，pp. 1449-1457，鳥羽シーサイドホテル，三重県，2016年7月．
+- D31. 中川愛梨，守谷一希，諏訪博彦，藤本まなと，荒川豊，八田俊之，三輪祥太郎，安本慶一. 位置・電力情報を基とした宅内行動認識システムへの居住者の加速度データの追加とその改善効果の調査. マルチメディア，分散，協調とモバイル（DICOMO 2016）シンポジウム論文集，pp. 1442-1448，鳥羽シーサイドホテル，三重県，2016年7月． [ヤングリサーチャ賞]
+- D30. 藤本まなと，松本誠義，諏訪博彦，荒川豊，侯亜飛，塚本悟司，ウエバージュリアン，矢野一人，畑山満則. Bluetooth Low Energyマルチホップ通信を用いた斜面崩壊予兆検知システムの実装と評価. マルチメディア，分散，協調とモバイル（DICOMO 2016）シンポジウム論文集，pp. 638-644，鳥羽シーサイドホテル，三重県，2016年7月．
+- D29. 中川愛梨，守谷一希，諏訪博彦，藤本まなと，荒川豊，安本慶一. 異なる家具配置に対応可能なリアルタイム行動認識システム開発のためのデータ収集と分析. 研究報告モバイルコンピューティングとパーベイシブシステム（MBL），Vol. 2016-MBL-79，No. 17，pp. 1-8，沖縄産業支援センター，沖縄県，2016年5月． [奨励発表賞]
+- D28. 矢野一人，塚本悟司，ウエバージュリアン，熊谷智明，侯亜飛，藤本まなと，諏訪博彦，荒川豊，畑山満則. 無線LAN/Bluetooth混在マルチホップセンサネットワークの自律的構築および情報のプロパティに応じた優先制御. 電子情報通信学会技術研究報告，vol. 115，no. 472，RCS2015-341，pp. 49-54，東京工業大学，東京都，2016年3月．
+- D27. 塚本悟司，ウエバージュリアン，矢野一人，熊谷智明，侯亜飛，藤本まなと，諏訪博彦，荒川豊. 無線LAN・Bluetooth混在型マルチホップネットワークシステム. 電子情報通信学会総合大会，no. B-17-8，pp. 611，九州大学，福岡県，2016年3月．
+- D26. 諏訪博彦，松本誠義，藤本まなと，荒川豊，侯亜飛，塚本悟司，ウエバージュリアン，矢野一人，畑山満則. 中古スマホによる斜面崩壊検出センサネットワーク構築. 第22回社会情報システム学シンポジウム，pp. 1-4，電気通信大学，東京都，2016年1月．
+- D25. 中川愛梨，諏訪博彦，藤本まなと，荒川豊，安本慶一. リアルタイム行動認識システム開発のためのデータ収集と分析. 研究報告モバイルコンピューティングとパーベイシブシステム（MBL），Vol. 2015-MBL-77，No. 9，pp. 1-5，猿投温泉 ホテル金泉閣，愛知県，2015年12月． [Work in Progress奨励賞]
+- D24. 駒井清顕，藤本まなと，荒川豊，諏訪博彦，安本慶一. 複数人の行動・移動状況の把握を目標としたiBeaconによる存在領域判定システムの検討. 第23回マルチメディア通信と分散処理ワークショップ（DPSWS 2015）論文集，pp. 71-77，雲仙温泉雲仙富貴屋，長崎県，2015年10月．
+- D23. 守谷一希，藤本まなと，荒川豊，安本慶一. 照明装置の順点灯制御と照度-距離モデルに基づく屋内位置推定手法とその評価. 2015年度 情報処理学会関西支部 支部大会，G-06，pp. 1-7，大阪大学中之島センター，大阪府，2015年9月． [学生奨励賞]
+- D22. 千原聖矢，藤本まなと，立川翔，和田友孝，六浦光一. RFIDシステムを用いたモバイルロボットのための進行角度検出移動制御法. 電子情報通信学会ソサイエティ大会，no. B-18-16，p. 350，東北大学，宮城県，2015年9月．
+- D21. 立川翔，藤本まなと，杉原真，仲西正，長尾遼，和田友孝，六浦光一，岡田博美. 移動ロボットのためのRFIDを用いた交差点衝突回避移動制御法. 電子情報通信学会ソサイエティ大会，no. B-18-15，p. 373，徳島大学，徳島県，2014年9月．
+- D20. 藤本まなと，鈴木達也，室津裕樹，榎原博之，和田友孝，岡田博美，飯田幸雄. 突発的災害時における避難グループの経路分散のための避難経路探索法. 電子情報通信学会技術研究報告，vol. 114，no. 207，IN2014-63，pp. 87-92，東北大学，宮城県，2014年9月．
+- D19. 室津裕樹，藤本まなと，榎原博之，和田友孝，岡田博美. ERESSにおける避難経路探索のためのRFIDを用いたテロリスト位置推定法. 電子情報通信学会技術研究報告，vol. 114，no. 207，IN2014-61，pp. 75-80，東北大学，宮城県，2014年9月．
+- D18. 藤本まなと，和田友孝，六浦光一，岡田博美，飯田幸雄. パッシブRFIDシステムを用いた指向性順応型三次元位置推定法. 電子情報通信学会総合大会，no. B-18-55，pp. 623，新潟大学，新潟県，2014年3月．
+- D17. 佃大貴，藤本まなと，仲西正，長尾遼，和田友孝，六浦光一，岡田博美. パッシブRFIDを用いたロボットナビゲーションシステムのためのルーティング及び移動制御法. 電子情報通信学会技術研究報告，vol. 113，no. 337，ITS2013-22，pp. 31-35，ポスター，東京理科大学，東京都，2013年12月．
+- D16. 片山哲誌，今西亮太，藤本まなと，一谷謙，和田友孝，崔永福，岡田博美. 突発的災害時における緊急避難情報の瞬時交換・共有のための等数指向型マルチホップ制御方式. 電子情報通信学会技術研究報告，vol. 113，no. 245，IN2013-82，pp. 31-36，大阪大学，大阪府，2013年10月．
+- D15. 藤本まなと，中森絵美，佃大貴，仲西正，長尾遼，和田友孝，六浦光一，岡田博美，飯田幸雄. 自律移動ナビゲーションシステムのためのパッシブRFIDを用いた移動制御法. 電子情報通信学会技術研究報告，vol. 113，no. 206，IN2013-70，pp. 61-66，東北大学，宮城県，2013年9月．
+- D14. 一谷謙，藤本まなと，片山哲誌，今西亮太，和田友孝，崔永福，岡田博美. MANETを用いた緊急避難支援のための等数型通信方式. 電子情報通信学会技術研究報告，vol. 113，no. 206，IN2013-69，pp. 55-59，東北大学，宮城県，2013年9月．
+- D13. 長尾遼，藤本まなと，佃大貴，仲西正，和田友孝，六浦光一，岡田博美. 自律移動ロボットのためのパッシブ型RFIDシステムを用いた通路分割型移動制御法. 電子情報通信学会技術研究報告，vol. 113，no. 163，ITS2013-8，pp. 13-18，関西大学，大阪府，2013年7月．
+- D12. 仲西正，藤本まなと，佃大貴，長尾遼，和田友孝，六浦光一，岡田博美. モバイルロボットにおけるRFIDを用いた障害物回避予測移動補正法. 電子情報通信学会技術研究報告，vol. 113，no. 163，ITS2013-7，pp. 7-12，関西大学，大阪府，2013年7月．
+- D11. 小郷克文，林憲太朗，藤本まなと，津高健太郎，和田友孝，大月一弘，岡田博美. ERESS端末における避難路混雑状況判定アルゴリズムの一考察. 電子情報通信学会総合大会，no. B-20-29，p. 637，岐阜大学，岐阜県，2013年3月．
+- D10. 仲西正，藤本まなと，小田悠有希，中森絵美，佃大貴，和田友孝，六浦光一，岡田博美. RFIDシステムを用いたモバイルロボットにおける前方経路予測移動補正法. 電子情報通信学会総合大会，no. B-19-48，p. 592，岐阜大学，岐阜県，2013年3月．
+- D9. 藤本まなと，稲田充希，和田友孝，六浦光一，岡田博美. パッシブ型RFIDタグ位置推定のための再検知型通信境界法の提案. 電子情報通信学会技術研究報告，vol. 112，no. 242，USN2012-47，pp. 107-112，福岡大学，福岡県，2012年10月．
+- D8. 小山下寛朗，鈴木拓也，藤本まなと，和田友孝，六浦光一，岡田博美. ワイヤレスセンサネットワークを用いた国境警備システムにおけるハニカム型バリア被覆方式. 電子情報通信学会技術研究報告，vol. 112，no. 209，IN2012-64，pp. 75-80，東北大学，宮城県，2012年9月．
+- D7. 鈴木達也，村上達也，藤本まなと，和田友孝，榎原博之，岡田博美. 非常時緊急救命避難支援システム(ERESS)におけるリアルタイム協調型避難路探索方式の検討. 電子情報通信学会技術研究報告，vol. 112，no. 209，IN2012-69，pp. 105-110，東北大学，宮城県，2012年9月．
+- D6. 小田悠有希，稲田充希，中森絵美，藤本まなと，和田友孝，六浦光一，岡田博美. パッシブRFIDタグ位置推定におけるデュアル型通信境界法. 電子情報通信学会技術研究報告，vol. 111，no. 80，IN2011-29，pp. 1-6，愛知県立大学，愛知県，2011年6月．
+- D5. 中森絵美，稲田充希，小田悠有希，藤本まなと，和田友孝，六浦光一，岡田博美. パッシブRFIDタグ位置推定における連続移動型通信境界法. 電子情報通信学会技術研究報告，vol. 111，no. 80，IN2011-30，pp. 7-12，愛知県立大学，愛知県，2011年6月．
+- D4. 中森絵美，藤本まなと，稲田充希，小田悠有希，和田友孝，六浦光一，岡田博美. RFIDタグ位置推定におけるリーダ連続移動型通信境界法. 電子情報通信学会総合大会，no. B-20-12，p. 607，東京都市大学，東京都，2011年3月．
+- D3. 稲田充希，瀬古佳範，内冨紀恵，藤本まなと，和田友孝，六浦光一，岡田博美. RFIDタグ位置推定におけるスライド型通信境界法. 電子情報通信学会総合大会，no. B-20-17，p. 601，東北大学，宮城県，2010年3月．
+- D2. 藤本まなと，堀敏嘉，内冨紀恵，和田友孝，六浦光一，岡田博美. RFIDタグ位置推定におけるマルチプルリーダアンテナ方式（MRA方式）. 電子情報通信学会技術研究報告，vol. 109，no. 327，IN2009-94，pp. 41-46，神戸大学，兵庫県，2009年12月．
+- D1. 藤本まなと，堀敏嘉，内冨紀恵，和田友孝，六浦光一，岡田博美. RFIDタグ位置推定におけるデュアルアンテナ方式. 電子情報通信学会ソサイエティ大会，no. B-7-27，p. 95，新潟大学，新潟県，2009年9月．
+
+## Recent news
+
+- 2026-11-06: [A paper accepted in IPSJ Journal.](https://manato-fujimoto.github.io/news/2026-11-06-ipsj-journal.html) A Pen-Based Support System with an Accelerometer for Efficient Grading of Multiple-Choice Paper Tests.
+- 2026-08-27: [A paper accepted for presentation at CNSM 2026.](https://manato-fujimoto.github.io/news/2026-08-27-cnsm-2026.html) RPL-FedID: Reliable Pseudo-Label-Enhanced Federated Device Identification.
+- 2026-07-28: [Two papers accepted for presentation at ISMICT 2026.](https://manato-fujimoto.github.io/news/2026-07-28-ismict-2026.html) Two papers on implantable-device and device-free indoor localization.
+- 2026-07-26: [A paper accepted in International Journal of Informatics Society.](https://manato-fujimoto.github.io/news/2026-07-26-focussense.html) A usability study of a dashboard for multimodal concentration estimation.
+- 2026-07-20: [A poster paper accepted at UbiComp / ISWC 2026.](https://manato-fujimoto.github.io/news/2026-07-20-aidol.html) Dynamic optical lighting for immersive live concert viewing.
+- 2026-07-11: [A paper accepted in Applied Gerontology.](https://manato-fujimoto.github.io/news/2026-07-11-applied-gerontology.html) Promoting well-being among nursing home residents through the “Be supporters!” initiative.
+- 2026-07-02: [An invited paper accepted in IEICE Transactions on Communications.](https://manato-fujimoto.github.io/news/2026-07-02-in-body-localization.html) Machine learning and quasi-static magnetic fields for in-body device localization.
+- 2026-05-03: [A paper accepted in IEEE Journal of Electromagnetics, RF, and Microwaves in Medicine and Biology.](https://manato-fujimoto.github.io/news/2026-05-03-ieee-jerm.html) Power and Waveform Optimization for Implant Ultra-Wideband Communications Enhanced by Dynamic Sparse Control.
+- 2026-04-12: [A short paper accepted for presentation at COMPSAC 2026.](https://manato-fujimoto.github.io/news/2026-04-12-compsac-2026.html) Realization of Application-aware Networking by Using Information-Centric Networking.
+- 2026-02-01: [A paper accepted in IEEE Open Journal of the Computer Society.](https://manato-fujimoto.github.io/news/2026-02-01-ieee-ojcs.html) zk-REAL: A Zero-Knowledge-Based Protocol for Repeated Image Edit Authenticity Proof with Lattice Hashing.
