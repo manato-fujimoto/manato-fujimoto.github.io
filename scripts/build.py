@@ -62,10 +62,13 @@ def validate_journal_metrics():
 def text(value, lang):
     return E(value[lang] if isinstance(value, dict) else str(value))
 
-def publication_title(p, lang):
+def publication_field(p, field, lang):
     if lang == 'ja' and p['type'] == 'journal' and p.get('language') == 'ja':
-        return p.get('title_ja', p['title'])
-    return p['title']
+        return p.get(field + '_ja', p[field])
+    return p[field]
+
+def publication_title(p, lang):
+    return publication_field(p, 'title', lang)
 
 def link(url, label, cls=''):
     return f'<a href="{E(url, quote=True)}"' + (f' class="{cls}"' if cls else '') + f'>{label}</a>'
@@ -129,7 +132,7 @@ def validate_search_metadata():
 
 def scholarly_article(p, person_id, lang='en'):
     authors = []
-    for raw_name in re.split(r'[,，、]', p['authors']):
+    for raw_name in re.split(r'[,，、]', publication_field(p, 'authors', lang)):
         name = raw_name.strip().removeprefix('and ')
         author = {'@type': 'Person', 'name': name}
         if name == DATA['name']['en'] or re.sub(r'\s+', '', name) == re.sub(r'\s+', '', DATA['name']['ja']):
@@ -139,7 +142,7 @@ def scholarly_article(p, person_id, lang='en'):
     article = {
         '@type': 'ScholarlyArticle', '@id': url, 'url': url,
         'identifier': p['label'], 'name': publication_title(p, lang),
-        'author': authors, 'description': p['venue'],
+        'author': authors, 'description': publication_field(p, 'venue', lang),
     }
     if p['url']:
         article['sameAs'] = p['url']
@@ -507,7 +510,7 @@ def publication_item(p, lang, *, title_url=None, id_prefix=''):
         tags += f'<span class="status status-international">{"国際共著" if ja else "International coauthorship"}</span>'
     for award in p.get('awards', []):
         tags += f'<span class="status status-award">{E(award)}</span>'
-    authors = E(p['authors'])
+    authors = E(publication_field(p, 'authors', lang))
     metric = journal_metric(p)
     metrics = ''
     if metric:
@@ -516,7 +519,7 @@ def publication_item(p, lang, *, title_url=None, id_prefix=''):
         metrics = '<p class="pub-metrics">' + link(metric['source_url'], metric_label, 'impact-factor') + '</p>'
     if tags:
         tags = f'<div class="pub-tags" aria-label="{"論文のタグ" if lang == "ja" else "Publication tags"}">' + tags + '</div>'
-    return f'<li class="publication" id="{E(id_prefix + p["id"])}"{topic_title}><span class="pub-index">{E(p["label"])}</span><div class="pub-content"><h3 class="pub-title">{title}</h3><p class="pub-authors">{authors}</p><p class="pub-venue">{E(p["venue"])}</p>{metrics}{tags}</div></li>'
+    return f'<li class="publication" id="{E(id_prefix + p["id"])}"{topic_title}><span class="pub-index">{E(p["label"])}</span><div class="pub-content"><h3 class="pub-title">{title}</h3><p class="pub-authors">{authors}</p><p class="pub-venue">{E(publication_field(p, "venue", lang))}</p>{metrics}{tags}</div></li>'
 
 def news_meta(item, lang='en'):
     return f'<div class="news-card-meta"><span class="news-category">{E(category_label(item, lang))}</span><time class="news-date" datetime="{E(item["date"])}">{E(item["date"].replace("-", "."))}</time></div>'

@@ -90,7 +90,7 @@ Publicationsページの4つ目のタブ「Output Timeline」は、同じペー�
 ## 日本語版とENG / JPの切り替え
 
 - 日本語の文章は `content/site.json` の各項目の `ja` を使います。英語（`en`）と対で編集してください。
-- 和文タグ付き学術論文（`type: journal`、`language: ja`）は、`content/publications.json` の `title_ja` を日本語版の業績一覧・関連論文・Newsで表示します。英語版は従来の `title` を使います。タイムラインのトピック分類は両言語とも元の `title` を使います。
+- 和文タグ付き学術論文（`type: journal`、`language: ja`）は、`content/publications.json` の `title_ja`・`authors_ja`・`venue_ja` を日本語版の業績一覧・News・検索向け構造化データで表示します。関連論文も `title_ja` を使います。英語版は従来の `title`・`authors`・`venue` を使います。タイムラインのトピック分類は両言語とも元の `title` を使います。
 - 日本語版の検索用説明文は `page_descriptions_ja` で管理します。
 - Newsの告知本文（`body_html`）と要約（`summary`）は英語のみです。日本語版の記事は、日本語の見出し（`text.ja`）と論文情報で構成し、一覧の抜粋には論文タイトルを表示します。
 - 論文タイトル・著者・掲載先は原文のまま両言語で共通です。Output TimelineとResearch Fundingの表示は日本語版でも英語です。
