@@ -145,7 +145,10 @@ main { padding-block: 4rem 5rem; }
 .service-list { list-style: none; padding: 0; margin: 0; }
 .service-list li { display: grid; grid-template-columns: 5rem minmax(0,1fr); gap: 1rem; padding: 1.3rem 0; border-bottom: 1px solid var(--line); margin: 0; }
 .service-list .year { font-size: .9rem; color: var(--blue); padding-top: .1rem; }
-.service-list h3 { margin-bottom: .2rem; }
+.service-list h3, .service-list h4 { margin: 0 0 .2rem; font-size: 1.15rem; line-height: 1.6; }
+.service-group-title { margin: 1.6rem 0 .2rem; padding-bottom: .5rem; border-bottom: 1px solid var(--line); font-size: 1rem; color: var(--blue); letter-spacing: .04em; }
+.section-heading + .service-group-title { margin-top: 0; }
+.service-list-period li { grid-template-columns: 8.5rem minmax(0,1fr); }
 .service-list p { margin-bottom: .25rem; color: var(--muted); font-size: .95rem; }
 .small-link { font-size: .875rem; }
 .memberships { line-height: 2.1; }
@@ -186,6 +189,7 @@ main { padding-block: 4rem 5rem; }
   .contact-list { gap: .45rem .9rem; }
   .research-grid { grid-template-columns: minmax(0,1fr); gap: 1.25rem; margin-top: 2rem; }
   .service-list li { grid-template-columns: minmax(0,1fr); gap: .2rem; }
+  .service-list-period li { grid-template-columns: minmax(0,1fr); }
   .publication { grid-template-columns: 1.875rem minmax(0, 1fr); gap: .625rem; padding: 1.375rem 0; }
   .pub-index { font-size: .6875rem; }
   .pub-title { line-height: 1.6; }

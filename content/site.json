@@ -674,6 +674,18 @@
       "url": ""
     },
     {
+      "year": "2025",
+      "role": {
+        "en": "Financial Co-Chairs",
+        "ja": "Financial Co-Chairs"
+      },
+      "event": {
+        "en": "15th International Conference on Mobile Computing and Ubiquitous Networking (ICMU 2025)",
+        "ja": "15th International Conference on Mobile Computing and Ubiquitous Networking (ICMU 2025)"
+      },
+      "url": ""
+    },
+    {
       "year": "2024",
       "role": {
         "en": "Local-Organization and Registration Co-Chairs",
@@ -708,6 +720,139 @@
         "ja": "14th IEEE International Symposium on Medical Information Communication Technology (ISMICT 2020)"
       },
       "url": ""
+    }
+  ],
+  "domestic_committees_ja_source": "https://researchmap.jp/mf_may/committee_memberships",
+  "domestic_committees_ja": [
+    {
+      "period": "2026.7–現在",
+      "role": "編集幹事",
+      "event": "情報処理学会 論文誌「“Applications and the internet” in conjunction with the main topics of COMPSAC 2026」特集号"
+    },
+    {
+      "period": "2026.6–現在",
+      "role": "プロジェクトマネージャー（PM）",
+      "event": "公益財団法人大阪産業局 関西テック・クリエイター・チャレンジ"
+    },
+    {
+      "period": "2026.6–現在",
+      "role": "幹事",
+      "event": "電子情報通信学会 ヘルスケア・医療情報通信技術研究専門委員会（MICT）"
+    },
+    {
+      "period": "2026.6–現在",
+      "role": "グループ主査",
+      "event": "情報処理学会 論文誌ジャーナル/JIP編集委員会（小委員会：ネットワークグループ）"
+    },
+    {
+      "period": "2026.4–現在",
+      "role": "編集委員",
+      "event": "情報処理学会 論文誌「未知の世界に挑むインターネットと運用管理技術」特集号"
+    },
+    {
+      "period": "2026.4–現在",
+      "role": "編集委員",
+      "event": "情報処理学会 論文誌「超知能と共に革新する新社会システムと高度交通システム」特集号"
+    },
+    {
+      "period": "2026.3–現在",
+      "role": "編集委員",
+      "event": "情報処理学会 論文誌「若手研究者」特集号"
+    },
+    {
+      "period": "2026.3–現在",
+      "role": "編集委員",
+      "event": "情報処理学会 論文誌「ネットワークサービスと分散処理」特集号"
+    },
+    {
+      "period": "2026–現在",
+      "role": "プログラム副委員長",
+      "event": "第34回マルチメディア通信と分散処理ワークショップ（DPSWS 2026）"
+    },
+    {
+      "period": "2025.12–現在",
+      "role": "編集委員",
+      "event": "情報処理学会 論文誌「安心安全なデジタル社会を実現するセキュリティとトラスト」特集号"
+    },
+    {
+      "period": "2025.7–現在",
+      "role": "編集委員",
+      "event": "情報処理学会 論文誌「“Applications and the internet” in conjunction with the main topics of COMPSAC 2025」特集号"
+    },
+    {
+      "period": "2025.4–現在",
+      "role": "幹事",
+      "event": "情報処理学会 高度交通システムとスマートコミュニティ研究会（ITS）"
+    },
+    {
+      "period": "2026.3–2026.6",
+      "role": "委員",
+      "event": "大阪市計画調整局「なんば広場の持続的な管理運営方策等に係る検討調査業務委託」選定会議"
+    },
+    {
+      "period": "2025.6–2026.6",
+      "role": "幹事補佐",
+      "event": "電子情報通信学会 ヘルスケア・医療情報通信技術研究専門委員会（MICT）"
+    },
+    {
+      "period": "2025.4–2026.6",
+      "role": "編集委員",
+      "event": "論文誌「人がAIと共創する高度交通システムとパーベイシブシステム」特集号"
+    },
+    {
+      "period": "2025.6–2026.5",
+      "role": "グループ副査",
+      "event": "情報処理学会 論文誌ジャーナル/JIP編集委員会（小委員会：ネットワークグループ）"
+    },
+    {
+      "period": "2025.2–2025.6",
+      "role": "専門委員",
+      "event": "電子情報通信学会 ヘルスケア・医療情報通信技術研究専門委員会（MICT）"
+    },
+    {
+      "period": "2021.4–2025.3",
+      "role": "運営委員",
+      "event": "情報処理学会 高度交通システムとスマートコミュニティ研究会（ITS）"
+    },
+    {
+      "period": "2020.6–2024.5",
+      "role": "編集委員",
+      "event": "情報処理学会 論文誌ジャーナル/JIP編集委員会（小委員会：ネットワークグループ）"
+    },
+    {
+      "period": "2020.4–2024.3",
+      "role": "編集委員",
+      "event": "情報処理学会 論文誌コンシューマ・デバイス&システム"
+    },
+    {
+      "period": "2021.6–2023.6",
+      "role": "会誌編集委員",
+      "event": "電子情報通信学会 ワーキンググループA"
+    },
+    {
+      "period": "2018.4–2022.3",
+      "role": "運営委員",
+      "event": "情報処理学会 マルチメディア通信と分散処理研究会"
+    },
+    {
+      "period": "2018.4–2022.3",
+      "role": "運営委員",
+      "event": "情報処理学会 モバイルコンピューティングとパーベイシブシステム研究会"
+    },
+    {
+      "period": "2021",
+      "role": "組織委員長",
+      "event": "情報処理学会 マルチメディア通信と分散処理ワークショップ（DPSWS 2021）"
+    },
+    {
+      "period": "2020",
+      "role": "組織副委員長（財務担当）",
+      "event": "情報処理学会 マルチメディア通信と分散処理ワークショップ（DPSWS 2020）"
+    },
+    {
+      "period": "2016–2018",
+      "role": "支部大会実行委員",
+      "event": "情報処理学会 関西支部"
     }
   ],
   "awards": [
