@@ -264,7 +264,7 @@ def publication_line(p):
     status = ' [Accepted]' if p['accepted'] else ' [Scheduled presentation]' if p.get('scheduled') else ''
     awards = ''.join(f' [{award}]' for award in p.get('awards', []))
     if p.get('invited'):
-        status = ' [Invited Paper]' + status
+        status = ' [Invited paper]' + status
     title = f'[{p["title"]}]({p["url"]})' if p['url'] else p['title']
     return f'- {p["label"]}. {p["authors"]}. {title}. {p["venue"]}{status}{awards}'
 
@@ -505,7 +505,7 @@ def publication_item(p, lang, *, title_url=None, id_prefix=''):
         tags += '<span class="status status-scheduled">発表予定</span>'
     ja = lang == 'ja'
     if p.get('invited'):
-        tags += f'<span class="status status-invited">{"招待論文" if ja else "Invited Paper"}</span>'
+        tags += f'<span class="status status-invited">{"招待論文" if ja else "Invited paper"}</span>'
     if p['type'] == 'journal' and p.get('language') == 'ja':
         tags += f'<span class="status status-japanese">{"和文" if ja else "Japanese"}</span>'
     if p['type'] == 'journal' and p.get('corresponding'):
