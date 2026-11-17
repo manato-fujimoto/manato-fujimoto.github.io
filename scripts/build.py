@@ -508,8 +508,9 @@ BIB_TYPES = {'journal': 'article', 'conference': 'inproceedings'}
 BIB_NOTES = re.compile(r'(poster|demo|short paper|position paper|work[- ]in[- ]progress|mini-conference paper|doctoral symposium)', re.I)
 
 def bib_eligible(p):
-    """Only confirmed records: no Accepted flag and no xx placeholders in the venue line."""
-    return p['type'] in BIB_TYPES and not p['accepted'] and not re.search(r'\bx{2,}\b', p['venue'])
+    """Only confirmed records: no Accepted flag, no xx placeholders in the venue line, and not opted out with "bibtex": false."""
+    return (p['type'] in BIB_TYPES and not p['accepted'] and p.get('bibtex', True)
+            and not re.search(r'\bx{2,}\b', p['venue']))
 
 def bib_base_key(p):
     first_author = p['authors'].split(',')[0].split()[-1]
