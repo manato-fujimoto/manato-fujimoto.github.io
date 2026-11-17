@@ -111,6 +111,10 @@ def last_modified(news_item=None):
         dates.append(DATA['last_updated'])
     return max(dates)
 
+def iso_datetime(day):
+    """Structured-data date-time: Google expects a time and a time zone, not a bare date."""
+    return f'{day}T00:00:00+09:00'
+
 # Search and AI crawlers that are named explicitly in robots.txt. All are allowed.
 AI_CRAWLERS = ['Googlebot', 'Bingbot', 'Google-Extended', 'GPTBot', 'OAI-SearchBot', 'ChatGPT-User',
                'ClaudeBot', 'Claude-SearchBot', 'Claude-User', 'PerplexityBot', 'Perplexity-User',
@@ -202,7 +206,7 @@ def structured_data(page, title, description, news_item=None, lang='en'):
         'url': canonical_url(page, lang), 'name': title, 'description': description,
         'inLanguage': lang, 'isPartOf': {'@id': website_id},
         'about': {'@id': person_id},
-        'dateModified': last_modified(news_item),
+        'dateModified': iso_datetime(last_modified(news_item)),
     }
     graph = [person, website, webpage]
     if page != 'index':
@@ -219,7 +223,7 @@ def structured_data(page, title, description, news_item=None, lang='en'):
         article = {
             '@type': 'Article', '@id': canonical_url(page, lang) + '#article',
             'headline': news_item['text'][lang], 'description': description,
-            'datePublished': news_item['date'], 'dateModified': last_modified(news_item),
+            'datePublished': iso_datetime(news_item['date']), 'dateModified': iso_datetime(last_modified(news_item)),
             'inLanguage': lang, 'author': {'@id': person_id}, 'publisher': {'@id': person_id},
             'mainEntityOfPage': {'@id': canonical_url(page, lang) + '#webpage'},
             'citation': [scholarly_article(p, person_id, lang) for p in news_publications(news_item)],
