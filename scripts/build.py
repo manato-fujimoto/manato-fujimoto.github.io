@@ -809,10 +809,22 @@ def publications(lang):
 def services(lang):
     ja = lang == 'ja'
     body = intro('学会活動・受賞' if ja else 'Services & Awards', '主な学会活動と受賞歴。' if ja else 'Selected professional services and awards.','学会・コミュニティ' if ja else 'Academic community')
+    # On the Japanese page the list is split into international and domestic roles;
+    # the domestic roles (from researchmap) are kept in Japanese only.
+    role_tag = 'h4' if ja else 'h3'
     rows = '<ul class="service-list">'
     for s in DATA['services']:
-        rows += f'<li><span class="year">{E(s["year"])}</span><div><h3>{text(s["role"],lang)}</h3><p>{text(s["event"],lang)}</p></div></li>'
-    body += section('国際会議・研究会運営' if ja else 'Selected Conference Organization',rows+'</ul>')
+        rows += f'<li><span class="year">{E(s["year"])}</span><div><{role_tag}>{text(s["role"],lang)}</{role_tag}><p>{text(s["event"],lang)}</p></div></li>'
+    rows += '</ul>'
+    if ja:
+        domestic = '<ul class="service-list service-list-period">'
+        for c in DATA['domestic_committees_ja']:
+            domestic += f'<li><span class="year">{E(c["period"])}</span><div><h4>{E(c["role"])}</h4><p>{E(c["event"])}</p></div></li>'
+        domestic += '</ul>'
+        rows = ('<h3 class="service-group-title">国際会議委員</h3>' + rows
+                + '<h3 class="service-group-title">国内委員</h3>' + domestic
+                + source_note(DATA['domestic_committees_ja_source'], lang))
+    body += section('国際会議・研究会運営' if ja else 'Selected Conference Organization',rows)
     rows = '<ul class="service-list">'
     for a in sorted(DATA['awards'], key=lambda award: int(award['year']), reverse=True):
         title = text(a['title'], lang)

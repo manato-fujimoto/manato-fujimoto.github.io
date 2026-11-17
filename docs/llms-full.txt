@@ -76,6 +76,7 @@ Topics: Magnetic-field-based localization, implant communications, UWB, and RFID
 - 2026: Program Co-Chair, 20th International Workshop on Informatics (IWIN 2026)
 - 2026: Web Chair, 20th IEEE International Symposium on Medical Information and Communication Technology (ISMICT 2026)
 - 2025: Tutorial Chair, 20th EAI International Conference on Body Area Networks: Intelligent Edge Cloud for Dependable Globally Connected BAN (BodyNets 2025)
+- 2025: Financial Co-Chairs, 15th International Conference on Mobile Computing and Ubiquitous Networking (ICMU 2025)
 - 2024: Local-Organization and Registration Co-Chairs, 10th IEEE International Conference on Smart Computing (SMARTCOMP 2024)
 - 2023: Financial Co-Chairs, 14th International Conference on Mobile Computing and Ubiquitous Networking (ICMU 2023)
 - 2020: Local Arrangement Co-Chairs, 14th IEEE International Symposium on Medical Information Communication Technology (ISMICT 2020)

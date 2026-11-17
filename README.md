@@ -103,6 +103,11 @@ Publicationsページの4つ目のタブ「Output Timeline」は、同じペー�
 - BibTeXは `content/publications.json` の著者・タイトル・掲載情報（`venue`）から作ります。`venue` は「誌名, Vol. 巻, No. 号（または Issue 号）, pp. 開始-終了, 月 年」の順で書いてください。国際会議論文の `venue` は「会議名（略称）, 種別（Poster など、任意）, pp. 開始-終了, 開催地, 月 年」の順で書いてください。この形に分解できない論文にはボタンが付かず、生成時にその旨が表示されます。
 - 和文論文は、日本語ページでは日本語（`title_ja`・`authors_ja`・`venue_ja`）、英語ページでは英語のBibTeXになります。
 
+## 学会活動（国際会議・国内委員）
+
+- 「国際会議・研究会運営」のうち国際会議は `content/site.json` の `services`（英語・日本語共通）で管理します。
+- 国内の委員歴は `domestic_committees_ja` で管理し、日本語ページだけに「国内委員」として表示します。researchmapの委員歴をもとにしています。`period` は「2026.7–現在」「2021.4–2025.3」の形で書いてください。
+
 ## 検索エンジン・AI検索向けの設定
 
 - `content/site.json` の `site_url` を正規の公開URLとして使用します。公開先を変更するときは、この値も更新してビルドしてください。
