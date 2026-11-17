@@ -6,6 +6,7 @@ from hashlib import sha256
 from urllib.parse import quote, urljoin, urlsplit
 import xml.etree.ElementTree as ET
 import json
+import unicodedata
 import re
 from datetime import date
 
@@ -492,7 +493,106 @@ def journal_metric(p):
         raise ValueError(f'Ambiguous journal metric for {p["id"]}')
     return matches[0] if matches else None
 
-def publication_item(p, lang, *, title_url=None, id_prefix=''):
+BIB_MONTHS = {'jan': 'jan', 'feb': 'feb', 'mar': 'mar', 'apr': 'apr', 'april': 'apr', 'may': 'may', 'jun': 'jun', 'june': 'jun',
+              'jul': 'jul', 'july': 'jul', 'aug': 'aug', 'sep': 'sep', 'sept': 'sep', 'oct': 'oct', 'nov': 'nov', 'dec': 'dec'}
+BIB_STOPWORDS = {'a', 'an', 'the', 'of', 'on', 'for', 'and', 'in', 'to', 'with', 'by', 'from', 'using', 'toward', 'towards', 'via'}
+
+def bib_escape(value):
+    return re.sub(r'([&%$#_])', r'\\\1', value)
+
+def bib_key(p):
+    first_author = p['authors'].split(',')[0].split()[-1]
+    family = re.sub(r'[^a-z]', '', unicodedata.normalize('NFKD', first_author).encode('ascii', 'ignore').decode().lower())
+    words = [re.sub(r'[^a-z0-9]', '', w.lower()) for w in re.split(r'[\s\-:/]+', p['title'])]
+    word = next((w for w in words if w and w not in BIB_STOPWORDS), 'paper')
+    return f'{family}{p["year"]}{word}'
+
+def bib_fields(venue, japanese=False):
+    """Split a journal venue line into BibTeX fields. Returns None when a part is not recognised."""
+    venue = venue.strip().rstrip('.．')
+    if japanese:
+        journal, *parts = [part.strip() for part in venue.split('，')]
+    else:
+        match = re.match(r'(.+?), (vol\. .+)$', venue, re.I)
+        if not match:
+            return None
+        journal, parts = match.group(1), [part.strip() for part in match.group(2).split(', ')]
+    fields = {'journal': journal}
+    for part in parts:
+        if m := re.fullmatch(r'vol\. ?(.+)', part, re.I):
+            fields['volume'] = m.group(1)
+        elif m := re.fullmatch(r'issue (.+)', part, re.I):
+            fields['number'] = m.group(1)
+        elif m := re.fullmatch(r'no\. ?(.+)', part, re.I):
+            # "Issue 1, No. 13" (MDPI style): the second number is the article number.
+            fields['articleno' if 'number' in fields else 'number'] = m.group(1)
+        elif m := re.fullmatch(r'article (?:number:|id) ?(.+)', part, re.I):
+            fields['articleno'] = m.group(1)
+        elif m := re.fullmatch(r'pp\. ?(\w+)\s*[-–]\s*(\w+)', part, re.I):
+            fields['pages'] = f'{m.group(1)}--{m.group(2)}'
+        elif m := re.fullmatch(r'(\d+) pages', part, re.I):
+            fields['numpages'] = m.group(1)
+        elif m := re.fullmatch(r'([A-Za-z]+)\.? (\d{4})', part):
+            if m.group(1).lower() not in BIB_MONTHS:
+                return None
+            fields['month'], fields['year'] = BIB_MONTHS[m.group(1).lower()], m.group(2)
+        elif m := re.fullmatch(r'(\d{4})年(\d{1,2})月', part):
+            fields['month'], fields['year'] = list(dict.fromkeys(BIB_MONTHS.values()))[int(m.group(2)) - 1], m.group(1)
+        else:
+            return None
+    return fields if {'volume', 'year'} <= fields.keys() else None
+
+def bibtex_entry(p, lang='en'):
+    """BibTeX for a published journal article, or None for unconfirmed or unparseable records."""
+    if p['type'] != 'journal' or p['accepted'] or re.search(r'\bx{2,}\b', p['venue']):
+        return None
+    japanese = lang == 'ja' and p.get('language') == 'ja' and all(p.get(k) for k in ('title_ja', 'authors_ja', 'venue_ja'))
+    fields = bib_fields(p['venue_ja'] if japanese else p['venue'], japanese)
+    if fields is None:
+        return None
+    authors = re.split(r'[，,]\s*', (p['authors_ja'] if japanese else p['authors']).strip())
+    authors = [re.sub(r'^and\s+', '', a) for a in authors if a]
+    entry = [('author', '{' + ' and '.join(bib_escape(a) for a in authors) + '}'),
+             ('title', '{{' + bib_escape(p['title_ja'] if japanese else p['title']) + '}}'),
+             ('journal', '{' + bib_escape(fields['journal']) + '}')]
+    entry += [(key, '{' + fields[key] + '}') for key in ('volume', 'number', 'pages', 'articleno', 'numpages', 'year') if key in fields]
+    if 'month' in fields:
+        entry.append(('month', fields['month']))
+    doi = re.search(r'(?:doi\.org/|/doi/(?:abs/|full/|pdf/)?)(10\.\d{4,9}/[^\s?#]+)', p['url'])
+    if doi:
+        entry.append(('doi', '{' + doi.group(1).rstrip('/') + '}'))
+    if p['url']:
+        entry.append(('url', '{' + p['url'] + '}'))
+    if p.get('language') == 'ja':
+        entry.append(('language', '{Japanese}') if japanese else ('note', '{in Japanese}'))
+    width = max(len(key) for key, _ in entry)
+    return '@article{' + bib_key(p) + ',\n' + ',\n'.join(f'  {key.ljust(width)} = {value}' for key, value in entry) + '\n}\n'
+
+def bib_path(p, lang='en'):
+    """Path of the .bib file from the site root. Japanese papers get a separate Japanese file."""
+    japanese = lang == 'ja' and p.get('language') == 'ja'
+    return f'bib/{p["id"]}{"-ja" if japanese else ""}.bib'
+
+def write_bibtex_files():
+    out = OUT / 'bib'
+    out.mkdir(exist_ok=True)
+    for old in out.glob('*.bib'):
+        old.unlink()
+    keys, count = {}, 0
+    for p in PUBS:
+        if p['type'] != 'journal' or p['accepted'] or re.search(r'\bx{2,}\b', p['venue']):
+            continue
+        if bibtex_entry(p) is None:
+            print(f'Note: no BibTeX for {p["label"]}; its venue line could not be split into fields: {p["venue"]}')
+            continue
+        if keys.setdefault(bib_key(p), p['label']) != p['label']:
+            raise ValueError(f'Duplicate BibTeX key {bib_key(p)} for {keys[bib_key(p)]} and {p["label"]}')
+        count += 1
+        for lang in LANGS:
+            (OUT / bib_path(p, lang)).write_text(bibtex_entry(p, lang), encoding='utf-8')
+    return count
+
+def publication_item(p, lang, *, title_url=None, id_prefix='', bib_root=None):
     title = E(publication_title(p, lang))
     topic_title = f' data-topic-title="{E(p["title"], quote=True)}"' if publication_title(p, lang) != p['title'] else ''
     target = p['url'] if title_url is None else title_url
@@ -514,6 +614,9 @@ def publication_item(p, lang, *, title_url=None, id_prefix=''):
         tags += f'<span class="status status-international">{"国際共著" if ja else "International coauthorship"}</span>'
     for award in p.get('awards', []):
         tags += f'<span class="status status-award">{E(award)}</span>'
+    if bib_root is not None and bibtex_entry(p, lang) is not None:
+        label = f'{p["label"]}のBibTeXをダウンロード' if ja else f'Download BibTeX for {p["label"]}'
+        tags += f'<a class="pub-bibtex" href="{E(bib_root + bib_path(p, lang), quote=True)}" download="{E(bib_key(p), quote=True)}.bib" type="application/x-bibtex" aria-label="{E(label, quote=True)}" title="{E(label, quote=True)}"><span aria-hidden="true">↓</span>BibTeX</a>'
     authors = E(publication_field(p, 'authors', lang))
     metric = journal_metric(p)
     metrics = ''
@@ -615,7 +718,7 @@ def publications(lang):
             year, release = JOURNAL_METRICS['metric_year'], JOURNAL_METRICS['release_year']
             metric_note = f'掲載誌の{year}年Journal Impact Factor（{release}年公表）を、確認できた誌に表示しています。数値から出典を確認できます。' if ja else f'Journal Impact Factors are {year} values, released in {release}, shown where verified. Each value links to its source.'
             body += f'<p class="metrics-note">{metric_note}</p>'
-        body += '<ol class="publications">'+''.join(publication_item(p,lang) for p in items)+'</ol>'
+        body += '<ol class="publications">'+''.join(publication_item(p,lang,bib_root='../' if ja else '') for p in items)+'</ol>'
         body += '</section>'
     # Output Timeline: assets/timeline.js draws it from the lists above; only the years are passed here.
     kinds = {key for key,_ in groups}
@@ -660,9 +763,10 @@ def main():
         for item in news_items():
             path = news_path(item)
             (out / path).write_text(shell(path.removesuffix('.html'), lang, news_article(item, lang), item), encoding='utf-8')
+    bib_count = write_bibtex_files()
     (OUT / '.nojekyll').touch()
     write_discovery_files()
-    print(f'Generated {len(PAGES) + len(news_items())} HTML pages in each of English and Japanese with {len(PUBS)} publication records, plus sitemap.xml, robots.txt, llms.txt and llms-full.txt.')
+    print(f'Generated {len(PAGES) + len(news_items())} HTML pages in each of English and Japanese with {len(PUBS)} publication records, plus sitemap.xml, robots.txt, llms.txt, llms-full.txt and BibTeX files for {bib_count} journal articles.')
 
 if __name__=='__main__':
     main()
