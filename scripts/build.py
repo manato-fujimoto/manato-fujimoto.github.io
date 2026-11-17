@@ -500,12 +500,78 @@ BIB_STOPWORDS = {'a', 'an', 'the', 'of', 'on', 'for', 'and', 'in', 'to', 'with',
 def bib_escape(value):
     return re.sub(r'([&%$#_])', r'\\\1', value)
 
-def bib_key(p):
+BIB_TYPES = {'journal': 'article', 'conference': 'inproceedings'}
+BIB_NOTES = re.compile(r'(poster|demo|short paper|position paper|work[- ]in[- ]progress|mini-conference paper|doctoral symposium)', re.I)
+
+def bib_eligible(p):
+    """Only confirmed records: no Accepted flag and no xx placeholders in the venue line."""
+    return p['type'] in BIB_TYPES and not p['accepted'] and not re.search(r'\bx{2,}\b', p['venue'])
+
+def bib_base_key(p):
     first_author = p['authors'].split(',')[0].split()[-1]
     family = re.sub(r'[^a-z]', '', unicodedata.normalize('NFKD', first_author).encode('ascii', 'ignore').decode().lower())
     words = [re.sub(r'[^a-z0-9]', '', w.lower()) for w in re.split(r'[\s\-:/]+', p['title'])]
     word = next((w for w in words if w and w not in BIB_STOPWORDS), 'paper')
     return f'{family}{p["year"]}{word}'
+
+def bib_keys():
+    """Citation key per record ID. Clashing keys get b, c, ... with the older paper keeping the plain key."""
+    keys, used = {}, {}
+    # Journal articles are numbered first so their keys never change when a conference paper is added.
+    for p in sorted(reversed(PUBS), key=lambda p: list(BIB_TYPES).index(p['type']) if p['type'] in BIB_TYPES else len(BIB_TYPES)):
+        if not bib_eligible(p):
+            continue
+        key = bib_base_key(p)
+        used[key] = used.get(key, 0) + 1
+        keys[p['id']] = key if used[key] == 1 else key + 'abcdefghijklmnopqrstuvwxyz'[used[key] - 1]
+    return keys
+
+BIB_KEYS = bib_keys()
+
+def bib_key(p):
+    return BIB_KEYS[p['id']]
+
+def bib_date(part):
+    if m := re.fullmatch(r'([A-Za-z]+)\.? (\d{4})', part):
+        month = BIB_MONTHS.get(m.group(1).lower())
+        return (month, m.group(2)) if month else None
+    return None
+
+def bib_conference_fields(venue):
+    """Split a conference venue line: proceedings name, optional notes and pages, place, month and year."""
+    parts = [part.strip() for part in venue.strip().rstrip('.').split(', ')]
+    when = bib_date(parts[-1]) if len(parts) > 1 else None
+    if when is None:
+        return None
+    fields, notes, parts = {'month': when[0], 'year': when[1]}, [], parts[:-1]
+    markers = []
+    for index, part in enumerate(parts):
+        if m := re.fullmatch(r'pp\.? ?(\S+?)\s*[-–]\s*(\S+)', part, re.I):
+            fields['pages'] = f'{m.group(1)}--{m.group(2)}'
+        elif m := re.fullmatch(r'(\d+) pages?', part, re.I):
+            fields['numpages'] = m.group(1)
+        elif m := re.fullmatch(r'volume (\S+)', part, re.I):
+            fields['volume'] = m.group(1)
+        elif BIB_NOTES.fullmatch(part):
+            notes.append(part)
+        else:
+            continue
+        markers.append(index)
+    if markers:
+        first = markers[0]
+    else:
+        # No pages or notes: the proceedings name ends at the last part closing with ")", e.g. "(ISMICT 2026)".
+        closing = [index for index, part in enumerate(parts) if part.endswith(')')]
+        if not closing:
+            return None
+        first = closing[-1] + 1
+    place = [part for index, part in enumerate(parts) if index >= first and index not in markers]
+    if first == 0 or not place:
+        return None
+    fields['booktitle'], fields['address'] = ', '.join(parts[:first]), ', '.join(place)
+    if notes:
+        fields['note'] = ', '.join(notes)
+    return fields
 
 def bib_fields(venue, japanese=False):
     """Split a journal venue line into BibTeX fields. Returns None when a part is not recognised."""
@@ -543,19 +609,23 @@ def bib_fields(venue, japanese=False):
     return fields if {'volume', 'year'} <= fields.keys() else None
 
 def bibtex_entry(p, lang='en'):
-    """BibTeX for a published journal article, or None for unconfirmed or unparseable records."""
-    if p['type'] != 'journal' or p['accepted'] or re.search(r'\bx{2,}\b', p['venue']):
+    """BibTeX for a confirmed journal article or conference paper, or None when the record is unconfirmed or unparseable."""
+    if not bib_eligible(p):
         return None
     japanese = lang == 'ja' and p.get('language') == 'ja' and all(p.get(k) for k in ('title_ja', 'authors_ja', 'venue_ja'))
-    fields = bib_fields(p['venue_ja'] if japanese else p['venue'], japanese)
+    if p['type'] == 'journal':
+        fields = bib_fields(p['venue_ja'] if japanese else p['venue'], japanese)
+        order = ('journal', 'volume', 'number', 'pages', 'articleno', 'numpages', 'year')
+    else:
+        fields = bib_conference_fields(p['venue'])
+        order = ('booktitle', 'volume', 'pages', 'numpages', 'address', 'year')
     if fields is None:
         return None
     authors = re.split(r'[，,]\s*', (p['authors_ja'] if japanese else p['authors']).strip())
     authors = [re.sub(r'^and\s+', '', a) for a in authors if a]
     entry = [('author', '{' + ' and '.join(bib_escape(a) for a in authors) + '}'),
-             ('title', '{{' + bib_escape(p['title_ja'] if japanese else p['title']) + '}}'),
-             ('journal', '{' + bib_escape(fields['journal']) + '}')]
-    entry += [(key, '{' + fields[key] + '}') for key in ('volume', 'number', 'pages', 'articleno', 'numpages', 'year') if key in fields]
+             ('title', '{{' + bib_escape(p['title_ja'] if japanese else p['title']) + '}}')]
+    entry += [(key, '{' + bib_escape(fields[key]) + '}') for key in order if key in fields]
     if 'month' in fields:
         entry.append(('month', fields['month']))
     doi = re.search(r'(?:doi\.org/|/doi/(?:abs/|full/|pdf/)?)(10\.\d{4,9}/[^\s?#]+)', p['url'])
@@ -563,10 +633,12 @@ def bibtex_entry(p, lang='en'):
         entry.append(('doi', '{' + doi.group(1).rstrip('/') + '}'))
     if p['url']:
         entry.append(('url', '{' + p['url'] + '}'))
+    if 'note' in fields:
+        entry.append(('note', '{' + bib_escape(fields['note']) + '}'))
     if p.get('language') == 'ja':
         entry.append(('language', '{Japanese}') if japanese else ('note', '{in Japanese}'))
     width = max(len(key) for key, _ in entry)
-    return '@article{' + bib_key(p) + ',\n' + ',\n'.join(f'  {key.ljust(width)} = {value}' for key, value in entry) + '\n}\n'
+    return '@' + BIB_TYPES[p['type']] + '{' + bib_key(p) + ',\n' + ',\n'.join(f'  {key.ljust(width)} = {value}' for key, value in entry) + '\n}\n'
 
 def bib_path(p, lang='en'):
     """Path of the .bib file from the site root. Japanese papers get a separate Japanese file."""
@@ -578,19 +650,17 @@ def write_bibtex_files():
     out.mkdir(exist_ok=True)
     for old in out.glob('*.bib'):
         old.unlink()
-    keys, count = {}, 0
+    counts = {kind: 0 for kind in BIB_TYPES}
     for p in PUBS:
-        if p['type'] != 'journal' or p['accepted'] or re.search(r'\bx{2,}\b', p['venue']):
+        if not bib_eligible(p):
             continue
         if bibtex_entry(p) is None:
             print(f'Note: no BibTeX for {p["label"]}; its venue line could not be split into fields: {p["venue"]}')
             continue
-        if keys.setdefault(bib_key(p), p['label']) != p['label']:
-            raise ValueError(f'Duplicate BibTeX key {bib_key(p)} for {keys[bib_key(p)]} and {p["label"]}')
-        count += 1
+        counts[p['type']] += 1
         for lang in LANGS:
             (OUT / bib_path(p, lang)).write_text(bibtex_entry(p, lang), encoding='utf-8')
-    return count
+    return counts
 
 def publication_item(p, lang, *, title_url=None, id_prefix='', bib_root=None):
     title = E(publication_title(p, lang))
@@ -766,7 +836,7 @@ def main():
     bib_count = write_bibtex_files()
     (OUT / '.nojekyll').touch()
     write_discovery_files()
-    print(f'Generated {len(PAGES) + len(news_items())} HTML pages in each of English and Japanese with {len(PUBS)} publication records, plus sitemap.xml, robots.txt, llms.txt, llms-full.txt and BibTeX files for {bib_count} journal articles.')
+    print(f'Generated {len(PAGES) + len(news_items())} HTML pages in each of English and Japanese with {len(PUBS)} publication records, plus sitemap.xml, robots.txt, llms.txt, llms-full.txt and BibTeX files for {bib_count['journal']} journal articles and {bib_count['conference']} conference papers.')
 
 if __name__=='__main__':
     main()
