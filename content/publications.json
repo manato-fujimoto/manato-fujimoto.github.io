@@ -498,7 +498,7 @@
     "authors": "Taisho Isobe, Haruki Ishimaru, Manato Fujimoto, Shingo Ata, Kota Tsuchie, Nobuyuki Nakamura, Taketsugu Yao",
     "venue": "22nd International Conference on Network and Service Management (CNSM2026), pp. xx-xx, Madrid, Spain, Oct. 2026.",
     "year": "2026",
-    "accepted": true,
+    "accepted": false,
     "url": ""
   },
   {
@@ -509,7 +509,7 @@
     "authors": "Sohshi Yoshida, Ko Watanabe, Andreas Dengel, Shoya Ishimaru, Shingo Ata, Manato Fujimoto",
     "venue": "UbiComp Companion’26: Companion of the 2026 on ACM International Joint Conference on Pervasive and Ubiquitous Computing, Poster, Shanghai, China, Oct. 2026",
     "year": "2026",
-    "accepted": true,
+    "accepted": false,
     "url": ""
   },
   {
@@ -520,7 +520,7 @@
     "authors": "Takumi Kawamura, Taiki Egusa, Takumi Kobayashi, Jaakko Hyry, Yujiro Kushiyama, Shingo Ata, Daisuke Anzai, Manato Fujimoto",
     "venue": "20th IEEE International Symposium on Medical Information and Communication Technology (ISMICT 2026), Osaka, Japan, Sept. 2026",
     "year": "2026",
-    "accepted": true,
+    "accepted": false,
     "url": ""
   },
   {
@@ -531,7 +531,7 @@
     "authors": "Mairu Sakamoto, Jaakko Hyry, Yujiro Kushiyama, Takumi Kobayashi, Manato Fujimoto, Shingo Ata, Daisuke Anzai",
     "venue": "20th IEEE International Symposium on Medical Information and Communication Technology (ISMICT 2026), Osaka, Japan, Sept. 2026",
     "year": "2026",
-    "accepted": true,
+    "accepted": false,
     "url": ""
   },
   {
