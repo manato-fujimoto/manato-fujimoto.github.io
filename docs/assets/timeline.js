@@ -72,12 +72,36 @@
   const scroll = el('div', 'ot-scroll'), viz = el('div', 'ot-viz');
   const h1 = el('h3', 'ot-h', t('Output by year', '年別の研究業績')); h1.append(el('small', '', t('(one square = one item; select a square to jump to it in the list, select a year to highlight it)', '（1マス＝1件。マスを選ぶと該当業績へ移動し、年を選ぶとその年を強調表示します）')));
   const units = el('div', 'ot-grid ot-units'), years = el('div', 'ot-grid ot-years ot-mono');
-  const h2 = el('h3', 'ot-h', t('Research topics over time', '研究トピックの推移')); h2.append(el('small', '', t('(extracted automatically from titles; numbers are item counts; select a row or a cell to highlight)', '（論文タイトルから自動分類。数値は件数です。行やセルを選ぶと該当業績を強調表示します）')));
+  // "Research topics over time" can be collapsed; the choice is remembered in this browser.
+  const TOPICS_KEY = 'ot-topics-open';
+  let topicsOpen = true;
+  try { topicsOpen = localStorage.getItem(TOPICS_KEY) !== '0'; } catch (e) {}
+  const h2 = el('h3', 'ot-h ot-h-toggle');
+  const topicsToggle = el('button', 'ot-toggle'); topicsToggle.type = 'button'; topicsToggle.setAttribute('aria-controls', 'ot-topics-panel');
+  const topicsCaret = el('span', 'ot-caret', '▾'); topicsCaret.setAttribute('aria-hidden', 'true');
+  const topicsAction = el('span', 'ot-toggle-action');
+  topicsToggle.append(topicsCaret, el('span', 'ot-toggle-title', t('Research topics over time', '研究トピックの推移')), topicsAction);
+  const topicsHint = el('small', '', t('(extracted automatically from titles; numbers are item counts; select a row or a cell to highlight)', '（論文タイトルから自動分類。数値は件数です。行やセルを選ぶと該当業績を強調表示します）'));
+  h2.append(topicsToggle, topicsHint);
+  const topicsPanel = el('div', 'ot-topics-panel'); topicsPanel.id = 'ot-topics-panel';
+  function setTopicsOpen(open) {
+    topicsOpen = open;
+    topicsToggle.setAttribute('aria-expanded', String(open));
+    topicsAction.textContent = open ? t('Hide', '閉じる') : t('Show', '展開する');
+    topicsCaret.textContent = open ? '▾' : '▸';
+    topicsPanel.hidden = !open; topicsHint.hidden = !open;
+    h2.classList.toggle('is-collapsed', !open);
+  }
+  topicsToggle.addEventListener('click', () => {
+    hideTip(); setTopicsOpen(!topicsOpen);
+    try { localStorage.setItem(TOPICS_KEY, topicsOpen ? '1' : '0'); } catch (e) {}
+  });
   const heat = el('div', 'ot-grid ot-heat ot-mono');
   const scale = el('div', 'ot-scale');
   [['1', 1], ['2–3', 2], ['4–6', 3], ['7–9', 4], [t('10+', '10以上'), 5]].forEach(([label, l]) => { const i = el('i'); i.style.background = 'var(--ot-h' + l + ')'; scale.append(el('span', '', label), i); });
   [units, years, heat].forEach(g => g.style.setProperty('--ot-n', YEARS.length));
-  viz.append(h1, units, years, h2, heat, scale); scroll.append(viz);
+  topicsPanel.append(heat, scale); setTopicsOpen(topicsOpen);
+  viz.append(h1, units, years, h2, topicsPanel); scroll.append(viz);
   const foot = el('p', 'ot-foot', t('Years are publication or presentation years and include accepted and scheduled items. Topics are assigned automatically from words in the title, so an item can count under several topics or under none.', '年は刊行年または発表年で、採択済み・発表予定の業績を含みます。研究トピックはタイトル中の語句から自動分類しているため、1件の業績が複数のトピックに該当する場合や、いずれにも該当しない場合があります。'));
   const tip = el('div', 'ot-tip'); tip.setAttribute('role', 'status');
   root.append(recent, tiles, status, scroll, foot, tip);
