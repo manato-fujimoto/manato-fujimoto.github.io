@@ -426,7 +426,7 @@ def shell(page, lang, body, news_item=None):
   <link rel="alternate" type="text/markdown" title="Site summary for AI assistants (llms.txt)" href="{E(site_url('llms.txt'), quote=True)}">
   <meta name="theme-color" content="#090b10">
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,{quote(svg)}">
-  <link rel="stylesheet" href="{root}assets/style.css">
+  <link rel="stylesheet" href="{root}assets/style.css{'?v=committee-layout-1' if page == 'services' and lang == 'ja' else ''}">
   <link rel="stylesheet" href="{root}assets/news.css">{page_scripts}
 </head>
 <body>
