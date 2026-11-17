@@ -812,17 +812,19 @@ def services(lang):
     # On the Japanese page the list is split into international and domestic roles;
     # the domestic roles (from researchmap) are kept in Japanese only.
     role_tag = 'h4' if ja else 'h3'
-    rows = '<ul class="service-list">'
+    rows = '<ul class="service-list committee-list">' if ja else '<ul class="service-list">'
     for s in DATA['services']:
-        rows += f'<li><span class="year">{E(s["year"])}</span><div><{role_tag}>{text(s["role"],lang)}</{role_tag}><p>{text(s["event"],lang)}</p></div></li>'
+        detail = f'<{role_tag}>{text(s["role"],lang)}</{role_tag}><p>{text(s["event"],lang)}</p>'
+        rows += f'<li><span class="year">{E(s["year"])}</span>' + (detail if ja else f'<div>{detail}</div>') + '</li>'
     rows += '</ul>'
     if ja:
-        domestic = '<ul class="service-list service-list-period">'
+        domestic = '<ul class="service-list committee-list">'
         for c in DATA['domestic_committees_ja']:
-            domestic += f'<li><span class="year">{E(c["period"])}</span><div><h4>{E(c["role"])}</h4><p>{E(c["event"])}</p></div></li>'
+            domestic += f'<li><span class="year">{E(c["period"])}</span><h4>{E(c["role"])}</h4><p>{E(c["event"])}</p></li>'
         domestic += '</ul>'
-        rows = ('<h3 class="service-group-title">国際会議委員</h3>' + rows
-                + '<h3 class="service-group-title">国内委員</h3>' + domestic
+        columns = '<div class="committee-columns" aria-hidden="true"><span>年・任期</span><span>役職</span><span>会議・組織名</span></div>'
+        rows = ('<h3 class="service-group-title">国際会議委員</h3>' + columns + rows
+                + '<h3 class="service-group-title">国内委員</h3>' + columns + domestic
                 + source_note(DATA['domestic_committees_ja_source'], lang))
     body += section('国際会議・研究会運営' if ja else 'Selected Conference Organization',rows)
     rows = '<ul class="service-list">'
