@@ -25,6 +25,12 @@
 .ot-chip::after { content: ' ×'; color: var(--muted); }
 .ot-clear { font: inherit; font-size: .8rem; color: var(--blue); background: none; border: 0; padding: 0; text-decoration: underline; cursor: pointer; }
 .ot h3.ot-h { font-size: .95rem; font-weight: 600; color: var(--navy); margin: 1.6rem 0 .6rem; line-height: 1.5; }
+.ot h3.ot-h-toggle { display: flex; flex-wrap: wrap; align-items: baseline; gap: .2rem .3rem; }
+.ot h3.ot-h-toggle.is-collapsed { margin-bottom: 0; }
+.ot-toggle { display: inline-flex; align-items: center; gap: .4rem; margin: 0; padding: .2rem .55rem .2rem .35rem; border: 1px solid var(--line, #2a3545); border-radius: 5px; background: transparent; color: inherit; font: inherit; font-weight: 600; line-height: 1.5; cursor: pointer; }
+.ot-toggle:hover { border-color: var(--blue); }
+.ot-caret { display: inline-block; width: 1em; color: var(--blue); text-align: center; }
+.ot-toggle-action { margin-left: .35rem; font-size: .75rem; font-weight: 500; color: var(--blue); }
 .ot h3.ot-h small { font-size: .78rem; font-weight: 400; color: var(--muted); margin-left: .3rem; }
 .ot-scroll { overflow-x: auto; padding-bottom: .3rem; }
 .ot-viz { min-width: 780px; }
