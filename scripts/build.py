@@ -837,8 +837,7 @@ def services(lang):
                     f'<h3>{title}</h3><span class="service-group-count">{count}件</span></summary>'
                     + columns + items + '</details>')
         rows = (group('国際会議委員', len(DATA['services']), rows)
-                + group('国内委員', len(DATA['domestic_committees_ja']), domestic)
-                + source_note(DATA['domestic_committees_ja_source'], lang))
+                + group('国内委員', len(DATA['domestic_committees_ja']), domestic))
     body += section('国際会議・研究会運営' if ja else 'Selected Conference Organization',rows)
     rows = '<ul class="service-list">'
     for a in sorted(DATA['awards'], key=lambda award: int(award['year']), reverse=True):
