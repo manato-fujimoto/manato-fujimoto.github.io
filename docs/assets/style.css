@@ -162,8 +162,16 @@ main { padding-block: 4rem 5rem; }
 .committee-list .year { padding: 0; white-space: nowrap; font-variant-numeric: tabular-nums; }
 .service-list.committee-list h4 { margin: 0; font-size: .95rem; font-weight: 600; line-height: 1.7; overflow-wrap: anywhere; }
 .service-list.committee-list p { margin: 0; font-size: .9rem; line-height: 1.8; text-align: start; overflow-wrap: anywhere; }
-.service-group-title:has(+ .committee-columns) { margin-top: 2.5rem; margin-bottom: 0; padding-bottom: .75rem; font-size: 1.05rem; }
-.section-heading + .service-group-title:has(+ .committee-columns) { margin-top: 0; }
+/* Collapsible committee groups (<details>/<summary>). */
+.service-group { margin-top: 2.5rem; }
+.section-heading + .service-group { margin-top: 0; }
+summary.service-group-title { display: flex; align-items: baseline; gap: .6rem; margin: 0; padding-bottom: .75rem; font-size: 1.05rem; cursor: pointer; list-style: none; }
+summary.service-group-title::-webkit-details-marker { display: none; }
+summary.service-group-title::before { content: ''; flex: none; width: .45rem; height: .45rem; border-right: 2px solid currentColor; border-bottom: 2px solid currentColor; transform: translateY(-.2rem) rotate(-45deg); transition: transform .15s ease; }
+.service-group[open] > summary.service-group-title::before { transform: translateY(-.3rem) rotate(45deg); }
+summary.service-group-title h3 { margin: 0; font: inherit; color: inherit; letter-spacing: inherit; }
+.service-group-count { color: var(--muted); font-size: .8rem; letter-spacing: 0; }
+summary.service-group-title:hover h3 { text-decoration: underline; text-underline-offset: .25em; }
 @media (max-width: 900px) {
   .committee-columns { display: none; }
   .service-list.committee-list li { grid-template-columns: 9rem minmax(0, 1fr); gap: .25rem 1.25rem; }
