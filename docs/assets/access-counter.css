@@ -1,6 +1,6 @@
 .footer-links .ac-link { font-size: .75rem; opacity: .55; }
 .footer-links .ac-link:hover { opacity: 1; }
-.ac-dialog { width: min(94vw, 440px); padding: 1.4rem; border: 1px solid var(--line); border-radius: 10px; background: var(--wash); color: var(--ink); font-size: .9rem; line-height: 1.6; }
+.ac-dialog { width: min(94vw, 440px); max-height: 90vh; overflow-y: auto; padding: 1.4rem; border: 1px solid var(--line); border-radius: 10px; background: var(--wash); color: var(--ink); font-size: .9rem; line-height: 1.6; }
 .ac-dialog::backdrop { background: rgba(0, 0, 0, .6); }
 .ac-title { margin: 0 0 .9rem; color: var(--navy); font-weight: 600; font-size: 1rem; }
 .ac-form label { display: block; margin-bottom: .7rem; color: var(--muted); font-size: .8rem; }
@@ -22,7 +22,7 @@
 .ac-bars span { flex: 1; min-height: 1px; border-radius: 1px 1px 0 0; background: var(--blue); }
 .ac-note { margin: 0; color: var(--muted); font-size: .72rem; }
 .ac-subtitle { margin: 1.2rem 0 .3rem; color: var(--navy); font-weight: 600; font-size: .85rem; }
-.ac-pages { max-height: 240px; overflow-y: auto; border-top: 1px solid var(--line); }
+.ac-pages { max-height: 200px; overflow-y: auto; border-top: 1px solid var(--line); }
 .ac-pages table { font-size: .8rem; }
 .ac-pages thead th { position: sticky; top: 0; background: var(--wash); }
 .ac-result .ac-pages tbody th { max-width: 220px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: var(--ink); }
