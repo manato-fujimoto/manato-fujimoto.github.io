@@ -842,7 +842,7 @@ def services(lang):
     rows = '<ul class="service-list">'
     # The Japanese page also lists domestic awards (from researchmap), kept in Japanese only.
     awards = DATA['awards'] + (DATA['awards_ja_only'] if ja else [])
-    for a in sorted(awards, key=lambda award: (int(award['year']), award.get('month', 0)), reverse=True):
+    for a in sorted(awards, key=lambda award: (int(award['year']), award.get('pin_top_in_year', False), award.get('month', 0)), reverse=True):
         title = text(a['title'], lang)
         if a.get('url'):
             title = link(a['url'], title)
