@@ -9,12 +9,14 @@
     title: 'アクセスカウンター', id: 'ID', pw: 'パスワード', login: 'ログイン', close: '閉じる',
     loading: '読み込み中…', auth: 'ID またはパスワードが違います。', locked: '試行回数が多すぎます。15分後にお試しください。',
     error: '接続できませんでした。', today: '今日', yesterday: '昨日', month: '今月', total: '合計',
-    pv: '表示回数', uv: '訪問者', last30: '直近30日の表示回数', since: '集計開始：'
+    pv: '表示回数', uv: '訪問者', last30: '直近30日の表示回数', since: '集計開始：',
+    pages: 'ページ別の表示回数', page: 'ページ', d30: '30日', noPages: 'まだデータがありません。', home: 'ホーム', article: 'お知らせ'
   } : {
     title: 'Access Counter', id: 'ID', pw: 'Password', login: 'Log in', close: 'Close',
     loading: 'Loading…', auth: 'ID or password is incorrect.', locked: 'Too many attempts. Try again in 15 minutes.',
     error: 'Could not connect.', today: 'Today', yesterday: 'Yesterday', month: 'This month', total: 'Total',
-    pv: 'Views', uv: 'Visitors', last30: 'Views in the last 30 days', since: 'Counting since '
+    pv: 'Views', uv: 'Visitors', last30: 'Views in the last 30 days', since: 'Counting since ',
+    pages: 'Views by page', page: 'Page', d30: '30 days', noPages: 'No data yet.', home: 'Home', article: 'News'
   };
 
   // ---- Record the visit (a reload in the same tab is not counted again) ----
@@ -26,7 +28,7 @@
       var today = d.getFullYear() + '-' + (d.getMonth() + 1) + '-' + d.getDate();
       var isNew = localStorage.getItem('ac_last') !== today;
       localStorage.setItem('ac_last', today);
-      fetch(ENDPOINT + '?action=hit&u=' + (isNew ? '1' : '0'), { mode: 'no-cors', keepalive: true });
+      fetch(ENDPOINT + '?action=hit&u=' + (isNew ? '1' : '0') + '&p=' + encodeURIComponent(location.pathname), { mode: 'no-cors', keepalive: true });
     }
   } catch (e) {}
 
@@ -71,6 +73,27 @@
       render(d);
     }).catch(function () { msg.className = 'ac-msg ac-error'; msg.textContent = T.error; });
   }
+  function esc(v) {
+    return String(v).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; });
+  }
+  function pageLabel(path) {
+    var jp = /^\/ja(\/|$)/.test(path);
+    var p = path.replace(/^\/ja/, '').replace(/^\//, '').replace(/\.html$/, '');
+    var name;
+    if (p === '' || p === 'index') name = T.home;
+    else if (/^news\//.test(p)) name = T.article + ': ' + p.slice(5);
+    else name = p.charAt(0).toUpperCase() + p.slice(1);
+    return name + (jp ? ' (JP)' : '');
+  }
+  function pagesTable(pages) {
+    if (!pages || !pages.length) return '<p class="ac-note">' + T.noPages + '</p>';
+    return '<div class="ac-pages"><table><thead><tr><th scope="col">' + T.page + '</th><th scope="col">' + T.today +
+      '</th><th scope="col">' + T.d30 + '</th><th scope="col">' + T.total + '</th></tr></thead><tbody>' +
+      pages.map(function (x) {
+        return '<tr><th scope="row" title="' + esc(x.path) + '">' + esc(pageLabel(x.path)) + '</th><td>' + x.today +
+          '</td><td>' + x.last30 + '</td><td>' + x.total + '</td></tr>';
+      }).join('') + '</tbody></table></div>';
+  }
   function render(d) {
     var res = dlg.querySelector('.ac-result');
     var max = Math.max.apply(null, d.last30.map(function (x) { return x.pv; }).concat([1]));
@@ -84,6 +107,7 @@
         return '<span title="' + x.date + ': ' + x.pv + ' / ' + x.uv + '" style="height:' + Math.round(x.pv / max * 100) + '%"></span>';
       }).join('') + '</div>' +
       '<p class="ac-note">' + T.last30 + ' · ' + T.since + d.since + '</p>' +
+      '<p class="ac-subtitle">' + T.pages + '</p>' + pagesTable(d.pages) +
       '<div class="ac-buttons"><button type="button" class="ac-close"></button></div>';
     res.querySelector('.ac-close').textContent = T.close;
     res.querySelector('.ac-close').addEventListener('click', function () { dlg.close(); });
