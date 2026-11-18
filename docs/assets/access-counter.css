@@ -1,0 +1,23 @@
+.footer-links .ac-link { font-size: .75rem; opacity: .55; }
+.footer-links .ac-link:hover { opacity: 1; }
+.ac-dialog { width: min(92vw, 360px); padding: 1.4rem; border: 1px solid var(--line); border-radius: 10px; background: var(--wash); color: var(--ink); font-size: .9rem; line-height: 1.6; }
+.ac-dialog::backdrop { background: rgba(0, 0, 0, .6); }
+.ac-title { margin: 0 0 .9rem; color: var(--navy); font-weight: 600; font-size: 1rem; }
+.ac-form label { display: block; margin-bottom: .7rem; color: var(--muted); font-size: .8rem; }
+.ac-form input { display: block; width: 100%; margin-top: .25rem; padding: .5rem .6rem; border: 1px solid var(--line); border-radius: 6px; background: var(--paper); color: var(--ink); font: inherit; font-size: .95rem; }
+.ac-form input:focus-visible { outline: 2px solid var(--blue); outline-offset: 1px; }
+.ac-buttons { display: flex; gap: .6rem; margin-top: 1rem; }
+.ac-buttons button { flex: 1; padding: .5rem; border: 1px solid var(--line); border-radius: 6px; background: transparent; color: var(--ink); font: inherit; cursor: pointer; }
+.ac-buttons button:hover { background: var(--surface-hover); }
+.ac-buttons .ac-primary { border-color: var(--accent); background: var(--accent); color: #fff; }
+.ac-buttons .ac-primary:hover { background: #2f7cf0; }
+.ac-msg { min-height: 1.4em; margin: .7rem 0 0; color: var(--muted); font-size: .8rem; }
+.ac-msg.ac-error { color: #ff8a8a; }
+.ac-result table { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; }
+.ac-result th, .ac-result td { padding: .35rem .3rem; border-bottom: 1px solid var(--line); text-align: right; }
+.ac-result thead th { color: var(--muted); font-weight: 400; font-size: .75rem; }
+.ac-result tbody th { text-align: left; font-weight: 400; color: var(--muted); }
+.ac-result td { color: var(--navy); }
+.ac-bars { display: flex; align-items: flex-end; gap: 2px; height: 56px; margin: 1rem 0 .3rem; }
+.ac-bars span { flex: 1; min-height: 1px; border-radius: 1px 1px 0 0; background: var(--blue); }
+.ac-note { margin: 0; color: var(--muted); font-size: .72rem; }

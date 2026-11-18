@@ -402,6 +402,14 @@ def shell(page, lang, body, news_item=None):
         page_scripts += f'\n  <link rel="stylesheet" href="{root}assets/funding.css?v={funding_css_version}">\n  <script src="{root}assets/funding.js?v={funding_js_version}" defer></script>'
     if page == 'news':
         page_scripts += f'\n  <script src="{root}assets/news.js" defer></script>'
+    # Access counter (footer link). The counter and its login live in Google Apps Script.
+    counter_endpoint = DATA.get('access_counter_endpoint', '')
+    counter_link = ''
+    if counter_endpoint:
+        counter_css_version = sha256((OUT / 'assets/access-counter.css').read_bytes()).hexdigest()[:12]
+        counter_js_version = sha256((OUT / 'assets/access-counter.js').read_bytes()).hexdigest()[:12]
+        page_scripts += f'\n  <link rel="stylesheet" href="{root}assets/access-counter.css?v={counter_css_version}">\n  <script src="{root}assets/access-counter.js?v={counter_js_version}" data-endpoint="{E(counter_endpoint, quote=True)}" defer></script>'
+        counter_link = '<a href="#" class="ac-link" data-access-counter>Access</a>'
     return f'''<!doctype html>
 <html lang="{lang}">
 <head>
@@ -438,7 +446,7 @@ def shell(page, lang, body, news_item=None):
   <main id="main" class="container{' news-article-page' if news_item is not None else ''}">{body}</main>
   <footer class="site-footer"><div class="container footer-inner">
     <p>© {E(DATA['copyright_year'])} {name}<br>{'大阪公立大学 大学院情報学研究科' if lang == 'ja' else 'Graduate School of Informatics, Osaka Metropolitan University'}</p>
-    <div class="footer-links">{link(DATA['lab_url'], '研究室' if lang == 'ja' else 'Laboratory')}{link('mailto:' + DATA['email'], 'お問い合わせ' if lang == 'ja' else 'Contact')}<a href="#main">{'ページ上部へ' if lang == 'ja' else 'Back to top'}</a></div>
+    <div class="footer-links">{link(DATA['lab_url'], '研究室' if lang == 'ja' else 'Laboratory')}{link('mailto:' + DATA['email'], 'お問い合わせ' if lang == 'ja' else 'Contact')}<a href="#main">{'ページ上部へ' if lang == 'ja' else 'Back to top'}</a>{counter_link}</div>
   </div></footer>
 </body>
 </html>

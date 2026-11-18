@@ -21,6 +21,7 @@
   },
   "email": "manato@omu.ac.jp",
   "lab_url": "https://omusp.jp/",
+  "access_counter_endpoint": "https://script.google.com/macros/s/AKfycbxCVxdult94ysr74idzmOIvHaTl-eKcOEtBRIWF3gjF8qV5Bz2KwfbLiXzuP_WLzzlAgg/exec",
   "publications_url": "https://manato.wcss.jp/publications/",
   "position": {
     "en": "Associate Professor · Ph.D. in Engineering",

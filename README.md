@@ -143,6 +143,15 @@ HTMLやサイトマップを公開しただけでは、Googleのインデック�
 
 参考：[URLの再クロールをGoogleにリクエストする](https://developers.google.com/search/docs/crawling-indexing/ask-google-to-recrawl?hl=ja)、[URL検査ツール](https://support.google.com/webmasters/answer/9012289?hl=ja)、[サイトの所有権の確認](https://support.google.com/webmasters/answer/9008080?hl=ja)。
 
+## アクセスカウンター
+
+全ページのフッター右端に小さく「Access」リンクを表示します。クリックしてIDとパスワードでログインすると、今日・昨日・今月・合計の表示回数と訪問者数、直近30日のグラフを確認できます。
+
+- カウントとログイン確認は Google Apps Script（プロジェクト名「Homepage Access Counter」）で行います。元のコードは `scripts/access-counter.gs` です。
+- IDとパスワードは Apps Script の **プロジェクトの設定 → スクリプト プロパティ** の `ADMIN_ID` / `ADMIN_PASSWORD` に保存します。このリポジトリには書かないでください。
+- 表示用のファイルは `docs/assets/access-counter.js` と `docs/assets/access-counter.css`、接続先URLは `content/site.json` の `access_counter_endpoint` です。空にして再ビルドするとリンクごと非表示になります。
+- 表示回数は同じタブでの再読み込みを数えず、訪問者数はその日初めて来たブラウザの数です。ログインに10回続けて失敗すると15分間ロックされます。
+
 ## 掲載情報
 
 2026年9月13日に確認できた公開情報をもとに初期データを作成しました。業績は学術論文38件、国際会議論文83件で、採択済み・刊行予定を含みます。国内研究会発表等は、既存の業績一覧へのリンクで案内しています。学会活動と受賞は一部を抜粋しています。
