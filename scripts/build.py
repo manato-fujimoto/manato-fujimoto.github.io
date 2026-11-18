@@ -840,7 +840,9 @@ def services(lang):
                 + group('国内委員', len(DATA['domestic_committees_ja']), domestic))
     body += section('国際会議・研究会運営' if ja else 'Selected Conference Organization',rows)
     rows = '<ul class="service-list">'
-    for a in sorted(DATA['awards'], key=lambda award: int(award['year']), reverse=True):
+    # The Japanese page also lists domestic awards (from researchmap), kept in Japanese only.
+    awards = DATA['awards'] + (DATA['awards_ja_only'] if ja else [])
+    for a in sorted(awards, key=lambda award: (int(award['year']), award.get('month', 0)), reverse=True):
         title = text(a['title'], lang)
         if a.get('url'):
             title = link(a['url'], title)

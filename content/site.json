@@ -867,7 +867,8 @@
         "en": "Advanced Ubiquitous Computing System for Realization of Society 5.0",
         "ja": "受賞題目：Advanced Ubiquitous Computing System for Realization of Society 5.0"
       },
-      "url": "https://www.ipsj.or.jp/award/ACM-Joint-Award2023.html"
+      "url": "https://www.ipsj.or.jp/award/ACM-Joint-Award2023.html",
+      "month": 3
     },
     {
       "year": "2025",
@@ -879,7 +880,8 @@
         "en": "Evaluation of 3-Dimensional In-Body Device Localization Using Machine Learning Algorithms with Reduced Training Data\nCo-authored research paper.",
         "ja": "受賞題目：Evaluation of 3-Dimensional In-Body Device Localization Using Machine Learning Algorithms with Reduced Training Data\n共著論文に対する受賞。"
       },
-      "url": ""
+      "url": "",
+      "month": 12
     },
     {
       "year": "2021",
@@ -891,7 +893,8 @@
         "en": "Multi-Person Daily Activity Recognition with Non-Contact Sensors Based on Activity Co-Occurrence\nCo-authored research paper.",
         "ja": "受賞題目：Multi-Person Daily Activity Recognition with Non-Contact Sensors Based on Activity Co-Occurrence\n共著論文に対する受賞。"
       },
-      "url": "https://icmu.org/icmu2021/award.html"
+      "url": "https://icmu.org/icmu2021/award.html",
+      "month": 11
     }
   ],
   "memberships": [
@@ -923,5 +926,92 @@
       },
       "url": "https://www.ipsj.or.jp/"
     }
-  ]
+  ],
+  "awards_ja_only": [
+    {
+      "year": "2026",
+      "month": 3,
+      "title": "電子情報通信学会 情報通信マネジメント研究会 2025年情報通信マネジメント研究賞",
+      "detail": "受賞題目：初期フェーズにおけるDNSクエリパターンに基づくIoT機器同定\n共著論文に対する受賞。"
+    },
+    {
+      "year": "2025",
+      "month": 3,
+      "title": "電子情報通信学会 情報通信マネジメント研究会 2024年情報通信マネジメント研究賞",
+      "detail": "受賞題目：ヘルプデスク業務におけるシステムログを活用した対話効率化\n共著論文に対する受賞。"
+    },
+    {
+      "year": "2024",
+      "month": 10,
+      "title": "マルチメディア通信と分散処理ワークショップ（DPSWS 2024） 優秀デモンストレーション賞",
+      "detail": "受賞題目：直近の作業進度を通知するテスト採点促進システムの実装\n共著論文に対する受賞。"
+    },
+    {
+      "year": "2023",
+      "month": 10,
+      "title": "マルチメディア通信と分散処理ワークショップ（DPSWS 2023） 最優秀ポスター賞",
+      "detail": "受賞題目：ペンに搭載された慣性センサにより得られる情報を利用したテスト採点促進システムの検討\n共著論文に対する受賞。"
+    },
+    {
+      "year": "2022",
+      "month": 10,
+      "title": "マルチメディア通信と分散処理ワークショップ（DPSWS 2022） 優秀論文賞",
+      "detail": "受賞題目：Smartable：マルチ振動センサと深層学習を用いた既存家具のインターフェース化の検討\n共著論文に対する受賞。"
+    },
+    {
+      "year": "2021",
+      "month": 10,
+      "title": "マルチメディア通信と分散処理ワークショップ（DPSWS 2021） 優秀論文賞",
+      "detail": "受賞題目：新生活様式におけるコミュニティ形成のためのサイバーフィジカル空間共有基盤の設計開発\n共著論文に対する受賞。"
+    },
+    {
+      "year": "2021",
+      "month": 10,
+      "title": "マルチメディア通信と分散処理ワークショップ（DPSWS 2021） 優秀ポスター賞",
+      "detail": "受賞題目：ダイナミックレンジを拡大するアダプティブゲイン歩行振動センサシステムの検討\n共著論文に対する受賞。"
+    },
+    {
+      "year": "2020",
+      "month": 11,
+      "title": "マルチメディア通信と分散処理ワークショップ（DPSWS 2020） 奨励賞",
+      "detail": "受賞題目：血糖値コントロールシステムの実現に向けたデータ分析\n共著論文に対する受賞。"
+    },
+    {
+      "year": "2019",
+      "month": 11,
+      "title": "マルチメディア通信と分散処理ワークショップ（DPSWS 2019） 奨励賞",
+      "detail": "受賞題目：IMUを用いた剣道の素振り稽古における打突動作区間の検出手法\n共著論文に対する受賞。"
+    },
+    {
+      "year": "2018",
+      "month": 9,
+      "title": "マルチメディア，分散，協調とモバイルシンポジウム（DICOMO 2018） 優秀論文賞",
+      "detail": "受賞題目：EHAAS：環境発電素子の発電量に基づくウェアラブル場所推定システム\n共著論文に対する受賞。"
+    },
+    {
+      "year": "2018",
+      "month": 9,
+      "title": "マルチメディア，分散，協調とモバイルシンポジウム（DICOMO 2018） 優秀論文賞",
+      "detail": "受賞題目：メニュー推薦に向けたセンサ取り付け位置に依存しない自重トレーニング種目認識手法の提案\n共著論文に対する受賞。"
+    },
+    {
+      "year": "2018",
+      "month": 5,
+      "title": "情報処理学会 ユビキタスコンピューティングシステム研究会 学生奨励賞",
+      "detail": "受賞題目：災害時の混雑情報を考慮した避難場所決定手法の提案\n共著論文に対する受賞。"
+    },
+    {
+      "year": "2015",
+      "month": 12,
+      "title": "情報処理学会 モバイルコンピューティングとパーベイシブシステム研究会 Work in Progress奨励賞",
+      "detail": "受賞題目：リアルタイム行動認識システム開発のためのデータ収集と分析\n共著論文に対する受賞。"
+    },
+    {
+      "year": "2011",
+      "month": 3,
+      "title": "関西大学大学院 紫紺賞",
+      "detail": "関西大学大学院 理工学研究科"
+    }
+  ],
+  "awards_ja_only_source": "https://researchmap.jp/mf_may"
 }
