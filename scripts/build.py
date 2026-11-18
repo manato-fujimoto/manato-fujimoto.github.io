@@ -434,7 +434,7 @@ def shell(page, lang, body, news_item=None):
   <link rel="alternate" type="text/markdown" title="Site summary for AI assistants (llms.txt)" href="{E(site_url('llms.txt'), quote=True)}">
   <meta name="theme-color" content="#090b10">
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,{quote(svg)}">
-  <link rel="stylesheet" href="{root}assets/style.css{'?v=committee-collapse-1' if page == 'services' and lang == 'ja' else ''}">
+  <link rel="stylesheet" href="{root}assets/style.css{'?v=committee-collapse-2' if page == 'services' and lang == 'ja' else ''}">
   <link rel="stylesheet" href="{root}assets/news.css">{page_scripts}
 </head>
 <body>
@@ -832,8 +832,8 @@ def services(lang):
         domestic += '</ul>'
         columns = '<div class="committee-columns" aria-hidden="true"><span>年・任期</span><span>役職</span><span>会議・組織名</span></div>'
         def group(title, count, items):
-            # Collapsible group: open by default, the summary toggles it.
-            return (f'<details class="service-group" open><summary class="service-group-title">'
+            # Collapsible group: closed by default, the summary toggles it.
+            return (f'<details class="service-group"><summary class="service-group-title">'
                     f'<h3>{title}</h3><span class="service-group-count">{count}件</span></summary>'
                     + columns + items + '</details>')
         rows = (group('国際会議委員', len(DATA['services']), rows)
