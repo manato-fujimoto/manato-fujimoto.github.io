@@ -434,7 +434,7 @@ def shell(page, lang, body, news_item=None):
   <link rel="alternate" type="text/markdown" title="Site summary for AI assistants (llms.txt)" href="{E(site_url('llms.txt'), quote=True)}">
   <meta name="theme-color" content="#090b10">
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,{quote(svg)}">
-  <link rel="stylesheet" href="{root}assets/style.css{'?v=committee-collapse-2' if page == 'services' and lang == 'ja' else ''}">
+  <link rel="stylesheet" href="{root}assets/style.css{'?v=awards-collapse-1' if page == 'services' and lang == 'ja' else ''}">
   <link rel="stylesheet" href="{root}assets/news.css">{page_scripts}
 </head>
 <body>
@@ -848,7 +848,13 @@ def services(lang):
             title = link(a['url'], title)
         detail = '<br>'.join(text(a['detail'], lang).splitlines())
         rows += f'<li><span class="year">{E(a["year"])}</span><div><h3>{title}</h3><p>{detail}</p></div></li>'
-    body += section('主な受賞' if ja else 'Selected Awards',rows+'</ul>')
+    rows += '</ul>'
+    if ja:
+        # Collapsible like the committee groups: closed by default.
+        rows = (f'<details class="service-group"><summary class="service-group-title">'
+                f'<h3>受賞一覧</h3><span class="service-group-count">{len(awards)}件</span></summary>'
+                + rows + '</details>')
+    body += section('主な受賞' if ja else 'Selected Awards',rows)
     member = '<ul class="memberships">'+''.join(f'<li>{link(m["url"],text(m["name"],lang))}</li>' for m in DATA['memberships'])+'</ul>'
     body += section('所属学会' if ja else 'Memberships',member)
     return body
