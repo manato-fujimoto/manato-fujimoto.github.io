@@ -26,3 +26,4 @@
 .ac-pages table { font-size: .8rem; }
 .ac-pages thead th { position: sticky; top: 0; background: var(--wash); }
 .ac-result .ac-pages tbody th { max-width: 220px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: var(--ink); }
+.ac-result .ac-pages thead th:first-child { text-align: left; }
